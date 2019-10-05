@@ -1,0 +1,132 @@
+{
+    "fields": [
+        {
+            "name": "sex",
+            "type": "select",
+            "options": {
+                "ชาย": "ชาย",
+                "หญิง": "หญิง"
+            }
+        },
+        {
+            "name": "title",
+            "type": "select",
+            "options": {
+                "ศาสตราจารย์": "ศาสตราจารย์",
+                "รองศาสตราจารย์": "รองศาสตราจารย์",
+                "ผู้ช่วยศาสตราจารย์": "ผู้ช่วยศาสตราจารย์",
+                "นาย": "นาย",
+                "นาง": "นาง",
+                "นางสาว": "นางสาว"
+            }
+        },
+        {
+            "name": "name",
+            "type": "string"
+        },       
+        {
+            "name": "lastname",
+            "type": "string"
+        },       
+        {
+            "name": "email",
+            "type": "string",
+            "pattern": "^[A-Za-z]*@gmail.com$"
+        },       
+        {
+            "name": "status",
+            "type": "select",
+            "options": {
+                "นักศึกษาปริญญาตรี": "นักศึกษาปริญญาตรี",
+                "นักศึกษาปริญญาโท": "นักศึกษาปริญญาโท",
+                "นักศึกษาปริญญาเอก": "นักศึกษาปริญญาเอก",
+                "อาจารย์": "อาจารย์",
+                "นักวิจัย": "นักวิจัย",
+                "เจ้าหน้าที่": "เจ้าหน้าที่",
+                "อื่นๆ": "อื่นๆ"
+            }
+        },       
+        {
+            "name": "statusothers",
+            "type": "string"
+        },       
+        {
+            "name": "food",
+            "type": "select",
+            "options": {
+                "อาหารไทย": "อาหารไทย",
+                "อาหารมังสวิรัต": "อาหารมังสวิรัต",
+                "อาหารมุสลิม": "อาหารมุสลิม"
+            }
+        },
+        {
+            "name": "school",
+            "type": "string"
+        },       
+        {
+            "name": "major",
+            "type": "string"
+        },       
+        {
+            "name": "address",
+            "type": "string"
+        },
+        {
+            "name": "district",
+            "type": "string"
+        },       
+        {
+            "name": "subdistrict",
+            "type": "string"
+        },       
+        {
+            "name": "postnumber",
+            "type": "string"
+        },
+        {
+            "name": "tel",
+            "type": "string"
+        },       
+        {
+            "name": "fax",
+            "type": "string"
+        },       
+        {
+            "name": "fileregister",
+            "type": "file"
+        },
+        {
+            "name": "bill_school",
+            "type": "string"
+        },       
+        {
+            "name": "bill_major",
+            "type": "string"
+        },       
+        {
+            "name": "bill_address",
+            "type": "string"
+        },
+        {
+            "name": "bill_district",
+            "type": "string"
+        },       
+        {
+            "name": "bill_subdistrict",
+            "type": "string"
+        },       
+        {
+            "name": "bill_postnumber",
+            "type": "string"
+        },
+        {
+            "name": "bill_tel",
+            "type": "string"
+        },       
+        {
+            "name": "bill_fax",
+            "type": "string"
+        }
+    ]
+ }
+ 
