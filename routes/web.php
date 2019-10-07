@@ -16,3 +16,4 @@ Route::get('/', function () {
 });
 
 Route::resource('profile', 'ProfileController');
+Route::resource('evaluation', 'EvaluationController');

@@ -1,0 +1,23 @@
+{
+    "fields": [
+        {
+            "name": "around",
+            "type": "string"
+        },
+
+        {
+            "name": "date",
+            "type": "text"
+        },
+        
+        {
+            "name": "results_evaluation",
+            "type": "string"
+        },
+
+        {
+            "name": "comment",
+            "type": "string"
+        }
+    ]
+}
