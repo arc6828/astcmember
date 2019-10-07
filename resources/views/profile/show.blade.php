@@ -27,7 +27,31 @@
                                     <tr>
                                         <th>ID</th><td>{{ $profile->id }}</td>
                                     </tr>
-                                    <tr><th> Sex </th><td> {{ $profile->sex }} </td></tr><tr><th> Title </th><td> {{ $profile->title }} </td></tr><tr><th> Name </th><td> {{ $profile->name }} </td></tr><tr><th> Lastname </th><td> {{ $profile->lastname }} </td></tr><tr><th> Email </th><td> {{ $profile->email }} </td></tr><tr><th> Status </th><td> {{ $profile->status }} </td></tr><tr><th> Statusothers </th><td> {{ $profile->statusothers }} </td></tr><tr><th> Food </th><td> {{ $profile->food }} </td></tr><tr><th> School </th><td> {{ $profile->school }} </td></tr><tr><th> Major </th><td> {{ $profile->major }} </td></tr><tr><th> Address </th><td> {{ $profile->address }} </td></tr><tr><th> District </th><td> {{ $profile->district }} </td></tr><tr><th> Subdistrict </th><td> {{ $profile->subdistrict }} </td></tr><tr><th> Postnumber </th><td> {{ $profile->postnumber }} </td></tr><tr><th> Tel </th><td> {{ $profile->tel }} </td></tr><tr><th> Fax </th><td> {{ $profile->fax }} </td></tr><tr><th> Fileregister </th><td> {{ $profile->fileregister }} </td></tr><tr><th> Bill School </th><td> {{ $profile->bill_school }} </td></tr><tr><th> Bill Major </th><td> {{ $profile->bill_major }} </td></tr><tr><th> Bill Address </th><td> {{ $profile->bill_address }} </td></tr><tr><th> Bill District </th><td> {{ $profile->bill_district }} </td></tr><tr><th> Bill Subdistrict </th><td> {{ $profile->bill_subdistrict }} </td></tr><tr><th> Bill Postnumber </th><td> {{ $profile->bill_postnumber }} </td></tr><tr><th> Bill Tel </th><td> {{ $profile->bill_tel }} </td></tr><tr><th> Bill Fax </th><td> {{ $profile->bill_fax }} </td></tr>
+                                    <tr><th> เพศ </th><td> {{ $profile->sex }} </td></tr>
+                                    <tr><th> คำนำหน้าชื่อ </th><td> {{ $profile->title }} </td></tr>
+                                    <tr><th> ชื่อ </th><td> {{ $profile->name }} </td></tr>
+                                    <tr><th> นามสกุล </th><td> {{ $profile->lastname }} </td></tr>
+                                    <tr><th> อีเมล </th><td> {{ $profile->email }} </td></tr>
+                                    <tr><th> สถานภาพ </th><td> {{ $profile->status }} </td></tr>
+                                    <tr><th> สถานภาพอื่นๆ โปรดระบุ </th><td> {{ $profile->statusothers }} </td></tr>
+                                    <tr><th> อาหารกลางวัน </th><td> {{ $profile->food }} </td></tr>
+                                    <tr><th> สถาบัน </th><td> {{ $profile->school }} </td></tr>
+                                    <tr><th> คณะ/ภาควิชา </th><td> {{ $profile->major }} </td></tr>
+                                    <tr><th> เลขที่ ซอย ถนน ตำบล </th><td> {{ $profile->address }} </td></tr>
+                                    <tr><th> อำเภอ </th><td> {{ $profile->district }} </td></tr>
+                                    <tr><th> จังหวัด </th><td> {{ $profile->subdistrict }} </td></tr>
+                                    <tr><th> รหัสไปรษณีย์ </th><td> {{ $profile->postnumber }} </td></tr>
+                                    <tr><th> เบอร์โทรศัพท์ </th><td> {{ $profile->tel }} </td></tr>
+                                    <tr><th> เบอร์โทรสาร </th><td> {{ $profile->fax }} </td></tr>
+                                    <tr><th> ไฟล์หลักฐานการชำระเงินค่าลงทะเบียน </th><td> {{ $profile->fileregister }} </td></tr>
+                                    <tr><th> สถาบัน </th><td> {{ $profile->bill_school }} </td></tr>
+                                    <tr><th> คณะ/ภาควิชา </th><td> {{ $profile->bill_major }} </td></tr>
+                                    <tr><th> เลขที่ ซอย ถนน ตำบล </th><td> {{ $profile->bill_address }} </td></tr>
+                                    <tr><th> อำเภอ </th><td> {{ $profile->bill_district }} </td></tr>
+                                    <tr><th> จังหวัด </th><td> {{ $profile->bill_subdistrict }} </td></tr>
+                                    <tr><th> รหัสไปรษณีย์ </th><td> {{ $profile->bill_postnumber }} </td></tr>
+                                    <tr><th> เบอร์โทรศัพท์ </th><td> {{ $profile->bill_tel }} </td></tr>
+                                    <tr><th> เบอร์โทรสาร </th><td> {{ $profile->bill_fax }} </td></tr>
                                 </tbody>
                             </table>
                         </div>
