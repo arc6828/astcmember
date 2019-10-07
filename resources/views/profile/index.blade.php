@@ -30,7 +30,33 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Sex</th><th>Title</th><th>Name</th><th>Lastname</th><th>Email</th><th>Status</th><th>Statusothers</th><th>Food</th><th>School</th><th>Major</th><th>Address</th><th>District</th><th>Subdistrict</th><th>Postnumber</th><th>Tel</th><th>Fax</th><th>Fileregister</th><th>Bill School</th><th>Bill Major</th><th>Bill Address</th><th>Bill District</th><th>Bill Subdistrict</th><th>Bill Postnumber</th><th>Bill Tel</th><th>Bill Fax</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>เพศ</th>
+                                        <th>คำนำหน้าชื่อ</th>
+                                        <th>ชื่อ</th>
+                                        <th>นามสกุล</th>
+                                        <th>อีเมล</th>
+                                        <th>สถานภาพ</th>
+                                        <th>สถานภาพอื่นๆ โปรดระบุ</th>
+                                        <th>อาหารกลางวัน</th>
+                                        <th>สถาบัน</th>
+                                        <th>คณะ/ภาควิชา</th>
+                                        <th>เลขที่ ซอย ถนน ตำบล</th>
+                                        <th>อำเภอ</th>
+                                        <th>จังหวัด</th>
+                                        <th>รหัสไปรษณีย์</th>
+                                        <th>เบอร์โทรศัพท์</th>
+                                        <th>เบอร์โทรสาร</th>
+                                        <th>ไฟล์หลักฐานการชำระเงินค่าลงทะเบียน</th>
+                                        <th>สถาบัน</th>
+                                        <th>คณะ/ภาควิชา</th>
+                                        <th>เลขที่ ซอย ถนน ตำบล</th>
+                                        <th>อำเภอ</th>
+                                        <th>จังหวัด</th>
+                                        <th>รหัสไปรษณีย์</th>
+                                        <th>เบอร์โทรศัพท์</th>
+                                        <th>เบอร์โทรสาร</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
