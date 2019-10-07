@@ -26,7 +26,11 @@ class HomeController extends Controller
     {
         $profile = Profile::firstOrCreate(
             ['user_id' => Auth::id()],
-            ['role' => 'guest']
+            [
+                'role' => 'author', 
+                'name' => Auth::user()->name , 
+                'email' => Auth::user()->email ,
+            ]
         );
         return view('home' , compact('profile') );
     }

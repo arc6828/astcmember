@@ -60,7 +60,11 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($profile as $item)
+                                
+                                @php 
+                                    $profiles = request('role')? $profile->where('role',  request('role')) : $profile;
+                                @endphp
+                                @foreach($profiles as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->sex }}</td><td>{{ $item->title }}</td><td>{{ $item->name }}</td><td>{{ $item->lastname }}</td><td>{{ $item->email }}</td><td>{{ $item->status }}</td><td>{{ $item->statusothers }}</td><td>{{ $item->food }}</td><td>{{ $item->school }}</td><td>{{ $item->major }}</td><td>{{ $item->address }}</td><td>{{ $item->district }}</td><td>{{ $item->subdistrict }}</td><td>{{ $item->postnumber }}</td><td>{{ $item->tel }}</td><td>{{ $item->fax }}</td><td>{{ $item->fileregister }}</td><td>{{ $item->bill_school }}</td><td>{{ $item->bill_major }}</td><td>{{ $item->bill_address }}</td><td>{{ $item->bill_district }}</td><td>{{ $item->bill_subdistrict }}</td><td>{{ $item->bill_postnumber }}</td><td>{{ $item->bill_tel }}</td><td>{{ $item->bill_fax }}</td>
