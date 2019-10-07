@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class ChangeProfilesTable extends Migration
+class ChangeDefaultRoleAsGuestToProfilesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,8 @@ class ChangeProfilesTable extends Migration
      */
     public function up()
     {
-        Schema::table('profiles', function (Blueprint $table) {
-            
-            $table->integer('user_id')->nullable()->change(); //เราลืม nullable 
+        Schema::table('profiles', function (Blueprint $table) {            
+            $table->string("role")->nullable()->default("guest")->change();
         });
     }
 
