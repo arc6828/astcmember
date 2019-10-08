@@ -15,9 +15,9 @@
           <span>ผู้เขียนบทความ</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="#">ส่งบทความ</a> 
-          <a class="dropdown-item" href="#">บทความของฉัน</a> 
-          <a class="dropdown-item" href="#">อัพโหลดเอกสาร</a>           
+          <a class="dropdown-item" href="{{ url('/article/create') }}">ส่งบทความ</a> 
+          <a class="dropdown-item" href="{{ url('/article') }}">บทความของฉัน</a> 
+          <a class="dropdown-item" href="{{ url('/document/create') }}">อัพโหลดเอกสาร</a>           
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -26,7 +26,7 @@
           <span>ผู้ประเมินบทความ</span>
         </a>
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-          <a class="dropdown-item" href="#">บทความทั้งหมด</a> 
+          <a class="dropdown-item" href="{{ url('/article') }}">บทความทั้งหมด</a> 
         </div>
       </li>
       <li class="nav-item dropdown">
@@ -37,9 +37,9 @@
         <div class="dropdown-menu" aria-labelledby="pagesDropdown">          
           <a class="dropdown-item" href="{{ url('/profile') }}">รายชื่อทั้งหมด</a>        
           <a class="dropdown-item" href="{{ url('/profile') }}?role=guest">รายชื่อผู้เข้าร่วมงาน</a>        
-          <a class="dropdown-item" href="{{ url('/profile') }}?role=auther">รายชื่อผู้ส่งบทความ</a>        
-          <a class="dropdown-item" href="#">บทความทั้งหมด</a> 
-          <a class="dropdown-item" href="blank.html">ผลการประเมิน</a>
+          <a class="dropdown-item" href="{{ url('/profile') }}?role=author">รายชื่อผู้ส่งบทความ</a>        
+          <a class="dropdown-item" href="{{ url('/article') }}">บทความทั้งหมด</a> 
+          <a class="dropdown-item" href="{{ url('/evaluation') }}">ผลการประเมิน</a>
         </div>
       </li>
       <div class="dropdown-divider"></div>
