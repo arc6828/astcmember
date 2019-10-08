@@ -1,0 +1,23 @@
+{
+    "fields": [
+        {
+            "name": "title ",
+            "type": "string"
+        },
+
+        {
+            "name": "user_id",
+            "type": "integer"
+        },
+        
+        {
+            "name": "article_id",
+            "type": "integer"
+        },
+
+        {
+            "name": "filename ",
+            "type": "file"
+        }
+    ]
+}
