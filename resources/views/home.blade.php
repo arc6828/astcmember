@@ -8,7 +8,7 @@
             @php
                 $user = Auth::user();
             @endphp
-            <div class="card mt-4">
+            <div class="card">
                 <div class="card-header">ยินดีต้อนรับ, คุณ {{ $user->name }} </div>
 
                 <div class="card-body">
@@ -97,15 +97,7 @@
                     You are logged in!
                 </div>
             </div>
-
-            <div class="card mt-4">
-                <div class="card-header"></div>
-
-                <div class="card-body">
-                    
-                </div>
-            </div>
-
+            
 
         </div>
     </div>

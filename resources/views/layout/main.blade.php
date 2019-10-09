@@ -10,8 +10,8 @@
       @include('layout.navbar')
       <div id="wrapper"> 
         @include('layout.sidebar')
-        <div class="container-fluid">   
-          @yield('content')
+        <div class="container-fluid pt-5 pb-5 mb-5">   
+          @yield('content')          
         </div>
       </div>
       @include('layout.footer')
