@@ -30,8 +30,8 @@ class Document extends Model
     
 
 
-    public function usre(){
-        return $this->belongsTo('App\Usre', 'usre_id'); 
+    public function user(){
+        return $this->belongsTo('App\User', 'user_id'); 
     }
 
 
