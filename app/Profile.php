@@ -28,4 +28,8 @@ class Profile extends Model
     protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'district', 'subdistrict', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_subdistrict', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role']; //เราลืม user_id, role 
 
     
+
+     public function usre(){
+        return $this->belongsTo('App\Usre', 'usre_id'); 
+    }
 }

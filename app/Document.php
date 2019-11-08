@@ -28,4 +28,15 @@ class Document extends Model
     protected $fillable = ['title ', 'user_id', 'article_id', 'filename '];
 
     
+
+
+    public function usre(){
+        return $this->belongsTo('App\Usre', 'usre_id'); 
+    }
+
+
+    public function article(){
+        return $this->belongsTo('App\Article', 'article_id'); 
+    }
+
 }

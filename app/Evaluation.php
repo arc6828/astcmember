@@ -28,4 +28,14 @@ class Evaluation extends Model
     protected $fillable = ['around', 'date', 'results_evaluation', 'comment'];
 
     
+     public function usre(){
+        return $this->belongsTo('App\Usre', 'usre_id'); 
+    }
+
+
+     public function article(){
+        return $this->belongsTo('App\Article', 'article_id'); 
+    }
+
+
 }
