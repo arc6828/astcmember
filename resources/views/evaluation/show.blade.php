@@ -25,9 +25,33 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $evaluation->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $evaluation->id }}</td>
                                     </tr>
-                                    <tr><th> Around </th><td> {{ $evaluation->around }} </td></tr><tr><th> Date </th><td> {{ $evaluation->date }} </td></tr><tr><th> Results Evaluation </th><td> {{ $evaluation->results_evaluation }} </td></tr><tr><th> Comment </th><td> {{ $evaluation->comment }} </td></tr>
+                                    <tr>
+                                        <th> Around </th>
+                                        <td> {{ $evaluation->around }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Date </th>
+                                        <td> {{ $evaluation->date }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Results Evaluation </th>
+                                        <td> {{ $evaluation->results_evaluation }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Comment </th>
+                                        <td> {{ $evaluation->comment }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Article</th>
+                                        <td> {{ $evaluation->article->name_en }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> User</th>
+                                        <td> {{ $evaluation->user->name }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

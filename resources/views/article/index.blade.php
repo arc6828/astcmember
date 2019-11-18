@@ -30,14 +30,34 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                    <th>#</th><th>ประเภทการนำเสนอ</th><th>กลุ่มสาขา</th><th>ชื่อบทความ (ไทย)</th><th>ชื่อบทความ (อังกฤษ)</th><th>ผู้รับผิดชอบบทความ/ นักวิจัยหลัก</th><th>อีเมลผู้รับผิดชอบหลัก</th><th>ชื่อผู้ที่จะนำเสนอผลงาน</th><th>ชื่ออาจารย์ที่ปรึกษา</th><th>เบอร์โทรศัพท์อาจารย์ที่ปรึกษา</th><th>Actions</th>
-                                        </tr>
+                                    <th>#</th>
+                                    <th>ประเภทการนำเสนอ</th>
+                                    <th>กลุ่มสาขา</th>
+                                    <th>ชื่อบทความ (ไทย)</th>
+                                    <th>ชื่อบทความ (อังกฤษ)</th>
+                                    <th>ผู้รับผิดชอบบทความ/ นักวิจัยหลัก</th>
+                                    <th>อีเมลผู้รับผิดชอบหลัก</th>
+                                    <th>ชื่อผู้ที่จะนำเสนอผลงาน</th>
+                                    <th>ชื่ออาจารย์ที่ปรึกษา</th>
+                                    <th>เบอร์โทรศัพท์อาจารย์ที่ปรึกษา</th>
+                                    <th>User</th>
+                                    <th>Actions</th>
+                                    </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($article as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->prapet }}</td><td>{{ $item->group }}</td><td>{{ $item->name_th }}</td><td>{{ $item->name_en }}</td><td>{{ $item->purubpitshop }}</td><td>{{ $item->email }}</td><td>{{ $item->name_present }}</td><td>{{ $item->name_aj }}</td><td>{{ $item->tel_aj }}</td>
+                                        <td>{{ $item->prapet }}</td>
+                                        <td>{{ $item->group }}</td>
+                                        <td>{{ $item->name_th }}</td>
+                                        <td>{{ $item->name_en }}</td>
+                                        <td>{{ $item->purubpitshop }}</td>
+                                        <td>{{ $item->email }}</td>
+                                        <td>{{ $item->name_present }}</td>
+                                        <td>{{ $item->name_aj }}</td>
+                                        <td>{{ $item->tel_aj }}</td>
+                                        <td>{{ $item->user->name }}</td>
                                         <td>
                                             <a href="{{ url('/article/' . $item->id) }}" title="View Article"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/article/' . $item->id . '/edit') }}" title="Edit Article"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -60,4 +80,5 @@
             </div>
         </div>
     </div>
+    
 @endsection

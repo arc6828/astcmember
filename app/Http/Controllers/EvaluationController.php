@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Evaluation;
+use App\Article;
 use Illuminate\Http\Request;
 
 class EvaluationController extends Controller
@@ -67,7 +68,7 @@ class EvaluationController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $evaluation = Evaluation::findOrFail($id);
 

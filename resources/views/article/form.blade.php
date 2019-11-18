@@ -51,6 +51,11 @@
     <input class="form-control" name="tel_aj" type="number" id="tel_aj" value="{{ isset($article->tel_aj) ? $article->tel_aj : ''}}" >
     {!! $errors->first('tel_aj', '<p class="help-block">:message</p>') !!}
 </div>
+<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+    <label for="user_id" class="control-label">{{ 'User Id' }}</label>
+    <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : ''}}" >
+    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+</div>
 
 
 <div class="form-group">

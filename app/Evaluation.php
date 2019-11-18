@@ -25,7 +25,7 @@ class Evaluation extends Model
      *
      * @var array
      */
-    protected $fillable = ['around', 'date', 'results_evaluation', 'comment'];
+    protected $fillable = ['around', 'date', 'results_evaluation', 'comment' , 'user_id' , 'article_id'];
 
     
      public function user(){

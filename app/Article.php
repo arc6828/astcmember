@@ -25,7 +25,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['prapet', 'group', 'name_th', 'name_en', 'purubpitshop', 'email', 'name_present', 'name_aj', 'tel_aj'];
+    protected $fillable = ['prapet', 'group', 'name_th', 'name_en', 'purubpitshop', 'email', 'name_present', 'name_aj', 'tel_aj' , 'user_id'];
 
     
 
@@ -35,12 +35,13 @@ class Article extends Model
     }
 
 
-     public function evaluation(){
+     public function evaluations(){
+        //จะ return กลับมาเป็น array
         return $this->hasMany('App\Evaluation', 'article_id'); 
     }
 
 
-     public function document(){
+     public function documents(){
         return $this->hasMany('App\Document', 'article_id'); 
     }
 

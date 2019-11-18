@@ -22,14 +22,12 @@ Route::get('/table', function () {
 
 Route::resource('profile', 'ProfileController');
 
-Route::resource('evaluation', 'EvaluationController');
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::resource('book', 'BookController');
-
 Route::resource('article', 'ArticleController');
+
+Route::resource('evaluation', 'EvaluationController');
 
 Route::resource('document', 'DocumentController');

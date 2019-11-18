@@ -35,6 +35,8 @@
                                         <th>วันที่แจ้ง</th>
                                         <th>ผลที่แจ้ง</th>
                                         <th>ความคิดเห็นเพิ่มเติมจากกองบรรณาธิการ</th>
+                                        <th>Article</th>
+                                        <th>User</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -46,6 +48,8 @@
                                         <td>{{ $item->date }}</td>
                                         <td>{{ $item->results_evaluation }}</td>
                                         <td>{{ $item->comment }}</td>
+                                        <td>{{ $item->article->name_en }}</td>
+                                        <td>{{ $item->user->name }}</td>
                                         <td>
                                             <a href="{{ url('/evaluation/' . $item->id) }}" title="View Evaluation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/evaluation/' . $item->id . '/edit') }}" title="Edit Evaluation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

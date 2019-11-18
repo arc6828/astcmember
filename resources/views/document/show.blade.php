@@ -26,7 +26,22 @@
                                     <tr>
                                         <th>ID</th><td>{{ $document->id }}</td>
                                     </tr>
-                                    <tr><th> Title </th><td> {{ $document->title }} </td></tr><tr><th> User Id </th><td> {{ $document->user_id }} </td></tr><tr><th> Article Id </th><td> {{ $document->article_id }} </td></tr><tr><th> Filename </th><td> {{ $document->filename }} </td></tr>
+                                    <tr>
+                                        <th> Title </th>
+                                        <td> {{ $document->title }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> User </th>
+                                        <td> {{ $document->user->name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Article </th>
+                                        <td> {{ $document->article->name_en }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> Filename </th>
+                                        <td> {{ $document->filename }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

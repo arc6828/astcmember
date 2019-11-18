@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Article;
+use App\Evaluation;
 use Illuminate\Http\Request;
 
 class ArticleController extends Controller
@@ -19,6 +20,9 @@ class ArticleController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
+
+        
+
 
         if (!empty($keyword)) {
             $article = Article::where('prapet', 'LIKE', "%$keyword%")
@@ -72,7 +76,7 @@ class ArticleController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $article = Article::findOrFail($id);
 
