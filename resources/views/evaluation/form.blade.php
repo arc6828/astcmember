@@ -24,7 +24,7 @@
 
 <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
     <label for="article_id" class="control-label">{{ 'Article Id' }}</label>
-    <input class="form-control" name="article_id" type="text" id="article_id" value="{{ isset($evaluation->article_id) ? $evaluation->article_id : ''}}" >
+    <input class="form-control" name="article_id" type="text" id="article_id" value="{{ isset($evaluation->article_id) ? $evaluation->article_id : request('article_id') }}" >
     {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
 </div>
 

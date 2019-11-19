@@ -84,7 +84,7 @@
                 <div class="card mb-4">
                     <div class="card-header">รายละเอียดผลประเมิน</div>
                     <div class="card-body">
-                         <a href="{{ url('/evaluation/create') }}" class="btn btn-success btn-sm" title="Add New Evaluation">
+                         <a href="{{ url('/evaluation/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Evaluation">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <br/>
@@ -143,7 +143,7 @@
                 <div class="card mb-4">
                 <div class="card-header">Document</div>
                 <div class="card-body">
-                        <a href="{{ url('/document/create') }}" class="btn btn-success btn-sm" title="Add New Document">
+                        <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Document">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
