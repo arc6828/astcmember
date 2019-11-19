@@ -20,14 +20,14 @@ Route::get('/table', function () {
     return view('table');
 });
 
-Route::resource('profile', 'ProfileController');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::middleware(['auth'])->group(function () {
 
-Route::resource('article', 'ArticleController');
-
-Route::resource('evaluation', 'EvaluationController');
-
-Route::resource('document', 'DocumentController');
+    Route::resource('profile', 'ProfileController');
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::resource('article', 'ArticleController');
+    Route::resource('evaluation', 'EvaluationController');
+    Route::resource('document', 'DocumentController');
+});

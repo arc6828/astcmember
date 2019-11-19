@@ -18,7 +18,7 @@
 </div>
 <div class="form-group {{ $errors->has('name_th') ? 'has-error' : ''}}">
     <label for="name_th" class="control-label">{{ 'ชื่อบทความ (ไทย)' }}</label>
-    <input class="form-control" name="name_th" type="text" id="name_th" value="{{ isset($article->name_th) ? $article->name_th : ''}}" >
+    <input class="form-control" name="name_th" type="text" id="name_th" value="{{ isset($article->name_th) ? $article->name_th : ''}}" required>
     {!! $errors->first('name_th', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('name_en') ? 'has-error' : ''}}">
@@ -52,8 +52,9 @@
     {!! $errors->first('tel_aj', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    <label for="user_id" class="control-label">{{ 'User Id' }}</label>
-    <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : ''}}" >
+    <label for="user_id" class="control-label">{{ 'ผู้เขียนบทความ' }}</label>
+    <input class="form-control d-none" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : Auth::id() }}" readonly>
+    <input class="form-control" value="{{ isset($article->user_id) ? $article->user->name : Auth::user()->name }}" readonly>
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
 
