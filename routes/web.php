@@ -31,3 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('evaluation', 'EvaluationController');
     Route::resource('document', 'DocumentController');
 });
+
+Route::get('/district', function () {
+    return view("district/index");
+});
