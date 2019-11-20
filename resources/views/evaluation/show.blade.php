@@ -29,23 +29,23 @@
                                         <td>{{ $evaluation->id }}</td>
                                     </tr>
                                     <tr>
-                                        <th> Around </th>
+                                        <th> ครั้งที่แจ้ง </th>
                                         <td> {{ $evaluation->around }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Date </th>
+                                        <th> วันที่แจ้ง </th>
                                         <td> {{ $evaluation->date }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Results Evaluation </th>
+                                        <th> ผลที่แจ้ง </th>
                                         <td> {{ $evaluation->results_evaluation }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Comment </th>
+                                        <th> ความคิดเห็นเพิ่มเติมจากกองบรรณาธิการ </th>
                                         <td> {{ $evaluation->comment }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Article</th>
+                                        <th> ชื่อบทความ</th>
                                         <td> {{ $evaluation->article->name_en }} </td>
                                     </tr>
                                     <tr>

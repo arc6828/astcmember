@@ -29,39 +29,39 @@
                                         <td>{{ $article->id }}</td>
                                     </tr>
                                     <tr>
-                                        <th> Prapet </th>
+                                        <th> ประเภทการนำเสนอ </th>
                                         <td> {{ $article->prapet }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Group </th>
+                                        <th> กลุ่มสาขา </th>
                                         <td> {{ $article->group }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Name Th </th>
+                                        <th> ชื่อภาษาไทย </th>
                                         <td> {{ $article->name_th }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Name En </th>
+                                        <th> ชื่อภาษาอังกฤษ </th>
                                         <td> {{ $article->name_en }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Purubpitshop </th>
+                                        <th> ชื่อผู้รับผิดชอบบทความ </th>
                                         <td> {{ $article->purubpitshop }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Email </th>
+                                        <th> อีเมลผู้รับผิดชอบบทความ </th>
                                         <td> {{ $article->email }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Name Present </th>
+                                        <th> ชื่อผู้นำเสนอ </th>
                                         <td> {{ $article->name_present }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Name Aj </th>
+                                        <th> ชื่ออาจารย์ที่ปรึกษา </th>
                                         <td> {{ $article->name_aj }} </td>
                                     </tr>
                                     <tr>
-                                        <th> Tel Aj </th>
+                                        <th> เบอร์โทรศัพท์อาจารย์ </th>
                                         <td> {{ $article->tel_aj }} </td>
                                     </tr>
                                     <tr>
