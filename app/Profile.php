@@ -25,7 +25,7 @@ class Profile extends Model
      *
      * @var array
      */
-    protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'district', 'subdistrict', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_subdistrict', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role']; //เราลืม user_id, role 
+    protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'amphoes', 'district', 'provinces', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_amphoes', 'bill_provinces', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role']; //เราลืม user_id, role 
 
     
 
