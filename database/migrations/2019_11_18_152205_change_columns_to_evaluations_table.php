@@ -14,7 +14,7 @@ class ChangeColumnsToEvaluationsTable extends Migration
     public function up()
     {
         Schema::table('evaluations', function (Blueprint $table) {
-            $table->dropColumn('date');
+            //$table->dropColumn('date');
             $table->text('comment')->nullable()->change();
         });
     }

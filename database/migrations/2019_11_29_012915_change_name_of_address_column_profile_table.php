@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddToEvaluationsTable extends Migration
+class ChangeNameOfAddressColumnProfileTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,11 @@ class AddToEvaluationsTable extends Migration
      */
     public function up()
     {
-        Schema::table('evaluations', function (Blueprint $table) {
-            $table->date('date')->nullable();
+        Schema::table('profiles', function (Blueprint $table) {
+            $table->renameColumn('provinces', 'province');
+            $table->dropColumn('amphoes');            
+            $table->renameColumn('bill_provinces', 'bill_province');
+
         });
     }
 
@@ -25,7 +28,7 @@ class AddToEvaluationsTable extends Migration
      */
     public function down()
     {
-        Schema::table('evaluations', function (Blueprint $table) {
+        Schema::table('profiles', function (Blueprint $table) {
             //
         });
     }

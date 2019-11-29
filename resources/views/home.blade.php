@@ -63,8 +63,9 @@
                                 <tr><th> สถาบัน </th><td> {{ $profile->school }} </td></tr>
                                 <tr><th> คณะ/ภาควิชา </th><td> {{ $profile->major }} </td></tr>
                                 <tr><th> เลขที่ ซอย ถนน ตำบล </th><td> {{ $profile->address }} </td></tr>
-                                <tr><th> อำเภอ </th><td> {{ $profile->district }} </td></tr>
-                                <tr><th> จังหวัด </th><td> {{ $profile->subdistrict }} </td></tr>
+                                <tr><th> ตำบล </th><td> {{ $profile->district_district->district }} </td></tr>
+                                <tr><th> อำเภอ </th><td> {{ $profile->district_amphoe->amphoe }} </td></tr>
+                                <tr><th> จังหวัด </th><td> {{ $profile->district_province->province }} </td></tr>
                                 <tr><th> รหัสไปรษณีย์ </th><td> {{ $profile->postnumber }} </td></tr>
                                 <tr><th> เบอร์โทรศัพท์ </th><td> {{ $profile->tel }} </td></tr>
                                 <tr><th> เบอร์โทรสาร </th><td> {{ $profile->fax }} </td></tr>
@@ -72,8 +73,9 @@
                                 <tr><th> สถาบัน </th><td> {{ $profile->bill_school }} </td></tr>
                                 <tr><th> คณะ/ภาควิชา </th><td> {{ $profile->bill_major }} </td></tr>
                                 <tr><th> เลขที่ ซอย ถนน ตำบล </th><td> {{ $profile->bill_address }} </td></tr>
-                                <tr><th> อำเภอ </th><td> {{ $profile->bill_district }} </td></tr>
-                                <tr><th> จังหวัด </th><td> {{ $profile->bill_subdistrict }} </td></tr>
+                                <tr><th> ตำบล </th><td> {{ $profile->district_bill_district->district }} </td></tr>
+                                <tr><th> อำเภอ </th><td> {{ $profile->district_bill_amphoe->amphoe }} </td></tr>
+                                <tr><th> จังหวัด </th><td> {{ $profile->district_bill_province->province }} </td></tr>
                                 <tr><th> รหัสไปรษณีย์ </th><td> {{ $profile->bill_postnumber }} </td></tr>
                                 <tr><th> เบอร์โทรศัพท์ </th><td> {{ $profile->bill_tel }} </td></tr>
                                 <tr><th> เบอร์โทรสาร </th><td> {{ $profile->bill_fax }} </td></tr>
@@ -84,6 +86,7 @@
                 </div>
             </div>            
 
+            @if( Auth::user()->profile->role == "author")
             <div class="card mt-4">
                 <div class="card-header">บทความของคุณ</div>
 
@@ -94,9 +97,11 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    
                 </div>
             </div>
+            @endif
+
             
 
         </div>

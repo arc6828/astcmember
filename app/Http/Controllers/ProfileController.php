@@ -135,7 +135,7 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
 
-        return redirect('profile')->with('flash_message', 'Profile updated!');
+        return redirect('home')->with('flash_message', 'Profile updated!');
     }
 
     /**

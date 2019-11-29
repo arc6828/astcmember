@@ -30,60 +30,38 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                    <th class="d-none">#</th>
-                                
-                                    <th>
-                                        <div>การนำเสนอ</div>
-                                    </th>
+                                    <th>#</th>
                                     
-                                    <th>
-                                        <div>ชื่อบทความ</div>
-                                    </th>
+                                    <th>ชื่อบทความ</th>
+                                    <th>วันที่ส่งบทความ</th>
                                 
-                                    <th>
-                                        <div>ผู้รับผิดชอบบทความ</div>
-                                    </th>
-
-                                    <th>
-                                        <div>ชื่อผู้ที่จะนำเสนอผลงาน</div>
-                                    </th>
                                 
-                                    <th>User</th>
+                                
                                     <th class="d-none">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($article as $item)
                                     <tr>
-                                        <td class="d-none">{{ $loop->iteration }}</td>
-                                    
-                                        <td><div><b>ประเภท : </b>{{ $item->prapet }}</div>
-                                            <div><b>กลุ่มสาขา : </b>{{ $item->group }}</div>
-                                        </td>
-                                    
+                                        <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <div><b>อังกฤษ : </b>
-                                                <a href="{{ url('/article/' . $item->id) }}" title="View Article">{{ $item->name_en }}
-                                                </a>
-                                            </div>
-                                            <div><b>ไทย : </b>
+                                            <div>
                                                 <a href="{{ url('/article/' . $item->id) }}" title="View Article">{{ $item->name_th }}
                                                 </a>
                                             </div>
-                                        </td>
-                                    
-                                        <td>
-                                            <div><b>ชื่อ : </b>{{ $item->purubpitshop }}</div>
+                                            <div>
+                                                {{ $item->name_en }}
+                                            </div>
+                                            <div><b>ประเภท : </b>{{ $item->prapet }} <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}</div>
+                                            <div></div>
+                                            <div><b>ชื่อ : </b>{{ $item->purubpitshop }} <b  class="ml-4">ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}</div>
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
+                                            
                                         </td>
+                                        <td>{{ $item->created_at}}</td>   
+                                       
+                                        
                                     
-                                        <td>
-                                            <div><b>ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}</div>
-                                            <div><b>ชื่ออาจารย์ : </b>{{ $item->name_aj }}</div>
-                                            <div><b>เบอร์โทรศัพท์อาจารย์ : </b>{{ $item->tel_aj }}</div>
-                                        </td>
-                                    
-                                        <td>{{ $item->user->name }}</td>
                                         <td class="d-none">
                                             <a href="{{ url('/article/' . $item->id) }}" title="View Article"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/article/' . $item->id . '/edit') }}" title="Edit Article"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

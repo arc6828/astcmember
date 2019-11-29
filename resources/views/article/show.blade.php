@@ -75,6 +75,67 @@
                     </div>
                 </div>
 
+                
+
+                @php
+                    //ประกาศตัวแปร $document ด้วยค่า Array ที่มาจาก relationship
+
+                    $document = $article->documents;
+                @endphp
+
+                <div class="card mb-4">
+                    <div class="card-header">Document</div>
+                    <div class="card-body">
+                        <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Document">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        </a>
+
+                       
+
+                        <br/>
+                        <br/>
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Title</th>
+                                        <th>User</th>
+                                        <th>Article</th>
+                                        <th>Filename</th>
+                                        <th>Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @foreach($document as $item)
+                                    <tr>
+                                        <td>{{ $item->id }}</td>
+                                        <td>{{ $item->title }}</td>
+                                        <td>{{ $item->user->name }}</td>
+                                        <td>{{ $item->article->name_en }}</td>
+                                        <td>
+                                            <a href="{{ url('/storage') }}/{{ $item->filename }}">
+                                                <i class="fa fa-arrow-down"></i> Download
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="{{ url('/document/' . $item->id) }}" title="View Document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/document/' . $item->id . '/edit') }}" title="Edit Document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+
+                                            <form method="POST" action="{{ url('/document' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('DELETE') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Document" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
+                                            </form>
+                                        </td>
+                                    </tr>
+                                @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
                 @php
                     //ประกาศตัวแปร $evaluation ด้วยค่า Array ที่มาจาก relationship
 
@@ -133,62 +194,6 @@
 
                     </div>
                 </div>
-
-                @php
-                    //ประกาศตัวแปร $document ด้วยค่า Array ที่มาจาก relationship
-
-                    $document = $article->documents;
-                @endphp
-
-                <div class="card mb-4">
-                <div class="card-header">Document</div>
-                <div class="card-body">
-                        <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Document">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
-
-                       
-
-                        <br/>
-                        <br/>
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>ID</th>
-                                        <th>Title</th>
-                                        <th>User</th>
-                                        <th>Article</th>
-                                        <th>Filename</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                @foreach($document as $item)
-                                    <tr>
-                                        <td>{{ $item->id }}</td>
-                                        <td>{{ $item->title }}</td>
-                                        <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->article->name_en }}</td>
-                                        <td>
-                                            <a href="{{ url('/storage') }}/{{ $item->filename }}">
-                                                <i class="fa fa-arrow-down"></i> Download
-                                            </a>
-                                        </td>
-                                        <td>
-                                            <a href="{{ url('/document/' . $item->id) }}" title="View Document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/document/' . $item->id . '/edit') }}" title="Edit Document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                                            <form method="POST" action="{{ url('/document' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Document" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endforeach
-                                </tbody>
-                            </table>
                  
             </div>
         </div>

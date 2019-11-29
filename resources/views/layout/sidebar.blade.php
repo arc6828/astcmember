@@ -7,7 +7,23 @@
         </a>
       </li>
 
-      <div class="dropdown-divider"></div>          
+      <div class="dropdown-divider"></div>     
+      @if(Auth::user()->profile->role == "author" ) 
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/article/create') }}" >
+          <i class="fas fa-fw fa-paper-plane"></i> <span>ส่งบทความ</span>
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/article') }}" >
+          <i class="fas fa-fw fa-file"></i> <span>บทความของฉัน</span>
+        </a>
+      </li>
+      
+      @endif
+
+
+      @if(Auth::user()->profile->role == "admin" )     
 
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -72,5 +88,6 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li>
+      @endif
     </ul>
     <!-- End of Sidebar -->

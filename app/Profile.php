@@ -25,11 +25,34 @@ class Profile extends Model
      *
      * @var array
      */
-    protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'amphoes', 'district', 'provinces', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_amphoes', 'bill_provinces', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role']; //เราลืม user_id, role 
+    protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_amphoe', 'bill_province', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role']; //เราลืม user_id, role 
 
     
 
-     public function user(){
+    public function user(){
         return $this->belongsTo('App\User', 'user_id'); 
+    }
+
+    public function district_district(){
+        return $this->belongsTo('App\District', 'district','district_code'); 
+    }
+
+    public function district_amphoe(){
+        return $this->belongsTo('App\District', 'amphoe','amphoe_code'); 
+    }
+
+    public function district_province(){
+        return $this->belongsTo('App\District', 'province','province_code'); 
+    }
+    public function district_bill_district(){
+        return $this->belongsTo('App\District', 'bill_district','district_code'); 
+    }
+
+    public function district_bill_amphoe(){
+        return $this->belongsTo('App\District', 'bill_amphoe','amphoe_code'); 
+    }
+
+    public function district_bill_province(){
+        return $this->belongsTo('App\District', 'bill_province','province_code'); 
     }
 }
