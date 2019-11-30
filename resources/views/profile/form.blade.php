@@ -14,6 +14,9 @@
             <option value="{{ $optionValue }}" {{ (isset($profile->title) && $profile->title == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
         @endforeach
         </select>
+        <script>
+          document.querySelector("#title2").value = "{{ isset($profile->title) ? $profile->title : 'ไม่มี'}}";
+        </script>
       </div>
       <div class="col">
         <input class="form-control form-control-sm d-none" name="title" type="text" id="title" value="{{ isset($profile->title) ? $profile->title : 'ไม่มี'}}" required >
@@ -96,7 +99,7 @@
     </div>
     <div class="form-group {{ $errors->has('province') ? 'has-error' : ''}}">
         <label for="province" class="control-label">{{ 'จังหวัด' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm" name="province" id="province" onchange="showAmphoes()" required >
+        <select class="form-control form-control-sm" name="province" id="province" onchange="showAmphoes()"  data-value="{{ isset($profile->province) ? $profile->province : ''}}" required >
         <option value="">กรุณาเลือกจังหวัด</option>
         </select>
         {!! $errors->first('province', '<p class="help-block">:message</p>') !!}
@@ -242,6 +245,7 @@ function showProvinces(){
           .html(""+result[i].province)
       );
     }
+    $("#province").val($("#province").attr("data-value"));
     showAmphoes();
   };
   //CALL AJAX
@@ -263,6 +267,8 @@ function showAmphoes(){
           .html(""+result[i].amphoe)
       );
     }
+    
+    $("#amphoe").val($("#amphoe").attr("data-value"));
     showDistricts();
   };
   //CALL AJAX
@@ -285,6 +291,7 @@ function showDistricts(){
           .html(""+result[i].district)
       );
     }
+    $("#district").val($("#district").attr("data-value"));
     showZipcode();
   };
   //CALL AJAX
