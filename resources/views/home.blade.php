@@ -15,8 +15,8 @@
                     <div class="table-responsive">
                         <table class="table">
                             <tbody>
-                                <tr><th>ID</th><td>{{ $user->id }}</td></tr>
-                                <tr><th> ชื่อ-นามสกุล </th><td> {{ $user->name }} </td></tr>
+                                <tr class="d-none"><th>ID</th><td>{{ $user->id }}</td></tr>
+                                <tr class="d-none"><th> ชื่อ-นามสกุล </th><td> {{ $user->name }} </td></tr>
                                 <tr><th> อีเมล์ </th><td> {{ $user->email }} </td></tr>
                                 <tr><th> สมัครเมื่อ </th><td> {{ $user->created_at }} </td></tr>
                                 <tr><th> สถานะ </th><td> {{ $user->profile->role }} </td></tr>
@@ -52,13 +52,13 @@
                                 <tr class="d-none">
                                     <th>ID</th><td>{{ $profile->id }}</td>
                                 </tr>
-                                <tr><th> เพศ </th><td> {{ $profile->sex }} </td></tr>
-                                <tr><th> คำนำหน้าชื่อ </th><td> {{ $profile->title }} </td></tr>
+                                <tr><th> คำนำหน้า </th><td> {{ $profile->sex }} </td></tr>
+                                <tr><th> ตำแหน่งทางวิชาการ / อาชีพ </th><td> {{ $profile->title }} </td></tr>
                                 <tr><th> ชื่อ </th><td> {{ $profile->name }} </td></tr>
                                 <tr><th> นามสกุล </th><td> {{ $profile->lastname }} </td></tr>
                                 <tr><th> อีเมล์ </th><td> {{ $profile->email }} </td></tr>
-                                <tr><th> สถานภาพ </th><td> {{ $profile->status }} </td></tr>
-                                <tr><th> สถานภาพอื่นๆ โปรดระบุ </th><td> {{ $profile->statusothers }} </td></tr>
+                                <tr><th> วุฒิการศึกษาปัจจุบัน </th><td> {{ $profile->status }} </td></tr>
+                                <tr class="d-none"><th> สถานภาพอื่นๆ โปรดระบุ </th><td> {{ $profile->statusothers }} </td></tr>
                                 <tr><th> อาหารกลางวัน </th><td> {{ $profile->food }} </td></tr>
                                 <tr><th> สถาบัน </th><td> {{ $profile->school }} </td></tr>
                                 <tr><th> คณะ/ภาควิชา </th><td> {{ $profile->major }} </td></tr>

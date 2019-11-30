@@ -7,7 +7,7 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Article</div>
+                    <div class="card-header">บทความทั้งหมด</div>
                     <div class="card-body">
                         <a href="{{ url('/article/create') }}" class="btn btn-success btn-sm" title="Add New Article">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
@@ -34,6 +34,7 @@
                                     
                                     <th>ชื่อบทความ</th>
                                     <th>วันที่ส่งบทความ</th>
+                                    <th>สถานะบทความ</th>
                                 
                                 
                                 
@@ -58,7 +59,8 @@
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
                                             
                                         </td>
-                                        <td>{{ $item->created_at}}</td>   
+                                        <td>{{ $item->created_at}}</td> 
+                                        <td>รอการพิจารณา</td>   
                                        
                                         
                                     

@@ -1,8 +1,16 @@
 <div class="form-group {{ $errors->has('sex') ? 'has-error' : ''}}">
     <label for="sex" class="control-label">{{ 'คำนำหน้า' }}</label><span class="text-danger">{{ '*' }}</span><br>
-    <input name="sex" type="radio" id="sex" value="male" checked> นาย
-    <input name="sex" type="radio" id="sex" value="female-marriage"> นาง
-    <input name="sex" type="radio" id="sex" value="female"> นางสาว
+    <!--input name="sex" type="radio" id="sex" value="นาย" checked> นาย
+    <input name="sex" type="radio" id="sex" value="นาง"> นาง
+    <input name="sex" type="radio" id="sex" value="นางสาว"> นางสาว-->
+    <select name="sex" class="form-control form-control-sm" id="sex" ">
+    @foreach (["นาย","นาง","นางสาว"] as $optionValue)
+        <option value="{{ $optionValue }}" {{ (isset($profile->sex) && $profile->sex == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
+    @endforeach
+    </select>
+    <script>
+      document.querySelector("#sex").value = "{{ isset($profile->sex) ? $profile->sex : ''}}";
+    </script>
     {!! $errors->first('sex', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
@@ -42,10 +50,13 @@
 <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
     <label for="status" class="control-label">{{ 'วุฒิการศึกษาปัจจุบัน' }}</label><span class="text-danger">{{ '*' }}</span>
     <select name="status" class="form-control form-control-sm" id="status" >
-    @foreach (["ต่ำกว่าปริญญาตรี","ปริญญาตรี","กำลังศึกษาปริญญาโท","ปริญญาโท","กำลังศึกษาปริญญาเอก","ปริญญาเอก"] as $optionKey => $optionValue)
-        <option value="{{ $optionKey }}" {{ (isset($profile->status) && $profile->status == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
-    @endforeach
-</select>
+        @foreach (["ต่ำกว่าปริญญาตรี","ปริญญาตรี","กำลังศึกษาปริญญาโท","ปริญญาโท","กำลังศึกษาปริญญาเอก","ปริญญาเอก"] as $optionKey => $optionValue)
+            <option value="{{ $optionValue }}" {{ (isset($profile->status) && $profile->status == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
+        @endforeach
+    </select>
+    <script>
+      document.querySelector("#status").value = "{{ isset($profile->status) ? $profile->status : ''}}";
+    </script>
     {!! $errors->first('status', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group d-none {{ $errors->has('statusothers') ? 'has-error' : ''}}">
@@ -56,16 +67,25 @@
 <div class="form-group {{ $errors->has('food') ? 'has-error' : ''}}">
     <label for="food" class="control-label">{{ 'อาหารกลางวัน' }}</label><span class="text-danger">{{ '*' }}</span>
     <select name="food" class="form-control form-control-sm" id="food" required >
-    @foreach (json_decode('{"\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e44\u0e17\u0e22":"\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e44\u0e17\u0e22","\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e21\u0e31\u0e07\u0e2a\u0e27\u0e34\u0e23\u0e31\u0e15":"\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e21\u0e31\u0e07\u0e2a\u0e27\u0e34\u0e23\u0e31\u0e15","\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e21\u0e38\u0e2a\u0e25\u0e34\u0e21":"\u0e2d\u0e32\u0e2b\u0e32\u0e23\u0e21\u0e38\u0e2a\u0e25\u0e34\u0e21"}', true) as $optionKey => $optionValue)
-        <option value="{{ $optionKey }}" {{ (isset($profile->food) && $profile->food == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
-    @endforeach
-</select>
+        @foreach (["อาหารปกติ","อาหารมังสวิรัต","อาหารมุสลิม"] as $optionKey => $optionValue)
+            <option value="{{ $optionValue }}" {{ (isset($profile->food) && $profile->food == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
+        @endforeach
+    </select>
+    <script>
+      document.querySelector("#food").value = "{{ isset($profile->food) ? $profile->food : ''}}";
+    </script>
     {!! $errors->first('food', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('role') ? 'has-error' : ''}}">
     <label for="role" class="control-label">{{ 'สถานะในการเข้าร่วมงาน' }}</label><span class="text-danger">{{ '*' }}</span><br>
-    <input name="role" type="radio" id="role" value="audience" checked> ผู้เข้าชมงาน
-    <input name="role" type="radio" id="role" value="author"> ผู้ส่งบทความ
+    <select name="role" class="form-control form-control-sm" id="role" required >
+        @foreach (["audience"=>"ผู้เข้าชมงาน","author"=>"ผู้ส่งบทความ"] as $optionKey => $optionValue)
+            <option value="{{ $optionKey }}" {{ (isset($profile->role) && $profile->role == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+        @endforeach
+    </select>
+    <script>
+      document.querySelector("#role").value = "{{ isset($profile->role) ? $profile->role : ''}}";
+    </script>
     {!! $errors->first('role', '<p class="help-block">:message</p>') !!}
 </div>
 <hr>
@@ -106,7 +126,7 @@
     </div>
     <div class="form-group {{ $errors->has('amphoe') ? 'has-error' : ''}}">
         <label for="amphoe" class="control-label">{{ 'อำเภอ' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm" name="amphoe" id="amphoe" onchange="showDistricts()" required >
+        <select class="form-control form-control-sm" name="amphoe" id="amphoe" onchange="showDistricts()" data-value="{{ isset($profile->amphoe) ? $profile->amphoe : ''}}" required >
         <option value="">กรุณาเลือกอำเภอ</option>
         </select>
         
@@ -114,7 +134,7 @@
     </div>
     <div class="form-group {{ $errors->has('district') ? 'has-error' : ''}}">
         <label for="district" class="control-label">{{ 'ตำบล' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm" name="district" id="district" onchange="showZipcode()" required >
+        <select class="form-control form-control-sm" name="district" id="district" onchange="showZipcode()" data-value="{{ isset($profile->district) ? $profile->district : ''}}" required >
         <option value="">กรุณาเลือกตำบล</option>
         </select>
         {!! $errors->first('district', '<p class="help-block">:message</p>') !!}
@@ -164,21 +184,21 @@
     </div>
     <div class="form-group {{ $errors->has('bill_province') ? 'has-error' : ''}}">
         <label for="bill_province" class="control-label">{{ 'จังหวัด' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm" name="bill_province" id="bill_province" onchange="showAmphoesBill()" required >
+        <select class="form-control form-control-sm" name="bill_province" id="bill_province" onchange="showAmphoesBill()" data-value="{{ isset($profile->bill_province) ? $profile->bill_province : ''}}" required >
         <option value="">กรุณาเลือกจังหวัด</option>
         </select>
         {!! $errors->first('bill_province', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('bill_amphoe') ? 'has-error' : ''}}">
         <label for="bill_amphoe" class="control-label">{{ 'อำเภอ' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm" name="bill_amphoe" id="bill_amphoe" onchange="showDistrictsBill()" required >
+        <select class="form-control form-control-sm" name="bill_amphoe" id="bill_amphoe" onchange="showDistrictsBill()" data-value="{{ isset($profile->bill_amphoe) ? $profile->bill_amphoe : ''}}" required >
         <option value="">กรุณาเลือกอำเภอ</option>
         </select>
         {!! $errors->first('bill_amphoe', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('bill_district') ? 'has-error' : ''}}">
         <label for="bill_district" class="control-label">{{ 'ตำบล' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm" name="bill_district" id="bill_district" onchange="showZipcodeBill()" required >
+        <select class="form-control form-control-sm" name="bill_district" id="bill_district" onchange="showZipcodeBill()" data-value="{{ isset($profile->bill_district) ? $profile->bill_district : ''}}" required >
         <option value="">กรุณาเลือกตำบล</option>
         </select>
         {!! $errors->first('bill_district', '<p class="help-block">:message</p>') !!}
@@ -245,7 +265,10 @@ function showProvinces(){
           .html(""+result[i].province)
       );
     }
-    $("#province").val($("#province").attr("data-value"));
+    if($("#province").attr("data-value") != ""){      
+      $("#province").val($("#province").attr("data-value"));
+      $("#province").attr("data-value","");
+    }
     showAmphoes();
   };
   //CALL AJAX
@@ -268,7 +291,10 @@ function showAmphoes(){
       );
     }
     
-    $("#amphoe").val($("#amphoe").attr("data-value"));
+    if($("#amphoe").attr("data-value") != ""){      
+      $("#amphoe").val($("#amphoe").attr("data-value"));
+      $("#amphoe").attr("data-value","");
+    }
     showDistricts();
   };
   //CALL AJAX
@@ -291,7 +317,11 @@ function showDistricts(){
           .html(""+result[i].district)
       );
     }
-    $("#district").val($("#district").attr("data-value"));
+    if($("#district").attr("data-value") != ""){      
+      $("#district").val($("#district").attr("data-value"));
+      $("#district").attr("data-value","");
+    }
+    
     showZipcode();
   };
   //CALL AJAX
@@ -328,6 +358,10 @@ function showProvincesBill(){
           .html(""+result[i].province)
       );
     }
+    if($("#bill_province").attr("data-value") != ""){      
+      $("#bill_province").val($("#bill_province").attr("data-value"));
+      $("#bill_province").attr("data-value","");
+    }
     showAmphoesBill();
   };
   //CALL AJAX
@@ -348,6 +382,10 @@ function showAmphoesBill(){
           .attr("value", ""+result[i].amphoe_code)
           .html(""+result[i].amphoe)
       );
+    }
+    if($("#bill_amphoe").attr("data-value") != ""){      
+      $("#bill_amphoe").val($("#bill_amphoe").attr("data-value"));
+      $("#bill_amphoe").attr("data-value","");
     }
     showDistrictsBill();
   };
@@ -370,6 +408,10 @@ function showDistrictsBill(){
           .attr("value", ""+result[i].district_code)
           .html(""+result[i].district)
       );
+    }
+    if($("#bill_district").attr("data-value") != ""){      
+      $("#bill_district").val($("#bill_district").attr("data-value"));
+      $("#bill_district").attr("data-value","");
     }
     showZipcodeBill();
   };

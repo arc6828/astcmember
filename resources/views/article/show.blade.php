@@ -24,7 +24,7 @@
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
-                                    <tr>
+                                    <tr class="d-none">
                                         <th>ID</th>
                                         <td>{{ $article->id }}</td>
                                     </tr>
@@ -37,15 +37,19 @@
                                         <td> {{ $article->group }} </td>
                                     </tr>
                                     <tr>
-                                        <th> ชื่อภาษาไทย </th>
+                                        <th> ชื่อบทความ (ไทย) </th>
                                         <td> {{ $article->name_th }} </td>
                                     </tr>
                                     <tr>
-                                        <th> ชื่อภาษาอังกฤษ </th>
+                                        <th> ชื่อบทความ (อังกฤษ) </th>
                                         <td> {{ $article->name_en }} </td>
                                     </tr>
                                     <tr>
-                                        <th> ชื่อผู้รับผิดชอบบทความ </th>
+                                        <th> รายชื่อทุกคนในบทความ </th>
+                                        <td> {{ $article->name_aj }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ผู้รับผิดชอบบทความ/ นักวิจัยหลัก </th>
                                         <td> {{ $article->purubpitshop }} </td>
                                     </tr>
                                     <tr>
@@ -53,19 +57,16 @@
                                         <td> {{ $article->email }} </td>
                                     </tr>
                                     <tr>
-                                        <th> ชื่อผู้นำเสนอ </th>
+                                        <th> ชื่อผู้ที่จะนำเสนอผลงาน </th>
                                         <td> {{ $article->name_present }} </td>
                                     </tr>
-                                    <tr>
-                                        <th> ชื่ออาจารย์ที่ปรึกษา </th>
-                                        <td> {{ $article->name_aj }} </td>
-                                    </tr>
-                                    <tr>
-                                        <th> เบอร์โทรศัพท์อาจารย์ </th>
+                                    
+                                    <tr class="">
+                                        <th> เบอร์โทรศัพท์ผู้รับผิดชอบหลัก </th>
                                         <td> {{ $article->tel_aj }} </td>
                                     </tr>
-                                    <tr>
-                                        <th> User</th>
+                                    <tr class="d-none">
+                                        <th> Username</th>
                                         <td> {{ $article->user->name }} </td>
                                     </tr>
                                 </tbody>
