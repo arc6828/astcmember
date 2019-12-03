@@ -14,7 +14,7 @@ class AddDistrictTable extends Migration
     public function up()
     {
         Schema::create('districts', function (Blueprint $table) {
-            $table->bigIncrements('id');
+            $table->bigIncrements('id'); 
             $table->timestamps();
             $table->string('district');
             $table->string('amphoe');
