@@ -1,0 +1,169 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Http\Requests;
+use App\Http\Controllers\Controller;
+
+use App\Payment;
+use App\User;
+use App\Article;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+class PaymentController extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function index(Request $request)
+    {
+        $keyword = $request->get('search');
+        $perPage = 25;
+
+        if (!empty($keyword)) {
+            $payment = Payment::where('total', 'LIKE', "%$keyword%")
+                ->orWhere('remark', 'LIKE', "%$keyword%")
+                ->orWhere('receipt', 'LIKE', "%$keyword%")
+                ->orWhere('user_id', 'LIKE', "%$keyword%")
+                ->latest()->paginate($perPage);
+        } else {
+            $payment = Payment::latest()->paginate($perPage);
+        }
+
+        return view('payment.index', compact('payment'));
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\View\View
+     */
+    public function create(Request $request)
+    {
+        $payment = null;
+        //$user_id = $request->get('user_id');
+        
+        //ดึงค่า user_id ของผู้ที่ Login
+        $user_id = Auth::id(); //
+        $user = User::find($user_id);
+        if($user) {
+
+            $payment = new Payment;
+            $payment->total = $user->articles->sum('price');
+            $payment->user_name = $user->name;
+            $payment->user_id = $user->id;
+        }
+        return view('payment.create',compact('user','payment'));
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function store(Request $request)
+    {
+    
+        $requestData = $request->all();
+                if ($request->hasFile('receipt')) {
+            $requestData['receipt'] = $request->file('receipt')
+                ->store('uploads', 'public');
+        }
+        $payment = Payment::create($requestData); // สร้าง create ใน 1 คอลั้ม
+
+        //อัพเดท article
+
+        $user_id = $requestData['user_id'];
+        if( $user_id ){
+                $data = [
+                'payment_id' => $payment->id ,
+                'status' => "completed" ,
+                'paid_at' => date("Y-m-d H:i:s") ,
+            ];
+            }else{
+                $data = [
+                'payment_id' => $payment->id ,
+                'status' => "notcompleted" ,
+                'total_debt'=>"ยังจ่ายไม่ครบ",
+                'paid_at' => date("Y-m-d H:i:s") ,
+                ];
+            }
+            
+         
+            //อัพเดท Article บางส่วน 
+            Article::where('name_th','user_id') // หาบทความใน user_id
+             //   ->where('status','completed') // อัพเดทสถานะของบทความ
+                ->update( $data ); // อัพเดทข้อมูล
+        return redirect('payment')->with('flash_message', 'Payment added!');
+            }
+        
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function show($id)
+    {
+        $payment = Payment::findOrFail($id);
+
+        return view('payment.show', compact('payment'));
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\View\View
+     */
+    public function edit($id)
+    {
+        $payment = Payment::findOrFail($id);
+
+        return view('payment.edit', compact('payment'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param \Illuminate\Http\Request $request
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function update(Request $request, $id)
+    {
+        
+        $requestData = $request->all();
+                if ($request->hasFile('receipt')) {
+            $requestData['receipt'] = $request->file('receipt')
+                ->store('uploads', 'public');
+        }
+
+        $payment = Payment::findOrFail($id);
+        $payment->update($requestData);
+
+        return redirect('payment')->with('flash_message', 'Payment updated!');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     *
+     * @return \Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
+     */
+    public function destroy($id)
+    {
+        Payment::destroy($id);
+
+        return redirect('payment')->with('flash_message', 'Payment deleted!');
+    }
+}

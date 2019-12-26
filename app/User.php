@@ -52,10 +52,11 @@ class User extends Authenticatable
         return $this->hasMany('App\Article', 'user_id');
     }
 
-
      public function evaluations(){
         return $this->hasMany('App\Evaluation', 'user_id');
     }
+    public function payments(){
+        return $this->hasMany('App\Payment','user_id');
+    }
 
- 
 }

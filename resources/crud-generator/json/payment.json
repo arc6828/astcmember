@@ -1,0 +1,20 @@
+{
+    "fields": [
+        {
+            "name": "total",
+            "type": "string"
+        },
+        {
+            "name": "remark",
+            "type": "text"
+        },
+        {
+            "name": "receipt",
+            "type": "file"
+        },
+        {
+            "name": "user_id",
+            "type": "integer#unsigned"
+        }
+    ]
+}

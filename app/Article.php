@@ -25,7 +25,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['prapet', 'group','group_name','status','code','name_th', 'name_en', 'purubpitshop', 'email', 'name_present', 'name_aj', 'tel_aj' , 'user_id'];
+    protected $fillable = ['prapet', 'group','group_name','status','code','name_th', 'name_en', 'purubpitshop', 'email', 'name_present', 'name_aj', 'tel_aj' , 'user_id' , 'payment_id','paid_at'];
 
     
 
@@ -45,7 +45,7 @@ class Article extends Model
         return $this->hasMany('App\Document', 'article_id'); 
     }
 
-
-
-
+    public function payment(){
+        return $this->hasMany('App\Payment', 'user_id');
+    }
 }
