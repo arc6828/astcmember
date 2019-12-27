@@ -35,9 +35,7 @@
                                     <th>ชื่อบทความ</th>
                                     <th>วันที่ส่งบทความ</th>
                                     <th>สถานะบทความ</th>
-                                
-                                
-                                
+                            
                                     <th class="d-none">Actions</th>
                                     </tr>
                                 </thead>
@@ -53,14 +51,59 @@
                                             <div>
                                                 {{ $item->name_en }}
                                             </div>
-                                            <div><b>ประเภท : </b>{{ $item->prapet }} <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}</div>
+
+                                            <div><b>ประเภท : </b>{{ $item->prapet }} <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}
+                                            </div>
+
                                             <div></div>
-                                            <div><b>ชื่อ : </b>{{ $item->purubpitshop }} <b  class="ml-4">ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}</div>
+
+                                            <div><b>ชื่อ : </b>{{ $item->purubpitshop }} <b  class="ml-4">ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}
+                                            </div>
+
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
                                             
                                         </td>
                                         <td>{{ $item->created_at}}</td> 
-                                        <td>รอการพิจารณา</td>   
+
+
+                                        <td>
+                                            @switch($item->status)
+                                            @case("received")                                                     
+                                                <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
+                                                <div>{{ $item->received_at }}</div>
+                                                @break
+                                            @case("checkformat")                                                 
+                                                <div><span class="badge badge-warning">กำลังตรวจสอบรูปแบบ</span></div>
+                                                <div>{{ $item->checkformat_at }}</div>
+                                                @break
+                                            @case("waitmodifyformat")                                                    
+                                                <div ><span class="badge badge-warning">รอการแก้ไขรูปแบบ</span></div>
+                                                <div>{{ $item->waitmodifyformat_at }}</div>
+                                                @break
+                                            @case("consider")                                                     
+                                                <div><span class="badge badge-warning">รอการพิจารณา</span></div>
+                                                <div>{{ $item->consider_at }}</div>
+                                                @break
+                                            @case("past_modify")                                                     
+                                                <div><span class="badge badge-warning">ผ่าน (มีการแก้ไข)</span></div>
+                                                <div>{{ $item->past_modify_at }}</div>
+                                            @break
+                                            @case("waitmodify")                                                     
+                                                <div><span class="badge badge-warning">รอการแก้ไข</span></div>
+                                                <div>{{ $item->waitmodify_at }}</div>
+                                            @break
+                                            @case("past")                                                     
+                                                <div><span class="badge badge-success">ผ่าน</span></div>
+                                                <div>{{ $item->past_at }}</div>
+                                            @break
+                                            @case("notpast")                                                     
+                                                <div><span class="badge badge-danger">ไม่ผ่าน</span></div>
+                                                <div>{{ $item->notpast_at }}</div>
+                                            @break
+
+
+                                            @endswitch   
+                                        </td>   
                                        
                                         
                                     
