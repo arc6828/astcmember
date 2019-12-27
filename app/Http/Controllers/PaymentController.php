@@ -77,14 +77,14 @@ class PaymentController extends Controller
 
         //อัพเดท article
 
-        $user_id = $requestData['user_id'];
-        if( $user_id ){
+        $user_id = $requestData['user_id']; 
+        if( ($user_id) == 1500 ){  //จ่ายครบ 1500 บาท
                 $data = [
                 'payment_id' => $payment->id ,
                 'status' => "completed" ,
                 'paid_at' => date("Y-m-d H:i:s") ,
             ];
-            }else{
+            }else if (($user_id) < 1500){ // จ่ายไม่ครบ 1500
                 $data = [
                 'payment_id' => $payment->id ,
                 'status' => "notcompleted" ,
@@ -93,14 +93,13 @@ class PaymentController extends Controller
                 ];
             }
             
-         
             //อัพเดท Article บางส่วน 
             Article::where('name_th','user_id') // หาบทความใน user_id
              //   ->where('status','completed') // อัพเดทสถานะของบทความ
                 ->update( $data ); // อัพเดทข้อมูล
         return redirect('payment')->with('flash_message', 'Payment added!');
-            }
-        
+            
+    }
 
     /**
      * Display the specified resource.
