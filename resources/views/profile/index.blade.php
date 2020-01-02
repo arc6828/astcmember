@@ -43,13 +43,16 @@
                                 <tbody>
                                 
                                 @php 
-                                    $profiles = request('role')? $profile->where('role',  request('role')) : $profile;
+                                    //$profiles = request('role')? $profile->where('role',  request('role')) : $profile;
+                                    
+                                    $profiles = $profile->whereNotIn('role', ['guest'] );
                                 @endphp
                                 @foreach($profiles as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
+                                        <td>{{ $loop->iteration+ (request('page','1')-1) *  25 }}</td>
                                         <td>
                                             <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
+                                            <div>วันที่ลงทะเบียน {{ $item->created_at }} </div>
                            
                                         </td>
                                         <td>{{ $item->email }}</td>
