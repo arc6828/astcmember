@@ -19,7 +19,7 @@ class DocumentController extends Controller
     {
         $keyword = $request->get('search');
         $perPage = 25;
-
+        /*
         if (!empty($keyword)) {
             $document = Document::where('title', 'LIKE', "%$keyword%")
                 ->orWhere('user_id', 'LIKE', "%$keyword%")
@@ -29,6 +29,9 @@ class DocumentController extends Controller
         } else {
             $document = Document::latest()->paginate($perPage);
         }
+        */
+
+        $document = Document::where('user_id',Auth::id())->latest()->paginate($perPage);
 
         return view('document.index', compact('document'));
     }
