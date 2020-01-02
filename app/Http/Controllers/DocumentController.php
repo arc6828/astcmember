@@ -63,9 +63,9 @@ class DocumentController extends Controller
                 ->store('uploads', 'public');
         }
 
-        Document::create($requestData);
-
-        return redirect('document')->with('flash_message', 'Document added!');
+        $document = Document::create($requestData);
+        return redirect("article/".$document->article_id)->with('flash_message', 'Document added!');
+        //return redirect('document')->with('flash_message', 'Document added!');
     }
 
     /**
