@@ -45,9 +45,9 @@
                                 @php 
                                     //$profiles = request('role')? $profile->where('role',  request('role')) : $profile;
                                     
-                                    $profiles = $profile->whereNotIn('role', ['guest'] );
+                                    //$profiles = $profile->whereNotIn('role', ['guest'] );
                                 @endphp
-                                @foreach($profiles as $item)
+                                @foreach($profile as $item)
                                     <tr>
                                         <td>{{ $loop->iteration+ (request('page','1')-1) *  25 }}</td>
                                         <td>

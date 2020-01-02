@@ -21,36 +21,39 @@ class ProfileController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $profile = Profile::where('sex', 'LIKE', "%$keyword%")
-                ->orWhere('title', 'LIKE', "%$keyword%")
-                ->orWhere('name', 'LIKE', "%$keyword%")
-                ->orWhere('lastname', 'LIKE', "%$keyword%")
-                ->orWhere('email', 'LIKE', "%$keyword%")
-                ->orWhere('status', 'LIKE', "%$keyword%")
-                ->orWhere('statusothers', 'LIKE', "%$keyword%")
-                ->orWhere('food', 'LIKE', "%$keyword%")
-                ->orWhere('role', 'LIKE', "%$keyword%")
-                ->orWhere('school', 'LIKE', "%$keyword%")
-                ->orWhere('major', 'LIKE', "%$keyword%")
-                ->orWhere('address', 'LIKE', "%$keyword%")
-                ->orWhere('district', 'LIKE', "%$keyword%")
-                ->orWhere('amphoes', 'LIKE', "%$keyword%")
-                ->orWhere('provinces', 'LIKE', "%$keyword%")
-                ->orWhere('postnumber', 'LIKE', "%$keyword%")
-                ->orWhere('tel', 'LIKE', "%$keyword%")
-                ->orWhere('fax', 'LIKE', "%$keyword%")
-                ->orWhere('fileregister', 'LIKE', "%$keyword%")
-                ->orWhere('bill_school', 'LIKE', "%$keyword%")
-                ->orWhere('bill_major', 'LIKE', "%$keyword%")
-                ->orWhere('bill_address', 'LIKE', "%$keyword%")
-                ->orWhere('bill_district', 'LIKE', "%$keyword%")
-                ->orWhere('bill_provinces', 'LIKE', "%$keyword%")
-                ->orWhere('bill_postnumber', 'LIKE', "%$keyword%")
-                ->orWhere('bill_tel', 'LIKE', "%$keyword%")
-                ->orWhere('bill_fax', 'LIKE', "%$keyword%")
+            $profile = Profile::whereNotIn('role',  ['guest'])
+                ->where(function ($query) {
+                    $query->where('sex', 'LIKE', "%$keyword%")
+                    ->orWhere('title', 'LIKE', "%$keyword%")
+                    ->orWhere('name', 'LIKE', "%$keyword%")
+                    ->orWhere('lastname', 'LIKE', "%$keyword%")
+                    ->orWhere('email', 'LIKE', "%$keyword%")
+                    ->orWhere('status', 'LIKE', "%$keyword%")
+                    ->orWhere('statusothers', 'LIKE', "%$keyword%")
+                    ->orWhere('food', 'LIKE', "%$keyword%")
+                    //->orWhere('role', 'LIKE', "%$keyword%")
+                    ->orWhere('school', 'LIKE', "%$keyword%")
+                    ->orWhere('major', 'LIKE', "%$keyword%")
+                    ->orWhere('address', 'LIKE', "%$keyword%")
+                    ->orWhere('district', 'LIKE', "%$keyword%")
+                    ->orWhere('amphoes', 'LIKE', "%$keyword%")
+                    ->orWhere('provinces', 'LIKE', "%$keyword%")
+                    ->orWhere('postnumber', 'LIKE', "%$keyword%")
+                    ->orWhere('tel', 'LIKE', "%$keyword%")
+                    ->orWhere('fax', 'LIKE', "%$keyword%")
+                    ->orWhere('fileregister', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_school', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_major', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_address', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_district', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_provinces', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_postnumber', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_tel', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_fax', 'LIKE', "%$keyword%");
+                })
                 ->latest()->paginate($perPage);
         } else {
-            $profile = Profile::latest()->paginate($perPage);
+            $profile = Profile::whereNotIn('role',  ['guest'])->latest()->paginate($perPage);
         }
 
         return view('profile.index', compact('profile'));
