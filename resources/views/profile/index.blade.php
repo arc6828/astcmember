@@ -5,11 +5,11 @@
         <div class="row justify-content-center">
          
 
-            <div class="col-md-9">
-                <div class="card">
+            <div class="col-md-12">
+                <div class="card mb-4">
                     <div class="card-header">Profile</div>
                     <div class="card-body">
-                        <a href="{{ url('/profile/create') }}" class="btn btn-success btn-sm" title="Add New Profile">
+                        <a href="{{ url('/profile/create') }}" class="btn btn-success btn-sm d-none" title="Add New Profile">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
@@ -32,11 +32,12 @@
                                     <tr>
                                         <th>#</th>
                                         <th>ชื่อ-นามสกุล</th>
-                                        <th>อีเมล</th>
-                                        <th>สถานภาพ</th>
-                                        <th>สถานภาพอื่นๆ โปรดระบุ</th>
-                                        <th>อาหารกลางวัน</th>
-                                        <th>Actions</th>
+                                        <th>อีเมล์</th>
+                                        <th>เบอร์โทรศัพท์</th>
+                                        <th>สถานะ</th>
+                                        <th class="d-none">สถานภาพอื่นๆ โปรดระบุ</th>
+                                        <th class="d-none">อาหารกลางวัน</th>
+                                        <th class="d-none">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -48,16 +49,13 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>
-                                            <div>เพศ : {{ $item->sex }}</div>
-                                            <div>คำนำหน้า : {{ $item->title }}</div>
-                                            <div>ชื่อ : {{ $item->name }}</div>
-                                            <div>นามสกุล : {{ $item->lastname }}</div>
+                                            <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
+                           
                                         </td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->status }}</td>
-                                        <td>{{ $item->statusothers }}</td>
-                                        <td>{{ $item->food }}</td>
-                                        <td>
+                                        <td>{{ $item->tel }}</td>
+                                        <td>{{ $item->role }}</td>
+                                        <td class="d-none">
                                             <a href="{{ url('/profile/' . $item->id) }}" title="View Profile"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/profile/' . $item->id . '/edit') }}" title="Edit Profile"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
@@ -73,6 +71,14 @@
                             </table>
                             <div class="pagination-wrapper"> {!! $profile->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
+
+                    </div>
+                </div>
+
+                <div class="card mb-4">
+                    <div class="card-header">สัดส่วนผู้เข้าร่วมงาน</div>
+                    <div class="card-body">
+                        แสดง Pie Chart ของระบบ ...
 
                     </div>
                 </div>

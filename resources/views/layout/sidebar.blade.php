@@ -7,8 +7,8 @@
         </a>
       </li>
 
-      <div class="dropdown-divider"></div>     
       @if(Auth::user()->profile->role == "author" ) 
+      <div class="dropdown-divider"></div>     
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/article/create') }}" >
           <i class="fas fa-fw fa-paper-plane"></i> <span>ส่งบทความ</span>
@@ -18,13 +18,27 @@
         <a class="nav-link" href="{{ url('/article') }}" >
           <i class="fas fa-fw fa-file"></i> <span>บทความของฉัน</span>
         </a>
+      </li>      
+      @endif
+
+      @if(Auth::user()->profile->role == "academic-admin" ) 
+      <div class="dropdown-divider"></div>      
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/profile') }}" >
+          <i class="fas fa-fw fa-user"></i> <span>ผู้ร่วมงานทั้งหมด</span>
+        </a>
       </li>
-      
       @endif
 
 
       @if(Auth::user()->profile->role == "admin" )     
-
+      <div class="dropdown-divider"></div>      
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/profile') }}" >
+          <i class="fas fa-fw fa-user"></i> <span>ผู้ร่วมงานทั้งหมด</span>
+        </a>
+      </li>
+      <div class="dropdown-divider"></div>     
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-fw fa-folder"></i>
