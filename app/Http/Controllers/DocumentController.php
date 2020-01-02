@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Document;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DocumentController extends Controller
 {
