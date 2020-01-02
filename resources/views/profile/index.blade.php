@@ -57,7 +57,19 @@
                                         </td>
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->tel }}</td>
-                                        <td>{{ $item->role }}</td>
+                                        <td>
+                                            @switch($item->role)
+                                                @case("author") 
+                                                    <button type="button" class="btn btn-sm btn-success">{{ $item->role }}</button>
+                                                    @break
+                                                @case("audience")
+                                                    <button type="button" class="btn btn-sm btn-primary">{{ $item->role }}</button>
+                                                    @break
+                                                @default 
+                                                    <button type="button" class="btn btn-sm btn-warning">{{ $item->role }}</button>                                                    
+                                                    
+                                            @endswitch
+                                        </td>
                                         <td class="d-none">
                                             <a href="{{ url('/profile/' . $item->id) }}" title="View Profile"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/profile/' . $item->id . '/edit') }}" title="Edit Profile"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
