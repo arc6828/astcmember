@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.main')
 
 @section('content')
     <div class="container">
@@ -38,11 +38,11 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>name</th>
+                                        <th>ลำดับ</th>
                                         <th>บทความ</th>
                                         <th>ราคาบทความ</th> 
                                         <th>คงเหลือ</th>
-                                        <th>Status</th>
+                                        <th>สถานะ</th>
                                     </tr>
                                 </thead>
                             <tbody>

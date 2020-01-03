@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layout.main')
 
 @section('content')
     <div class="container">
@@ -25,9 +25,25 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $payment->id }}</td>
+                                        <th>ลำดับ</th> 
+                                            <td>{{ $payment->id }}</td>
                                     </tr>
-                                    <tr><th> Total </th><td> {{ $payment->total }} </td></tr><tr><th> Remark </th><td> {{ $payment->remark }} </td></tr><tr><th> Receipt </th><td> {{ $payment->receipt }} </td></tr><tr><th> User Id </th><td> {{ $payment->user_id }} </td></tr>
+                                    <tr>
+                                        <th> ราคารวม </th>
+                                            <td> {{ $payment->total }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> หมายเหตุ </th>
+                                            <td> {{ $payment->remark }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ใบเสร็จ </th>
+                                            <td> {{ $payment->receipt }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> เล่มที่ </th>
+                                            <td> {{ $payment->user_id }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
