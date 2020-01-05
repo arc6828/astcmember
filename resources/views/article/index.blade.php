@@ -35,8 +35,9 @@
                                     <th>ชื่อบทความ</th>
                                     <th>วันที่ส่งบทความ</th>
                                     <th>สถานะบทความ</th>
-                            
+                                    <th>Actions</th>
                                     <th class="d-none">Actions</th>
+
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -68,7 +69,7 @@
 
                                         <td>
                                             @switch($item->status)
-                                            @case("received")                                                     
+                                            @case("Create")                                                     
                                                 <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
                                                 <div>{{ $item->received_at }}</div>
                                                 @break
@@ -84,27 +85,115 @@
                                                 <div><span class="badge badge-warning">รอการพิจารณา</span></div>
                                                 <div>{{ $item->consider_at }}</div>
                                                 @break
-                                            @case("past_modify")                                                     
+                                            @case("pass_modify")                                                     
                                                 <div><span class="badge badge-warning">ผ่าน (มีการแก้ไข)</span></div>
-                                                <div>{{ $item->past_modify_at }}</div>
+                                                <div>{{ $item->pass_modify_at }}</div>
                                             @break
                                             @case("waitmodify")                                                     
                                                 <div><span class="badge badge-warning">รอการแก้ไข</span></div>
                                                 <div>{{ $item->waitmodify_at }}</div>
                                             @break
-                                            @case("past")                                                     
+                                            @case("pass")                                                     
                                                 <div><span class="badge badge-success">ผ่าน</span></div>
-                                                <div>{{ $item->past_at }}</div>
+                                                <div>{{ $item->pass_at }}</div>
                                             @break
-                                            @case("notpast")                                                     
+                                            @case("notpass")                                                     
                                                 <div><span class="badge badge-danger">ไม่ผ่าน</span></div>
-                                                <div>{{ $item->notpast_at }}</div>
+                                                <div>{{ $item->notpass_at }}</div>
                                             @break
 
 
                                             @endswitch   
-                                        </td>   
-                                       
+                                        </td>  
+
+                                        <td>
+                                            <form method="POST" action="{{ url('/article' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('PATCH') }}
+                                                {{ csrf_field() }}
+                                                @switch($item->status)
+
+                                                    @case("Create")
+                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                        
+                                                        <input type="hidden" name="status" value="checkformat">
+                                                        <button type="submit" class="btn btn-primary btn-sm"> กำลังตรวจสอบรูปแบบ</button>
+                                                        @endif
+                                                        @break
+
+                                                    @case("checkformat")
+                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                        
+                                                       <select name="status" onchange="">
+                                                          <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
+                                                          <option value="consider">รูปแบบถูกต้อง</option>
+                                                          
+                                                          
+                                                        </select>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                        @endif
+                                                      @break
+
+                                                    @case("waitmodifyformat")
+                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                        
+                                                        <select name="status" onchange="">
+                                                          <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
+                                                          <option value="consider">รูปแบบถูกต้อง</option>
+                                                          
+                                                          
+                                                        </select>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                        @endif
+                                                        @break
+
+                                                        @case("consider")
+                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                        
+                                                        <select name="status" onchange="">
+                                                          <option value="pass">ผ่าน </option>
+                                                          <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
+                                                          <option value="notpass">ไม่ผ่าน</option>
+                                                          
+                                                        </select>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                        @endif
+                                                        @break
+
+                                                        @case("pass_modify")
+                                                    @if(Auth::user()->profile->role == "admin") 
+                                                        <input type="hidden" name="status" value="waitmodify">
+                                                        <button type="submit" class="btn btn-warning btn-sm"> รอการพิจารณา</button>                                                 
+                                                        
+                                                        @endif
+                                                        @break
+
+                                                        @case("waitmodify")
+                                                    @if(Auth::user()->profile->role == "admin")     
+
+
+                                                         <select name="status" onchange="">
+                                                          <option value="pass">ผ่าน </option>
+                                                          <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
+                                                          <option value="notpass">ไม่ผ่าน</option>
+                                                          
+                                                        </select>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>                                             
+                                                        
+                                                        
+                                                        @endif
+                                                        @break
+
+                                                        @case("pass")
+                                                            <input type="hidden" name="status" value="pass">
+                                                            @break
+
+                                                         @case("notpass")
+                                                            <input type="hidden" name="status" value="notpass">
+                                                            @break
+
+                                                @endswitch
+                                            </form>
+                                        </td>
                                         
                                     
                                         <td class="d-none">
