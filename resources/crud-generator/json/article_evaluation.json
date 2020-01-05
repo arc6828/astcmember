@@ -1,0 +1,76 @@
+{
+    "fields": [
+        {
+            "name": "article_id",
+            "type": "integer"
+        },
+        {
+            "name": "evaluation_name",
+            "type": "string"
+        },
+        {
+            "name": "evaluation_abstract",
+            "type": "string"
+        },
+        {
+            "name": "evaluation_introduction",
+            "type": "string"
+        },
+        {
+            "name": "evaluation_proceed",
+            "type": "string"
+        },
+        {
+            "name": "evaluation_results",
+            "type": "string"
+        },
+        {
+            "name": "evaluation_conclude",
+            "type": "string"
+        },
+        {
+            "name": "evaluation_document",
+            "type": "string"
+        },
+        {
+            "name": "assessment",
+            "type": "text"
+        },       
+        {
+            "name": "evaluation_summary",
+            "type": "text"
+        },       
+        {
+            "name": "comment_name",
+            "type": "text"
+        },
+        {
+            "name": "comment_abstract",
+            "type": "text"
+        },
+        {
+            "name": "comment_introduction",
+            "type": "text"
+        },
+        {
+            "name": "comment_proceed",
+            "type": "text"
+        },
+        {
+            "name": "comment_results",
+            "type": "text"
+        },
+        {
+            "name": "comment_conclude",
+            "type": "text"
+        },
+        {
+            "name": "comment_document",
+            "type": "text"
+        },
+        {
+            "name": "user_id",
+            "type": "integer"
+        }
+    ]
+ }

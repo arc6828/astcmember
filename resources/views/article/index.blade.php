@@ -116,7 +116,7 @@
                                                     @if(Auth::user()->profile->role == "admin")                                                  
                                                         
                                                         <input type="hidden" name="status" value="checkformat">
-                                                        <button type="submit" class="btn btn-primary btn-sm"> กำลังตรวจสอบรูปแบบ</button>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบรูปแบบ</button>
                                                         @endif
                                                         @break
 
