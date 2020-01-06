@@ -24,6 +24,7 @@ class ArticleController extends Controller
         $perPage = 25;
         switch(Auth::user()->profile->role){
             case "admin" : //FOR ADMIN SEE ALL
+            case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
                 if (!empty($keyword)) {
                     $article = Article::where('prapet', 'LIKE', "%$keyword%")
                     ->orWhere('group', 'LIKE', "%$keyword%")

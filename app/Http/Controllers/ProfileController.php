@@ -22,7 +22,7 @@ class ProfileController extends Controller
 
         if (!empty($keyword)) {
             $profile = Profile::whereNotIn('role',  ['guest'])
-                ->where(function ($query) {
+                ->where(function ($query) use ($keyword) {
                     $query->where('sex', 'LIKE', "%$keyword%")
                     ->orWhere('title', 'LIKE', "%$keyword%")
                     ->orWhere('name', 'LIKE', "%$keyword%")
@@ -36,8 +36,8 @@ class ProfileController extends Controller
                     ->orWhere('major', 'LIKE', "%$keyword%")
                     ->orWhere('address', 'LIKE', "%$keyword%")
                     ->orWhere('district', 'LIKE', "%$keyword%")
-                    ->orWhere('amphoes', 'LIKE', "%$keyword%")
-                    ->orWhere('provinces', 'LIKE', "%$keyword%")
+                    ->orWhere('amphoe', 'LIKE', "%$keyword%")
+                    ->orWhere('province', 'LIKE', "%$keyword%")
                     ->orWhere('postnumber', 'LIKE', "%$keyword%")
                     ->orWhere('tel', 'LIKE', "%$keyword%")
                     ->orWhere('fax', 'LIKE', "%$keyword%")
@@ -46,7 +46,7 @@ class ProfileController extends Controller
                     ->orWhere('bill_major', 'LIKE', "%$keyword%")
                     ->orWhere('bill_address', 'LIKE', "%$keyword%")
                     ->orWhere('bill_district', 'LIKE', "%$keyword%")
-                    ->orWhere('bill_provinces', 'LIKE', "%$keyword%")
+                    ->orWhere('bill_province', 'LIKE', "%$keyword%")
                     ->orWhere('bill_postnumber', 'LIKE', "%$keyword%")
                     ->orWhere('bill_tel', 'LIKE', "%$keyword%")
                     ->orWhere('bill_fax', 'LIKE', "%$keyword%");

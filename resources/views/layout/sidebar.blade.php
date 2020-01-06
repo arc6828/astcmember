@@ -28,6 +28,11 @@
           <i class="fas fa-fw fa-user"></i> <span>ผู้ร่วมงานทั้งหมด</span>
         </a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/article') }}" >
+          <i class="fas fa-fw fa-file"></i> <span>บทความทั้งหมด</span>
+        </a>
+      </li>
       @endif
 
 
