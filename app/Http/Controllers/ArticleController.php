@@ -96,6 +96,8 @@ class ArticleController extends Controller
         $requestData = $request->all();
         $group = $requestData['group'];
         $requestData['group_name'] = $groups[$group];
+        
+        $requestData['status'] = "Create";
         $requestData['code'] = $this->getNewCode($requestData['group'],$requestData['prapet']);
         Article::create($requestData);
 
@@ -161,44 +163,47 @@ class ArticleController extends Controller
         $requestData = $request->all();
         
         $article = Article::findOrFail($id);
-                                                        
-        switch($requestData['status']){
-            case "Create" : 
-                $requestData['received_at'] = date('Y-m-d H:i:s');
-                break;
-
-                case "checkformat" : 
-                $requestData['checkformat_at'] = date('Y-m-d H:i:s');
-                break;
-
-                case "waitmodifyformat" : 
-                $requestData['waitmodifyformat_at'] = date('Y-m-d H:i:s');
-                break;
-
-            case "consider" : 
-                $requestData['consider_at'] = date('Y-m-d H:i:s');
-                break;
-
-            case "pass_modify" : 
-                $requestData['pass_modify_at'] = date('Y-m-d H:i:s');
-                break;
-
-            case "waitmodify" : 
-                $requestData['waitmodify_at'] = date('Y-m-d H:i:s');
-                break;
-
-            case "pass_modify" : 
-                $requestData['pass_at'] = date('Y-m-d H:i:s');
-                break;
-
-            case "notpass" : 
-                $requestData['notpass_at'] = date('Y-m-d H:i:s');
-                break;
-
-            case "pass" : 
-                $requestData['pass_at'] = date('Y-m-d H:i:s');
-                break;
+        if(!empty($requestData['status'])){
+            switch($requestData['status']){
+                case "Create" : 
+                    $requestData['received_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                    case "checkformat" : 
+                    $requestData['checkformat_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                    case "waitmodifyformat" : 
+                    $requestData['waitmodifyformat_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                case "consider" : 
+                    $requestData['consider_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                case "pass_modify" : 
+                    $requestData['pass_modify_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                case "waitmodify" : 
+                    $requestData['waitmodify_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                case "pass_modify" : 
+                    $requestData['pass_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                case "notpass" : 
+                    $requestData['notpass_at'] = date('Y-m-d H:i:s');
+                    break;
+    
+                case "pass" : 
+                    $requestData['pass_at'] = date('Y-m-d H:i:s');
+                    break;
+            }
         }
+                                                        
+        
         $article->update($requestData);
 
         return redirect('article')->with('flash_message', 'Article updated!');
