@@ -113,7 +113,7 @@
                                                 @switch($item->status)
 
                                                     @case("Create")
-                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                         <input type="hidden" name="status" value="checkformat">
                                                         <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบรูปแบบ</button>
@@ -121,7 +121,7 @@
                                                         @break
 
                                                     @case("checkformat")
-                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                        <select name="status" onchange="">
                                                           <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
@@ -134,7 +134,7 @@
                                                       @break
 
                                                     @case("waitmodifyformat")
-                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                         <select name="status" onchange="">
                                                           <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
@@ -147,7 +147,7 @@
                                                         @break
 
                                                         @case("consider")
-                                                    @if(Auth::user()->profile->role == "admin")                                                  
+                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                         <select name="status" onchange="">
                                                           <option value="pass">ผ่าน </option>
@@ -160,7 +160,7 @@
                                                         @break
 
                                                         @case("pass_modify")
-                                                    @if(Auth::user()->profile->role == "admin") 
+                                                    @if(Auth::user()->profile->role == "academic-admin") 
                                                         <input type="hidden" name="status" value="waitmodify">
                                                         <button type="submit" class="btn btn-warning btn-sm"> รอการพิจารณา</button>                                                 
                                                         
@@ -168,7 +168,7 @@
                                                         @break
 
                                                         @case("waitmodify")
-                                                    @if(Auth::user()->profile->role == "admin")     
+                                                    @if(Auth::user()->profile->role == "academic-admin")     
 
 
                                                          <select name="status" onchange="">
