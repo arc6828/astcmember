@@ -6,39 +6,43 @@
         },
         {
             "name": "evaluation_name",
-            "type": "string"
+            "type": "float"
         },
         {
             "name": "evaluation_abstract",
-            "type": "string"
+            "type": "float"
         },
         {
             "name": "evaluation_introduction",
-            "type": "string"
+            "type": "float"
         },
         {
-            "name": "evaluation_proceed",
-            "type": "string"
+            "name": "evaluation_methodology",
+            "type": "float"
         },
         {
-            "name": "evaluation_results",
-            "type": "string"
+            "name": "evaluation_result",
+            "type": "float"
         },
         {
-            "name": "evaluation_conclude",
-            "type": "string"
+            "name": "evaluation_conclusion",
+            "type": "float"
         },
         {
-            "name": "evaluation_document",
-            "type": "string"
+            "name": "evaluation_reference",
+            "type": "float"
+        },
+        {
+            "name": "evaluation_total_score",
+            "type": "float"
         },
         {
             "name": "assessment",
-            "type": "text"
+            "type": "string"
         },       
         {
             "name": "evaluation_summary",
-            "type": "text"
+            "type": "string"
         },       
         {
             "name": "comment_name",
@@ -53,19 +57,19 @@
             "type": "text"
         },
         {
-            "name": "comment_proceed",
+            "name": "comment_methodology",
             "type": "text"
         },
         {
-            "name": "comment_results",
+            "name": "comment_result",
             "type": "text"
         },
         {
-            "name": "comment_conclude",
+            "name": "comment_conclusion",
             "type": "text"
         },
         {
-            "name": "comment_document",
+            "name": "comment_reference",
             "type": "text"
         },
         {

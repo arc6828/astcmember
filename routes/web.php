@@ -38,3 +38,4 @@ Route::get('/district', function () {
 });
 Route::resource('payment', 'PaymentController');
 Route::resource('payment', 'PaymentController');
+Route::resource('article-evaluation', 'ArticleEvaluationController');
