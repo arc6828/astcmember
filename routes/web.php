@@ -30,6 +30,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('article', 'ArticleController');
     Route::resource('evaluation', 'EvaluationController');
     Route::resource('document', 'DocumentController');
+    Route::resource('article-evaluation', 'ArticleEvaluationController');
     //Route::resource('/payment','PaymentController');   
 });
 
@@ -38,4 +39,3 @@ Route::get('/district', function () {
 });
 Route::resource('payment', 'PaymentController');
 Route::resource('payment', 'PaymentController');
-Route::resource('article-evaluation', 'ArticleEvaluationController');
