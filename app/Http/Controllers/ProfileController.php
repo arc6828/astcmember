@@ -53,7 +53,7 @@ class ProfileController extends Controller
                 })
                 ->latest()->paginate($perPage);
         } else {
-            $profile = Profile::whereNotIn('role',  ['guest'])->latest()->paginate($perPage);
+            $profile = Profile::whereNotIn('role',  ['guest','academic-admin','admin'])->latest()->paginate($perPage);
         }
 
         return view('profile.index', compact('profile'));
