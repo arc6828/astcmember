@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $profile = Profile::whereNotIn('role',  ['guest'])
+            $profile = Profile::whereNotIn('role',  ['guest','academic-admin','admin'])
                 ->where(function ($query) use ($keyword) {
                     $query->where('sex', 'LIKE', "%$keyword%")
                     ->orWhere('title', 'LIKE', "%$keyword%")
@@ -31,7 +31,7 @@ class ProfileController extends Controller
                     ->orWhere('status', 'LIKE', "%$keyword%")
                     ->orWhere('statusothers', 'LIKE', "%$keyword%")
                     ->orWhere('food', 'LIKE', "%$keyword%")
-                    //->orWhere('role', 'LIKE', "%$keyword%")
+                    ->orWhere('role', 'LIKE', "%$keyword%")
                     ->orWhere('school', 'LIKE', "%$keyword%")
                     ->orWhere('major', 'LIKE', "%$keyword%")
                     ->orWhere('address', 'LIKE', "%$keyword%")

@@ -34,7 +34,7 @@
                                         <th>ชื่อ-นามสกุล</th>
                                         <th>อีเมล์</th>
                                         <th>เบอร์โทรศัพท์</th>
-                                        <th>สถานะ</th>
+                                        <th>สถานะการชำระเงิน</th>
                                         <th>ยอดหนี้คงเหลือ</th>
                                         <th class="d-none">สถานภาพอื่นๆ โปรดระบุ</th>
                                         <th class="d-none">อาหารกลางวัน</th>
@@ -55,6 +55,22 @@
                                         <td>
                                             <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
                                             <div>วันที่ลงทะเบียน {{ $item->created_at }} </div>
+                                            
+                                            @switch( $item->role )
+                                                @case("author")
+                                                    <div><span class="badge badge-primary">ผู้ส่งบทความ</span></div>
+                                                    @break                                                         
+                                                @case("audience")
+                                                    <div><span class="badge badge-warning">ผู้เข้าร่วม</span></div>
+                                                    @break
+                                                @case("guest")
+                                                    <div><span class="badge badge-success">pending</span></div>
+                                                    @break
+                                                @default
+                                                    <div><span class="badge badge-danger">{{ $item->role }}</span></div>
+                                                                                        
+                                            @endswitch  
+                                            
                            
                                         </td>
                                         <td>{{ $item->email }}</td>

@@ -30,6 +30,7 @@ class HomeController extends Controller
                 //'role' => 'author', 
                 'name' => Auth::user()->name , 
                 'email' => Auth::user()->email ,
+                'payment_status' => "unpaid" ,
             ]
         );
         return view('home' , compact('profile') );
