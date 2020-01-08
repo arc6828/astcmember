@@ -1,9 +1,9 @@
-@extends('layouts.app')
+@extends('layout.main')
 
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
+            
 
             <div class="col-md-9">
                 <div class="card">
@@ -25,9 +25,85 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $articleevaluation->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $articleevaluation->id }}</td>
                                     </tr>
-                                    <tr><th> Article Id </th><td> {{ $articleevaluation->article_id }} </td></tr><tr><th> Evaluation Name </th><td> {{ $articleevaluation->evaluation_name }} </td></tr><tr><th> Evaluation Abstract </th><td> {{ $articleevaluation->evaluation_abstract }} </td></tr><tr><th> Evaluation Introduction </th><td> {{ $articleevaluation->evaluation_introduction }} </td></tr><tr><th> Evaluation Methodology </th><td> {{ $articleevaluation->evaluation_methodology }} </td></tr><tr><th> Evaluation Result </th><td> {{ $articleevaluation->evaluation_result }} </td></tr><tr><th> Evaluation Conclusion </th><td> {{ $articleevaluation->evaluation_conclusion }} </td></tr><tr><th> Evaluation Reference </th><td> {{ $articleevaluation->evaluation_reference }} </td></tr><tr><th> Evaluation Total Score </th><td> {{ $articleevaluation->evaluation_total_score }} </td></tr><tr><th> Assessment </th><td> {{ $articleevaluation->assessment }} </td></tr><tr><th> Evaluation Summary </th><td> {{ $articleevaluation->evaluation_summary }} </td></tr><tr><th> Comment Name </th><td> {{ $articleevaluation->comment_name }} </td></tr><tr><th> Comment Abstract </th><td> {{ $articleevaluation->comment_abstract }} </td></tr><tr><th> Comment Introduction </th><td> {{ $articleevaluation->comment_introduction }} </td></tr><tr><th> Comment Methodology </th><td> {{ $articleevaluation->comment_methodology }} </td></tr><tr><th> Comment Result </th><td> {{ $articleevaluation->comment_result }} </td></tr><tr><th> Comment Conclusion </th><td> {{ $articleevaluation->comment_conclusion }} </td></tr><tr><th> Comment Reference </th><td> {{ $articleevaluation->comment_reference }} </td></tr><tr><th> User Id </th><td> {{ $articleevaluation->user_id }} </td></tr>
+                                    <tr>
+                                        <th> หมายเลขบทความ </th>
+                                        <td> {{ $articleevaluation->article_id }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ชื่อเรื่อง ภาษาไทยและภาษาอังกฤษ </th>
+                                        <td> {{ $articleevaluation->evaluation_name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> บทคัดย่อ ภาษาไทยและภาษาอังกฤษ </th>
+                                        <td> {{ $articleevaluation->evaluation_abstract }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> บทนำ(วัตถุประสงค์ และความสำคัญของปัญหาวิจัย) </th>
+                                        <td> {{ $articleevaluation->evaluation_introduction }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> วิธีดำเนินการวิจัย(ระเบียบวิธีวิจัยและขั้นตอนวิธีดำเนินการวิจัย) </th>
+                                        <td> {{ $articleevaluation->evaluation_methodology }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ผลการวิจัยและการอภิปรายผล </th>
+                                        <td> {{ $articleevaluation->evaluation_result }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> สรุปผลการวิจัย </th>
+                                        <td> {{ $articleevaluation->evaluation_conclusion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> เอกสารอ้างอิง </th>
+                                        <td> {{ $articleevaluation->evaluation_reference }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> คะแนนรวม </th>
+                                        <td> {{ $articleevaluation->evaluation_total_score }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> เกณฑ์การประเมิน </th>
+                                        <td> {{ $articleevaluation->assessment }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> สรุปผลการประเมิน </th>
+                                        <td> {{ $articleevaluation->evaluation_summary }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ชื่อเรื่อง (Title) </th>
+                                        <td> {{ $articleevaluation->comment_name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> บทคัดย่อ (Abstract) </th>
+                                        <td> {{ $articleevaluation->comment_abstract }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> บทนำ (วัตถุประสงค์และความสำคัญของปัญหาวิจัย)(Introduction) </th>
+                                        <td> {{ $articleevaluation->comment_introduction }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> วิธีดำเนินการวิจัย(ระเบียบวิธีวิจัยและขั้นตอนวิธีดำเนินการวิจัย) </th>
+                                        <td> {{ $articleevaluation->comment_methodology }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ผลการวิจัยและการอภิปรายผล </th>
+                                        <td> {{ $articleevaluation->comment_result }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> สรุปผลการวิจัย </th>
+                                        <td> {{ $articleevaluation->comment_conclusion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> เอกสารอ้างอิง </th>
+                                        <td> {{ $articleevaluation->comment_reference }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ผู้ประเมินบทความ </th>
+                                        <td> {{ $articleevaluation->user_id }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>
