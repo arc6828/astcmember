@@ -58,16 +58,16 @@
                                             
                                             @switch( $item->role )
                                                 @case("author")
-                                                    <div><span class="badge badge-primary">ผู้ส่งบทความ</span></div>
+                                                    <div><span class="badge badge-success">ผู้ส่งบทความ</span></div>
                                                     @break                                                         
                                                 @case("audience")
-                                                    <div><span class="badge badge-warning">ผู้เข้าร่วม</span></div>
+                                                    <div><span class="badge badge-primary">ผู้เข้าร่วม</span></div>
                                                     @break
                                                 @case("guest")
-                                                    <div><span class="badge badge-success">pending</span></div>
+                                                    <div><span class="badge badge-danger">pending</span></div>
                                                     @break
                                                 @default
-                                                    <div><span class="badge badge-danger">{{ $item->role }}</span></div>
+                                                    <div><span class="badge badge-warning">{{ $item->role }}</span></div>
                                                                                         
                                             @endswitch  
                                             
