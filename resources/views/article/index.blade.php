@@ -150,6 +150,7 @@
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                         <select name="status" onchange="">
+                                                          
                                                           <option value="pass">ผ่าน </option>
                                                           <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
                                                           <option value="notpass">ไม่ผ่าน</option>

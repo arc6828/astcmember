@@ -48,4 +48,7 @@ class Article extends Model
     public function payment(){
         return $this->hasMany('App\Payment', 'user_id');
     }
+    public function profiles(){
+        return $this->hasMany('App\Profile','user_id');
+    }
 }

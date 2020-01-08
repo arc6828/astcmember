@@ -35,9 +35,10 @@
                                         <th>อีเมล์</th>
                                         <th>เบอร์โทรศัพท์</th>
                                         <th>สถานะ</th>
+                                        <th>ยอดหนี้คงเหลือ</th>
                                         <th class="d-none">สถานภาพอื่นๆ โปรดระบุ</th>
                                         <th class="d-none">อาหารกลางวัน</th>
-                                        <th class="d-none">Actions</th>
+                                        <th class="">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -47,6 +48,7 @@
                                     
                                     //$profiles = $profile->whereNotIn('role', ['guest'] );
                                 @endphp
+                                
                                 @foreach($profile as $item)
                                     <tr>
                                         <td>{{ $loop->iteration+ (request('page','1')-1) *  25 }}</td>
@@ -58,18 +60,77 @@
                                         <td>{{ $item->email }}</td>
                                         <td>{{ $item->tel }}</td>
                                         <td>
-                                            @switch($item->role)
-                                                @case("author") 
-                                                    <button type="button" class="btn btn-sm btn-success">{{ $item->role }}</button>
-                                                    @break
-                                                @case("audience")
-                                                    <button type="button" class="btn btn-sm btn-primary">{{ $item->role }}</button>
-                                                    @break
-                                                @default 
-                                                    <button type="button" class="btn btn-sm btn-warning">{{ $item->role }}</button>                                                    
-                                                    
-                                            @endswitch
+                                            
+                                            @switch( $item->payment_status )
+                                                @case("unpaid")
+                                                    <div><span class="badge badge-primary">ยังไม่ได้ชำระ</span></div>
+                                                    <div>{{ $item->unpaid_at }}</div>
+                                                @break
+                                                         
+                                                @case("chackpayment")
+                                                    <div><span class="badge badge-warning">กำลังตรวจสอบ</span></div>
+                                                    <div>{{ $item->chackpayment_at }}</div>
+                                                @break
+
+                                                @case("paid")
+                                                    <div><span class="badge badge-success">ชำระเงินครบ</span></div>
+                                                    <div>{{ $item->paid_at }}</div>
+                                                @break
+
+                                                @case("notpaid")
+                                                    <div><span class="badge badge-danger">ชำระเงินไม่ครบ</span></div>
+                                                    <div>{{ $item->notpaid_at }}</div>
+                                                @break
+
+
+                                        
+                                            @endswitch  
+
                                         </td>
+                                        <td>{{ $item->articles->sum('total_debt') }}</td>    
+                                        <td>
+                                            <form method="POST" action="{{ url('/profile' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
+                                                {{ method_field('PATCH') }}
+                                                {{ csrf_field() }}
+
+                                        @switch($item->payment_status)
+                                            
+                                            @case("unpaid")
+                                                @if (Auth::user()->profile->role == "academic-admin")    
+                                                    <input type="hidden" name="payment_status" value="unpaid">  </input>
+                                                    <button type="submit" class="btn btn-warning btn-sm"> ยังไม่ได้ชำระ</button>
+                                                @endif
+                                            @break
+
+                                            @case("chackpayment")
+                                                @if (Auth::user()->profile->role == "academic-admin")    
+                                                    <select name="payment_status" onchange="">
+                                                        <option value="paid">ชำระเงินครบ </option>
+                                                        <option value="notpaid">ชำระเงินไม่ครบ </option>
+                                                    </select>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                @endif
+                                            @break
+                                            
+                                            @case("paid")
+                                                @break
+                                            
+                                            @case("notpaid")
+                                                @if (Auth::user()->profile->role == "academic-admin")
+                                                <select name="payment_status" onchange="">
+                                                     <option value="chackpayment">กำลังตรวจสอบ </option>
+                                                     <option value="paid">ชำระเงินให้ครบ </option>
+                                                </select>
+                                                <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                @endif
+
+                                            @break
+                                          
+
+                                            @endswitch
+                                    </form>
+                                        </td>
+                                        
                                         <td class="d-none">
                                             <a href="{{ url('/profile/' . $item->id) }}" title="View Profile"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/profile/' . $item->id . '/edit') }}" title="Edit Profile"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

@@ -27,6 +27,7 @@ class ArticleController extends Controller
             case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
                 if (!empty($keyword)) {
                     $article = Article::where('prapet', 'LIKE', "%$keyword%")
+                    ->orWhere('total_dept', 'LIKE', "%$keyword%")
                     ->orWhere('group', 'LIKE', "%$keyword%")
                     ->orWhere('name_th', 'LIKE', "%$keyword%")
                     ->orWhere('name_en', 'LIKE', "%$keyword%")
@@ -45,6 +46,7 @@ class ArticleController extends Controller
                     $article = Article::where('user_id' , Auth::user()->id)
                         ->where(function($query) use ($keyword){
                             $query->where('prapet', 'LIKE', "%$keyword%")
+                            ->orWhere('total_dept', 'LIKE', "%$keyword%")
                             ->orWhere('group', 'LIKE', "%$keyword%")
                             ->orWhere('name_th', 'LIKE', "%$keyword%")
                             ->orWhere('name_en', 'LIKE', "%$keyword%")

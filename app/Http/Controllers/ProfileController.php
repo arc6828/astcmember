@@ -138,6 +138,12 @@ class ProfileController extends Controller
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
 
+        if( !empty($requestData['payment_status']) ){
+            //มีค่า payment_status
+            return redirect('profile')->with('flash_message', 'Profile updated!');
+     
+        }
+
         return redirect('home')->with('flash_message', 'Profile updated!');
     }
 
