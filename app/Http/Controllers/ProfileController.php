@@ -21,7 +21,7 @@ class ProfileController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $profile = Profile::whereNotIn('role',  ['guest'])
+            $profile = Profile::whereNotIn('role',  ['guest','academic-admin','admin'])
                 ->where(function ($query) use ($keyword) {
                     $query->where('sex', 'LIKE', "%$keyword%")
                     ->orWhere('title', 'LIKE', "%$keyword%")
@@ -31,7 +31,7 @@ class ProfileController extends Controller
                     ->orWhere('status', 'LIKE', "%$keyword%")
                     ->orWhere('statusothers', 'LIKE', "%$keyword%")
                     ->orWhere('food', 'LIKE', "%$keyword%")
-                    //->orWhere('role', 'LIKE', "%$keyword%")
+                    ->orWhere('role', 'LIKE', "%$keyword%")
                     ->orWhere('school', 'LIKE', "%$keyword%")
                     ->orWhere('major', 'LIKE', "%$keyword%")
                     ->orWhere('address', 'LIKE', "%$keyword%")
@@ -53,7 +53,7 @@ class ProfileController extends Controller
                 })
                 ->latest()->paginate($perPage);
         } else {
-            $profile = Profile::whereNotIn('role',  ['guest'])->latest()->paginate($perPage);
+            $profile = Profile::whereNotIn('role',  ['guest','academic-admin','admin'])->latest()->paginate($perPage);
         }
 
         return view('profile.index', compact('profile'));
@@ -137,6 +137,12 @@ class ProfileController extends Controller
 
         $profile = Profile::findOrFail($id);
         $profile->update($requestData);
+
+        if( !empty($requestData['payment_status']) ){
+            //มีค่า payment_status
+            return redirect('profile')->with('flash_message', 'Profile updated!');
+     
+        }
 
         return redirect('home')->with('flash_message', 'Profile updated!');
     }

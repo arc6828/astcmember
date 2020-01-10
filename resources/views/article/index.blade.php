@@ -33,7 +33,6 @@
                                     <th>#</th>
                                     
                                     <th>ชื่อบทความ</th>
-                                    <th>วันที่ส่งบทความ</th>
                                     <th>สถานะบทความ</th>
                                     <th>Actions</th>
                                     <th class="d-none">Actions</th>
@@ -62,16 +61,18 @@
                                             </div>
 
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
+
+                                            <div><a href="" >Docx</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" >PDF</a></div>
                                             
                                         </td>
-                                        <td>{{ $item->created_at}}</td> 
+                                        
 
 
                                         <td>
                                             @switch($item->status)
                                             @case("Create")                                                     
                                                 <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
-                                                <div>{{ $item->received_at }}</div>
+                                                <div>{{ $item->created_at}}</div>
                                                 @break
                                             @case("checkformat")                                                 
                                                 <div><span class="badge badge-warning">กำลังตรวจสอบรูปแบบ</span></div>
@@ -88,19 +89,19 @@
                                             @case("pass_modify")                                                     
                                                 <div><span class="badge badge-warning">ผ่าน (มีการแก้ไข)</span></div>
                                                 <div>{{ $item->pass_modify_at }}</div>
-                                            @break
+                                                @break
                                             @case("waitmodify")                                                     
                                                 <div><span class="badge badge-warning">รอการแก้ไข</span></div>
                                                 <div>{{ $item->waitmodify_at }}</div>
-                                            @break
+                                                @break
                                             @case("pass")                                                     
                                                 <div><span class="badge badge-success">ผ่าน</span></div>
                                                 <div>{{ $item->pass_at }}</div>
-                                            @break
+                                                @break
                                             @case("notpass")                                                     
                                                 <div><span class="badge badge-danger">ไม่ผ่าน</span></div>
                                                 <div>{{ $item->notpass_at }}</div>
-                                            @break
+                                                @break
 
 
                                             @endswitch   
@@ -131,7 +132,7 @@
                                                         </select>
                                                         <button type="submit" class="btn btn-warning btn-sm"> submit</button>
                                                         @endif
-                                                      @break
+                                                        @break
 
                                                     @case("waitmodifyformat")
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
@@ -150,6 +151,7 @@
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                         <select name="status" onchange="">
+                                                          
                                                           <option value="pass">ผ่าน </option>
                                                           <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
                                                           <option value="notpass">ไม่ผ่าน</option>

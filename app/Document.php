@@ -25,7 +25,7 @@ class Document extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'user_id', 'article_id', 'filename'];
+    protected $fillable = ['title', 'user_id', 'article_id', 'filename' , 'remark'];
 
     
 
@@ -39,4 +39,5 @@ class Document extends Model
         return $this->belongsTo('App\Article', 'article_id'); 
     }
 
+    
 }

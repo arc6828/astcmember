@@ -42,6 +42,10 @@
                                         <th> Filename </th>
                                         <td> {{ $document->filename }} </td>
                                     </tr>
+                                    <tr>
+                                        <th> Remark </th>
+                                        <td> {{ $document->remark }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
                         </div>

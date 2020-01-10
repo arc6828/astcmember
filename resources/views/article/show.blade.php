@@ -7,7 +7,7 @@
 
             <div class="col-md-9">
                 <div class="card mb-4">
-                    <div class="card-header">Article {{ $article->id }}</div>
+                    <div class="card-header">บทความที่ {{ $article->id }}</div>
                     <div class="card-body">
 
                         <a href="{{ url('/article') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
@@ -85,7 +85,7 @@
                 @endphp
 
                 <div class="card mb-4">
-                    <div class="card-header">Document</div>
+                    <div class="card-header">เอกสารบทความ</div>
                     <div class="card-body">
                         <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Document">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
@@ -99,12 +99,13 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Title</th>
-                                        <th>User</th>
-                                        <th>Article</th>
-                                        <th>Filename</th>
-                                        <th>Actions</th>
+                                        <th>#</th>
+                                        <th>ประเภทเอกสาร</th>
+                                        <th>ชื่อผู้ใช้</th>
+                                        <th>ชื่อบทความ</th>
+                                        <th>ไฟล์</th>
+                                        <th>หมายเหตุ</th>
+                                        <th class="d-none">Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -113,13 +114,14 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->article->name_en }}</td>
+                                        <td>{{ $item->article->name_th }}</td>
                                         <td>
                                             <a href="{{ url('/storage') }}/{{ $item->filename }}">
                                                 <i class="fa fa-arrow-down"></i> Download
                                             </a>
                                         </td>
-                                        <td>
+                                        <td>{{ $item->remark }}</td>
+                                        <td class="d-none">
                                             <a href="{{ url('/document/' . $item->id) }}" title="View Document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/document/' . $item->id . '/edit') }}" title="Edit Document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 

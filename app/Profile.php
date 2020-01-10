@@ -25,7 +25,7 @@ class Profile extends Model
      *
      * @var array
      */
-    protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_amphoe', 'bill_province', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role']; //เราลืม user_id, role 
+    protected $fillable = ['sex', 'title', 'name', 'lastname', 'email', 'status', 'statusothers', 'food', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'fileregister', 'bill_school', 'bill_major', 'bill_address', 'bill_district', 'bill_amphoe', 'bill_province', 'bill_postnumber', 'bill_tel', 'bill_fax','user_id','role','payment_status']; //เราลืม user_id, role 
 
     
 
@@ -54,5 +54,8 @@ class Profile extends Model
 
     public function district_bill_province(){
         return $this->belongsTo('App\District', 'bill_province','province_code'); 
+    }
+    public function articles(){
+        return $this->hasMany('App\Article','user_id','user_id');
     }
 }

@@ -32,8 +32,8 @@
                                         <th>ID</th>
                                         <th>Title</th>
                                         <th>User</th>
-                                        <th>Article</th>
                                         <th>Filename</th>
+                                        <th>Remark</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -43,12 +43,12 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->article->name_en }}</td>
                                         <td>
                                             <a href="{{ url('/storage') }}/{{ $item->filename }}">
                                                 <i class="fa fa-arrow-down"></i> Download
                                             </a>
                                         </td>
+                                        <td>{{ $item->remark }}</td>
                                         <td>
                                             <a href="{{ url('/document/' . $item->id) }}" title="View Document"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/document/' . $item->id . '/edit') }}" title="Edit Document"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
