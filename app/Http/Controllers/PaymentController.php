@@ -78,25 +78,35 @@ class PaymentController extends Controller
         //อัพเดท article
 
         $user_id = $requestData['user_id']; 
+        /*
         if( ($user_id) == 1500 ){  //จ่ายครบ 1500 บาท
-                $data = [
+            $data = [
                 'payment_id' => $payment->id ,
-                'status' => "completed" ,
+                //'status' => "completed" ,
                 'paid_at' => date("Y-m-d H:i:s") ,
             ];
-            }else if (($user_id) < 1500){ // จ่ายไม่ครบ 1500
-                $data = [
+        }else if (($user_id) < 1500){ // จ่ายไม่ครบ 1500
+            $data = [
                 'payment_id' => $payment->id ,
-                'status' => "notcompleted" ,
-                'total_debt'=>"ยังจ่ายไม่ครบ",
+                //'status' => "notcompleted" ,
+                //'total_debt'=>"ยังจ่ายไม่ครบ",      //หนี้ที่เหลืออยู่
                 'paid_at' => date("Y-m-d H:i:s") ,
-                ];
-            }
+            ];
+        }*/
+        $data = [
+            'payment_id' => $payment->id ,
+            //'status' => "notcompleted" ,
+            'total_debt'=> 0 ,      //หนี้ที่เหลืออยู่
+            'paid_at' => date("Y-m-d H:i:s") ,
+        ];
+
+        //คำนวณ Total Debt
+
             
-            //อัพเดท Article บางส่วน 
-            Article::where('name_th','user_id') // หาบทความใน user_id
-             //   ->where('status','completed') // อัพเดทสถานะของบทความ
-                ->update( $data ); // อัพเดทข้อมูล
+        //อัพเดท Article บางส่วน 
+        Article::where('user_id',$user_id) // หาบทความใน user_id
+            //   ->where('status','completed') // อัพเดทสถานะของบทความ
+            ->update( $data ); // อัพเดทข้อมูล
         return redirect('payment')->with('flash_message', 'Payment added!');
             
     }
