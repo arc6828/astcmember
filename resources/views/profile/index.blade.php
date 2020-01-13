@@ -32,8 +32,7 @@
                                     <tr>
                                         <th>#</th>
                                         <th>ชื่อ-นามสกุล</th>
-                                        <th>อีเมล์</th>
-                                        <th>เบอร์โทรศัพท์</th>
+                                       
                                         <th>สถานะการชำระเงิน</th>
                                         <th>ยอดหนี้คงเหลือ</th>
                                         <th class="d-none">สถานภาพอื่นๆ โปรดระบุ</th>
@@ -77,8 +76,6 @@
                                             
                            
                                         </td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->tel }}</td>
                                         <td>
                                             
                                             @switch( $item->payment_status )
