@@ -18,7 +18,12 @@
         <a class="nav-link" href="{{ url('/article') }}" >
           <i class="fas fa-fw fa-file"></i> <span>บทความของฉัน</span>
         </a>
-      </li>      
+      </li>   
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/profile') }}" >
+          <i class="fas fa-fw fa-user"></i> <span>ผู้ร่วมงานทั้งหมด</span>
+        </a>
+      </li>   
       @endif
 
       @if(Auth::user()->profile->role == "academic-admin" ) 

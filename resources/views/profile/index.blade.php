@@ -53,7 +53,11 @@
                                     <tr>
                                         <td>{{ $loop->iteration+ (request('page','1')-1) *  25 }}</td>
                                         <td>
-                                            <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
+                                            @if (Auth::user()->profile->role == "academic-admin")    
+                                                <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
+                                            @else
+                                                <div>{{ $item->title }} {{ $item->name }} {{ $item->lastname }}</div>
+                                            @endif
                                             <div>วันที่ลงทะเบียน {{ $item->created_at }} </div>
                                             
                                             @switch( $item->role )
