@@ -16,5 +16,8 @@ class Payment extends Model
     public function articles(){
         return $this->hasMany('App\Article','payment_id');
       
-    }    
+    } 
+    public function profiles(){
+        return $this->hasMany('App\Profile','user_id','user_id');
+    }
 }

@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Payment;
+use App\Profile;
 use App\User;
 use App\Article;
 use Illuminate\Http\Request;
@@ -70,7 +71,7 @@ class PaymentController extends Controller
     
         $requestData = $request->all();
                 if ($request->hasFile('receipt')) {
-            $requestData['receipt'] = $request->file('receipt')
+        $requestData['receipt'] = $request->file('receipt')
                 ->store('uploads', 'public');
         }
         $payment = Payment::create($requestData); // สร้าง create ใน 1 คอลั้ม
@@ -95,7 +96,6 @@ class PaymentController extends Controller
         }*/
         $data = [
             'payment_id' => $payment->id ,
-            //'status' => "notcompleted" ,
             'total_debt'=> 0 ,      //หนี้ที่เหลืออยู่
             'paid_at' => date("Y-m-d H:i:s") ,
         ];
@@ -107,8 +107,15 @@ class PaymentController extends Controller
         Article::where('user_id',$user_id) // หาบทความใน user_id
             //   ->where('status','completed') // อัพเดทสถานะของบทความ
             ->update( $data ); // อัพเดทข้อมูล
-        return redirect('payment')->with('flash_message', 'Payment added!');
+
+        $data2 = [
+            'payment_status' => "",
+        ];
             
+        Proflie::where('user_id',$user_id)
+            ->where('payment_status', $unpaid)
+            ->update($data2);
+        return redirect('payment')->with('flash_message', 'Payment added!');
     }
 
     /**

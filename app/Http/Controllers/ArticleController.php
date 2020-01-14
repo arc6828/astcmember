@@ -55,6 +55,7 @@ class ArticleController extends Controller
                             ->orWhere('name_present', 'LIKE', "%$keyword%")
                             ->orWhere('name_aj', 'LIKE', "%$keyword%")
                             ->orWhere('tel_aj', 'LIKE', "%$keyword%");
+                            
                         })
                         ->latest()->paginate($perPage);
                 } else {
