@@ -1,0 +1,11 @@
+{
+    "title": "The Basics - Networking",
+    "description": "Your app fetched this from a remote endpoint!",
+    "movies": [
+      { "id": "1", "title": "Star Wars", "releaseYear": "1977", "image" : "https://www.mobygames.com/images/shots/l/292686-star-wars-battlefront-windows-screenshot-those-famous-two.jpg" },
+      { "id": "2", "title": "Back to the Future", "releaseYear": "1985", "image" : "https://is1-ssl.mzstatic.com/image/thumb/Video/v4/54/5a/c7/545ac768-e9b6-49a3-65b5-d09949b55d5d/U2196_MLPA_backtothefuture3.jpg/268x0w.jpg"  },
+      { "id": "3", "title": "The Matrix", "releaseYear": "1999" , "image" : "https://www.catdumb.tv/wp-content/uploads/2019/08/371-1.jpg" },
+      { "id": "4", "title": "Inception", "releaseYear": "2010" , "image" : "https://image.tmdb.org/t/p/w500/qmDpIHrmpJINaRKAfWQfftjCdyi.jpg" },
+      { "id": "5", "title": "Interstellar", "releaseYear": "2014" , "image" : "https://pics.filmaffinity.com/Interstellar-844301689-large.jpg" }
+    ]
+}

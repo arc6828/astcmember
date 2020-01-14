@@ -23,15 +23,36 @@ class PaymentController extends Controller
         $keyword = $request->get('search');
         $perPage = 25;
 
-        if (!empty($keyword)) {
-            $payment = Payment::where('total', 'LIKE', "%$keyword%")
-                ->orWhere('remark', 'LIKE', "%$keyword%")
-                ->orWhere('receipt', 'LIKE', "%$keyword%")
-                ->orWhere('user_id', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
-        } else {
-            $payment = Payment::latest()->paginate($perPage);
+        switch(Auth::user()->profile->role){
+            case "admin" : //FOR ADMIN SEE ALL
+            case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
+                if (!empty($keyword)) {
+                    $payment = Payment::where('total', 'LIKE', "%$keyword%")
+                        ->orWhere('remark', 'LIKE', "%$keyword%")
+                        ->orWhere('receipt', 'LIKE', "%$keyword%")
+                        ->orWhere('user_id', 'LIKE', "%$keyword%")
+                        ->latest()->paginate($perPage);
+                } else {
+                    $payment = Payment::latest()->paginate($perPage);
+                }
+                break;
+            default : //FOR NON ADMIN SEE ONLY SELF
+            
+                if (!empty($keyword)) {
+                    $payment = Payment::where('user_id' , Auth::user()->id)
+                        ->where(function($query) use ($keyword){
+                            $query->where('total', 'LIKE', "%$keyword%")
+                            ->orWhere('remark', 'LIKE', "%$keyword%")
+                            ->orWhere('receipt', 'LIKE', "%$keyword%")
+                            ->orWhere('user_id', 'LIKE', "%$keyword%");
+                        })
+                        ->latest()->paginate($perPage);
+                } else {
+                    $payment = Payment::where('user_id' , Auth::user()->id)->latest()->paginate($perPage);
+                }
         }
+
+        
 
         return view('payment.index', compact('payment'));
     }

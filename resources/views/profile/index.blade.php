@@ -32,10 +32,9 @@
                                     <tr>
                                         <th>#</th>
                                         <th>ชื่อ-นามสกุล</th>
-                                        <th>อีเมล์</th>
-                                        <th>เบอร์โทรศัพท์</th>
+                                       
                                         <th>สถานะการชำระเงิน</th>
-                                        <th>ยอดหนี้คงเหลือ</th>
+                                        <th>ยอดที่ต้องชำระ</th>
                                         <th class="d-none">สถานภาพอื่นๆ โปรดระบุ</th>
                                         <th class="d-none">อาหารกลางวัน</th>
                                         <th class="">Actions</th>
@@ -53,12 +52,16 @@
                                     <tr>
                                         <td>{{ $loop->iteration+ (request('page','1')-1) *  25 }}</td>
                                         <td>
-                                            <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
+                                            @if (Auth::user()->profile->role == "academic-admin")    
+                                                <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
+                                            @else
+                                                <div>{{ $item->title }} {{ $item->name }} {{ $item->lastname }}</div>
+                                            @endif
                                             <div>วันที่ลงทะเบียน {{ $item->created_at }} </div>
                                             
                                             @switch( $item->role )
                                                 @case("author")
-                                                    <div><span class="badge badge-success">ผู้ส่งบทความ</span></div>
+                                                    <div><span class="badge badge-success">ผู้ส่งบทความ</span> จำนวน {{ $item->articles->count('title') }} เรื่อง</div>
                                                     @break                                                         
                                                 @case("audience")
                                                     <div><span class="badge badge-primary">ผู้เข้าร่วม</span></div>
@@ -73,8 +76,6 @@
                                             
                            
                                         </td>
-                                        <td>{{ $item->email }}</td>
-                                        <td>{{ $item->tel }}</td>
                                         <td>
                                             
                                             @switch( $item->payment_status )
