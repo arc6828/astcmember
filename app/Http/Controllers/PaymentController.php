@@ -130,11 +130,11 @@ class PaymentController extends Controller
             ->update( $data ); // อัพเดทข้อมูล
 
         $data2 = [
-            'payment_status' => "",
+            'payment_status' => "chackpayment",
         ];
             
-        Proflie::where('user_id',$user_id)
-            ->where('payment_status', $unpaid)
+        Profile::where('user_id',$user_id)
+            ->where('payment_status', 'unpaid')
             ->update($data2);
         return redirect('payment')->with('flash_message', 'Payment added!');
     }
