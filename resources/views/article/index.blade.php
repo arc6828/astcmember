@@ -68,7 +68,7 @@
                                                     $document = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
                                                 @endphp
                                                 @if($document)
-                                                    <a href="{{ url('storage') }}/{{$document->filename }}" class="mr-5">Docx</a> <a href="" class="d-none">PDF</a>
+                                                    <a href="{{ url('storage') }}/{{$document->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> <a href="" class="d-none">PDF</a>
                                                 @endif
                                             </div>
                                             
