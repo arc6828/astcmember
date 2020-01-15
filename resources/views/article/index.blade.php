@@ -63,7 +63,14 @@
 
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
 
-                                            <div><a href="" >Docx</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" >PDF</a></div>
+                                            <div>
+                                                @php
+                                                    $document = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
+                                                @endphp
+                                                @if($document)
+                                                    <a href="{{ url('storage') }}/{{$document->filename }}" class="mr-5">Docx</a> <a href="" class="d-none">PDF</a>
+                                                @endif
+                                            </div>
                                             
                                         </td>
                                         <td>

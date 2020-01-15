@@ -45,6 +45,10 @@ class Article extends Model
         return $this->hasMany('App\Document', 'article_id'); 
     }
 
+    public function latest_word_documents(){
+        return $this->hasMany('App\Document', 'article_id')->where("title","Word")->latest(); 
+    }
+
     public function payment(){
         return $this->hasMany('App\Payment', 'user_id');
     }
