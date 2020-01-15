@@ -55,7 +55,7 @@
                                             @if (Auth::user()->profile->role == "academic-admin")    
                                                 <div><a href="{{ url('/profile/' . $item->id) }}" title="View Profile"> {{ $item->title }} {{ $item->name }} {{ $item->lastname }}</a></div>
                                             @else
-                                                <div>{{ $item->title }} {{ $item->name }} {{ $item->lastname }}</div>
+                                                <div>{{ $item->sex }} {{ $item->name }} {{ $item->lastname }} ({{ $item->title }}) </div>
                                             @endif
                                             <div>วันที่ลงทะเบียน {{ $item->created_at }} </div>
                                             
