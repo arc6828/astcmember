@@ -110,38 +110,38 @@
                                                 {{ method_field('PATCH') }}
                                                 {{ csrf_field() }}
 
-                                        @switch($item->payment_status)
-                                            
-                                            @case("unpaid")
-                                                @if (Auth::user()->profile->role == "academic-admin")    
-                                                    <input type="hidden" name="payment_status" value="unpaid">  </input>
-                                                    <button type="submit" class="btn btn-warning btn-sm"> ยังไม่ได้ชำระ</button>
-                                                @endif
-                                            @break
+                                            @switch($item->payment_status)
+                                                
+                                                @case("unpaid")
+                                                    @if (Auth::user()->profile->role == "academic-admin")    
+                                                        <input type="hidden" name="payment_status" value="chackpayment">  </input>
+                                                        <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบ</button>
+                                                    @endif
+                                                    @break
 
-                                            @case("chackpayment")
-                                                @if (Auth::user()->profile->role == "academic-admin")    
+                                                @case("chackpayment")
+                                                    @if (Auth::user()->profile->role == "academic-admin")    
+                                                        <select name="payment_status" onchange="">
+                                                            <option value="paid">ชำระเงินครบ </option>
+                                                            <option value="notpaid">ชำระเงินไม่ครบ </option>
+                                                        </select>
+                                                            <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                    @endif
+                                                    @break
+                                                
+                                                @case("paid")
+                                                    @break
+                                                
+                                                @case("notpaid")
+                                                    @if (Auth::user()->profile->role == "academic-admin")
                                                     <select name="payment_status" onchange="">
-                                                        <option value="paid">ชำระเงินครบ </option>
-                                                        <option value="notpaid">ชำระเงินไม่ครบ </option>
+                                                        <option value="chackpayment">กำลังตรวจสอบ </option>
+                                                        <option value="paid">ชำระเงินให้ครบ </option>
                                                     </select>
-                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
-                                                @endif
-                                            @break
-                                            
-                                            @case("paid")
-                                                @break
-                                            
-                                            @case("notpaid")
-                                                @if (Auth::user()->profile->role == "academic-admin")
-                                                <select name="payment_status" onchange="">
-                                                     <option value="chackpayment">กำลังตรวจสอบ </option>
-                                                     <option value="paid">ชำระเงินให้ครบ </option>
-                                                </select>
-                                                <button type="submit" class="btn btn-warning btn-sm"> submit</button>
-                                                @endif
+                                                    <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                    @endif
 
-                                            @break
+                                                @break
                                           
 
                                             @endswitch
