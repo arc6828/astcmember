@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Profile;
 use App\Article;
 use App\Evaluation;
 use Illuminate\Http\Request;
@@ -26,21 +25,29 @@ class ArticleController extends Controller
         switch(Auth::user()->profile->role){
             case "admin" : //FOR ADMIN SEE ALL
             case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
-                if (!empty($keyword)) {
-                    $article = Profile::where('role','author')->articles->where('prapet', 'LIKE', "%$keyword%")
-                    ->orWhere('total_dept', 'LIKE', "%$keyword%")
-                    ->orWhere('group', 'LIKE', "%$keyword%")
-                    ->orWhere('name_th', 'LIKE', "%$keyword%")
-                    ->orWhere('name_en', 'LIKE', "%$keyword%")
-                    ->orWhere('purubpitshop', 'LIKE', "%$keyword%")
-                    ->orWhere('email', 'LIKE', "%$keyword%")
-                    ->orWhere('name_present', 'LIKE', "%$keyword%")
-                    ->orWhere('name_aj', 'LIKE', "%$keyword%")
-                    ->orWhere('tel_aj', 'LIKE', "%$keyword%")
-                    ->latest()->paginate($perPage);
+            if (!empty($keyword)) {
+                $article = Article::whereHas('profiles', function ($query) {
+                            $query->where('role',  'author');
+                        })
+                        ->where(function($query) use ($keyword){
+                            $query->where('prapet', 'LIKE', "%$keyword%")
+                            ->orWhere('total_dept', 'LIKE', "%$keyword%")
+                            ->orWhere('group', 'LIKE', "%$keyword%")
+                            ->orWhere('name_th', 'LIKE', "%$keyword%")
+                            ->orWhere('name_en', 'LIKE', "%$keyword%")
+                            ->orWhere('purubpitshop', 'LIKE', "%$keyword%")
+                            ->orWhere('email', 'LIKE', "%$keyword%")
+                            ->orWhere('name_present', 'LIKE', "%$keyword%")
+                            ->orWhere('name_aj', 'LIKE', "%$keyword%")
+                            ->orWhere('tel_aj', 'LIKE', "%$keyword%");
+                            
+                        })
+                        ->latest()->paginate($perPage);
                 } else {
-                    $article = Profile::where('role','author')->articles->latest()->paginate($perPage);
-                }
+                    $article = Article::whereHas('profiles', function ($query) {
+                            $query->where('role',  'author');
+                        })->latest()->paginate($perPage);
+                }                
                 break;
             default : //FOR NON ADMIN SEE ONLY SELF
                 if (!empty($keyword)) {
