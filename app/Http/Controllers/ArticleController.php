@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\Profile;
 use App\Article;
 use App\Evaluation;
 use Illuminate\Http\Request;
@@ -26,7 +27,7 @@ class ArticleController extends Controller
             case "admin" : //FOR ADMIN SEE ALL
             case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
                 if (!empty($keyword)) {
-                    $article = Article::where('prapet', 'LIKE', "%$keyword%")
+                    $article = Profile::where('role','author')->articles->where('prapet', 'LIKE', "%$keyword%")
                     ->orWhere('total_dept', 'LIKE', "%$keyword%")
                     ->orWhere('group', 'LIKE', "%$keyword%")
                     ->orWhere('name_th', 'LIKE', "%$keyword%")
@@ -38,7 +39,7 @@ class ArticleController extends Controller
                     ->orWhere('tel_aj', 'LIKE', "%$keyword%")
                     ->latest()->paginate($perPage);
                 } else {
-                    $article = Article::latest()->paginate($perPage);
+                    $article = Profile::where('role','author')->articles->latest()->paginate($perPage);
                 }
                 break;
             default : //FOR NON ADMIN SEE ONLY SELF
