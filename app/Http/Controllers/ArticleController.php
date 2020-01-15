@@ -26,7 +26,7 @@ class ArticleController extends Controller
             case "admin" : //FOR ADMIN SEE ALL
             case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
             if (!empty($keyword)) {
-                $article = Article::whereHas('profiles', function ($query) {
+                $article = Article::whereHas('profile', function ($query) {
                             $query->where('role',  'author');
                         })
                         ->where(function($query) use ($keyword){
@@ -44,7 +44,7 @@ class ArticleController extends Controller
                         })
                         ->latest()->paginate($perPage);
                 } else {
-                    $article = Article::whereHas('profiles', function ($query) {
+                    $article = Article::whereHas('profile', function ($query) {
                             $query->where('role',  'author');
                         })->latest()->paginate($perPage);
                 }                
