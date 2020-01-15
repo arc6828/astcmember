@@ -104,7 +104,21 @@
                                             @endswitch  
 
                                         </td>
-                                        <td>{{ $item->articles->sum('total_debt') }}</td>    
+                                        <td>
+                                            @switch( $item->role )
+                                                @case("author")
+                                                    {{ number_format( $item->articles->sum('price'))  }}
+                                                    @break                                                         
+                                                @case("audience")
+                                                    600
+                                                    @break
+                                                @case("guest")                                                    
+                                                    @break
+                                                @default
+                                                    @break
+                                                                                        
+                                            @endswitch  
+                                        </td>    
                                         <td>
                                             <form method="POST" action="{{ url('/profile' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('PATCH') }}
