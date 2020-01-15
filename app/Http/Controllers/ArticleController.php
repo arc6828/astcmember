@@ -102,6 +102,13 @@ class ArticleController extends Controller
         
         $requestData['status'] = "Create";
         $requestData['code'] = $this->getNewCode($requestData['group'],$requestData['prapet']);
+        if(Auth::user()->profile->status == "กำลังศึกษาปริญญาตรีหรือต่ำกว่า"){
+            $requestData['price'] = 600;
+            $requestData['total_debt'] = 600;
+        }else{
+            $requestData['price'] = 1500;
+            $requestData['total_debt'] = 1500;
+        }
         Article::create($requestData);
 
         return redirect('article')->with('flash_message', 'Article added!');

@@ -50,7 +50,7 @@
 <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
     <label for="status" class="control-label">{{ 'วุฒิการศึกษาปัจจุบัน' }}</label><span class="text-danger">{{ '*' }}</span>
     <select name="status" class="form-control form-control-sm" id="status" >
-        @foreach (["ต่ำกว่าปริญญาตรี","ปริญญาตรี","กำลังศึกษาปริญญาโท","ปริญญาโท","กำลังศึกษาปริญญาเอก","ปริญญาเอก"] as $optionKey => $optionValue)
+        @foreach (["กำลังศึกษาปริญญาตรีหรือต่ำกว่า","ปริญญาตรี","กำลังศึกษาปริญญาโท","ปริญญาโท","กำลังศึกษาปริญญาเอก","ปริญญาเอก"] as $optionKey => $optionValue)
             <option value="{{ $optionValue }}" {{ (isset($profile->status) && $profile->status == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
         @endforeach
     </select>
@@ -222,7 +222,7 @@
 </div>
 
 <hr >
-<div class="form-group {{ $errors->has('fileregister') ? 'has-error' : ''}}">
+<div class="form-group d-none {{ $errors->has('fileregister') ? 'has-error' : ''}}">
     <label for="fileregister" class="control-label">{{ 'ไฟล์หลักฐานการชำระเงินค่าลงทะเบียน' }}</label>
     <input class="form-control form-control-sm" name="fileregister" type="file" id="fileregister" value="{{ isset($profile->fileregister) ? $profile->fileregister : ''}}"  >
     {!! $errors->first('fileregister', '<p class="help-block">:message</p>') !!}

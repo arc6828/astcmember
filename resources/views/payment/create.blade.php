@@ -39,12 +39,12 @@
                                         <th>ลำดับ</th>
                                         <th>บทความ</th>
                                         <th>ราคาบทความ</th> 
-                                        <th>คงเหลือ</th>
+                                        <th>ที่ต้องชำระ</th>
                                         <th>สถานะ</th>
                                     </tr>
                                 </thead>
                             <tbody>
-                                @foreach( $user->articles as $item)
+                                @foreach( $user->articles->where('total_debt','>', 0) as $item)
                                 <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>

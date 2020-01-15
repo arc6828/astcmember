@@ -33,6 +33,7 @@
                                     <th>#</th>
                                     
                                     <th>ชื่อบทความ</th>
+                                    <th>ค่าลงทะเบียน</th>
                                     <th>สถานะบทความ</th>
                                     <th>Actions</th>
                                     <th class="d-none">Actions</th>
@@ -64,6 +65,14 @@
 
                                             <div><a href="" >Docx</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href="" >PDF</a></div>
                                             
+                                        </td>
+                                        <td>
+                                            <div>{{ $item->price }}</div>
+                                            <div>
+                                                @if( $item->total_debt == 0 )
+                                                    <span class="badge badge-success">ส่งหลักฐานชำระเงินแล้ว</span>
+                                                @endif
+                                            </div>
                                         </td>
                                         
 
