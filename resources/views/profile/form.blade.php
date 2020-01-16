@@ -18,7 +18,7 @@
     <div class="form-row">
       <div class="col">
         <select name="title2" class="form-control form-control-sm" id="title2" onchange="var title = document.querySelector('#title'); title.value=this.value; if(title.value == 'โปรดระบุ ...'){ title.classList.remove('d-none'); }else{ title.classList.add('d-none'); }">
-        @foreach (["ไม่มี","ศาสตราจารย์","รองศาสตาจารย์","ผู้ช่วยศาสตราจารย์","อาจารย์","นักวิจัย","เจ้าหน้าที่", "โปรดระบุ ..."] as $optionValue)
+        @foreach (["ไม่มี","ศาสตราจารย์","รองศาสตาจารย์","ผู้ช่วยศาสตราจารย์","อาจารย์","นักวิจัย","เจ้าหน้าที่","นักศึกษา", "โปรดระบุ ..."] as $optionValue)
             <option value="{{ $optionValue }}" {{ (isset($profile->title) && $profile->title == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
         @endforeach
         </select>
