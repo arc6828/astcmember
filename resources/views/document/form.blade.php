@@ -13,7 +13,7 @@
     <input class="form-control" value="{{ isset($document->user_id) ? $document->user->name : Auth::user()->name }}" readonly>
     {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
 </div>
-<div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+<div class="form-group d-none  {{ $errors->has('article_id') ? 'has-error' : ''}}">
     <label for="article_id" class="control-label">{{ 'บทความที่' }}</label>
     <input class="form-control" name="article_id" type="number" id="article_id" value="{{ isset($document->article_id) ? $document->article_id : request('article_id')}}" readonly=""  required="">
     {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}

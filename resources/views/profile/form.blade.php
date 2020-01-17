@@ -18,7 +18,7 @@
     <div class="form-row">
       <div class="col">
         <select name="title2" class="form-control form-control-sm" id="title2" onchange="var title = document.querySelector('#title'); title.value=this.value; if(title.value == 'โปรดระบุ ...'){ title.classList.remove('d-none'); }else{ title.classList.add('d-none'); }">
-        @foreach (["ไม่มี","ศาสตราจารย์","รองศาสตาจารย์","ผู้ช่วยศาสตราจารย์","อาจารย์","นักวิจัย","เจ้าหน้าที่", "โปรดระบุ ..."] as $optionValue)
+        @foreach (["ไม่มี","ศาสตราจารย์","รองศาสตาจารย์","ผู้ช่วยศาสตราจารย์","อาจารย์","นักวิจัย","เจ้าหน้าที่","นักศึกษา", "โปรดระบุ ..."] as $optionValue)
             <option value="{{ $optionValue }}" {{ (isset($profile->title) && $profile->title == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
         @endforeach
         </select>
@@ -50,7 +50,7 @@
 <div class="form-group {{ $errors->has('status') ? 'has-error' : ''}}">
     <label for="status" class="control-label">{{ 'วุฒิการศึกษาปัจจุบัน' }}</label><span class="text-danger">{{ '*' }}</span>
     <select name="status" class="form-control form-control-sm" id="status" >
-        @foreach (["ต่ำกว่าปริญญาตรี","ปริญญาตรี","กำลังศึกษาปริญญาโท","ปริญญาโท","กำลังศึกษาปริญญาเอก","ปริญญาเอก"] as $optionKey => $optionValue)
+        @foreach (["กำลังศึกษาปริญญาตรีหรือต่ำกว่า","ปริญญาตรี","กำลังศึกษาปริญญาโท","ปริญญาโท","กำลังศึกษาปริญญาเอก","ปริญญาเอก"] as $optionKey => $optionValue)
             <option value="{{ $optionValue }}" {{ (isset($profile->status) && $profile->status == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
         @endforeach
     </select>
@@ -222,7 +222,7 @@
 </div>
 
 <hr >
-<div class="form-group {{ $errors->has('fileregister') ? 'has-error' : ''}}">
+<div class="form-group d-none {{ $errors->has('fileregister') ? 'has-error' : ''}}">
     <label for="fileregister" class="control-label">{{ 'ไฟล์หลักฐานการชำระเงินค่าลงทะเบียน' }}</label>
     <input class="form-control form-control-sm" name="fileregister" type="file" id="fileregister" value="{{ isset($profile->fileregister) ? $profile->fileregister : ''}}"  >
     {!! $errors->first('fileregister', '<p class="help-block">:message</p>') !!}

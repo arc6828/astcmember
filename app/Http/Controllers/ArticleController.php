@@ -25,21 +25,29 @@ class ArticleController extends Controller
         switch(Auth::user()->profile->role){
             case "admin" : //FOR ADMIN SEE ALL
             case "academic-admin" : //FOR ACADEMIC-ADMIN SEE ALL
-                if (!empty($keyword)) {
-                    $article = Article::where('prapet', 'LIKE', "%$keyword%")
-                    ->orWhere('total_dept', 'LIKE', "%$keyword%")
-                    ->orWhere('group', 'LIKE', "%$keyword%")
-                    ->orWhere('name_th', 'LIKE', "%$keyword%")
-                    ->orWhere('name_en', 'LIKE', "%$keyword%")
-                    ->orWhere('purubpitshop', 'LIKE', "%$keyword%")
-                    ->orWhere('email', 'LIKE', "%$keyword%")
-                    ->orWhere('name_present', 'LIKE', "%$keyword%")
-                    ->orWhere('name_aj', 'LIKE', "%$keyword%")
-                    ->orWhere('tel_aj', 'LIKE', "%$keyword%")
-                    ->latest()->paginate($perPage);
+            if (!empty($keyword)) {
+                $article = Article::whereHas('profile', function ($query) {
+                            $query->where('role',  'author');
+                        })
+                        ->where(function($query) use ($keyword){
+                            $query->where('prapet', 'LIKE', "%$keyword%")
+                            ->orWhere('total_dept', 'LIKE', "%$keyword%")
+                            ->orWhere('group', 'LIKE', "%$keyword%")
+                            ->orWhere('name_th', 'LIKE', "%$keyword%")
+                            ->orWhere('name_en', 'LIKE', "%$keyword%")
+                            ->orWhere('purubpitshop', 'LIKE', "%$keyword%")
+                            ->orWhere('email', 'LIKE', "%$keyword%")
+                            ->orWhere('name_present', 'LIKE', "%$keyword%")
+                            ->orWhere('name_aj', 'LIKE', "%$keyword%")
+                            ->orWhere('tel_aj', 'LIKE', "%$keyword%");
+                            
+                        })
+                        ->latest()->paginate($perPage);
                 } else {
-                    $article = Article::latest()->paginate($perPage);
-                }
+                    $article = Article::whereHas('profile', function ($query) {
+                            $query->where('role',  'author');
+                        })->latest()->paginate($perPage);
+                }                
                 break;
             default : //FOR NON ADMIN SEE ONLY SELF
                 if (!empty($keyword)) {
@@ -102,6 +110,13 @@ class ArticleController extends Controller
         
         $requestData['status'] = "Create";
         $requestData['code'] = $this->getNewCode($requestData['group'],$requestData['prapet']);
+        if(Auth::user()->profile->status == "กำลังศึกษาปริญญาตรีหรือต่ำกว่า"){
+            $requestData['price'] = 600;
+            $requestData['total_debt'] = 600;
+        }else{
+            $requestData['price'] = 1500;
+            $requestData['total_debt'] = 1500;
+        }
         Article::create($requestData);
 
         return redirect('article')->with('flash_message', 'Article added!');
