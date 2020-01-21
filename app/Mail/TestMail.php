@@ -30,6 +30,8 @@ class TestMail extends Mailable
     public function build()
     {
         $article = $this->article;
-        return $this->view('article.testmail', compact('article') );
+        return $this->from('astc2020@vru.ac.th')
+        ->subject('This is my Test Mail Subject')
+        ->view('article.testmail', compact('article') );
     }
 }
