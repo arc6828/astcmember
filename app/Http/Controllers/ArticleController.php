@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Article;
+use App\Mail\TestMail;
 use App\Evaluation;
 use Illuminate\Http\Request;
 
@@ -225,6 +226,15 @@ class ArticleController extends Controller
         $article->update($requestData);
 
         return redirect('article')->with('flash_message', 'Article updated!');
+    }
+
+    public function testmail($id)
+    {
+        $article = Article::findOrFail($id);
+        $email = $article->user->email;
+        echo $article->user_id ;
+        echo $email;
+        Mail::to($email)->send(new TestMail($article));
     }
 
     /**
