@@ -31,7 +31,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('evaluation', 'EvaluationController');
     Route::resource('document', 'DocumentController');
     Route::resource('article-evaluation', 'ArticleEvaluationController');
-    //Route::resource('/payment','PaymentController');   
+      
 });
 
 Route::get('/district', function () {
@@ -39,3 +39,9 @@ Route::get('/district', function () {
 });
 Route::resource('payment', 'PaymentController');
 Route::resource('payment', 'PaymentController');
+
+//ดาวโหลด excel
+Route::get('export', 'MyController@export')->name('export');
+//แสดงปุ่ม import + export
+Route::get('importExportView', 'MyController@importExportView');
+Route::post('import', 'MyController@import')->name('import');
