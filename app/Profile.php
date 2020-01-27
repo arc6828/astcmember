@@ -61,4 +61,7 @@ class Profile extends Model
     public function payments(){
         return $this->hasMany('App\Profile','user_id','user_id');
     }
+    public function university(){
+        return $this->belongsTo('App\University', 'university_id','id'); 
+    }
 }

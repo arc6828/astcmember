@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+
+class CreateUniversityPaymentsTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('university_payments', function (Blueprint $table) {
+            $table->increments('id');
+            $table->timestamps();
+            $table->string('total')->nullable();
+            $table->text('remark')->nullable();
+            $table->string('receipt')->nullable();
+            $table->integer('user_id')->unsigned();
+            });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::drop('university_payments');
+    }
+}

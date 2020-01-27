@@ -39,6 +39,7 @@ Route::get('/district', function () {
 });
 Route::resource('payment', 'PaymentController');
 Route::resource('payment', 'PaymentController');
-
+Route::get('university_payment/index_payment', 'university_paymentController@index_payment');
 Route::resource('university', 'UniversityController');
 Route::resource('university', 'universityController');
+Route::resource('university_payment', 'university_paymentController');
