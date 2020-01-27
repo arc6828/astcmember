@@ -90,6 +90,7 @@
                         <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Document">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                        <div class="text-danger">*ขอความกรุณาผู้ส่งบความอัพโหลดบทความในรูปแบบไฟล์ WORD และ PDF </div>
 
                        
 

@@ -110,7 +110,7 @@
                                                     {{ number_format( $item->articles->sum('price'))  }}
                                                     @break                                                         
                                                 @case("audience")
-                                                    600
+                                                    600 - 1500
                                                     @break
                                                 @case("guest")                                                    
                                                     @break
