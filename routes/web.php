@@ -27,6 +27,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::resource('profile', 'ProfileController');
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::post('/article/{id}/testmail', 'ArticleController@testmail');
     Route::resource('article', 'ArticleController');
     Route::resource('evaluation', 'EvaluationController');
     Route::resource('document', 'DocumentController');
