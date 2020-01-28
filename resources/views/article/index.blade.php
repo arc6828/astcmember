@@ -55,7 +55,10 @@
                                                 {{ $item->name_en }}
                                             </div>
 
-                                            <div><b>ประเภท : </b>{{ $item->prapet }} <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}
+                                            <div>
+                                                <b>ประเภท : </b>{{ $item->prapet }} 
+                                                <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}
+                                                <b class="ml-4">รหัส : </b>{{ $item->code }}
                                             </div>
 
                                             <div></div>
