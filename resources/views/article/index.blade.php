@@ -65,10 +65,14 @@
 
                                             <div>
                                                 @php
-                                                    $document = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
+                                                    $document_word = ($item->latest_word_document)? $item->latest_word_document : null;
+                                                    $document_pdf = ($item->latest_pdf_document)? $item->latest_pdf_document : null;
                                                 @endphp
-                                                @if($document)
-                                                    <a href="{{ url('storage') }}/{{$document->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> <a href="" class="d-none">PDF</a>
+                                                @if($document_word)
+                                                    <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> 
+                                                @endif
+                                                @if($document_pdf)
+                                                    <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวโหลด PDF</a>
                                                 @endif
                                             </div>
                                             
