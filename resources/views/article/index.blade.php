@@ -28,6 +28,11 @@
 
                         <br/>
                         <br/>
+                        <style>
+                            .article-title{
+                                max-width : 500px;
+                            }
+                        </style>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -35,10 +40,9 @@
                                     <th>#</th>
                                     
                                     <th>ชื่อบทความ</th>
-                                    <th>ค่าลงทะเบียน</th>
                                     <th>สถานะบทความ</th>
-                                    <th>Actions</th>
-                                    <th class="d-none">Actions</th>
+                                    <th>Next Actions</th>
+                                    <th class="d-none">Next Actions</th>
 
                                     </tr>
                                 </thead>
@@ -46,7 +50,7 @@
                                 @foreach($article as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
+                                        <td class="article-title"  >
                                             <div>
                                                 <a href="{{ url('/article/' . $item->id) }}" title="View Article">{{ $item->name_th }}
                                                 </a>
@@ -55,7 +59,10 @@
                                                 {{ $item->name_en }}
                                             </div>
 
-                                            <div><b>ประเภท : </b>{{ $item->prapet }} <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}
+                                            <div>
+                                                <b>ประเภท : </b>{{ $item->prapet }} 
+                                                <b class="ml-4">กลุ่มสาขา : </b>{{ $item->group }}
+                                                <b class="ml-4">รหัส : </b>{{ $item->code }}
                                             </div>
 
                                             <div></div>
@@ -64,24 +71,26 @@
                                             </div>
 
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
-
                                             <div>
-                                                @php
-                                                    $document = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
-                                                @endphp
-                                                @if($document)
-                                                    <a href="{{ url('storage') }}/{{$document->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> <a href="" class="d-none">PDF</a>
-                                                @endif
-                                            </div>
+                                                <b>ค่าลงทะเบียน : </b>{{ $item->price }}
                                             
-                                        </td>
-                                        <td>
-                                            <div>{{ $item->price }}</div>
-                                            <div>
                                                 @if( $item->total_debt == 0 )
                                                     <span class="badge badge-success">ส่งหลักฐานชำระเงินแล้ว</span>
                                                 @endif
                                             </div>
+                                            <div>
+                                                @php
+                                                    $document_word = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
+                                                    $document_pdf = ($item->latest_pdf_documents)? $item->latest_pdf_documents->first() : null;
+                                                @endphp
+                                                @if($document_word)
+                                                    <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> 
+                                                @endif
+                                                @if($document_pdf)
+                                                    <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวโหลด PDF</a>
+                                                @endif
+                                            </div>
+                                            
                                         </td>
                                         
 
