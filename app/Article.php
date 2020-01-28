@@ -45,12 +45,12 @@ class Article extends Model
         return $this->hasMany('App\Document', 'article_id'); 
     }
 
-    public function latest_word_document(){
-        return $this->hasMany('App\Document', 'article_id')->where("title","Word")->latest()->first(); 
+    public function latest_word_documents(){
+        return $this->hasMany('App\Document', 'article_id')->where("title","Word")->latest(); 
     }
     
-    public function latest_pdf_document(){
-        return $this->hasMany('App\Document', 'article_id')->where("title","PDF")->latest()->first(); 
+    public function latest_pdf_documents(){
+        return $this->hasMany('App\Document', 'article_id')->where("title","PDF")->latest(); 
     }
 
     public function payment(){

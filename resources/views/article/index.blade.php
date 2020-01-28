@@ -67,8 +67,8 @@
 
                                             <div>
                                                 @php
-                                                    $document_word = ($item->latest_word_document)? $item->latest_word_document : null;
-                                                    $document_pdf = ($item->latest_pdf_document)? $item->latest_pdf_document : null;
+                                                    $document_word = ($item->latest_word_documents)? $item->latest_word_document->first() : null;
+                                                    $document_pdf = ($item->latest_pdf_documents)? $item->latest_pdf_document->first() : null;
                                                 @endphp
                                                 @if($document_word)
                                                     <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> 
