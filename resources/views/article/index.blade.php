@@ -35,7 +35,6 @@
                                     <th>#</th>
                                     
                                     <th>ชื่อบทความ</th>
-                                    <th>ค่าลงทะเบียน</th>
                                     <th>สถานะบทความ</th>
                                     <th>Next Actions</th>
                                     <th class="d-none">Next Actions</th>
