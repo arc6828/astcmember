@@ -12,6 +12,8 @@
                         <a href="{{ url('/article/create') }}" class="btn btn-success btn-sm" title="Add New Article">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                        
+
 
                         <form method="GET" action="{{ url('/article') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
@@ -214,6 +216,13 @@
                                                             @break
 
                                                 @endswitch
+                                            </form>
+                                            <form method="POST" action="{{ url('/article/' . $item->id) }}/testmail"  accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                                                {{ method_field('POST') }}
+                                                {{ csrf_field() }}
+
+                                                <button class="d-none" type="submit">Test Mail</button>
+
                                             </form>
                                         </td>
                                         

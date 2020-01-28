@@ -117,13 +117,10 @@ class PaymentController extends Controller
         }*/
         $data = [
             'payment_id' => $payment->id ,
-            'total_debt'=> 0 ,      //หนี้ที่เหลืออยู่
+            'total_debt'=> 0 ,      //หนี้ที่เหลืออยู่  //คำนวณ Total Debt
             'paid_at' => date("Y-m-d H:i:s") ,
         ];
-
-        //คำนวณ Total Debt
-
-            
+       
         //อัพเดท Article บางส่วน 
         Article::where('user_id',$user_id) // หาบทความใน user_id
             //   ->where('status','completed') // อัพเดทสถานะของบทความ
@@ -131,11 +128,11 @@ class PaymentController extends Controller
 
         $data2 = [
             'payment_status' => "chackpayment",
-        ];
+        ];//สร้างข้อมูลในการอัพเดท จะทำให้อัพได้หลายคอลั่ม
             
         Profile::where('user_id',$user_id)
-            ->where('payment_status', 'unpaid')
-            ->update($data2);
+            ->where('payment_status', 'unpaid')//ดึงข้อมูลเฉพาะ unpaid
+            ->update($data2);//อัพเดทข้อมูลในอาเรย์ data 2
         return redirect('payment')->with('flash_message', 'Payment added!');
     }
 

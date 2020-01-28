@@ -58,7 +58,8 @@ class Profile extends Model
     public function articles(){
         return $this->hasMany('App\Article','user_id','user_id');
     }
-    public function payments(){
+    public function payment(){
         return $this->hasMany('App\Profile','user_id','user_id');
     }
+    
 }
