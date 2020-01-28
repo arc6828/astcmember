@@ -26,6 +26,18 @@ class university_payment extends Model
      * @var array
      */
     protected $fillable = ['total', 'remark', 'receipt', 'user_id'];
+    public function user(){
+        return $this->belongto('App\User', 'user_id'); 
+    }
+    public function articles(){
+        return $this->hasMany('App\Article','user_id');
+      
+    } 
+    public function profiles(){
+        return $this->hasMany('App\Profile','user_id','user_id');
+    }
+    public function university(){
+        return $this->belongsTo('App\University', 'university_id','id'); 
+    }
 
-    
 }

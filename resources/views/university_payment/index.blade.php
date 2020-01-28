@@ -1,16 +1,16 @@
-@extends('layouts.app')
+@extends('layout.main')
 
 @section('content')
     <div class="container">
         <div class="row">
-            @include('admin.sidebar')
+           
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">University_payment</div>
+                    <div class="card-header">{{ Auth::user()->profile->university->university}}</div>
                     <div class="card-body">
                         <a href="{{ url('/university_payment/create') }}" class="btn btn-success btn-sm" title="Add New university_payment">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> ชำระเงิน
                         </a>
 
                         <form method="GET" action="{{ url('/university_payment') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -30,14 +30,14 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Total</th><th>Remark</th><th>Receipt</th><th>User Id</th><th>Actions</th>
+                                        <th>ลำดับ</th><th>รายชื่อนักศึกษา</th><th>ชื่อบทความ</th><th>ราคา</th><th>สถานะการจ่ายเงิน</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
-                                @foreach($university_payment as $item)
+                                @foreach($article as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->total }}</td><td>{{ $item->remark }}</td><td>{{ $item->receipt }}</td><td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->name_th }}</td><td>{{ $item->purubpitshop }}</td><td>{{ $item->price }}</td><td>{{ $item->status }}</td>
                                         <td>
                                             <a href="{{ url('/university_payment/' . $item->id) }}" title="View university_payment"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/university_payment/' . $item->id . '/edit') }}" title="Edit university_payment"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -52,7 +52,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $university_payment->appends(['search' => Request::get('search')])->render() !!} </div>
+                            <div class="pagination-wrapper"> {!! $article->appends(['search' => Request::get('search')])->render() !!} </div>
                         </div>
 
                     </div>

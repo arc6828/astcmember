@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 
 use App\university_payment;
 use App\Article;
+use App\User;
+use App\Profile;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,7 +20,7 @@ class university_paymentController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function index(Request $request)
+    public function index_payment(Request $request)
     {
         $keyword = $request->get('search');
         $perPage = 25;
@@ -32,10 +34,11 @@ class university_paymentController extends Controller
         } else {
             $university_payment = university_payment::latest()->paginate($perPage);
         }
+        $profile = Profile::whereNotIn('role',  ['guest','academic-admin','admin'])->latest()->paginate($perPage);
+        return view('university_payment.index_payment', compact('university_payment' , 'profile'));
 
-        return view('university_payment.index', compact('university_payment'));
     }
-    public function index_payment(Request $request)
+    public function index(Request $request)
     {
         $keyword = $request->get('search');
         $perPage = 25;
@@ -112,11 +115,9 @@ class university_paymentController extends Controller
                 }
                 break; 
         }
-
-        
-
-        return view('university_payment.index_payment', compact('article'));
+        return view('university_payment.index', compact('article'));  
     }
+
 
 
     /**
@@ -124,10 +125,25 @@ class university_paymentController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
-    {
-        return view('university_payment.create');
-    }
+    public function create(Request $request)
+    
+        {
+            $keyword = $request->get('search');
+            $perPage = 25;
+    
+            if (!empty($keyword)) {
+                $article = university_payment::where('total', 'LIKE', "%$keyword%")
+                    ->orWhere('remark', 'LIKE', "%$keyword%")
+                    ->orWhere('receipt', 'LIKE', "%$keyword%")
+                    ->orWhere('user_id', 'LIKE', "%$keyword%")
+                    ->latest()->paginate($perPage);
+            } else {
+                $article = university_payment::latest()->paginate($perPage);
+            }
+    
+            return view('university_payment.create', compact('article'));
+        }
+            
 
     /**
      * Store a newly created resource in storage.
@@ -147,7 +163,7 @@ class university_paymentController extends Controller
 
         university_payment::create($requestData);
 
-        return redirect('university_payment')->with('flash_message', 'university_payment added!');
+        return redirect('university_payment.create')->with('flash_message', 'university_payment added!');
     }
 
     /**

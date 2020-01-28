@@ -16,9 +16,15 @@
                         รายชื่อผู้ลงทะเบียนเข้าร่วมงาน
                     </a>
                 </li>
+               
                 <li role="presentation">
-                    <a href="{{ url('/profile') }}?role=author">
+                    <a href="{{ url('/university_payment/index_payment') }}">
                         รายชื่อผู้ส่งบทความ
+                    </a>
+                </li>
+                <li role="presentation">
+                    <a href="{{ url('/university_payment') }}">
+                        แจ้งชำระเงิน
                     </a>
                 </li>
                 <li role="presentation">

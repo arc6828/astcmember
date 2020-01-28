@@ -61,7 +61,8 @@
                                             
                                             @switch( $item->role )
                                                 @case("author")
-                                                    <div><span class="badge badge-success">ผู้ส่งบทความ</span> จำนวน {{ $item->articles->count('title') }} เรื่อง</div>
+                                                    <div><span class="badge badge-success">ผู้ส่งบทความ</span>
+                                                     จำนวน {{ $item->articles->count('title') }} เรื่อง</div>
                                                     @break                                                         
                                                 @case("audience")
                                                     <div><span class="badge badge-primary">ผู้เข้าร่วม</span></div>
