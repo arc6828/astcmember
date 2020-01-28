@@ -28,6 +28,11 @@
 
                         <br/>
                         <br/>
+                        <style>
+                            .article-title{
+                                max-width : 500px;
+                            }
+                        </style>
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
@@ -45,7 +50,7 @@
                                 @foreach($article as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>
+                                        <td class="article-title"  >
                                             <div>
                                                 <a href="{{ url('/article/' . $item->id) }}" title="View Article">{{ $item->name_th }}
                                                 </a>
