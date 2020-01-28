@@ -37,8 +37,8 @@
                                     <th>ชื่อบทความ</th>
                                     <th>ค่าลงทะเบียน</th>
                                     <th>สถานะบทความ</th>
-                                    <th>Actions</th>
-                                    <th class="d-none">Actions</th>
+                                    <th>Next Actions</th>
+                                    <th class="d-none">Next Actions</th>
 
                                     </tr>
                                 </thead>
@@ -67,7 +67,13 @@
                                             </div>
 
                                             <div><b>อีเมล : </b>{{ $item->email }}</div>
-
+                                            <div>
+                                                <b>ค่าลงทะเบียน : </b>{{ $item->price }}
+                                            
+                                                @if( $item->total_debt == 0 )
+                                                    <span class="badge badge-success">ส่งหลักฐานชำระเงินแล้ว</span>
+                                                @endif
+                                            </div>
                                             <div>
                                                 @php
                                                     $document_word = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
@@ -81,14 +87,6 @@
                                                 @endif
                                             </div>
                                             
-                                        </td>
-                                        <td>
-                                            <div>{{ $item->price }}</div>
-                                            <div>
-                                                @if( $item->total_debt == 0 )
-                                                    <span class="badge badge-success">ส่งหลักฐานชำระเงินแล้ว</span>
-                                                @endif
-                                            </div>
                                         </td>
                                         
 
