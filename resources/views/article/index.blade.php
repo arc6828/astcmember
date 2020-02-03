@@ -151,12 +151,17 @@
                                                     @case("checkformat")
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
-                                                       <select name="status" onchange="">
+                                                       <select name="status" onchange="if(this.value == 'consider') document.querySelector('#comment')classList.add("d-none") ">
                                                           <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
                                                           <option value="consider">รูปแบบถูกต้อง</option>
                                                           
                                                           
                                                         </select>
+                                                        <div id="comment">
+                                                            <div><input name="check_abstract" id="check_abstract" type="checkbox"> บทคัดย่อเกิน 250 คำ / ภาษา</div>
+                                                            <div><input name="check_keyword" id="check_keyword" type="checkbox"> คำสำคัญเกิน 5 คำ</div>
+                                                            <div><input name="check_page" id="check_page" type="checkbox"> จำนวนหน้าน้อยกว่า 8 หรือมากกว่า  10 หน้า</div>
+                                                        </div>
                                                         <button type="submit" class="btn btn-warning btn-sm"> submit</button>
                                                         @endif
                                                         @break
@@ -164,12 +169,10 @@
                                                     @case("waitmodifyformat")
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
-                                                        <select name="status" onchange="">
-                                                          <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
-                                                          <option value="consider">รูปแบบถูกต้อง</option>
-                                                          
-                                                          
-                                                        </select>
+                                                        <select name="status" onchange="">                                                          
+                                                          <option value="consider">รูปแบบถูกต้อง</option> 
+                                                        </select>                                                        
+                                                        
                                                         <button type="submit" class="btn btn-warning btn-sm"> submit</button>
                                                         @endif
                                                         @break

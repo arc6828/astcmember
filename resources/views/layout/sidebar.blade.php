@@ -43,12 +43,12 @@
           <i class="fas fa-fw fa-file"></i> <span>บทความทั้งหมด</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item d-none">
         <a class="nav-link" href="{{ url('/university_payment/index_payment') }}" >
           <i class="fas fa-fw fa-file"></i> <span>รายชื่อผู้ส่งบทความ</span>
         </a>
       </li>
-      <li class="nav-item">
+      <li class="nav-item d-none">
         <a class="nav-link" href="{{ url('/university_payment') }}" >
           <i class="fas fa-fw fa-file"></i> <span>แจ้งชำระเงิน</span>
         </a>
