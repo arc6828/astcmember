@@ -151,7 +151,7 @@
                                                     @case("checkformat")
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
-                                                       <select name="status" onchange="if(this.value == 'consider') document.querySelector('#comment').classList.add("d-none") ">
+                                                       <select name="status" onchange="if(this.value == 'consider') document.querySelector('#comment').classList.add('d-none'); else  document.querySelector('#comment').classList.remove('d-none'); ">
                                                           <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
                                                           <option value="consider">รูปแบบถูกต้อง</option>
                                                           
