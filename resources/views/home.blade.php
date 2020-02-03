@@ -52,7 +52,7 @@
             </div>            
 
             @if( Auth::user()->profile->role == "author")
-            <div class="card mt-4">
+            <div class="card mt-4 d-none">
                 <div class="card-header">บทความของคุณ</div>
 
                 <div class="card-body">
