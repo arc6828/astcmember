@@ -33,7 +33,7 @@ class ArticleController extends Controller
                         })
                         ->where(function($query) use ($keyword){
                             $query->where('prapet', 'LIKE', "%$keyword%")
-                            ->orWhere('total_dept', 'LIKE', "%$keyword%")
+                            //->orWhere('total_dept', 'LIKE', "%$keyword%")
                             ->orWhere('group', 'LIKE', "%$keyword%")
                             ->orWhere('name_th', 'LIKE', "%$keyword%")
                             ->orWhere('name_en', 'LIKE', "%$keyword%")
