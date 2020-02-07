@@ -1,9 +1,27 @@
-<div class="table-responsive">
-<div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+
+                    <div class="card-header">โปรดให้ข้อคิดเห็น ข้อเสนอแนะตามที่ท่านเห็นสมควรในประเด็นแก้ไข</div>
+                    <div class="card-body">
+                        <a href="{{ url('/article-evaluation/create') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New ArticleEvaluation">
+                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        </a>
+
+                        <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
                             <label for="article_id" class="control-label">{{ 'หมายเลขบทความ' }}</label>
+                            <input class="form-control" name="article_id" type="number" id="article_id" value="{{ isset($article->id) ? $article->id : ''}}" readonly required="">
+                            {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+                        <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+                            <label for="article_id" class="control-label">{{ 'ชื่อบทความ' }}</label>
                             <input class="form-control" name="article_id" type="text" id="article_id" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
                             {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
                         </div>
+                        <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+                            <label for="user_id" class="control-label">{{ 'ผู้ประเมินบทความ' }}</label>
+                            <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($user->id) ? $user->id : ''}}" readonly required="">
+                            {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+                        </div>
+    
+
     <table class="table table-hover table-striped">
         <thead class="thead-dark">
             <tr>
@@ -19,7 +37,7 @@
                 <td>ชื่อเรื่อง (Title)</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_name') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_name" type="number" id="evaluation_name" value="{{ isset($articleevaluation->evaluation_name) ? $articleevaluation->evaluation_name : ''}}" >
+                        <input class="form-control" name="evaluation_name" type="number" id="evaluation_name" value="{{ isset($articleevaluation->evaluation_name) ? $articleevaluation->evaluation_name : ''}}" required="">
                         {!! $errors->first('evaluation_name', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_name') ? 'has-error' : ''}}">
@@ -32,7 +50,7 @@
                 <td>บทคัดย่อ (Abstract)</td>
                 <td>10</td>
                 <td><div class="form-group {{ $errors->has('evaluation_abstract') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_abstract" type="number" id="evaluation_abstract" value="{{ isset($articleevaluation->evaluation_abstract) ? $articleevaluation->evaluation_abstract : ''}}" >
+                        <input class="form-control" name="evaluation_abstract" type="number" id="evaluation_abstract" value="{{ isset($articleevaluation->evaluation_abstract) ? $articleevaluation->evaluation_abstract : ''}}" required="">
                         {!! $errors->first('evaluation_abstract', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_abstract') ? 'has-error' : ''}}">
@@ -45,7 +63,7 @@
                 <td>บทนำ <br>(วัตถุประสงค์<br>และความสำคัญของ<br>ปัญหาวิจัย)<br>(Introduction)</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_introduction') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_introduction" type="number" id="evaluation_introduction" value="{{ isset($articleevaluation->evaluation_introduction) ? $articleevaluation->evaluation_introduction : ''}}" >
+                        <input class="form-control" name="evaluation_introduction" type="number" id="evaluation_introduction" value="{{ isset($articleevaluation->evaluation_introduction) ? $articleevaluation->evaluation_introduction : ''}}" required="">
                         {!! $errors->first('evaluation_introduction', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_introduction') ? 'has-error' : ''}}">
@@ -58,7 +76,7 @@
                 <td>วิธีดำเนินการวิจัย<br>(ระเบียบวิธีวิจัยและ<br>ขั้นตอนวิธีดำเนินการวิจัย)</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_methodology') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_methodology" type="number" id="evaluation_methodology" value="{{ isset($articleevaluation->evaluation_methodology) ? $articleevaluation->evaluation_methodology : ''}}" >
+                        <input class="form-control" name="evaluation_methodology" type="number" id="evaluation_methodology" value="{{ isset($articleevaluation->evaluation_methodology) ? $articleevaluation->evaluation_methodology : ''}}" required="">
                         {!! $errors->first('evaluation_methodology', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_methodology') ? 'has-error' : ''}}">
@@ -71,7 +89,7 @@
                 <td>ผลการวิจัย<br>และการอภิปรายผล</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_result') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_result" type="number" id="evaluation_result" value="{{ isset($articleevaluation->evaluation_result) ? $articleevaluation->evaluation_result : ''}}" >
+                        <input class="form-control" name="evaluation_result" type="number" id="evaluation_result" value="{{ isset($articleevaluation->evaluation_result) ? $articleevaluation->evaluation_result : ''}}" required="">
                         {!! $errors->first('evaluation_result', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_result') ? 'has-error' : ''}}">
@@ -84,7 +102,7 @@
                 <td>สรุปผลการวิจัย</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_conclusion') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_conclusion" type="number" id="evaluation_conclusion" value="{{ isset($articleevaluation->evaluation_conclusion) ? $articleevaluation->evaluation_conclusion : ''}}" >
+                        <input class="form-control" name="evaluation_conclusion" type="number" id="evaluation_conclusion" value="{{ isset($articleevaluation->evaluation_conclusion) ? $articleevaluation->evaluation_conclusion : ''}}" required="">
                         {!! $errors->first('evaluation_conclusion', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_conclusion') ? 'has-error' : ''}}">
@@ -97,7 +115,7 @@
                 <td>เอกสารอ้างอิง</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_reference') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_reference" type="number" id="evaluation_reference" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" >
+                        <input class="form-control" name="evaluation_reference" type="number" id="evaluation_reference" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="">
                         {!! $errors->first('evaluation_reference', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_reference') ? 'has-error' : ''}}">
@@ -110,25 +128,61 @@
                 <th>รวม</th>
                 <th>100</th>
                 <td><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_total_score" type="number" id="evaluation_total_score" value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}" >
+                        <input class="form-control" name="evaluation_total_score" type="number" id="evaluation_total_score" value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}" required="">
                         {!! $errors->first('evaluation_total_score', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td></td>
             </tr>
-        
     </table>
-<hr>
-<hr>
-    <select>
-        <option>ผ่าน</option>
-        <option>ผ่าน แบบมีแก้ไข</option>
-        <option>ไม่ผ่าน</option>
-    </select>
-</div>
+            
+            <hr>
 
+                <div class="form-group {{ $errors->has('assessment') ? 'has-error' : ''}}">
+                    <label for="assessment" class="control-label">{{ 'เกณฑ์การประเมิน' }}</label>
+                    <select name="assessment" class="form-control form-control-sm" id="assessment" required >
+                        @foreach (["ผ่าน"=>"ผ่าน โดยไม่มีการแก้ไข","ผ่าน หลังการแก้ไข"=>"ผ่าน หลังการปรับปรุงแก้ไข","ไม่ผ่าน"=>"ไม่ผ่าน"] as $optionKey => $optionValue)
+                            <option value="{{ $optionKey }}" {{ (isset($article_evaluation->assessment) && $article_evaluation->assessment == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
+                        @endforeach
+                    </select>
+                </div>
+          
+            <hr>
+                <table class="table table-striped table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th colspan="2" ><center><p>เกณฑ์การประเมิน</p></center></th>
+                    </tr>
+                  </thead>
+                  
+                    <tr>
+                      <td> >80 คะแนน </td>
+                      <td>  เห็นควรตีพิมพ์เผยแพร่ได้ โดยไม่มีการแก้ไข </td>
+                    </tr>
+                    <tr>
+                      <td>70-79 คะแนน</td>
+                      <td>เห็นควรตีพิมพ์เผยแพร่หลังการปรับปรุงแก้ไขตามคำแนะนำของผู้ทรงคุณวุฒิ และกองบรรณาธิการพิจารณา</td>
+                    </tr>
+                    <tr>
+                      <td>60-69 คะแนน</td>
+                      <td>เห็นควรปรับปรุงตามคำแนะนำของผู้ทรงคุณวุฒิ และให้กองบรรณาธิการพิจารณาในการตอบรับการตีพิมพ์เผยแพร่</td>
+                    </tr>
+                    <tr>
+                      <td> <60 คะแนน</td>
+                      <td>ไม่สมควรตีพิมพ์เผยแพร่</td>
+                    </tr>
+                  
+                </table>
+            <hr>
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
 </div>
+
+
+</div>
+
+
+
+
 <!--
 
 <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
