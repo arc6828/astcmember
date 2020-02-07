@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\ArticleEvaluation;
+use App\Article;
 use Illuminate\Http\Request;
 
 class ArticleEvaluationController extends Controller
@@ -53,9 +54,11 @@ class ArticleEvaluationController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('article-evaluation.create');
+        $article_id = $request->input('article_id');
+        $article = Article::findOrFail($article_id);
+        return view('article-evaluation.create', compact('article') );
     }
 
     /**
