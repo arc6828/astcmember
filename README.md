@@ -15,13 +15,9 @@ cp .env.example .env
 ```
 or if you use window
 ```
-cp .env.example .env
+copy .env.example .env
 ```
-then, setting your database in .env file 
-```
-cp .env.examp
-```
-then, generate key 
+setting your database in .env file .. then, generate key 
 ```
 php artisan key:generate
 ```
