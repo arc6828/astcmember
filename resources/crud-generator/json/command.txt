@@ -1,1 +1,2 @@
 php artisan crud:generate ArticleEvaluation  --fields_from_file="resources/crud-generator/json/article_evaluation.json"
+php artisan crud:generate Reviewer  --fields_from_file="resources/crud-generator/json/reviewer.json"

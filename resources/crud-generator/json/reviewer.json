@@ -1,0 +1,74 @@
+{
+    "fields": [
+        {
+            "name": "email",
+            "type": "string"
+        },
+        {
+            "name": "title",
+            "type": "string"            
+        },
+        {
+            "name": "name",
+            "type": "string"            
+        },
+        {
+            "name": "lastname",
+            "type": "string"            
+        },
+        {
+            "name": "group",
+            "type": "string"            
+        },
+        {
+            "name": "expert",
+            "type": "string"            
+        },
+        {
+            "name": "school",
+            "type": "string"            
+        },
+        {
+            "name": "major",
+            "type": "string"            
+        },
+        {
+            "name": "address",
+            "type": "string"
+        },       
+        {
+            "name": "district",
+            "type": "string"
+        },       
+        {
+            "name": "amphoe",
+            "type": "string"            
+        },       
+        {
+            "name": "province",
+            "type": "string"            
+        },       
+        {
+            "name": "postnumber",
+            "type": "string"
+        },       
+        {
+            "name": "tel",
+            "type": "string"           
+        },
+        {
+            "name": "fax",
+            "type": "string"
+        },
+        {
+            "name": "type",
+            "type": "string"
+        },
+        {
+            "name": "remark",
+            "type": "string"
+        }
+       
+    ]
+ }
+ 
