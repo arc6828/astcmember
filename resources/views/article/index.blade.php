@@ -98,8 +98,12 @@
                                         <td>
                                             @switch($item->status)
                                             @case("Create")                                                     
-                                                <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
+                                                <div><span class="badge badge-warning">รอการอัพโหลดบทความ</span></div>
                                                 <div>{{ $item->created_at}}</div>
+                                                @break
+                                            @case("receive")                                                     
+                                                <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
+                                                <div>{{ $item->received_at}}</div>
                                                 @break
                                             @case("checkformat")                                                 
                                                 <div><span class="badge badge-warning">กำลังตรวจสอบรูปแบบ</span></div>
@@ -143,6 +147,14 @@
                                                     @case("Create")
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
+                                                        <input type="hidden" name="status" value="receive">
+                                                        <button type="submit" class="btn btn-warning btn-sm"> ได้รับบทความแล้ว</button>
+                                                        @endif
+                                                        @break
+
+                                                    @case("receive")
+                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
+                                                        
                                                         <input type="hidden" name="status" value="checkformat">
                                                         <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบรูปแบบ</button>
                                                         @endif
@@ -178,42 +190,39 @@
                                                         @break
 
                                                         @case("consider")
-                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
-                                                        
-                                                        <select name="status" onchange="">
-                                                          
-                                                          <option value="pass">ผ่าน </option>
-                                                          <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
-                                                          <option value="notpass">ไม่ผ่าน</option>
-                                                          
-                                                        </select>
-                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
-                                                        @endif
-                                                        @break
+                                                            @if(Auth::user()->profile->role == "academic-admin")                                                  
+                                                            
+                                                            <select name="status" onchange="">
+                                                            
+                                                            <option value="pass">ผ่าน </option>
+                                                            <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
+                                                            <option value="notpass">ไม่ผ่าน</option>
+                                                            
+                                                            </select>
+                                                            <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                            @endif
+                                                            @break
 
                                                         @case("pass_modify")
-                                                    @if(Auth::user()->profile->role == "academic-admin") 
-                                                        <input type="hidden" name="status" value="waitmodify">
-                                                        <button type="submit" class="btn btn-warning btn-sm"> รอการพิจารณา</button>                                                 
-                                                        
-                                                        @endif
-                                                        @break
+                                                            @if(Auth::user()->profile->role == "academic-admin") 
+                                                            <input type="hidden" name="status" value="waitmodify">
+                                                            <button type="submit" class="btn btn-warning btn-sm"> รอการพิจารณา</button>                                                 
+                                                            
+                                                            @endif
+                                                            @break
 
                                                         @case("waitmodify")
-                                                    @if(Auth::user()->profile->role == "academic-admin")     
-
-
-                                                         <select name="status" onchange="">
-                                                          <option value="pass">ผ่าน </option>
-                                                          <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
-                                                          <option value="notpass">ไม่ผ่าน</option>
-                                                          
-                                                        </select>
-                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>                                             
-                                                        
-                                                        
-                                                        @endif
-                                                        @break
+                                                             @if(Auth::user()->profile->role == "academic-admin")    
+                                                            <select name="status" onchange="">
+                                                            <option value="pass">ผ่าน </option>
+                                                            <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
+                                                            <option value="notpass">ไม่ผ่าน</option>
+                                                            
+                                                            </select>
+                                                            <button type="submit" class="btn btn-warning btn-sm"> submit</button>   
+                                                            
+                                                            @endif
+                                                            @break
 
                                                         @case("pass")
                                                             <input type="hidden" name="status" value="pass">

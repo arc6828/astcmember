@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Document;
+use App\Article;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -42,9 +43,11 @@ class DocumentController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('document.create');
+        $article_id = $request->input('article_id');
+        $article = Article::findOrFail($article_id);
+        return view('document.create', compact('article') );
     }
 
     /**
@@ -58,12 +61,41 @@ class DocumentController extends Controller
     {
         
         $requestData = $request->all();
-                if ($request->hasFile('filename')) {
-            $requestData['filename'] = $request->file('filename')
-                ->store('uploads', 'public');
+        $article = Article::findOrFail($requestData['article_id']);
+        if ($request->hasFile('filename-word')) {            
+            $requestData['title'] = $request->input('title-word');
+            $requestData['filename'] = $request->file('filename-word')->store('uploads', 'public');
+            $document = Document::create($requestData);  
+            $requestDataArticle['status'] = "receive";
+        }
+        if ($request->hasFile('filename-pdf')) {            
+            $requestData['title'] = $request->input('title-pdf');
+            $requestData['filename'] = $request->file('filename-pdf')->store('uploads', 'public');
+            $document = Document::create($requestData);  
+            $requestDataArticle['status'] = "receive";
+        }
+        if(!empty($requestDataArticle['status'])){
+            if(isset($article->pass_modify)){
+                $requestDataArticle['status'] = "waitmodify";
+            }else if(isset($article->waitmodifyformat)){
+                $requestDataArticle['status'] = "consider";
+            }
+            //UPDATE ARITCLE TO RECIEVE
+            switch($requestDataArticle['status']){
+                case "receive" : 
+                    $requestDataArticle['received_at'] = date('Y-m-d H:i:s');
+                    break;
+                case "consider" : 
+                    $requestData['consider_at'] = date('Y-m-d H:i:s');
+                    break;    
+                case "waitmodify" : 
+                    $requestData['waitmodify_at'] = date('Y-m-d H:i:s');
+                    break;
+            }
+            $article->update($requestDataArticle);  
+
         }
 
-        $document = Document::create($requestData);
         return redirect("article/".$document->article_id)->with('flash_message', 'Document added!');
         //return redirect('document')->with('flash_message', 'Document added!');
     }

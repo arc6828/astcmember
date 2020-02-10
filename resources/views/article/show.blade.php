@@ -84,12 +84,19 @@
                     $document = $article->documents;
                 @endphp
 
+                @include('article/modal_create_document')
+                
+
+
                 <div class="card mb-4">
                     <div class="card-header">เอกสารบทความ</div>
                     <div class="card-body">
-                        <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Document">
+                        <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New Document">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        </button>
                         <div class="text-danger">*ขอความกรุณาผู้ส่งบความอัพโหลดบทความในรูปแบบไฟล์ WORD และ PDF </div>
 
                        
@@ -146,12 +153,15 @@
                     $evaluation = $article->evaluations;
                 @endphp
 
+                
+
                 <div class="card mb-4">
                     <div class="card-header">รายละเอียดผลประเมิน</div>
                     <div class="card-body">
                          <a href="{{ url('/evaluation/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New Evaluation">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
+                        
                         <br/>
                         <br/>
           

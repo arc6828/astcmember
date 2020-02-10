@@ -186,14 +186,17 @@ class ArticleController extends Controller
         if(!empty($requestData['status'])){
             switch($requestData['status']){
                 case "Create" : 
+                    $requestData['created_at'] = date('Y-m-d H:i:s');
+                    break;
+                case "receive" : 
                     $requestData['received_at'] = date('Y-m-d H:i:s');
                     break;
     
-                    case "checkformat" : 
+                case "checkformat" : 
                     $requestData['checkformat_at'] = date('Y-m-d H:i:s');
                     break;
     
-                    case "waitmodifyformat" : 
+                case "waitmodifyformat" : 
                     $requestData['waitmodifyformat_at'] = date('Y-m-d H:i:s');
                     break;
     
