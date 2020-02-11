@@ -31,8 +31,7 @@ class ArticleReceiveMail extends Mailable
     {
         $article = $this->article;
         //CONFIG THIS LINE OF CODE
-        $this->subject('ระบบได้รับนิพนธ์ต้นฉบับของท่านแล้ว')
+        return $this->subject('ระบบได้รับนิพนธ์ต้นฉบับของท่านแล้ว')
             ->view('mail.article_receive', compact('article') );
-        return redirect('article');
     }
 }

@@ -7,7 +7,10 @@ use App\Http\Controllers\Controller;
 
 use App\Article;
 use App\Mail\TestMail;
+use App\Mail\ArticleReceiveMail;
 use Illuminate\Support\Facades\Mail;
+
+
 use App\Evaluation;
 use Illuminate\Http\Request;
 

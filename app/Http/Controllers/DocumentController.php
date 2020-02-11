@@ -7,6 +7,11 @@ use App\Http\Controllers\Controller;
 
 use App\Document;
 use App\Article;
+
+use App\Mail\ArticleReceiveMail;
+use Illuminate\Support\Facades\Mail;
+
+
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -84,6 +89,9 @@ class DocumentController extends Controller
             switch($requestDataArticle['status']){
                 case "receive" : 
                     $requestDataArticle['received_at'] = date('Y-m-d H:i:s');
+                    //MAIL
+                    $email = $article->email;
+                    Mail::to($email)->send(new ArticleReceiveMail($article));
                     break;
                 case "consider" : 
                     $requestData['consider_at'] = date('Y-m-d H:i:s');
