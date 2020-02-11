@@ -67,9 +67,9 @@ class ArticleController extends Controller
                             ->orWhere('tel_aj', 'LIKE', "%$keyword%");
                             
                         })
-                        ->latest()->paginate($perPage);
+                        ->latest('updated_at')->paginate($perPage);
                 } else {
-                    $article = Article::where('user_id' , Auth::user()->id)->latest()->paginate($perPage);
+                    $article = Article::where('user_id' , Auth::user()->id)->latest('updated_at')->paginate($perPage);
                 }
                 break; 
         }
