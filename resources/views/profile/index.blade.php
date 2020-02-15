@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('content')
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <div class="container">
         <div class="row justify-content-center">
          
@@ -187,6 +188,32 @@
                     <div class="card-header">สัดส่วนผู้เข้าร่วมงาน</div>
                     <div class="card-body">
                         แสดง Pie Chart ของระบบ ...
+                    
+
+                        <script type="text/javascript">
+                            google.charts.load("current", {packages:["corechart"]});
+                            google.charts.setOnLoadCallback(drawChart);
+                                function drawChart() {
+                                    var data = google.visualization.arrayToDataTable([
+                                        ['Role', 'Count'],
+                                        ['ผู้เข้าร่วมงาน', 11],
+                                        ['ผู้ส่งบทความ', 2],
+                                        ['แขก', 2]
+                                    ]);
+
+                                    var options = {
+                                        title: 'สัดส่วนของผู้เข้าร่วมงาน',
+                                        is3D: true,
+                                    };
+
+                                    var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+                                    chart.draw(data, options);
+                                }
+                        </script>
+                        <body>
+                            <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+                        </body>
+
 
                     </div>
                 </div>
