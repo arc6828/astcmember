@@ -1,0 +1,31 @@
+{
+    "fields": [
+        {
+            "name": "email",
+            "type": "string"
+        },
+
+        {
+            "name": "article_id",
+            "type": "number"
+        },
+
+        {
+            "name": "reviwer_id",
+            "type": "number"
+        },
+
+        {
+            "name": "feedback",
+            "type": "string"
+        },
+
+        {
+            "name": "remark",
+            "type": "string"
+        }
+ 
+    ]
+ }
+ 
+ 

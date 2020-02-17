@@ -54,3 +54,4 @@ Route::post('import', 'MyController@import')->name('import');
 
 
 Route::resource('reviewer', 'ReviewerController');
+Route::resource('accept', 'AcceptController');
