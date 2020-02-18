@@ -189,8 +189,6 @@
                     <div class="card-body">
                         แสดง Pie Chart ของระบบ ...
 
-                        {{ $profile->role == admin }}
-                        
                         <script type="text/javascript">
                             google.charts.load("current", {packages:["corechart"]});
                             google.charts.setOnLoadCallback(drawChart);
