@@ -1,4 +1,4 @@
-<h1>เรียน มุกดา แพงศรีและวันวิสา แผ่นทอง {{ $article->user_id }}</h1>
+<h1>เรียน {{ $article->purubpitshop }} {{ $article->user_id }}</h1>
 <p>
 
 รหัสบทความ:    ASTC0056
