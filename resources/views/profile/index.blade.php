@@ -188,6 +188,9 @@
                     <div class="card-header">สัดส่วนผู้เข้าร่วมงาน</div>
                     <div class="card-body">
                         แสดง Pie Chart ของระบบ ...
+                        {{ $item->role == author }}
+                        {{ $item->role == audience }}
+                        {{ $item->role == guest }}
                     
 
                         <script type="text/javascript">
