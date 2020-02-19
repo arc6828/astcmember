@@ -4,7 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class university_payment extends Model
+class University_payment extends Model
 {
     /**
      * The database table used by the model.

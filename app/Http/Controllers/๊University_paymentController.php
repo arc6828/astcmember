@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\university_payment;
+use App\University_payment;
 use App\Article;
 use App\User;
 use App\Profile;
@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 
-class university_paymentController extends Controller
+class University_paymentController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,13 +26,13 @@ class university_paymentController extends Controller
         $perPage = 25;
 
         if (!empty($keyword)) {
-            $university_payment = university_payment::where('total', 'LIKE', "%$keyword%")
+            $university_payment = University_payment::where('total', 'LIKE', "%$keyword%")
                 ->orWhere('remark', 'LIKE', "%$keyword%")
                 ->orWhere('receipt', 'LIKE', "%$keyword%")
                 ->orWhere('user_id', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
         } else {
-            $university_payment = university_payment::latest()->paginate($perPage);
+            $university_payment = University_payment::latest()->paginate($perPage);
         }
         $profile = Profile::whereNotIn('role',  ['guest','academic-admin','admin'])->latest()->paginate($perPage);
         return view('university_payment.index_payment', compact('university_payment' , 'profile'));
@@ -132,13 +132,13 @@ class university_paymentController extends Controller
             $perPage = 25;
     
             if (!empty($keyword)) {
-                $article = university_payment::where('total', 'LIKE', "%$keyword%")
+                $article = University_payment::where('total', 'LIKE', "%$keyword%")
                     ->orWhere('remark', 'LIKE', "%$keyword%")
                     ->orWhere('receipt', 'LIKE', "%$keyword%")
                     ->orWhere('user_id', 'LIKE', "%$keyword%")
                     ->latest()->paginate($perPage);
             } else {
-                $article = university_payment::latest()->paginate($perPage);
+                $article = University_payment::latest()->paginate($perPage);
             }
     
             return view('university_payment.create', compact('article'));
@@ -161,7 +161,7 @@ class university_paymentController extends Controller
                 ->store('uploads', 'public');
         }
 
-        university_payment::create($requestData);
+        University_payment::create($requestData);
 
         return redirect('university_payment.create')->with('flash_message', 'university_payment added!');
     }
@@ -175,7 +175,7 @@ class university_paymentController extends Controller
      */
     public function show($id)
     {
-        $university_payment = university_payment::findOrFail($id);
+        $university_payment = University_payment::findOrFail($id);
 
         return view('university_payment.show', compact('university_payment'));
     }
@@ -189,7 +189,7 @@ class university_paymentController extends Controller
      */
     public function edit($id)
     {
-        $university_payment = university_payment::findOrFail($id);
+        $university_payment = University_payment::findOrFail($id);
 
         return view('university_payment.edit', compact('university_payment'));
     }
@@ -211,7 +211,7 @@ class university_paymentController extends Controller
                 ->store('uploads', 'public');
         }
 
-        $university_payment = university_payment::findOrFail($id);
+        $university_payment = University_payment::findOrFail($id);
         $university_payment->update($requestData);
 
         return redirect('university_payment')->with('flash_message', 'university_payment updated!');
@@ -226,7 +226,7 @@ class university_paymentController extends Controller
      */
     public function destroy($id)
     {
-        university_payment::destroy($id);
+        University_payment::destroy($id);
 
         return redirect('university_payment')->with('flash_message', 'university_payment deleted!');
     }
