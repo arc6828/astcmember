@@ -6,6 +6,8 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Reviewer;
+use App\Mail\ReviewerMail;
+
 use Illuminate\Http\Request;
 
 class ReviewerController extends Controller
@@ -118,6 +120,15 @@ class ReviewerController extends Controller
         $reviewer->update($requestData);
 
         return redirect('reviewer')->with('flash_message', 'Reviewer updated!');
+    }
+
+    public function reviewermail($id)
+    {
+        $reviewer = Reviewer::findOrFail($id);
+        $email = $reviewer->user->email;
+        echo $reviewer->user_id ;
+        echo $email;
+        Mail::to($email)->send(new ReviewerMail($reviewer));
     }
 
     /**

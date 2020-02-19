@@ -32,7 +32,10 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('evaluation', 'EvaluationController');
     Route::resource('document', 'DocumentController');
     Route::resource('article-evaluation', 'ArticleEvaluationController');
-      
+	Route::resource('reviewer', 'ReviewerController');
+	Route::resource('accept', 'AcceptController');
+	Route::post('/reviewer/thank-you', 'ReviewerController@thank-you');
+	      
 });
 
 Route::get('/district', function () {
@@ -52,6 +55,3 @@ Route::get('export', 'MyController@export')->name('export');
 Route::get('importExportView', 'MyController@importExportView');
 Route::post('import', 'MyController@import')->name('import');
 
-
-Route::resource('reviewer', 'ReviewerController');
-Route::resource('accept', 'AcceptController');
