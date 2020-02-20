@@ -125,7 +125,13 @@ class ReviewerController extends Controller
 
     public function reviewermail($id)
     {
+
+
+        $requestData = $request->all();
+        
         $reviewer = Reviewer::findOrFail($id);
+        $reviewer->update($requestData);
+        
         $email = $reviewer->email;
         Mail::to($email)->send(new ReviewerMail($reviewer));
         return redirect('reviewer');
