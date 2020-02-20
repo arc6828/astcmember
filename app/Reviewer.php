@@ -25,7 +25,7 @@ class Reviewer extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'title', 'name', 'lastname', 'group', 'expert', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'type', 'remark'];
+    protected $fillable = ['email', 'title', 'name', 'lastname', 'group', 'expert', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'type', 'remark' , 'status'];
 
     
 }

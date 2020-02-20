@@ -32,15 +32,17 @@
                             </table>
                         </div>
                         <div>
-                            <form method="POST" action="{{ url('/reviewer' . '/thank-you') }}" accept-charset="UTF-8" class="form-horizontal" >
+                            <form method="POST" action="{{ url('/reviewer' . '/' . $reviewer->id . '/thank-you') }}" accept-charset="UTF-8" class="form-horizontal" >
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
+                                                <input type="hidden" name="status" value="Accept">
                                                 <button type="submit" class="btn btn-success btn-sm" title="Accept"> Accept</button>
                             </form>
 
-                            <form method="POST" action="{{ url('/reviewer' . '') }}" accept-charset="UTF-8" class="form-horizontal" >
+                            <form method="POST" action="{{ url('/reviewer' . '/' . $reviewer->id . '/reject') }}" accept-charset="UTF-8" class="form-horizontal" >
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
+                                                <input type="hidden" name="status" value="Reject">
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Reject"> Reject</button>
                             </form>
                         </div>

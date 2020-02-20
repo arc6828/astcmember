@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Reviewer;
 use App\Mail\ReviewerMail;
+use Illuminate\Support\Facades\Mail;
 
 use Illuminate\Http\Request;
 
@@ -143,8 +144,26 @@ class ReviewerController extends Controller
         return redirect('reviewer')->with('flash_message', 'Reviewer deleted!');
     }
 
-    public function thankyou()
+    public function thankyou(Request $request, $id)
     {
+
+        $requestData = $request->all();
+        
+        $reviewer = Reviewer::findOrFail($id);
+        $reviewer->update($requestData);
+
         return view('reviewer.thank-you');
+    }
+
+    public function reject(Request $request, $id)
+    {
+
+        
+        $requestData = $request->all();
+        
+        $reviewer = Reviewer::findOrFail($id);
+        $reviewer->update($requestData);
+        
+        return view('reviewer.reject');
     }
 }
