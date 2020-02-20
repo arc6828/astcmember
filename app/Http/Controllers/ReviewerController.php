@@ -125,9 +125,7 @@ class ReviewerController extends Controller
     public function reviewermail($id)
     {
         $reviewer = Reviewer::findOrFail($id);
-        $email = $reviewer->user->email;
-        echo $reviewer->user_id ;
-        echo $email;
+        $email = $reviewer->email;
         Mail::to($email)->send(new ReviewerMail($reviewer));
     }
 
@@ -143,5 +141,10 @@ class ReviewerController extends Controller
         Reviewer::destroy($id);
 
         return redirect('reviewer')->with('flash_message', 'Reviewer deleted!');
+    }
+
+    public function thankyou()
+    {
+        return view('reviewer.thank-you');
     }
 }

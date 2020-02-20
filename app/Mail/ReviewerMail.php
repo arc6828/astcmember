@@ -29,7 +29,7 @@ class ReviewerMail extends Mailable
      */
     public function build()
     {
-        $article = $this->reviewer;
+        $reviewer = $this->reviewer;
         return $this->subject('เรียนเชิญเข้าร่วมการประเมินให้คะแนนบทความในงานประชุมวิชาการ ASTC2020 ')
         ->view('reviewer.reviewermail', compact('reviewer') );
     }

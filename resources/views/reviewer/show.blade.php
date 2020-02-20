@@ -32,8 +32,17 @@
                             </table>
                         </div>
                         <div>
-                            <a href="{{ url('/reviewer' . '/thank-you') }}" title="Accept"><button class="btn btn-success btn-sm"> Accept</button></a>
-                            <a href="" title="Reject"><button class="btn btn-danger btn-sm"> Reject</button></a>
+                            <form method="POST" action="{{ url('/reviewer' . '/thank-you') }}" accept-charset="UTF-8" class="form-horizontal" >
+                                                {{ method_field('POST') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-success btn-sm" title="Accept"> Accept</button>
+                            </form>
+
+                            <form method="POST" action="{{ url('/reviewer' . '') }}" accept-charset="UTF-8" class="form-horizontal" >
+                                                {{ method_field('POST') }}
+                                                {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-danger btn-sm" title="Reject"> Reject</button>
+                            </form>
                         </div>
 
                     </div>

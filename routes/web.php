@@ -34,7 +34,7 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('article-evaluation', 'ArticleEvaluationController');
 	Route::resource('reviewer', 'ReviewerController');
 	Route::resource('accept', 'AcceptController');
-	Route::post('/reviewer/thank-you', 'ReviewerController@thank-you');
+	Route::post('/reviewer/thank-you', 'ReviewerController@thankyou');
 	      
 });
 
