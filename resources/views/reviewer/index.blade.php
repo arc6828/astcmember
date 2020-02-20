@@ -52,7 +52,7 @@
                                             <form method="POST" action="{{ url('/reviewer' . '/' . $item->id) }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
-                                                <input type="hidden" name="status" value="waiting">
+                                                <input type="hidden" name="status" value="Waiting">
                                                 <button type="submit" class="btn btn-success btn-sm" title="Invite Reviewer"> Invite</button>
                                             </form>
 
