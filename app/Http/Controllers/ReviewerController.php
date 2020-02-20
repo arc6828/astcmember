@@ -128,6 +128,7 @@ class ReviewerController extends Controller
         $reviewer = Reviewer::findOrFail($id);
         $email = $reviewer->email;
         Mail::to($email)->send(new ReviewerMail($reviewer));
+        return redirect('reviewer');
     }
 
     /**
@@ -158,12 +159,12 @@ class ReviewerController extends Controller
     public function reject(Request $request, $id)
     {
 
-        
+
         $requestData = $request->all();
         
         $reviewer = Reviewer::findOrFail($id);
         $reviewer->update($requestData);
-        
+
         return view('reviewer.reject');
     }
 }
