@@ -123,7 +123,7 @@ class ReviewerController extends Controller
         return redirect('reviewer')->with('flash_message', 'Reviewer updated!');
     }
 
-    public function reviewermail($id)
+    public function reviewermail(Request $request, $id)
     {
 
 
