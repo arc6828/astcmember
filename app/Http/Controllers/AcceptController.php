@@ -10,6 +10,7 @@ use App\Accept;
 use App\Mail\AcceptMail;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 
 class AcceptController extends Controller
 {
