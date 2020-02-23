@@ -64,7 +64,6 @@ class AcceptController extends Controller
         $requestData = $request->all();
         Accept::create($requestData); 
         
-        $email = $accept->email;
         Mail::to($email)->send(new AcceptMail($accept));
 
         return redirect('article')->with('flash_message', 'Accept added!');
