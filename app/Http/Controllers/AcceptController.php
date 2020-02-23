@@ -9,6 +9,7 @@ use App\Reviewer;
 use App\Accept;
 use App\Mail\AcceptMail;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class AcceptController extends Controller
 {
