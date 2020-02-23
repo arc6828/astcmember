@@ -25,7 +25,14 @@ class Accept extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'article_id', 'reviwer_id', 'feedback', 'remark'];
+    protected $fillable = ['email', 'article_id', 'reviewer_id', 'feedback', 'remark'];
 
-    
+    public function article(){
+        return $this->belongsTo('App\Article', 'article_id'); 
+    }
+
+    public function reviewer(){
+        return $this->belongsTo('App\Reviewer', 'reviewer_id'); 
+    }
+
 }

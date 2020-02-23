@@ -3,7 +3,6 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-           
 
             <div class="col-md-12">
                 <div class="card">
@@ -41,9 +40,10 @@
                                     
                                     <th>ชื่อบทความ</th>
                                     <th>สถานะบทความ</th>
+                                    @if(Auth::user()->profile->role == "academic-admin")
                                     <th>Next Actions</th>
-                                    <th class="d-none">Next Actions</th>
-
+                                    <th>ผู้ประเมิน</th>
+                                    @endif
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -133,11 +133,8 @@
                                                 <div><span class="badge badge-danger">ไม่ผ่าน</span></div>
                                                 <div>{{ $item->notpass_at }}</div>
                                                 @break
-
-
                                             @endswitch   
-                                        </td>  
-
+                                        </td>
                                         <td>
                                             <form method="POST" action="{{ url('/article' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('PATCH') }}
@@ -234,15 +231,17 @@
 
                                                 @endswitch
                                             </form>
-                                            <form method="POST" action="{{ url('/article/' . $item->id) }}/testmail"  accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
-                                                {{ method_field('POST') }}
-                                                {{ csrf_field() }}
-
-                                                <button class="d-none" type="submit">Test Mail</button>
-
-                                            </form>
+                                            
                                         </td>
-                                        
+                                        @if(Auth::user()->profile->role == "academic-admin")
+                                        <td>
+                                            @foreach($item->accepts as $accept)
+                                                <div>{{ $accept->reviewer->title }}{{ $accept->reviewer->name }}  {{$accept->reviewer->lastname}} </div>
+                                            @endforeach
+                                            <a href="{{ url('/accept/create?article_id=' . $item->id) }}" title=""><button class="btn btn-primary btn-sm mr-5"> เพิ่มผู้ประเมิน</button></a>
+                                            
+                                        </td>
+                                        @endif
                                     
                                         <td class="d-none">
                                             <a href="{{ url('/article/' . $item->id) }}" title="View Article"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>

@@ -5,6 +5,11 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
+                        <a href="{{ url('') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm " title="ดาวน์โหลดเอกสาร">
+                            <i class="fa fa-arrow-down" aria-hidden="true"></i> ดาวน์โหลดเอกสาร
+                        </a>
+                        <hr>
+
                         <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
                             <label for="article_id" class="control-label">{{ 'หมายเลขบทความ' }}</label>
                             <input class="form-control" name="article_id" type="number" id="article_id" value="{{ isset($article->id) ? $article->id : ''}}" readonly required="">
@@ -15,10 +20,10 @@
                             <input class="form-control" name="article_id" type="text" id="article_id" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
                             {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-                            <label for="user_id" class="control-label">{{ 'ผู้ประเมินบทความ' }}</label>
-                            <input class="form-control" name="user_id" type="text" id="user_id" value="{{ isset($user->id) ? $user->id : ''}}" readonly required="">
-                            {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+                        <div class="form-group {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
+                            <label for="reviewer_id" class="control-label">{{ 'ผู้ประเมินบทความ' }}</label>
+                            <input class="form-control" name="reviewer_id" type="text" id="reviewer_id" value="{{ isset($reviewer->name) ? $reviewer->name : ''}}" readonly required="">
+                            {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
                         </div>
     
 
@@ -137,7 +142,7 @@
             
             <hr>
 
-                <div class="form-group {{ $errors->has('assessment') ? 'has-error' : ''}}">
+                <div class="form-group {{ $errors->has('assessment') ? 'has-error' : ''}} d-none">
                     <label for="assessment" class="control-label">{{ 'เกณฑ์การประเมิน' }}</label>
                     <select name="assessment" class="form-control form-control-sm" id="assessment" required >
                         @foreach (["ผ่าน"=>"ผ่าน โดยไม่มีการแก้ไข","ผ่าน หลังการแก้ไข"=>"ผ่าน หลังการปรับปรุงแก้ไข","ไม่ผ่าน"=>"ไม่ผ่าน"] as $optionKey => $optionValue)

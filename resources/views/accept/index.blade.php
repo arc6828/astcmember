@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         <div class="row justify-content-center">
-
+            
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">การตอบรับ</div>
@@ -29,14 +29,18 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Email</th><th>Article Id</th><th>Reviwer Id</th><th>Feedback</th><th>Remark</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>ชื่อบทความ</th>
+                                        <th>ชื่อผู้ประเมิน</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($accept as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->email }}</td><td>{{ $item->article_id }}</td><td>{{ $item->reviwer_id }}</td><td>{{ $item->feedback }}</td><td>{{ $item->remark }}</td>
+                                        <td>{{ $item->article->name_th }}</td>
+                                        <td>{{ $item->reviewer->name }}</td>
                                         <td>
                                             <a href="{{ url('/accept/' . $item->id) }}" title="View Accept"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/accept/' . $item->id . '/edit') }}" title="Edit Accept"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

@@ -25,7 +25,17 @@ class Reviewer extends Model
      *
      * @var array
      */
-    protected $fillable = ['email', 'title', 'name', 'lastname', 'group', 'expert', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'type', 'remark' , 'status'];
+    protected $fillable = ['email', 'title', 'name', 'lastname', 'group', 'expert', 'school', 'major', 'address', 'district', 'amphoe', 'province', 'postnumber', 'tel', 'fax', 'type', 'remark' , 'status' , 'article_id' , 'accept_id' , 'article_evaluation_id'];
 
-    
+    public function accepts(){ 
+        
+        return $this->hasMany('App\Accept','accept_id');
+    }
+
+    public function article_evaluations(){ 
+        
+        return $this->hasMany('App\ArticleEvaluation','article_evaluation_id');
+    }
+
+
 }

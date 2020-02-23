@@ -25,7 +25,7 @@ class Article extends Model
      *
      * @var array
      */
-    protected $fillable = ['prapet', 'group','group_name','status','code','name_th', 'name_en', 'purubpitshop', 'email', 'name_present', 'name_aj', 'tel_aj' , 'user_id' , 'payment_id','paid_at' , 'price', 'total_debt','received_at' , 'checkformat_at' , 'waitmodifyformat_at' , 'consider_at' , 'pass_modify_at' , 'waitmodify_at' , 'pass_at' , 'notpass_at'];
+    protected $fillable = ['prapet', 'group','group_name','status','code','name_th', 'name_en', 'purubpitshop', 'email', 'name_present', 'name_aj', 'tel_aj' , 'user_id' , 'payment_id','paid_at' , 'price', 'total_debt','received_at' , 'checkformat_at' , 'waitmodifyformat_at' , 'consider_at' , 'pass_modify_at' , 'waitmodify_at' , 'pass_at' , 'notpass_at' , 'reviewer' , 'reviewer_id'];
 
     
 
@@ -66,6 +66,12 @@ class Article extends Model
         return $this->belongsTo('App\Profile','user_id','user_id');
     }
     public function article_evaluations(){
-        return $this->hasMany('App\article_evaluations', 'article_id'); 
+        return $this->hasMany('App\ArticleEvaluations', 'article_id'); 
     }
+
+    public function accepts(){
+        return $this->hasMany('App\Accept', 'article_id'); 
+    }
+
+
 }

@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\ArticleEvaluation;
 use App\Article;
+use App\Reviewer;
 use Illuminate\Http\Request;
 
 class ArticleEvaluationController extends Controller

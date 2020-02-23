@@ -39,8 +39,8 @@
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->email }}</td><td>{{ $item->title }}</td><td>{{ $item->name }}</td><td>{{ $item->lastname }}</td><td>{{ $item->group }}</td><td>{{ $item->expert }}</td><td>{{ $item->school }}</td><td>{{ $item->major }}</td><td>{{ $item->address }}</td><td>{{ $item->district }}</td><td>{{ $item->amphoe }}</td><td>{{ $item->province }}</td><td>{{ $item->postnumber }}</td><td>{{ $item->tel }}</td><td>{{ $item->fax }}</td><td>{{ $item->type }}</td><td>{{ $item->remark }}</td><th>{{ $item->status }}</th>
                                         <td>
-                                            <a href="{{ url('/reviewer/' . $item->id) }}" title="View Reviewer"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/reviewer/' . $item->id . '/edit') }}" title="Edit Reviewer"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
+                                            <a href="{{ url('/reviewer/' . $item->id) }}" title="View Reviewer"><button class="btn btn-info btn-sm d-none"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                            <a href="{{ url('/reviewer/' . $item->id . '/edit') }}" title="Edit Reviewer"><button class="btn btn-primary btn-sm d-none"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
 
                                             <form method="POST" action="{{ url('/reviewer' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('DELETE') }}

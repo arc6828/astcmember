@@ -1,11 +1,10 @@
-@extends('layouts.app')
+@extends('layout.main')
 
 @section('content')
     <div class="container">
-        <div class="row">
-            @include('admin.sidebar')
-
-            <div class="col-md-9">
+        <div class="row justify-content-center">
+            
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Accept {{ $accept->id }}</div>
                     <div class="card-body">
@@ -27,7 +26,7 @@
                                     <tr>
                                         <th>ID</th><td>{{ $accept->id }}</td>
                                     </tr>
-                                    <tr><th> Email </th><td> {{ $accept->email }} </td></tr><tr><th> Article Id </th><td> {{ $accept->article_id }} </td></tr><tr><th> Reviwer Id </th><td> {{ $accept->reviwer_id }} </td></tr><tr><th> Feedback </th><td> {{ $accept->feedback }} </td></tr><tr><th> Remark </th><td> {{ $accept->remark }} </td></tr>
+                                    <tr><th> Email </th><td> {{ $accept->email }} </td></tr><tr><th> Article Id </th><td> {{ $accept->article_id }} </td></tr><tr><th> Reviwer Id </th><td> {{ $accept->reviewer_id }} </td></tr><tr><th> Feedback </th><td> {{ $accept->feedback }} </td></tr><tr><th> Remark </th><td> {{ $accept->remark }} </td></tr>
                                 </tbody>
                             </table>
                         </div>

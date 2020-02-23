@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-
+use App\Article;
+use App\Reviewer;
 use App\Accept;
 use Illuminate\Http\Request;
 
@@ -23,7 +24,7 @@ class AcceptController extends Controller
         if (!empty($keyword)) {
             $accept = Accept::where('email', 'LIKE', "%$keyword%")
                 ->orWhere('article_id', 'LIKE', "%$keyword%")
-                ->orWhere('reviwer_id', 'LIKE', "%$keyword%")
+                ->orWhere('reviewer_id', 'LIKE', "%$keyword%")
                 ->orWhere('feedback', 'LIKE', "%$keyword%")
                 ->orWhere('remark', 'LIKE', "%$keyword%")
                 ->latest()->paginate($perPage);
@@ -39,9 +40,13 @@ class AcceptController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('accept.create');
+        $article_id = $request->input('article_id'); // ดึงข้อมูลจากลิงค์ที่ส่งข้อมูลมา
+        $article = Article::findOrFail($article_id); // ดึงข้อมูลจาก article_id
+        $reviewers = Reviewer::get(); 
+
+        return view('accept.create' , compact('article','reviewers') );
     }
 
     /**
@@ -56,9 +61,9 @@ class AcceptController extends Controller
         
         $requestData = $request->all();
         
-        Accept::create($requestData);
+        Accept::create($requestData); //****
 
-        return redirect('accept')->with('flash_message', 'Accept added!');
+        return redirect('article')->with('flash_message', 'Accept added!');
     }
 
     /**
