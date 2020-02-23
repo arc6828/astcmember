@@ -62,7 +62,7 @@ class AcceptController extends Controller
     {
         
         $requestData = $request->all();
-        Accept::create($requestData); 
+        $accept = Accept::create($requestData); 
         
         $email = $accept->email;
         Mail::to($email)->send(new AcceptMail($accept));
