@@ -62,9 +62,6 @@ class AcceptController extends Controller
         
         $requestData = $request->all();
         Accept::create($requestData); 
-
-        $accept = Accept::findOrFail($id);
-        $accept->update($requestData);
         
         $email = $accept->email;
         Mail::to($email)->send(new AcceptMail($accept));
