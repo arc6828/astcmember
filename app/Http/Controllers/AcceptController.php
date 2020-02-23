@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Article;
 use App\Reviewer;
 use App\Accept;
+use App\Mail\AcceptMail;
 use Illuminate\Http\Request;
 
 class AcceptController extends Controller
@@ -125,5 +126,19 @@ class AcceptController extends Controller
         Accept::destroy($id);
 
         return redirect('accept')->with('flash_message', 'Accept deleted!');
+    }
+
+    public function acceptmail(Request $request, $id)
+    {
+
+
+        $requestData = $request->all();
+        
+        $accept = Accept::findOrFail($id);
+        $accept->update($requestData);
+        
+        $email = $accept->email;
+        Mail::to($email)->send(new AcceptMail($accept));
+        return redirect('article');
     }
 }

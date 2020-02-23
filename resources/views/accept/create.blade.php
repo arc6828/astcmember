@@ -20,7 +20,8 @@
                             </ul>
                         @endif
 
-                        <form method="POST" action="{{ url('/accept') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                        <form method="POST" action="{{ url('/article') }}" accept-charset="UTF-8" class="form-horizontal" enctype="multipart/form-data">
+                            {{ method_field('POST') }}
                             {{ csrf_field() }}
 
                             @include ('accept.form', ['formMode' => 'create'])
