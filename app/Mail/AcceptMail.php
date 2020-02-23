@@ -31,6 +31,6 @@ class AcceptMail extends Mailable
     {
         $accept = $this->accept;
         return $this->subject('กรุณาประเมินผลบทความ')
-        ->view('accept.acceptmail', compact('accept') );
+        ->view('accept.acceptmail', compact('accept' , 'reviewer') );
     }
 }
