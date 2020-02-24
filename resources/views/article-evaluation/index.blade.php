@@ -75,7 +75,7 @@
                                         <td>{{ $item->comment_result }}</td>
                                         <td>{{ $item->comment_conclusion }}</td>
                                         <td>{{ $item->comment_reference }}</td>
-                                        <td>{{ $item->user_id }}</td>
+                                        <td>{{ $item->reviewer->title }}{{ $item->reviewer->name }} {{ $item->reviewer->lastname }}</td>
                                         <td>
                                             <a href="{{ url('/article-evaluation/' . $item->id) }}" title="View ArticleEvaluation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/article-evaluation/' . $item->id . '/edit') }}" title="Edit ArticleEvaluation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
