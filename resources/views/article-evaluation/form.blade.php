@@ -20,7 +20,7 @@
                             <input class="form-control" name="article_id" type="text" id="article_id" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
                             {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
                         </div>
-                        <div class="form-group  {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
+                        <div class="form-group d-none  {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
                             <label for="reviewer_id" class="control-label">{{ 'หมายเลขผู้ประเมินบทความ' }}</label>
                             <input class="form-control" name="reviewer_id" type="text" id="reviewer_id" value="{{ isset($reviewer->id) ? $reviewer->id : ''}}" readonly required="">
                             {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
@@ -28,7 +28,7 @@
                         
                         <div class="form-group {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
                             <label for="reviewer_id" class="control-label">{{ 'ผู้ประเมินบทความ' }}</label>
-                            <input class="form-control" name="reviewer_name" type="text" id="reviewer_name" value="{{ isset($reviewer->name) ? $reviewer->name : ''}}" readonly required="">
+                            <input class="form-control" name="reviewer_name" type="text" id="reviewer_name" value="{{ isset($reviewer->name) ? $reviewer->title.$reviewer->name.' '.$reviewer->lastname : ''}}" readonly required="">
                             {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
                         </div>
     
