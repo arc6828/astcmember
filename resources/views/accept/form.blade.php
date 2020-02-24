@@ -15,7 +15,7 @@
     <label for="reviewer_id" class="control-label">{{ 'ผู้ประเมิน' }}</label>
         <select name="reviewer_id" class="form-control form-control-sm" id="reviewer_id" required >
                 @foreach ($reviewers as $item)
-                    <option value="{{ $item->id }}" {{ (isset($accept->reviewer_id) && $accept->reviewer_id == $item->id) ? 'selected' : ''}}>{{ $item->title }} {{ $item->name }} {{ $item->lastname }} : {{ $item->school }} ({{ $item->group }}) : {{ $item->email }} : ได้รับมอบหมายแล้ว {{ $item->accepts->sum('id') }} บทความ </option>
+                    <option value="{{ $item->id }}" {{ (isset($accept->reviewer_id) && $accept->reviewer_id == $item->id) ? 'selected' : ''}}>{{ $item->title }} {{ $item->name }} {{ $item->lastname }} : {{ $item->school }} ({{ $item->group }}) : {{ $item->email }} : ได้รับมอบหมายแล้ว {{ $item->accepts->count('id') }} บทความ </option>
                 @endforeach
         </select>
 </div>
