@@ -42,7 +42,6 @@
                                     <th>สถานะบทความ</th>
                                     @if(Auth::user()->profile->role == "academic-admin")
                                     <th>Next Actions</th>
-                                    <th>ผู้ประเมิน</th>
                                     @endif
                                     </tr>
                                 </thead>
@@ -187,14 +186,27 @@
                                                         @case("consider")
                                                             @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                             
-                                                            <select name="status" onchange="">
+                                                            <select name="status" onchange="" class="d-none">
                                                             
                                                             <option value="pass">ผ่าน </option>
                                                             <option value="pass_modify">ผ่าน (มีการแก้ไข)</option>
                                                             <option value="notpass">ไม่ผ่าน</option>
                                                             
                                                             </select>
-                                                            <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                            <button type="submit" class="btn btn-warning btn-sm d-none"> submit</button>
+                                                            @endif
+
+                                                            @if(Auth::user()->profile->role == "academic-admin")
+                                                                <ol style="padding-left: 15px;">
+                                                                @foreach($item->accepts as $accept)
+                                                                    <li>
+                                                                        {{ $accept->reviewer->title }}{{ $accept->reviewer->name }}  {{$accept->reviewer->lastname}} 
+                                                                    </li>
+                                                                @endforeach
+                                                                </ol>
+                                                                <a href="{{ url('/accept/create?article_id=' . $item->id) }}" title=""><button type="button" class="btn btn-primary btn-sm mr-5"> เพิ่มผู้ประเมิน</button></a>
+                                                                
+                                                             
                                                             @endif
                                                             @break
 
@@ -231,15 +243,7 @@
                                             </form>
                                             
                                         </td>
-                                        @if(Auth::user()->profile->role == "academic-admin")
-                                        <td>
-                                            @foreach($item->accepts as $accept)
-                                                <div>{{ $accept->reviewer->title }}{{ $accept->reviewer->name }}  {{$accept->reviewer->lastname}} </div>
-                                            @endforeach
-                                            <a href="{{ url('/accept/create?article_id=' . $item->id) }}" title=""><button class="btn btn-primary btn-sm mr-5"> เพิ่มผู้ประเมิน</button></a>
-                                            
-                                        </td>
-                                        @endif
+                                        
                                     
                                         <td class="d-none">
                                             <a href="{{ url('/article/' . $item->id) }}" title="View Article"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
