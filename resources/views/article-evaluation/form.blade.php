@@ -17,7 +17,7 @@
                         </div>
                         <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
                             <label for="article_id" class="control-label">{{ 'ชื่อบทความ' }}</label>
-                            <input class="form-control" name="article_id" type="text" id="article_id" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
+                            <input class="form-control" name="article_name" type="text" id="article_name" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
                             {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
                         </div>
                         <div class="form-group d-none  {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
