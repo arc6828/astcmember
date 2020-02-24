@@ -42,6 +42,11 @@
         <a class="nav-link" href="{{ url('/article') }}" >
           <i class="fas fa-fw fa-file"></i> <span>บทความทั้งหมด</span>
         </a>
+      </li>      
+      <li class="nav-item">
+        <a class="nav-link" href="{{ url('/reviewer') }}" >
+          <i class="fas fa-fw fa-user-check"></i> <span>รายชื่อผู้ประเมิน</span>
+        </a>
       </li>
       <li class="nav-item d-none">
         <a class="nav-link" href="{{ url('/university_payment/index_payment') }}" >

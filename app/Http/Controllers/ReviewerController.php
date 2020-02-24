@@ -41,9 +41,9 @@ class ReviewerController extends Controller
                 ->orWhere('fax', 'LIKE', "%$keyword%")
                 ->orWhere('type', 'LIKE', "%$keyword%")
                 ->orWhere('remark', 'LIKE', "%$keyword%")
-                ->latest()->paginate($perPage);
+                ->latest('updated_at')->paginate($perPage);
         } else {
-            $reviewer = Reviewer::latest()->paginate($perPage);
+            $reviewer = Reviewer::latest('updated_at')->paginate($perPage);
         }
 
         return view('reviewer.index', compact('reviewer'));
