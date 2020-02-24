@@ -47,11 +47,11 @@ class ArticleController extends Controller
                             ->orWhere('tel_aj', 'LIKE', "%$keyword%");
                             
                         })
-                        ->latest()->paginate($perPage);
+                        ->latest('updated_at')->paginate($perPage);
                 } else {
                     $article = Article::whereHas('profile', function ($query) {
                             $query->where('role',  'author');
-                        })->latest()->paginate($perPage);
+                        })->latest('updated_at')->paginate($perPage);
                 }                
                 break;
             default : //FOR NON ADMIN SEE ONLY SELF

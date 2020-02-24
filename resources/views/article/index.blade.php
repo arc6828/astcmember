@@ -142,23 +142,21 @@
                                                 @switch($item->status)
 
                                                     @case("Create")
-                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
-                                                        
-                                                        <input type="hidden" name="status" value="receive">
-                                                        <button type="submit" class="btn btn-warning btn-sm"> ได้รับบทความแล้ว</button>
+                                                        @if(Auth::user()->profile->role == "academic-admin")    
+                                                            <input type="hidden" name="status" value="receive">
+                                                            <button type="submit" class="btn btn-warning btn-sm d-none"> ได้รับบทความแล้ว</button>
                                                         @endif
                                                         @break
 
                                                     @case("receive")
-                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
-                                                        
-                                                        <input type="hidden" name="status" value="checkformat">
-                                                        <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบรูปแบบ</button>
+                                                        @if(Auth::user()->profile->role == "academic-admin")     
+                                                            <input type="hidden" name="status" value="checkformat">
+                                                            <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบรูปแบบ</button>
                                                         @endif
                                                         @break
 
                                                     @case("checkformat")
-                                                    @if(Auth::user()->profile->role == "academic-admin")                                                  
+                                                        @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                        <select name="status" onchange="if(this.value == 'consider') document.querySelector('#comment').classList.add('d-none'); else  document.querySelector('#comment').classList.remove('d-none'); ">
                                                           <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
