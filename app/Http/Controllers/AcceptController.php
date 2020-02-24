@@ -47,7 +47,8 @@ class AcceptController extends Controller
     {
         $article_id = $request->input('article_id'); // ดึงข้อมูลจากลิงค์ที่ส่งข้อมูลมา
         $article = Article::findOrFail($article_id); // ดึงข้อมูลจาก article_id
-        $reviewers = Reviewer::get(); 
+        //$reviewers = Reviewer::where('group','like',"%{$article->group}%")->where('status','Accept')->get(); 
+        $reviewers = Reviewer::where('group','like',"%{$article->group}%")->get(); 
 
         return view('accept.create' , compact('article','reviewers') );
     }

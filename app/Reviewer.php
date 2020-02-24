@@ -29,7 +29,7 @@ class Reviewer extends Model
 
     public function accepts(){ 
         
-        return $this->hasMany('App\Accept','accept_id');
+        return $this->hasMany('App\Accept','reviewer_id');
     }
 
     public function article_evaluations(){ 
