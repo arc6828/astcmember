@@ -58,8 +58,10 @@ class ArticleEvaluationController extends Controller
     public function create(Request $request)
     {
         $article_id = $request->input('article_id');
+        $reviewer_id = $request->input('reviewer_id');
         $article = Article::findOrFail($article_id);
-        return view('article-evaluation.create', compact('article') );
+        $reviewer = Reviewer::findOrFail($reviewer_id);
+        return view('article-evaluation.create', compact('article','reviewer') );
     }
 
     /**
