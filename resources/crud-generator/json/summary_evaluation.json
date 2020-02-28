@@ -1,0 +1,57 @@
+{
+    "fields": [
+        {
+            "name": "article_id",
+            "type": "integer"
+        },
+        {
+            "name": "article_evaluation_id",
+            "type": "integer"
+        },      
+        {
+            "name": "summary_average_score",
+            "type": "integer"
+        },   
+        {
+            "name": "summary_total_score",
+            "type": "integer"
+        },        
+        {
+            "name": "nwecomment_name",
+            "type": "text"
+        },
+        {
+            "name": "nwecomment_abstract",
+            "type": "text"
+        },
+        {
+            "name": "nwecomment_introduction",
+            "type": "text"
+        },
+        {
+            "name": "nwecomment_methodology",
+            "type": "text"
+        },
+        {
+            "name": "nwecomment_result",
+            "type": "text"
+        },
+        {
+            "name": "nwecomment_conclusion",
+            "type": "text"
+        },
+        {
+            "name": "nwecomment_reference",
+            "type": "text"
+        },
+        {
+            "name": "evaluation_summary", 
+            "type": "select",
+            "options": {
+                "ผ่าน โดยไม่มีการแก้ไข": "ผ่าน โดยไม่มีการแก้ไข",
+                "ผ่าน หลังการปรับปรุงแก้ไข": "ผ่าน หลังการปรับปรุงแก้ไข",
+                "ไม่ผ่าน": "ไม่ผ่าน"
+            }
+        } 
+    ]
+ }

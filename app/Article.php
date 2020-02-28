@@ -73,5 +73,9 @@ class Article extends Model
         return $this->hasMany('App\Accept', 'article_id'); 
     }
 
+     public function summary_evaluations(){
+        return $this->hasOne('App\Summary_evaluations', 'article_id');
+    }
+
 
 }

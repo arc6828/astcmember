@@ -37,6 +37,7 @@ Route::middleware(['auth'])->group(function () {
 	Route::post('/reviewer/{id}/thank-you', 'ReviewerController@thankyou');
 	Route::post('/reviewer/{id}/reject', 'ReviewerController@reject');
 	Route::post('/reviewer/{id}', 'ReviewerController@reviewermail');
+	Route::resource('summary_evaluation', 'Summary_evaluationController');
 	      
 });
 
