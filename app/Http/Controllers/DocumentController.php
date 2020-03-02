@@ -91,17 +91,19 @@ class DocumentController extends Controller
             case "Create" : 
                 $requestDataArticle['received_at'] = date('Y-m-d H:i:s');
                 $requestDataArticle['status'] = 'receive';
+                $article->update($requestDataArticle); 
                 break;
             case "waitmodifyformat" : 
                 $requestDataArticle['consider_at'] = date('Y-m-d H:i:s');
                 $requestDataArticle['status'] = 'consider';
+                $article->update($requestDataArticle); 
                 break;    
             case "pass_modify" : 
                 $requestDataArticle['waitmodify_at'] = date('Y-m-d H:i:s');
                 $requestDataArticle['status'] = 'waitmodify';
+                $article->update($requestDataArticle); 
                 break;
-        }
-        $article->update($requestDataArticle);  
+        } 
 
         //E-Mail
         switch($article->status){

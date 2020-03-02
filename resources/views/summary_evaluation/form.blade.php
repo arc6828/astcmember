@@ -14,8 +14,12 @@
                 <th>1</th>
                 <td>ชื่อเรื่อง (Title)</td>
                 <td>5</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    
+                </td>
+                <td>
+                    
+                </td>
                 <td>...</td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_name') ? 'has-error' : ''}}">
