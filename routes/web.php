@@ -23,6 +23,8 @@ Route::get('/table', function () {
 
 Auth::routes();
 
+Route::get('reviewer/{id}', 'ReviewerController@show');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('profile', 'ProfileController');

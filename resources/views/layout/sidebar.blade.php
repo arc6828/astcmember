@@ -1,5 +1,7 @@
     <!-- Sidebar -->
     <ul class="sidebar navbar-nav">
+    
+    @if(Auth::check())
       <li class="nav-item active">
         <a class="nav-link" href="{{ url('/home') }}">
           <i class="fas fa-fw fa-tachometer-alt"></i>
@@ -132,6 +134,8 @@
           <i class="fas fa-fw fa-table"></i>
           <span>Tables</span></a>
       </li>
+      @endif
+
       @endif
     </ul>
     <!-- End of Sidebar -->
