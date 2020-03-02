@@ -25,6 +25,8 @@ Auth::routes();
 
 Route::get('reviewer/{id}', 'ReviewerController@show');
 
+Route::get('article-evaluation/create', 'ArticleEvaluationController@create');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('profile', 'ProfileController');
