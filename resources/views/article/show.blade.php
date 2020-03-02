@@ -225,7 +225,7 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            <div class="pagination-wrapper"> {!! $summary_evaluation->appends(['search' => Request::get('search')])->render() !!} </div>
+                            
                         </div>
 
                     </div>

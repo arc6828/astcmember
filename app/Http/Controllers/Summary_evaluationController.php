@@ -64,8 +64,13 @@ class Summary_evaluationController extends Controller
         $requestData = $request->all();
         
         Summary_evaluation::create($requestData);
+        //Update Article 
+        
+        //Send Mail
 
-        return redirect('summary_evaluation')->with('flash_message', 'Summary_evaluation added!');
+
+        return redirect('article')->with('flash_message', 'Summary_evaluation added!');
+        //return redirect('summary_evaluation')->with('flash_message', 'Summary_evaluation added!');
     }
 
     /**

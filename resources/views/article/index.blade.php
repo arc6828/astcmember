@@ -164,9 +164,9 @@
                                                           
                                                         </select>
                                                         <div id="comment">
-                                                            <div><input name="check_abstract" id="check_abstract" type="checkbox"> บทคัดย่อเกิน 250 คำ / ภาษา</div>
-                                                            <div><input name="check_keyword" id="check_keyword" type="checkbox"> คำสำคัญเกิน 5 คำ</div>
-                                                            <div><input name="check_page" id="check_page" type="checkbox"> จำนวนหน้าน้อยกว่า 8 หรือมากกว่า  10 หน้า</div>
+                                                            <div><input name="fix_abstract" id="fix_abstract" type="checkbox"> บทคัดย่อเกิน 250 คำ / ภาษา</div>
+                                                            <div><input name="fix_keyword" id="fix_keyword" type="checkbox"> คำสำคัญเกิน 5 คำ</div>
+                                                            <div><input name="fix_page" id="fix_page" type="checkbox"> จำนวนหน้าน้อยกว่า 8 หรือมากกว่า  10 หน้า</div>
                                                         </div>
                                                         <button type="submit" class="btn btn-warning btn-sm"> submit</button>
                                                         @endif

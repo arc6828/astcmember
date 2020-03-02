@@ -6,8 +6,10 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Article;
+use App\Summary_evaluation;
 use App\Mail\TestMail;
 use App\Mail\ArticleReceiveMail;
+use App\Mail\ArticleWaitModifyFormatMail;
 use Illuminate\Support\Facades\Mail;
 
 
@@ -154,9 +156,9 @@ class ArticleController extends Controller
     public function show(Request $request,$id)
     {
         $article = Article::findOrFail($id);
-        $summary_evaluation = Summary_evaluation::findOrFail($id);
+        //$summary_evaluation = Summary_evaluation::where('article_id',$id)->get();
 
-        return view('article.show', compact('article' , 'summary_evaluation'));
+        return view('article.show', compact('article' ));
     }
 
     /**
@@ -232,6 +234,17 @@ class ArticleController extends Controller
                                                         
         
         $article->update($requestData);
+
+        //IF HAS SEND MAIL
+        if(!empty($requestData['status'])){
+            switch($requestData['status']){
+                case "waitmodifyformat" : 
+                    $email = $article->email;
+                    Mail::to($email)->send(new ArticleWaitModifyFormatMail($article));
+                    break;
+                
+            }
+        }
 
         return redirect('article')->with('flash_message', 'Article updated!');
     }

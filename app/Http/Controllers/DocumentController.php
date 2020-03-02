@@ -71,37 +71,50 @@ class DocumentController extends Controller
             $requestData['title'] = $request->input('title-word');
             $requestData['filename'] = $request->file('filename-word')->store('uploads', 'public');
             $document = Document::create($requestData);  
-            $requestDataArticle['status'] = "receive";
+            //$requestDataArticle['status'] = "receive";
         }
         if ($request->hasFile('filename-pdf')) {            
             $requestData['title'] = $request->input('title-pdf');
             $requestData['filename'] = $request->file('filename-pdf')->store('uploads', 'public');
             $document = Document::create($requestData);  
-            $requestDataArticle['status'] = "receive";
+            //$requestDataArticle['status'] = "receive";
         }
-        if(!empty($requestDataArticle['status'])){
-            if(isset($article->pass_modify)){
-                $requestDataArticle['status'] = "waitmodify";
-            }else if(isset($article->waitmodifyformat)){
-                $requestDataArticle['status'] = "consider";
-            }
-            //UPDATE ARITCLE TO RECIEVE
-            switch($requestDataArticle['status']){
-                case "receive" : 
-                    $requestDataArticle['received_at'] = date('Y-m-d H:i:s');
-                    //MAIL
-                    $email = $article->email;
-                    Mail::to($email)->send(new ArticleReceiveMail($article));
-                    break;
-                case "consider" : 
-                    $requestData['consider_at'] = date('Y-m-d H:i:s');
-                    break;    
-                case "waitmodify" : 
-                    $requestData['waitmodify_at'] = date('Y-m-d H:i:s');
-                    break;
-            }
-            $article->update($requestDataArticle);  
+        /*
+        if(isset($article->pass_modify_at)){
+            $requestDataArticle['status'] = "waitmodify";
+        }else if(isset($article->waitmodifyformat)){
+            $requestDataArticle['status'] = "consider";
+        }
+        */
+        //UPDATE ARITCLE TO RECIEVE
+        switch($article->status){
+            case "Create" : 
+                $requestDataArticle['received_at'] = date('Y-m-d H:i:s');
+                $requestDataArticle['status'] = 'receive';
+                break;
+            case "waitmodifyformat" : 
+                $requestDataArticle['consider_at'] = date('Y-m-d H:i:s');
+                $requestDataArticle['status'] = 'consider';
+                break;    
+            case "pass_modify" : 
+                $requestDataArticle['waitmodify_at'] = date('Y-m-d H:i:s');
+                $requestDataArticle['status'] = 'waitmodify';
+                break;
+        }
+        $article->update($requestDataArticle);  
 
+        //E-Mail
+        switch($article->status){
+            case "receive" : 
+                $email = $article->email;
+                Mail::to($email)->send(new ArticleReceiveMail($article));
+                break;
+            case "consider" : 
+                //$requestData['consider_at'] = date('Y-m-d H:i:s');
+                break;    
+            case "waitmodify" : 
+                //$requestData['waitmodify_at'] = date('Y-m-d H:i:s');
+                break;
         }
 
         return redirect("article/".$document->article_id)->with('flash_message', 'Document added!');

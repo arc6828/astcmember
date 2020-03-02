@@ -31,7 +31,7 @@ class ArticleWaitModifyFormatMail extends Mailable
     {
         $article = $this->article;
         //CONFIG THIS LINE OF CODE
-        return $this->subject('ผลการพิจารณารูปแบบนิพนธ์ต้นฉบับ')
+        return $this->subject('ผลการพิจารณารูปแบบนิพนธ์ต้นฉบับเบื้องต้น')
             ->view('mail.article_wait_modify_format', compact('article') );
     }
 }
