@@ -52,6 +52,15 @@ class Article extends Model
     public function latest_pdf_documents(){
         return $this->hasMany('App\Document', 'article_id')->where("title","PDF")->latest(); 
     }
+    
+
+    public function latest_word_blind_documents(){
+        return $this->hasMany('App\Document', 'article_id')->where("title","Word-blind")->latest(); 
+    }
+    
+    public function latest_pdf_blind_documents(){
+        return $this->hasMany('App\Document', 'article_id')->where("title","PDF-blind")->latest(); 
+    }
 
     public function payment(){
         return $this->hasMany('App\Payment', 'user_id');
