@@ -38,8 +38,8 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('article', 'ArticleController');
     Route::resource('evaluation', 'EvaluationController');
     Route::resource('document', 'DocumentController');
-    Route::resource('article-evaluation', 'ArticleEvaluationController');
-	Route::resource('reviewer', 'ReviewerController');
+    Route::resource('article-evaluation', 'ArticleEvaluationController')->except(['create']);
+	Route::resource('reviewer', 'ReviewerController')->except(['show']);
 	Route::resource('accept', 'AcceptController');
 	Route::post('/reviewer/{id}', 'ReviewerController@reviewermail');
 	Route::resource('summary_evaluation', 'Summary_evaluationController');
