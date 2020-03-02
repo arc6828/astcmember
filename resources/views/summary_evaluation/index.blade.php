@@ -29,14 +29,38 @@
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        <th>#</th><th>Article Id</th><th>Article Evaluation Id</th><th>Summary Average Score</th><th>Summary Total Score</th><th>Nwecomment Name</th><th>Nwecomment Abstract</th><th>Nwecomment Introduction</th><th>Nwecomment Methodology</th><th>Nwecomment Result</th><th>Nwecomment Conclusion</th><th>Nwecomment Reference</th><th>Evaluation Summary</th><th>Actions</th>
+                                        <th>#</th>
+                                        <th>Article Id</th>
+                                        <th>Article Evaluation Id</th>
+                                        <th>Summary Average Score</th>
+                                        <th>Summary Total Score</th>
+                                        <th>Nwecomment Name</th>
+                                        <th>Nwecomment Abstract</th>
+                                        <th>Nwecomment Introduction</th>
+                                        <th>Nwecomment Methodology</th>
+                                        <th>Nwecomment Result</th>
+                                        <th>Nwecomment Conclusion</th>
+                                        <th>Nwecomment Reference</th>
+                                        <th>Evaluation Summary</th>
+                                        <th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($summary_evaluation as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->article_id }}</td><td>{{ $item->article_evaluation_id }}</td><td>{{ $item->summary_average_score }}</td><td>{{ $item->summary_total_score }}</td><td>{{ $item->nwecomment_name }}</td><td>{{ $item->nwecomment_abstract }}</td><td>{{ $item->nwecomment_introduction }}</td><td>{{ $item->nwecomment_methodology }}</td><td>{{ $item->nwecomment_result }}</td><td>{{ $item->nwecomment_conclusion }}</td><td>{{ $item->nwecomment_reference }}</td><td>{{ $item->evaluation_summary }}</td>
+                                        <td>{{ $item->article_id }}</td>
+                                        <td>{{ $item->article_evaluation_id }}</td>
+                                        <td>{{ $item->summary_average_score }}</td>
+                                        <td>{{ $item->summary_total_score }}</td>
+                                        <td>{{ $item->nwecomment_name }}</td>
+                                        <td>{{ $item->nwecomment_abstract }}</td>
+                                        <td>{{ $item->nwecomment_introduction }}</td>
+                                        <td>{{ $item->nwecomment_methodology }}</td>
+                                        <td>{{ $item->nwecomment_result }}</td>
+                                        <td>{{ $item->nwecomment_conclusion }}</td>
+                                        <td>{{ $item->nwecomment_reference }}</td>
+                                        <td>{{ $item->evaluation_summary }}</td>
                                         <td>
                                             <a href="{{ url('/summary_evaluation/' . $item->id) }}" title="View Summary_evaluation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/summary_evaluation/' . $item->id . '/edit') }}" title="Edit Summary_evaluation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>

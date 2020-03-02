@@ -27,7 +27,7 @@ class Summary_evaluation extends Model
      */
     protected $fillable = ['article_id', 'article_evaluation_id', 'summary_average_score', 'summary_total_score', 'nwecomment_name', 'nwecomment_abstract', 'nwecomment_introduction', 'nwecomment_methodology', 'nwecomment_result', 'nwecomment_conclusion', 'nwecomment_reference', 'evaluation_summary'];
 
-    public function articles(){
+    public function article(){
         return $this->hasOne('App\Article', 'article_id');
     }
 

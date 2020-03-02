@@ -75,7 +75,7 @@ class Summary_evaluationController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function show($id)
+    public function show(Request $request,$id)
     {
         $summary_evaluation = Summary_evaluation::findOrFail($id);
 

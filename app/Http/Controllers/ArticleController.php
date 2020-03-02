@@ -154,8 +154,9 @@ class ArticleController extends Controller
     public function show(Request $request,$id)
     {
         $article = Article::findOrFail($id);
+        $summary_evaluation = Summary_evaluation::findOrFail($id);
 
-        return view('article.show', compact('article'));
+        return view('article.show', compact('article' , 'summary_evaluation'));
     }
 
     /**
