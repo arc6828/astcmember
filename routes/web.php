@@ -26,7 +26,7 @@ Auth::routes();
 Route::get('reviewer/{id}', 'ReviewerController@show');
 
 Route::get('article-evaluation/create', 'ArticleEvaluationController@create');
-Route::post('article-evaluation/store', 'ArticleEvaluationController@store');
+Route::post('article-evaluation', 'ArticleEvaluationController@store');
 
 Route::post('/reviewer/{id}/thank-you', 'ReviewerController@thankyou');
 Route::post('/reviewer/{id}/reject', 'ReviewerController@reject');
