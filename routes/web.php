@@ -27,6 +27,9 @@ Route::get('reviewer/{id}', 'ReviewerController@show');
 
 Route::get('article-evaluation/create', 'ArticleEvaluationController@create');
 
+Route::post('/reviewer/{id}/thank-you', 'ReviewerController@thankyou');
+Route::post('/reviewer/{id}/reject', 'ReviewerController@reject');
+
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('profile', 'ProfileController');
@@ -38,8 +41,6 @@ Route::middleware(['auth'])->group(function () {
     Route::resource('article-evaluation', 'ArticleEvaluationController');
 	Route::resource('reviewer', 'ReviewerController');
 	Route::resource('accept', 'AcceptController');
-	Route::post('/reviewer/{id}/thank-you', 'ReviewerController@thankyou');
-	Route::post('/reviewer/{id}/reject', 'ReviewerController@reject');
 	Route::post('/reviewer/{id}', 'ReviewerController@reviewermail');
 	Route::resource('summary_evaluation', 'Summary_evaluationController');
 	      
