@@ -189,7 +189,7 @@
                 <td><div class="form-group {{ $errors->has('nwecomment_reference') ? 'has-error' : ''}}">
                         <textarea class="form-control" rows="5" name="nwecomment_reference" type="textarea" id="nwecomment_reference" >
 @foreach($article->article_evaluations as $item)
-{{ $item->comment_reference }} <br>
+{{ $item->comment_reference }}
 @endforeach {{ isset($summary_evaluation->nwecomment_reference) ? $summary_evaluation->nwecomment_reference : ''}}</textarea>
                         {!! $errors->first('nwecomment_reference', '<p class="help-block">:message</p>') !!}
                     </div></td>
@@ -200,8 +200,8 @@
                 <th>100</th>
                 <td>...</td>
                 <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td></td>
+                <td></td>
             </tr>
     </table>
 
