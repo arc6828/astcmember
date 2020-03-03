@@ -81,12 +81,20 @@
                                                 @php
                                                     $document_word = ($item->latest_word_documents)? $item->latest_word_documents->first() : null;
                                                     $document_pdf = ($item->latest_pdf_documents)? $item->latest_pdf_documents->first() : null;
+                                                    $document_word_blind = ($item->latest_word_blind_documents)? $item->latest_word_blind_documents->first() : null;
+                                                    $document_pdf_blind = ($item->latest_pdf_blind_documents)? $item->latest_pdf_blind_documents->first() : null;
                                                 @endphp
                                                 @if($document_word)
                                                     <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> 
                                                 @endif
                                                 @if($document_pdf)
                                                     <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวโหลด PDF</a>
+                                                @endif
+                                                @if($document_word_blind)
+                                                    <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx blind</a> 
+                                                @endif
+                                                @if($document_pdf_blind)
+                                                    <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวโหลด PDF blind</a>
                                                 @endif
                                             </div>
                                             
