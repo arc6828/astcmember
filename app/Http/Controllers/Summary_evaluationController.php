@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Summary_evaluation;
+use App\Article;
 use Illuminate\Http\Request;
 
 class Summary_evaluationController extends Controller
@@ -46,9 +47,11 @@ class Summary_evaluationController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function create()
+    public function create(Request $request)
     {
-        return view('summary_evaluation.create');
+        $article_id = $request->input('article_id');
+        $article = Article::findOrFail($article_id);
+        return view('summary_evaluation.create', compact('article') );
     }
 
     /**

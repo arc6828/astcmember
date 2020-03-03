@@ -15,15 +15,24 @@
                 <td>ชื่อเรื่อง (Title)</td>
                 <td>5</td>
                 <td>
-                    
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_name') , 2 ) }}
                 </td>
                 <td>
-                    
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_name }} <br>
+                    @endforeach
                 </td>
-                <td>...</td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->comment_name }} <br>
+                    @endforeach
+                </td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_name') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_name" type="textarea" id="nwecomment_name" >{{ isset($summary_evaluation->nwecomment_name) ? $summary_evaluation->nwecomment_name : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_name" type="textarea" id="nwecomment_name" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_name }}
+@endforeach {{ isset($summary_evaluation->nwecomment_name) ? $summary_evaluation->nwecomment_name : ''}}</textarea>
                         {!! $errors->first('nwecomment_name', '<p class="help-block">:message</p>') !!}
                     </div>
                 </td>
@@ -32,12 +41,23 @@
                 <th>2</th>
                 <td>บทคัดย่อ (Abstract)</td>
                 <td>10</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_abstract') , 2 ) }}
+                </td>
+                <td>@foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_abstract }} <br>
+                    @endforeach
+                </td>
+                <td>@foreach($article->article_evaluations as $item)
+                    {{ $item->comment_abstract }} <br>
+                    @endforeach
+                </td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_abstract') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_abstract" type="textarea" id="nwecomment_abstract" >{{ isset($summary_evaluation->nwecomment_abstract) ? $summary_evaluation->nwecomment_abstract : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_abstract" type="textarea" id="nwecomment_abstract" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_abstract }}
+@endforeach {{ isset($summary_evaluation->nwecomment_abstract) ? $summary_evaluation->nwecomment_abstract : ''}}</textarea>
                         {!! $errors->first('nwecomment_abstract', '<p class="help-block">:message</p>') !!}
                     </div>
                 </td>
@@ -46,12 +66,25 @@
                 <th>3</th>
                 <td>บทนำ <br>(วัตถุประสงค์<br>และความสำคัญของ<br>ปัญหาวิจัย)<br>(Introduction)</td>
                 <td>20</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_introduction') , 2 ) }}
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_introduction }} <br>
+                    @endforeach
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->comment_introduction }} <br>
+                    @endforeach
+                </td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_introduction') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_introduction" type="textarea" id="nwecomment_introduction" >{{ isset($summary_evaluation->nwecomment_introduction) ? $summary_evaluation->nwecomment_introduction : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_introduction" type="textarea" id="nwecomment_introduction" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_introduction }}
+@endforeach {{ isset($summary_evaluation->nwecomment_introduction) ? $summary_evaluation->nwecomment_introduction : ''}}</textarea>
                         {!! $errors->first('nwecomment_introduction', '<p class="help-block">:message</p>') !!}
                     </div>
                 </td>
@@ -60,12 +93,24 @@
                 <th>4</th>
                 <td>วิธีดำเนินการวิจัย<br>(ระเบียบวิธีวิจัยและ<br>ขั้นตอนวิธีดำเนินการวิจัย)</td>
                 <td>20</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_methodology') , 2 ) }}
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_methodology }} <br>
+                    @endforeach
+                </td>
+                <td>@foreach($article->article_evaluations as $item)
+                    {{ $item->comment_methodology }} <br>
+                    @endforeach
+                </td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_methodology') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_methodology" type="textarea" id="nwecomment_methodology" >{{ isset($summary_evaluation->nwecomment_methodology) ? $summary_evaluation->nwecomment_methodology : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_methodology" type="textarea" id="nwecomment_methodology" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_methodology }}
+@endforeach {{ isset($summary_evaluation->nwecomment_methodology) ? $summary_evaluation->nwecomment_methodology : ''}}</textarea>
                         {!! $errors->first('nwecomment_methodology', '<p class="help-block">:message</p>') !!}
                     </div>
                 </td>
@@ -74,12 +119,25 @@
                 <th>5</th>
                 <td>ผลการวิจัย<br>และการอภิปรายผล</td>
                 <td>20</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_result') , 2 ) }}
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_result }} <br>
+                    @endforeach
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->comment_result }} <br>
+                    @endforeach
+                </td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_result') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_result" type="textarea" id="nwecomment_result" >{{ isset($summary_evaluation->nwecomment_result) ? $summary_evaluation->nwecomment_result : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_result" type="textarea" id="nwecomment_result" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_result }}
+@endforeach {{ isset($summary_evaluation->nwecomment_result) ? $summary_evaluation->nwecomment_result : ''}}</textarea>
                         {!! $errors->first('nwecomment_result', '<p class="help-block">:message</p>') !!}
                     </div>
                 </td>
@@ -88,12 +146,25 @@
                 <th>6</th>
                 <td>สรุปผลการวิจัย</td>
                 <td>20</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_conclusion') , 2 ) }}
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_conclusion }} <br>
+                    @endforeach
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->comment_conclusion }} <br>
+                    @endforeach
+                </td>
                 <td>
                     <div class="form-group {{ $errors->has('nwecomment_conclusion') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_conclusion" type="textarea" id="nwecomment_conclusion" >{{ isset($summary_evaluation->nwecomment_conclusion) ? $summary_evaluation->nwecomment_conclusion : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_conclusion" type="textarea" id="nwecomment_conclusion" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_conclusion }}
+@endforeach {{ isset($summary_evaluation->nwecomment_conclusion) ? $summary_evaluation->nwecomment_conclusion : ''}}</textarea>
                         {!! $errors->first('nwecomment_conclusion', '<p class="help-block">:message</p>') !!}
                     </div>
                 </td>
@@ -102,11 +173,24 @@
                 <th>7</th>
                 <td>เอกสารอ้างอิง</td>
                 <td>5</td>
-                <td>...</td>
-                <td>...</td>
-                <td>...</td>
+                <td>
+                    {{ number_format ( $article->article_evaluations->avg('evaluation_reference') , 2 ) }}
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->evaluation_reference }} <br>
+                    @endforeach
+                </td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->comment_reference }} <br>
+                    @endforeach
+                </td>
                 <td><div class="form-group {{ $errors->has('nwecomment_reference') ? 'has-error' : ''}}">
-                        <textarea class="form-control" rows="5" name="nwecomment_reference" type="textarea" id="nwecomment_reference" >{{ isset($summary_evaluation->nwecomment_reference) ? $summary_evaluation->nwecomment_reference : ''}}</textarea>
+                        <textarea class="form-control" rows="5" name="nwecomment_reference" type="textarea" id="nwecomment_reference" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_reference }} <br>
+@endforeach {{ isset($summary_evaluation->nwecomment_reference) ? $summary_evaluation->nwecomment_reference : ''}}</textarea>
                         {!! $errors->first('nwecomment_reference', '<p class="help-block">:message</p>') !!}
                     </div></td>
             </tr>

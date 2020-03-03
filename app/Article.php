@@ -66,7 +66,7 @@ class Article extends Model
         return $this->belongsTo('App\Profile','user_id','user_id');
     }
     public function article_evaluations(){
-        return $this->hasMany('App\ArticleEvaluations', 'article_id'); 
+        return $this->hasMany('App\ArticleEvaluation', 'article_id'); 
     }
 
     public function accepts(){

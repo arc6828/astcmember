@@ -78,7 +78,7 @@ class ArticleEvaluationController extends Controller
         
         ArticleEvaluation::create($requestData);
 
-        return redirect('article-evaluation')->with('flash_message', 'ArticleEvaluation added!');
+        return redirect('article')->with('flash_message', 'ArticleEvaluation added!');
     }
 
     /**
