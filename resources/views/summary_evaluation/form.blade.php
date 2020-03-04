@@ -210,7 +210,7 @@
     <div class="form-group {{ $errors->has('evaluation_summary') ? 'has-error' : ''}}">
     <label for="evaluation_summary" class="control-label">{{ 'สรุปผลการประเมิน' }}</label>
     <select name="evaluation_summary" class="form-control" id="evaluation_summary" >
-    @foreach (json_decode('{"\u0e1c\u0e48\u0e32\u0e19 \u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02":"\u0e1c\u0e48\u0e32\u0e19 \u0e42\u0e14\u0e22\u0e44\u0e21\u0e48\u0e21\u0e35\u0e01\u0e32\u0e23\u0e41\u0e01\u0e49\u0e44\u0e02","\u0e1c\u0e48\u0e32\u0e19 \u0e2b\u0e25\u0e31\u0e07\u0e01\u0e32\u0e23\u0e1b\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e38\u0e07\u0e41\u0e01\u0e49\u0e44\u0e02":"\u0e1c\u0e48\u0e32\u0e19 \u0e2b\u0e25\u0e31\u0e07\u0e01\u0e32\u0e23\u0e1b\u0e23\u0e31\u0e1a\u0e1b\u0e23\u0e38\u0e07\u0e41\u0e01\u0e49\u0e44\u0e02","\u0e44\u0e21\u0e48\u0e1c\u0e48\u0e32\u0e19":"\u0e44\u0e21\u0e48\u0e1c\u0e48\u0e32\u0e19"}', true) as $optionKey => $optionValue)
+     @foreach (["ผ่าน โดยไม่มีการแก้ไข"=>"ผ่าน โดยไม่มีการแก้ไข","ผ่าน หลังการปรับปรุงแก้ไข"=>"ผ่าน หลังการปรับปรุงแก้ไข","ไม่ผ่าน"=>"ไม่ผ่าน"] as $optionKey => $optionValue)
         <option value="{{ $optionKey }}" {{ (isset($summary_evaluation->evaluation_summary) && $summary_evaluation->evaluation_summary == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
     @endforeach
 </select>

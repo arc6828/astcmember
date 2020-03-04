@@ -5,8 +5,11 @@ namespace App\Http\Controllers;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Summary_evaluation;
 use App\Article;
+
+use App\Summary_evaluation;
+use App\Mail\SummaryMail;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Auth;
@@ -68,10 +71,9 @@ class Summary_evaluationController extends Controller
         
         $requestData = $request->all();
         
-        
-
         //Update Article 
         $article = Article::findOrFail($requestData['article_id']);
+       
 
         switch($article->status){
             case "ผ่าน โดยไม่มีการแก้ไข" : 
@@ -154,5 +156,19 @@ class Summary_evaluationController extends Controller
         Summary_evaluation::destroy($id);
 
         return redirect('summary_evaluation')->with('flash_message', 'Summary_evaluation deleted!');
+    }
+
+     public function summary_evaluationmail(Request $request, $id)
+    {
+
+
+        $requestData = $request->all();
+        
+        $summary_evaluation = SummaryMail::findOrFail($id);
+        $summary_evaluation->update($requestData);
+        
+        $email = $summary_evaluation->email;
+        Mail::to($email)->send(new SummaryMail($summary_evaluation));
+        return redirect('article');
     }
 }
