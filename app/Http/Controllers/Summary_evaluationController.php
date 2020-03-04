@@ -9,6 +9,8 @@ use App\Summary_evaluation;
 use App\Article;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class Summary_evaluationController extends Controller
 {
     /**
@@ -66,9 +68,26 @@ class Summary_evaluationController extends Controller
         
         $requestData = $request->all();
         
-        Summary_evaluation::create($requestData);
-        //Update Article 
         
+
+        //Update Article 
+        $article = Article::findOrFail($requestData['article_id']);
+
+        switch($article->status){
+            case "ผ่าน โดยไม่มีการแก้ไข" : 
+                $requestDataArticle['status'] = 'pass';
+                $article->update($requestDataArticle); 
+                break;
+            case "ผ่าน หลังการปรับปรุงแก้ไข" : 
+                $requestDataArticle['status'] = 'pass_modify';
+                $article->update($requestDataArticle); 
+                break;    
+            case "ไม่ผ่าน" : 
+                $requestDataArticle['status'] = 'notpass';
+                $article->update($requestDataArticle); 
+                break;
+        } 
+
         //Send Mail
 
 
