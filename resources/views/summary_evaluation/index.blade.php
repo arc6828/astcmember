@@ -31,7 +31,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Article Id</th>
-                                        <th>Article Evaluation Id</th>
                                         <th>Summary Average Score</th>
                                         <th>Summary Total Score</th>
                                         <th>Nwecomment Name</th>
@@ -50,7 +49,6 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->article_id }}</td>
-                                        <td>{{ $item->article_evaluation_id }}</td>
                                         <td>{{ $item->summary_average_score }}</td>
                                         <td>{{ $item->summary_total_score }}</td>
                                         <td>{{ $item->nwecomment_name }}</td>

@@ -95,7 +95,7 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
                         <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
-                        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
                         </button>
                         <div class="text-danger">*ขอความกรุณาผู้ส่งบความอัพโหลดบทความในรูปแบบไฟล์ WORD และ PDF </div>
 
@@ -109,8 +109,8 @@
                                     <tr>
                                         <th>#</th>
                                         <th>ประเภทเอกสาร</th>
-                                        <th>ชื่อผู้ใช้</th>
-                                        <th>ชื่อบทความ</th>
+                                        <th>ชื่อผู้อัพโหลด</th>
+                                        <th>วันที่ส่งไฟล์</th>
                                         <th>ไฟล์</th>
                                         <th>หมายเหตุ</th>
                                         <th class="d-none">Actions</th>
@@ -122,7 +122,7 @@
                                         <td>{{ $item->id }}</td>
                                         <td>{{ $item->title }}</td>
                                         <td>{{ $item->user->name }}</td>
-                                        <td>{{ $item->article->name_th }}</td>
+                                        <td>{{ $item->article->created_at }}</td>
                                         <td>
                                             <a href="{{ url('/storage') }}/{{ $item->filename }}">
                                                 <i class="fa fa-arrow-down"></i> Download
@@ -156,10 +156,10 @@
 
 
                 <div class="card mb-4">
-                    <div class="card-header">Summary_evaluation</div>
+                    <div class="card-header">สรุปผลการประเมิน</div>
                     <div class="card-body">
                         <a href="{{ url('/summary_evaluation/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Summary_evaluation">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสรุปผลการประเมิน
                         </a>
 
                         <form method="GET" action="{{ url('/summary_evaluation') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -181,7 +181,6 @@
                                     <tr>
                                         <th>#</th>
                                         <th>Article Id</th>
-                                        <th>Article Evaluation Id</th>
                                         <th>Summary Average Score</th>
                                         <th>Summary Total Score</th>
                                         <th>Nwecomment Name</th>
@@ -200,7 +199,6 @@
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
                                         <td>{{ $item->article_id }}</td>
-                                        <td>{{ $item->article_evaluation_id }}</td>
                                         <td>{{ $item->summary_average_score }}</td>
                                         <td>{{ $item->summary_total_score }}</td>
                                         <td>{{ $item->nwecomment_name }}</td>
@@ -210,7 +208,9 @@
                                         <td>{{ $item->nwecomment_result }}</td>
                                         <td>{{ $item->nwecomment_conclusion }}</td>
                                         <td>{{ $item->nwecomment_reference }}</td>
-                                        <td>{{ $item->evaluation_summary }}</td>
+                                        <td>
+
+                                            {{ $item->evaluation_summary }}</td>
                                         <td>
                                             <a href="{{ url('/summary_evaluation/' . $item->id) }}" title="View Summary_evaluation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
                                             <a href="{{ url('/summary_evaluation/' . $item->id . '/edit') }}" title="Edit Summary_evaluation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
@@ -227,7 +227,6 @@
                             </table>
                             
                         </div>
-
                     </div>
                 </div>
 

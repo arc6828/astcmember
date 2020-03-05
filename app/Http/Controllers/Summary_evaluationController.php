@@ -70,21 +70,24 @@ class Summary_evaluationController extends Controller
     {
         
         $requestData = $request->all();
-        
+        Summary_evaluation::create($requestData);
         //Update Article 
         $article = Article::findOrFail($requestData['article_id']);
        
 
-        switch($article->status){
-            case "ผ่าน โดยไม่มีการแก้ไข" : 
+        switch($requestData['evaluation_summary']){
+            case "pass" : 
+                $requestDataArticle['pass_at'] = date('Y-m-d H:i:s');
                 $requestDataArticle['status'] = 'pass';
                 $article->update($requestDataArticle); 
                 break;
-            case "ผ่าน หลังการปรับปรุงแก้ไข" : 
+            case "pass_modify" : 
+                $requestDataArticle['pass_modify_at'] = date('Y-m-d H:i:s');
                 $requestDataArticle['status'] = 'pass_modify';
                 $article->update($requestDataArticle); 
                 break;    
-            case "ไม่ผ่าน" : 
+            case "notpass" : 
+                $requestDataArticle['notpass_at'] = date('Y-m-d H:i:s');
                 $requestDataArticle['status'] = 'notpass';
                 $article->update($requestDataArticle); 
                 break;

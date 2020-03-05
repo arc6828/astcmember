@@ -69,9 +69,9 @@
                                             <div><b>ชื่อ : </b>{{ $item->purubpitshop }} <b  class="ml-4">ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}
                                             </div>
 
-                                            <div><b>อีเมล : </b>{{ $item->email }}</div>
+                                            <div><b>อีเมล์ : </b>{{ $item->email }}</div>
                                             <div>
-                                                <b>ค่าลงทะเบียน : </b>{{ $item->price }}
+                                                <b>ค่าลงทะเบียน : </b> {{ number_format ($item->price , 2 ) }}
                                             
                                                 @if( $item->total_debt == 0 )
                                                     <span class="badge badge-success">ส่งหลักฐานชำระเงินแล้ว</span>
@@ -85,16 +85,17 @@
                                                     $document_pdf_blind = ($item->latest_pdf_blind_documents)? $item->latest_pdf_blind_documents->first() : null;
                                                 @endphp
                                                 @if($document_word)
-                                                    <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx</a> 
+                                                    <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
                                                 @endif
                                                 @if($document_pdf)
-                                                    <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวโหลด PDF</a>
+                                                    <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
                                                 @endif
+                                                <br><br>
                                                 @if($document_word_blind)
-                                                    <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวโหลด Docx blind</a> 
+                                                    <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx blind</a> 
                                                 @endif
                                                 @if($document_pdf_blind)
-                                                    <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวโหลด PDF blind</a>
+                                                    <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF blind</a>
                                                 @endif
                                             </div>
                                             

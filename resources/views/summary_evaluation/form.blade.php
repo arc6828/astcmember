@@ -1,3 +1,16 @@
+
+<div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}} d-none">
+<label for="article_id" class="control-label">{{ 'หมายเลขบทความ' }}</label>
+<input class="form-control" name="article_id" type="number" id="article_id" value="{{ isset($article->id) ? $article->id : ''}}" readonly required="">
+{!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
+</div>
+
+<div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+<label for="article_id" class="control-label">{{ 'ชื่อบทความ' }}</label>
+<input class="form-control" name="article_name" type="text" id="article_name" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
+{!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
+</div>
+
 <table class="table table-hover table-striped">
         <thead class="thead-dark">
             <tr>
@@ -199,7 +212,7 @@
                 <th>รวม</th>
                 <th>100</th>
                 <td>...</td>
-                <td>...</td>
+                <td></td>
                 <td></td>
                 <td></td>
             </tr>
@@ -210,7 +223,7 @@
     <div class="form-group {{ $errors->has('evaluation_summary') ? 'has-error' : ''}}">
     <label for="evaluation_summary" class="control-label">{{ 'สรุปผลการประเมิน' }}</label>
     <select name="evaluation_summary" class="form-control" id="evaluation_summary" >
-     @foreach (["ผ่าน โดยไม่มีการแก้ไข"=>"ผ่าน โดยไม่มีการแก้ไข","ผ่าน หลังการปรับปรุงแก้ไข"=>"ผ่าน หลังการปรับปรุงแก้ไข","ไม่ผ่าน"=>"ไม่ผ่าน"] as $optionKey => $optionValue)
+     @foreach (["pass"=>"ผ่าน โดยไม่มีการแก้ไข","pass_modify"=>"ผ่าน หลังการปรับปรุงแก้ไข","notpass"=>"ไม่ผ่าน"] as $optionKey => $optionValue)
         <option value="{{ $optionKey }}" {{ (isset($summary_evaluation->evaluation_summary) && $summary_evaluation->evaluation_summary == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>
     @endforeach
 </select>
@@ -218,7 +231,8 @@
 </div>
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'Create' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งสรุปผลการประเมิน
+' }}">
 </div>
 
 
