@@ -5,6 +5,7 @@
 </head>
 
 <body id="page-top">
+  @include('layout.js')
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">  
       @include('layout.navbar')
@@ -16,7 +17,6 @@
       </div>
       @include('layout.footer')
     </div>
-  </div>
-  @include('layout.js')    
+  </div>    
 </body>
 </html>
