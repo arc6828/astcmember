@@ -54,16 +54,12 @@
         
 
         <div class="card">
-                    <div class="card-header">Reviewer</div>
+                    <div class="card-header">ผู้ประเมินบทความ</div>
                     <div class="card-body">
                         <a href="{{ url('/reviewer/create') }}" class="btn btn-success btn-sm d-none" title="Add New Reviewer">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
 
-                        
-
-                        <br/>
-                        <br/>
                         <div class="table-responsive">
                             <table id="exsearch" class="table">
                                 <thead>

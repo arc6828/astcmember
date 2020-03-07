@@ -7,10 +7,10 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Reviewer</div>
+                    <div class="card-header">ผู้ประเมินบทความ</div>
                     <div class="card-body">
-                        <a href="{{ url('/reviewer/create') }}" class="btn btn-success btn-sm" title="Add New Reviewer">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                        <a href="{{ url('/reviewer/create') }}" class="btn btn-success btn-sm d-none" title="Add New Reviewer">
+                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มผู้ประเมินบทความ
                         </a>
 
                         <form method="GET" action="{{ url('/reviewer') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
@@ -67,13 +67,21 @@
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="status" value="Waiting">
-                                                @if( isset($reviewer->status) )
-                                                
-
-
-                                                @else
+                                             
+                                            @switch($item->status)
+                                            @case("Waiting")                                                     
+                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> Invite</button>
+                                                @break
+                                            @case("Accept")                                                     
+                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> Invite</button>
+                                                @break
+                                            @case("Reject")                                                     
+                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> Invite</button>
+                                                @break
+                                             @case("")
                                                 <button type="submit" class="btn btn-success btn-sm" title="Invite Reviewer"> Invite</button>
-                                                @endif
+                                                @break
+                                            @endswitch
                                             </form>
 
                                         </td>
