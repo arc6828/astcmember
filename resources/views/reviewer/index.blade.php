@@ -67,7 +67,13 @@
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="status" value="Waiting">
+                                                @if( isset($reviewer->status) )
+                                                
+
+
+                                                @else
                                                 <button type="submit" class="btn btn-success btn-sm" title="Invite Reviewer"> Invite</button>
+                                                @endif
                                             </form>
 
                                         </td>

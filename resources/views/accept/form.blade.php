@@ -115,10 +115,7 @@
 
 
       </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-dismiss="modal">ปิด</button>
-        <button type="button" class="btn btn-primary">เลือกผู้ประเมิน</button>
-      </div>
+      
     </div>
   </div>
 </div>

@@ -6,11 +6,11 @@
             
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Create New Accept</div>
+                    <div class="card-header">เลือกผู้ประเมิน</div>
                     <div class="card-body">
-                        <a href="{{ url('/accept') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
-                        <br />
-                        <br />
+                        <a href="{{ url('/accept') }}" title="Back"><button class="btn btn-warning btn-sm d-none"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
+                        
+                        
 
                         @if ($errors->any())
                             <ul class="alert alert-danger">
