@@ -136,13 +136,19 @@
             </tr>
             <tr>
                 <th></th>
-                <th>รวม</th>
-                <th>100</th>
-                <td><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_total_score" type="number" id="evaluation_total_score" value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}" required="">
+                <th><br>รวม</th>
+                <th><br>100</th>
+                <td><br><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}">
+                        <input class="form-control" name="evaluation_total_score" type="number" id="evaluation_total_score" value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}"  readonly="">
                         {!! $errors->first('evaluation_total_score', '<p class="help-block">:message</p>') !!}
                     </div></td>
-                <td></td>
+                <td>
+                    <div class="form-group {{ $errors->has('file_comment') ? 'has-error' : ''}}">
+                        <label for="filename" class="control-label">{{ 'แนบไฟล์ comment' }} 
+                        <input class="form-control" name="file_comment" type="file"  value="{{ isset($articleevaluation->file_comment) ? $articleevaluation->file_comment : ''}}"  >
+                        {!! $errors->first('filename', '<p class="help-block">:message</p>') !!}
+                    </div>
+                </td>
             </tr>
     </table>
             
@@ -185,7 +191,7 @@
                 </table>
             <hr>
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งผลประเมิน
+    <input class="btn btn-primary" type="submit"  value="{{ $formMode === 'edit' ? 'Update' : 'ส่งผลประเมิน
 ' }}">
 </div>
 

@@ -24,9 +24,48 @@
                             <table class="table">
                                 <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $summary_evaluation->id }}</td>
+                                        <th>ID</th>
+                                        <td>{{ $summary_evaluation->id }}</td>
                                     </tr>
-                                    <tr><th> Article Id </th><td> {{ $summary_evaluation->article_id }} </td></tr><tr><th> Article Evaluation Id </th><td> {{ $summary_evaluation->article_evaluation_id }} </td></tr><tr><th> Summary Average Score </th><td> {{ $summary_evaluation->summary_average_score }} </td></tr><tr><th> Summary Total Score </th><td> {{ $summary_evaluation->summary_total_score }} </td></tr><tr><th> Nwecomment Name </th><td> {{ $summary_evaluation->nwecomment_name }} </td></tr><tr><th> Nwecomment Abstract </th><td> {{ $summary_evaluation->nwecomment_abstract }} </td></tr><tr><th> Nwecomment Introduction </th><td> {{ $summary_evaluation->nwecomment_introduction }} </td></tr><tr><th> Nwecomment Methodology </th><td> {{ $summary_evaluation->nwecomment_methodology }} </td></tr><tr><th> Nwecomment Result </th><td> {{ $summary_evaluation->nwecomment_result }} </td></tr><tr><th> Nwecomment Conclusion </th><td> {{ $summary_evaluation->nwecomment_conclusion }} </td></tr><tr><th> Nwecomment Reference </th><td> {{ $summary_evaluation->nwecomment_reference }} </td></tr><tr><th> Evaluation Summary </th><td> {{ $summary_evaluation->evaluation_summary }} </td></tr>
+                                    <tr>
+                                        <th> Article Id </th>
+                                        <td> {{ $summary_evaluation->article_id }} </td>
+                                    </tr>
+                                            <th> Summary Average Score </th>
+                                            <td> {{ $summary_evaluation->summary_average_score }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Name </th>
+                                            <td> {{ $summary_evaluation->nwecomment_name }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Abstract </th>
+                                            <td> {{ $summary_evaluation->nwecomment_abstract }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Introduction </th>
+                                            <td> {{ $summary_evaluation->nwecomment_introduction }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Methodology </th>
+                                            <td> {{ $summary_evaluation->nwecomment_methodology }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Result </th>
+                                            <td> {{ $summary_evaluation->nwecomment_result }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Conclusion </th>
+                                            <td> {{ $summary_evaluation->nwecomment_conclusion }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Nwecomment Reference </th>
+                                            <td> {{ $summary_evaluation->nwecomment_reference }} </td>
+                                        </tr>
+                                        <tr>
+                                            <th> Evaluation Summary </th>
+                                            <td> {{ $summary_evaluation->evaluation_summary }} </td>
+                                        </tr>
                                 </tbody>
                             </table>
                         </div>

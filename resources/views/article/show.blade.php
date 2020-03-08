@@ -175,58 +175,53 @@
 
                         <br/>
                         <br/>
+                        
                         <div class="table-responsive">
                             <table class="table">
-                                <thead>
-                                    <tr>
-                                        <th>#</th>
-                                        <th>Article Id</th>
-                                        <th>Summary Average Score</th>
-                                        <th>Summary Total Score</th>
-                                        <th>Nwecomment Name</th>
-                                        <th>Nwecomment Abstract</th>
-                                        <th>Nwecomment Introduction</th>
-                                        <th>Nwecomment Methodology</th>
-                                        <th>Nwecomment Result</th>
-                                        <th>Nwecomment Conclusion</th>
-                                        <th>Nwecomment Reference</th>
-                                        <th>Evaluation Summary</th>
-                                        <th>Actions</th>
-                                    </tr>
-                                </thead>
                                 <tbody>
-                                @foreach($summary_evaluation as $item)
                                     <tr>
-                                        <td>{{ $loop->iteration }}</td>
-                                        <td>{{ $item->article_id }}</td>
-                                        <td>{{ $item->summary_average_score }}</td>
-                                        <td>{{ $item->summary_total_score }}</td>
-                                        <td>{{ $item->nwecomment_name }}</td>
-                                        <td>{{ $item->nwecomment_abstract }}</td>
-                                        <td>{{ $item->nwecomment_introduction }}</td>
-                                        <td>{{ $item->nwecomment_methodology }}</td>
-                                        <td>{{ $item->nwecomment_result }}</td>
-                                        <td>{{ $item->nwecomment_conclusion }}</td>
-                                        <td>{{ $item->nwecomment_reference }}</td>
-                                        <td>
-
-                                            {{ $item->evaluation_summary }}</td>
-                                        <td>
-                                            <a href="{{ url('/summary_evaluation/' . $item->id) }}" title="View Summary_evaluation"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
-                                            <a href="{{ url('/summary_evaluation/' . $item->id . '/edit') }}" title="Edit Summary_evaluation"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
-
-                                            <form method="POST" action="{{ url('/summary_evaluation' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
-                                                {{ method_field('DELETE') }}
-                                                {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-danger btn-sm" title="Delete Summary_evaluation" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
-                                            </form>
-                                        </td>
+                                        <th>ID</th><td>{{ $item->id }}</td>
                                     </tr>
-                                @endforeach
+                                    <tr>
+                                        <th> ชื่อบทความ </th>
+                                        <td> {{ $item->article->name_th }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> คะแนนเฉลี่ยรวม </th>
+                                        <td> {{ $item->summary_average_score }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment ชื่อ </th>
+                                        <td> {{ $item->nwecomment_name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment บทคัดย่อ </th>
+                                        <td> {{ $item->nwecomment_abstract }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment บทนำ </th>
+                                        <td> {{ $item->nwecomment_introduction }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment วิธีดำเนินการวิจัย </th>
+                                        <td> {{ $item->nwecomment_methodology }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment ผลการวิจัย </th>
+                                        <td> {{ $item->nwecomment_result }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment สรุปผลการวิจัย </th>
+                                        <td> {{ $item->nwecomment_conclusion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment เอกสารอ้างอิง </th>
+                                        <td> {{ $item->nwecomment_reference }} </td>
+                                    </tr>
                                 </tbody>
                             </table>
-                            
                         </div>
+
                     </div>
                 </div>
 

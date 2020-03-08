@@ -211,7 +211,10 @@
                 <th></th>
                 <th>รวม</th>
                 <th>100</th>
-                <td>...</td>
+                <td><div class="form-group {{ $errors->has('summary_average_score') ? 'has-error' : ''}}">
+    <input class="form-control" name="summary_average_score" type="number" id="summary_average_score" value="{{ isset($summary_evaluation->summary_average_score) ? $summary_evaluation->summary_average_score : ''}}" readonly="">
+    {!! $errors->first('summary_average_score', '<p class="help-block">:message</p>') !!}
+</div></td>
                 <td></td>
                 <td></td>
                 <td></td>
@@ -228,7 +231,36 @@
     @endforeach
 </select>
     {!! $errors->first('evaluation_summary', '<p class="help-block">:message</p>') !!}
-</div>
+</div><br>
+
+<hr> <br>
+                <table class="table table-striped table-bordered">
+                  <thead class="thead-dark">
+                    <tr>
+                      <th colspan="2" ><center><p>เกณฑ์การประเมิน</p></center></th>
+                    </tr>
+                  </thead>
+                  
+                    <tr>
+                      <td> >80 คะแนน </td>
+                      <td>  เห็นควรตีพิมพ์เผยแพร่ได้ โดยไม่มีการแก้ไข </td>
+                    </tr>
+                    <tr>
+                      <td>70-79 คะแนน</td>
+                      <td>เห็นควรตีพิมพ์เผยแพร่หลังการปรับปรุงแก้ไขตามคำแนะนำของผู้ทรงคุณวุฒิ และกองบรรณาธิการพิจารณา</td>
+                    </tr>
+                    <tr>
+                      <td>60-69 คะแนน</td>
+                      <td>เห็นควรปรับปรุงตามคำแนะนำของผู้ทรงคุณวุฒิ และให้กองบรรณาธิการพิจารณาในการตอบรับการตีพิมพ์เผยแพร่</td>
+                    </tr>
+                    <tr>
+                      <td> <60 คะแนน</td>
+                      <td>ไม่สมควรตีพิมพ์เผยแพร่</td>
+                    </tr>
+                  
+                </table>
+            <hr>
+
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งสรุปผลการประเมิน
