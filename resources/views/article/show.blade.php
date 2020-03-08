@@ -175,7 +175,7 @@
 
                         <br/>
                         <br/>
-                        
+                        <!--
                         <div class="table-responsive">
                             <table class="table">
                                 <tbody>
@@ -221,7 +221,7 @@
                                 </tbody>
                             </table>
                         </div>
-
+                        -->
                     </div>
                 </div>
 
