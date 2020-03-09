@@ -154,7 +154,7 @@
                     $summary_evaluation = $article->summary_evaluations;
                 @endphp
 
-
+                @if(Auth::user()->profile->role == "academic-admin")
                 <div class="card mb-4">
                     <div class="card-header">สรุปผลการประเมิน</div>
                     <div class="card-body">
@@ -176,10 +176,57 @@
                         <br/>
                         <br/>
                         
+                        <div class="table-responsive">
+                            <table class="table">
+                                <tbody>
+                                    @foreach($summary_evaluation as $item)
+                                    <tr>
+                                        <th>ID</th><td>{{ $item->id }}</td>
+                                    </tr>
+                                    <tr>
+                                        <th> ชื่อบทความ </th>
+                                        <td> {{ $article->name_th }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> คะแนนเฉลี่ยรวม </th>
+                                        <td> {{ $item->summary_average_score }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment ชื่อ </th>
+                                        <td> {{ $item->nwecomment_name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment บทคัดย่อ </th>
+                                        <td> {{ $item->nwecomment_abstract }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment บทนำ </th>
+                                        <td> {{ $item->nwecomment_introduction }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment วิธีดำเนินการวิจัย </th>
+                                        <td> {{ $item->nwecomment_methodology }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment ผลการวิจัย </th>
+                                        <td> {{ $item->nwecomment_result }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment สรุปผลการวิจัย </th>
+                                        <td> {{ $item->nwecomment_conclusion }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> comment เอกสารอ้างอิง </th>
+                                        <td> {{ $item->nwecomment_reference }} </td>
+                                    </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
 
                     </div>
                 </div>
-
+                @endif
 
                 @php
                     //ประกาศตัวแปร $evaluation ด้วยค่า Array ที่มาจาก relationship

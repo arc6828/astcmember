@@ -126,7 +126,7 @@
                 <td>เอกสารอ้างอิง</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_reference') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_reference" type="number" id="evaluation_reference" max="5" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="">
+                        <input class="form-control" name="evaluation_reference" type="number" id="evaluation_reference" max="5" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_reference', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_reference') ? 'has-error' : ''}}">
@@ -137,11 +137,12 @@
             <tr>
                 <th></th>
                 <th><br>รวม</th>
-                <th><br>100</th>
-                <td><br><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_total_score" type="number" id="evaluation_total_score" value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}"  readonly="">
+                <td><br>100</td>
+                <th><br><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}"> 
+                        <p  id="sum"></p>
+                        <input class="form-control d-none" name="evaluation_total_score" type="number" id="evaluation_total_score " value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}"  readonly="">
                         {!! $errors->first('evaluation_total_score', '<p class="help-block">:message</p>') !!}
-                    </div></td>
+                    </div></th>
                 <td>
                     <div class="form-group {{ $errors->has('file_comment') ? 'has-error' : ''}}">
                         <label for="filename" class="control-label">{{ 'แนบไฟล์ comment' }} 
@@ -195,8 +196,16 @@
 ' }}">
 </div>
 
+<script type="text/javascript">
+function sum_score() {
+  let x = document.getElementById("");
+  document.getElementById("sum").innerHTML = "100" ;
+}
+</script>
 
 </div>
+
+
 
 
 
