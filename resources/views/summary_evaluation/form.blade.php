@@ -212,7 +212,18 @@
                 <th>รวม</th>
                 <th>100</th>
                 <td><div class="form-group {{ $errors->has('summary_average_score') ? 'has-error' : ''}}">
-    <input class="form-control" name="summary_average_score" type="number" id="summary_average_score" value="{{ isset($summary_evaluation->summary_average_score) ? $summary_evaluation->summary_average_score : ''}}" readonly="">
+    <input class="form-control" name="summary_average_score" type="number" id="summary_average_score" value="{{ isset($summary_evaluation->summary_average_score) ? $summary_evaluation->summary_average_score :  
+    (
+        $article->article_evaluations->avg('evaluation_name')  +  
+        $article->article_evaluations->avg('evaluation_abstract') +
+        $article->article_evaluations->avg('evaluation_introduction') +
+        $article->article_evaluations->avg('evaluation_methodology') +
+        $article->article_evaluations->avg('evaluation_result') +
+        $article->article_evaluations->avg('evaluation_conclusion') +
+        $article->article_evaluations->avg('evaluation_reference')
+
+    )
+    }}" readonly="">
     {!! $errors->first('summary_average_score', '<p class="help-block">:message</p>') !!}
 </div></td>
                 <td></td>

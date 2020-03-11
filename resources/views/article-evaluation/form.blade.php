@@ -48,7 +48,7 @@
                 <td>ชื่อเรื่อง (Title)</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_name') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_name" type="number" id="evaluation_name" max="5" value="{{ isset($articleevaluation->evaluation_name) ? $articleevaluation->evaluation_name : ''}}" required="">
+                        <input class="form-control sum_input" name="evaluation_name" type="number" id="evaluation_name" max="5" value="{{ isset($articleevaluation->evaluation_name) ? $articleevaluation->evaluation_name : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_name', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_name') ? 'has-error' : ''}}">
@@ -61,7 +61,7 @@
                 <td>บทคัดย่อ (Abstract)</td>
                 <td>10</td>
                 <td><div class="form-group {{ $errors->has('evaluation_abstract') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_abstract" type="number" id="evaluation_abstract" max="10" value="{{ isset($articleevaluation->evaluation_abstract) ? $articleevaluation->evaluation_abstract : ''}}" required="">
+                        <input class="form-control sum_input" name="evaluation_abstract" type="number" id="evaluation_abstract" max="10" value="{{ isset($articleevaluation->evaluation_abstract) ? $articleevaluation->evaluation_abstract : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_abstract', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_abstract') ? 'has-error' : ''}}">
@@ -74,7 +74,7 @@
                 <td>บทนำ <br>(วัตถุประสงค์<br>และความสำคัญของ<br>ปัญหาวิจัย)<br>(Introduction)</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_introduction') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_introduction" type="number" id="evaluation_introduction" max="20" value="{{ isset($articleevaluation->evaluation_introduction) ? $articleevaluation->evaluation_introduction : ''}}" required="">
+                        <input class="form-control sum_input" name="evaluation_introduction" type="number" id="evaluation_introduction" max="20" value="{{ isset($articleevaluation->evaluation_introduction) ? $articleevaluation->evaluation_introduction : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_introduction', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_introduction') ? 'has-error' : ''}}">
@@ -87,7 +87,7 @@
                 <td>วิธีดำเนินการวิจัย<br>(ระเบียบวิธีวิจัยและ<br>ขั้นตอนวิธีดำเนินการวิจัย)</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_methodology') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_methodology" type="number" id="evaluation_methodology" max="20" value="{{ isset($articleevaluation->evaluation_methodology) ? $articleevaluation->evaluation_methodology : ''}}" required="">
+                        <input class="form-control sum_input" name="evaluation_methodology" type="number" id="evaluation_methodology" max="20" value="{{ isset($articleevaluation->evaluation_methodology) ? $articleevaluation->evaluation_methodology : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_methodology', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_methodology') ? 'has-error' : ''}}">
@@ -100,7 +100,7 @@
                 <td>ผลการวิจัย<br>และการอภิปรายผล</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_result') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_result" type="number" id="evaluation_result" max="20" value="{{ isset($articleevaluation->evaluation_result) ? $articleevaluation->evaluation_result : ''}}" required="">
+                        <input class="form-control sum_input" name="evaluation_result" type="number" id="evaluation_result" max="20" value="{{ isset($articleevaluation->evaluation_result) ? $articleevaluation->evaluation_result : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_result', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_result') ? 'has-error' : ''}}">
@@ -113,7 +113,7 @@
                 <td>สรุปผลการวิจัย</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_conclusion') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_conclusion" type="number" id="evaluation_conclusion" max="20" value="{{ isset($articleevaluation->evaluation_conclusion) ? $articleevaluation->evaluation_conclusion : ''}}" required="">
+                        <input class="form-control sum_input" name="evaluation_conclusion" type="number" id="evaluation_conclusion" max="20" value="{{ isset($articleevaluation->evaluation_conclusion) ? $articleevaluation->evaluation_conclusion : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_conclusion', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_conclusion') ? 'has-error' : ''}}">
@@ -126,7 +126,7 @@
                 <td>เอกสารอ้างอิง</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_reference') ? 'has-error' : ''}}">
-                        <input class="form-control" name="evaluation_reference" type="number" id="evaluation_reference" max="5" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_reference" type="number" id="evaluation_reference" max="5" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_reference', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_reference') ? 'has-error' : ''}}">
@@ -139,8 +139,8 @@
                 <th><br>รวม</th>
                 <td><br>100</td>
                 <th><br><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}"> 
-                        <p  id="sum"></p>
-                        <input class="form-control d-none" name="evaluation_total_score" type="number" id="evaluation_total_score " value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}"  readonly="">
+                        
+                        <input class="form-control" name="evaluation_total_score" type="text" id="evaluation_total_score" value="{{ isset($articleevaluation->evaluation_total_score) ? $articleevaluation->evaluation_total_score : ''}}"  readonly="">
                         {!! $errors->first('evaluation_total_score', '<p class="help-block">:message</p>') !!}
                     </div></th>
                 <td>
@@ -197,9 +197,16 @@
 </div>
 
 <script type="text/javascript">
+
 function sum_score() {
-  let x = document.getElementById("");
-  document.getElementById("sum").innerHTML = "100" ;
+  let array_a = document.getElementsByClassName("sum_input"); //ARRAY OBJECT 
+  let i ;
+  let number = 0.0 ;
+  for(i = 0; i < array_a.length; i++){
+    number += isNaN(parseFloat(array_a[i].value)) ? 0 : parseFloat(array_a[i].value) ; 
+  }
+      
+  document.getElementById("evaluation_total_score").value = number ;
 }
 </script>
 

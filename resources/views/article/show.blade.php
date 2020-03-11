@@ -154,14 +154,15 @@
                     $summary_evaluation = $article->summary_evaluations;
                 @endphp
 
-                @if(Auth::user()->profile->role == "academic-admin")
+                
                 <div class="card mb-4">
                     <div class="card-header">สรุปผลการประเมิน</div>
                     <div class="card-body">
+                        @if(Auth::user()->profile->role == "academic-admin")
                         <a href="{{ url('/summary_evaluation/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm" title="Add New Summary_evaluation">
                             <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสรุปผลการประเมิน
                         </a>
-
+                        @endif
                         <form method="GET" action="{{ url('/summary_evaluation') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
                                 <input type="text" class="form-control" name="search" placeholder="Search..." value="{{ request('search') }}">
@@ -180,7 +181,7 @@
                             <table class="table">
                                 <tbody>
                                     @foreach($summary_evaluation as $item)
-                                    <tr>
+                                    <tr class="d-none">
                                         <th>ID</th><td>{{ $item->id }}</td>
                                     </tr>
                                     <tr>
@@ -226,7 +227,7 @@
 
                     </div>
                 </div>
-                @endif
+               
 
                 @php
                     //ประกาศตัวแปร $evaluation ด้วยค่า Array ที่มาจาก relationship
