@@ -31,15 +31,15 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>Email</th>
-                                        <th>Title</th><th>Name</th><th>Lastname</th>
-                                        <th>Group</th>
-                                        <th>Expert</th>
+                                        <th>เมล์</th>
+                                        <th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th>
+                                        <th>กลุ่ม</th>
+                                        <th>ผู้เชี่ยวชาญ</th>
                                         <!--th>School</th>
                                         <th>Major</th>
                                         <th>Address</th><th>District</th><th>Amphoe</th><th>Province</th><th>Postnumber</th><th>Tel</th><th>Fax</th>
                                         <th>Type</th><th>Remark</th-->
-                                        <th>Status</th><th>Actions</th>
+                                        <th>สถานะ</th><th>Actions</th>
                                     </tr>
                                 </thead>
                                 <tbody>
