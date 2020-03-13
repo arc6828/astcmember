@@ -70,16 +70,16 @@
                                              
                                             @switch($item->status)
                                             @case("Waiting")                                                     
-                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> Invite</button>
+                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> เชิญ</button>
                                                 @break
                                             @case("Accept")                                                     
-                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> Invite</button>
+                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> เชิญ</button>
                                                 @break
                                             @case("Reject")                                                     
-                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> Invite</button>
+                                                <button type="submit" class="btn btn-success btn-sm d-none" title="Invite Reviewer"> เชิญ</button>
                                                 @break
                                              @case("")
-                                                <button type="submit" class="btn btn-success btn-sm" title="Invite Reviewer"> Invite</button>
+                                                <button type="submit" class="btn btn-success btn-sm" title="Invite Reviewer"> เชิญ</button>
                                                 @break
                                             @endswitch
                                             </form>
