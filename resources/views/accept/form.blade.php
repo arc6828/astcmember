@@ -120,7 +120,7 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'ยืนยันการเลือกผู้ประเมิน' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ยืนยันการเลือกผู้ประเมิน' }}">
 </div>
 
 <script type="text/javascript">

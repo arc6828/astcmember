@@ -274,7 +274,7 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'Update' : 'ส่งสรุปผลการประเมิน
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ส่งสรุปผลการประเมิน
 ' }}">
 </div>
 

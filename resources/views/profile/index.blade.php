@@ -8,7 +8,7 @@
 
             <div class="col-md-12">
                 <div class="card mb-4">
-                    <div class="card-header">Profile</div>
+                    <div class="card-header">ผู้เข้าร่วมงานทั้งหมด</div>
                     <div class="card-body">
                         <a href="{{ url('/profile/create') }}" class="btn btn-success btn-sm d-none" title="Add New Profile">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New

@@ -7,9 +7,9 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Edit ArticleEvaluation #{{ $articleevaluation->id }}</div>
+                    <div class="card-header">แก้ไขการประเมินผล #{{ $articleevaluation->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/article-evaluation') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/article-evaluation') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <br />
                         <br />
 

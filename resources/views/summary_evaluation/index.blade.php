@@ -6,10 +6,10 @@
 
             <div class="col-md-12">
                 <div class="card">
-                    <div class="card-header">Summary_evaluation</div>
+                    <div class="card-header">สรุปผลการประเมิน</div>
                     <div class="card-body">
                         <a href="{{ url('/summary_evaluation/create') }}" class="btn btn-success btn-sm" title="Add New Summary_evaluation">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มสรุปผลการประเมิน
                         </a>
 
                         <form method="GET" action="{{ url('/summary_evaluation') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">

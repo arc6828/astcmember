@@ -10,7 +10,7 @@
                     <div class="card-header">ข้อมูลผู้ประเมินที่ {{ $reviewer->id }}</div>
                     <div class="card-body">
 
-                        <a href="{{ url('/reviewer') }}" title="Back"><button class="btn btn-warning btn-sm d-none"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></a>
+                        <a href="{{ url('/reviewer') }}" title="Back"><button class="btn btn-warning btn-sm d-none"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <a href="{{ url('/reviewer/' . $reviewer->id . '/edit') }}" title="Edit Reviewer"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไข</button></a>
 
                         <form method="POST" action="{{ url('reviewer' . '/' . $reviewer->id) }}" accept-charset="UTF-8" style="display:inline">

@@ -10,7 +10,7 @@
                     <div class="card-header">ผลการประเมินบทความ</div>
                     <div class="card-body">
                         <a href="{{ url('/article-evaluation/create') }}" class="btn btn-success btn-sm" title="Add New ArticleEvaluation">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มผลการประเมินบทความ
                         </a>
 
                         <form method="GET" action="{{ url('/article-evaluation') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">

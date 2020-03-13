@@ -6,10 +6,10 @@
 
             <div class="col-md-9">
                 <div class="card">
-                    <div class="card-header">Document</div>
+                    <div class="card-header">เอกสารบทความ</div>
                     <div class="card-body">
                         <a href="{{ url('/document/create') }}" class="btn btn-success btn-sm" title="Add New Document">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
+                            <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มเอกสารบทความ
                         </a>
 
                         <form method="GET" action="{{ url('/document') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
