@@ -68,7 +68,7 @@ class ProfileController extends Controller
     public function create()
     {
         $universities = University::all();
-        return view('profile.create', compact('university'));
+        return view('profile.create', compact('universities'));
     }
 
     /**
