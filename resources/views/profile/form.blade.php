@@ -440,7 +440,7 @@ function selectUniverity(){
   // call api university
   const univ = fetch("{{ url('/') }}/api/university");
   
-  const datauniv = await univ.json();
+  const datauniv = univ.json();
       Array.prototype.forEach.call(datauniv, function(data) {
         var univid = data.id;
         var univname = data.university;
