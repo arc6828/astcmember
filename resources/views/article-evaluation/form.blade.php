@@ -1,57 +1,58 @@
-<div>
-    @php
-        $document_word = ($article->latest_word_documents)? $article->latest_word_documents->first() : null;
-        $document_pdf = ($article->latest_pdf_documents)? $article->latest_pdf_documents->first() : null;
-        $document_word_blind = ($article->latest_word_blind_documents)? $article->latest_word_blind_documents->first() : null;
-        $document_pdf_blind = ($article->latest_pdf_blind_documents)? $article->latest_pdf_blind_documents->first() : null;
-    @endphp
-    @if($document_word)
-        <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
-    @endif
-    @if($document_pdf)
-        <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
-    @endif
-    <br><br>
-    @if($document_word_blind)
-        <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx blind</a> 
-    @endif
-    @if($document_pdf_blind)
-        <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF blind</a>
-    @endif
-</div>
-                    <div class="card-header">โปรดให้ข้อคิดเห็น ข้อเสนอแนะตามที่ท่านเห็นสมควรในประเด็นแก้ไข</div>
-                    <div class="card-body">
-                        <a href="{{ url('/article-evaluation/create') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New ArticleEvaluation">
-                            <i class="fa fa-plus" aria-hidden="true"></i> Add New
-                        </a>
 
-                        <a href="{{ url('') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm " title="ดาวน์โหลดเอกสาร">
-                            <i class="fa fa-arrow-down" aria-hidden="true"></i> ดาวน์โหลดเอกสาร
-                        </a>
-                        <hr>
+<div class="card-header">โปรดให้ข้อคิดเห็น ข้อเสนอแนะตามที่ท่านเห็นสมควรในประเด็นแก้ไข</div>
+<div class="card-body">
+    <a href="{{ url('/article-evaluation/create') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New ArticleEvaluation">
+        <i class="fa fa-plus" aria-hidden="true"></i> Add New
+    </a>
 
-                        <div class="form-group d-none {{ $errors->has('article_id') ? 'has-error' : ''}}">
-                            <label for="article_id" class="control-label">{{ 'หมายเลขบทความ' }}</label>
-                            <input class="form-control" name="article_id" type="number" id="article_id" value="{{ isset($article->id) ? $article->id : ''}}" readonly required="">
-                            {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
-                            <label for="article_id" class="control-label">{{ 'ชื่อบทความ' }}</label>
-                            <input class="form-control" name="article_name" type="text" id="article_name" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
-                            {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        <div class="form-group d-none  {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
-                            <label for="reviewer_id" class="control-label">{{ 'หมายเลขผู้ประเมินบทความ' }}</label>
-                            <input class="form-control" name="reviewer_id" type="text" id="reviewer_id" value="{{ isset($reviewer->id) ? $reviewer->id : ''}}" readonly required="">
-                            {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
-                        </div>
-                        
-                        <div class="form-group {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
-                            <label for="reviewer_id" class="control-label">{{ 'ผู้ประเมินบทความ' }}</label>
-                            <input class="form-control" name="reviewer_name" type="text" id="reviewer_name" value="{{ isset($reviewer->name) ? $reviewer->title.$reviewer->name.' '.$reviewer->lastname : ''}}" readonly required="">
-                            {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
-                        </div>
+    <a href="{{ url('') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm " title="ดาวน์โหลดเอกสาร">
+        <i class="fa fa-arrow-down" aria-hidden="true"></i> ดาวน์โหลดเอกสาร
+    </a>
+    <div>
+        @php
+            $document_word = ($article->latest_word_documents)? $article->latest_word_documents->first() : null;
+            $document_pdf = ($article->latest_pdf_documents)? $article->latest_pdf_documents->first() : null;
+            $document_word_blind = ($article->latest_word_blind_documents)? $article->latest_word_blind_documents->first() : null;
+            $document_pdf_blind = ($article->latest_pdf_blind_documents)? $article->latest_pdf_blind_documents->first() : null;
+        @endphp
+        @if($document_word)
+            <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
+        @endif
+        @if($document_pdf)
+            <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
+        @endif
+        <br><br>
+        @if($document_word_blind)
+            <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx blind</a> 
+        @endif
+        @if($document_pdf_blind)
+            <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF blind</a>
+        @endif
+    </div>
+    <hr>
+
+    <div class="form-group d-none {{ $errors->has('article_id') ? 'has-error' : ''}}">
+        <label for="article_id" class="control-label">{{ 'หมายเลขบทความ' }}</label>
+        <input class="form-control" name="article_id" type="number" id="article_id" value="{{ isset($article->id) ? $article->id : ''}}" readonly required="">
+        {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
+    </div>
+    <div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+        <label for="article_id" class="control-label">{{ 'ชื่อบทความ' }}</label>
+        <input class="form-control" name="article_name" type="text" id="article_name" value="{{ isset($article->name_th) ? $article->name_th : ''}}" readonly required="">
+        {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
+    </div>
+    <div class="form-group d-none  {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
+        <label for="reviewer_id" class="control-label">{{ 'หมายเลขผู้ประเมินบทความ' }}</label>
+        <input class="form-control" name="reviewer_id" type="text" id="reviewer_id" value="{{ isset($reviewer->id) ? $reviewer->id : ''}}" readonly required="">
+        {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
+    </div>
     
+    <div class="form-group {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
+        <label for="reviewer_id" class="control-label">{{ 'ผู้ประเมินบทความ' }}</label>
+        <input class="form-control" name="reviewer_name" type="text" id="reviewer_name" value="{{ isset($reviewer->name) ? $reviewer->title.$reviewer->name.' '.$reviewer->lastname : ''}}" readonly required="">
+        {!! $errors->first('reviewer_id', '<p class="help-block">:message</p>') !!}
+    </div>
+
 
     <table class="table table-hover table-striped">
         <thead class="thead-dark">
