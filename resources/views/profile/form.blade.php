@@ -97,7 +97,7 @@
         <label for="group_university2" class="control-label">{{ 'ใช้ที่อยู่มหาวิทยาลัยในเครือข่าย' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm d-none" name="group_university2" id="group_university2"  required >
         @foreach($universities as $value)
-        <option value="{{ $value }}">{{ $value->university }} {{ $value->faculty }}</option>
+        <option value="{{ $value->id }}">{{ $value->university }} {{ $value->faculty }}</option>
         @endforeach
         </select>
         {!! $errors->first('group_university2', '<p class="help-block">:message</p>') !!}
