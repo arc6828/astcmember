@@ -1,4 +1,24 @@
-
+<div>
+    @php
+        $document_word = ($article->latest_word_documents)? $article->latest_word_documents->first() : null;
+        $document_pdf = ($article->latest_pdf_documents)? $article->latest_pdf_documents->first() : null;
+        $document_word_blind = ($article->latest_word_blind_documents)? $article->latest_word_blind_documents->first() : null;
+        $document_pdf_blind = ($article->latest_pdf_blind_documents)? $article->latest_pdf_blind_documents->first() : null;
+    @endphp
+    @if($document_word)
+        <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
+    @endif
+    @if($document_pdf)
+        <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
+    @endif
+    <br><br>
+    @if($document_word_blind)
+        <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx blind</a> 
+    @endif
+    @if($document_pdf_blind)
+        <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF blind</a>
+    @endif
+</div>
                     <div class="card-header">โปรดให้ข้อคิดเห็น ข้อเสนอแนะตามที่ท่านเห็นสมควรในประเด็นแก้ไข</div>
                     <div class="card-body">
                         <a href="{{ url('/article-evaluation/create') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New ArticleEvaluation">
