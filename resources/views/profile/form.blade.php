@@ -96,8 +96,8 @@
         <input type="checkbox" onchange="if(this.checked){ document.querySelector('#group_university2').classList.remove('d-none') }else{ document.querySelector('#group_university2').classList.add('d-none')}">
         <label for="group_university2" class="control-label">{{ 'ใช้ที่อยู่มหาวิทยาลัยในเครือข่าย' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm d-none" name="group_university2" id="group_university2"  required >
-        @foreach(["ไม่มี","วไลยอลงกรณ์","ม.รังสิต","ม.หัวเฉียว"] as $value)
-        <option value="{{ $value }}">{{ $value }}</option>
+        @foreach($universities as $value)
+        <option value="{{ $value }}">{{ $value->university }} {{ $value->faculty }}</option>
         @endforeach
         </select>
         {!! $errors->first('group_university2', '<p class="help-block">:message</p>') !!}
@@ -161,8 +161,8 @@
         <input type="checkbox" onchange="if(this.checked){ document.querySelector('#group_university').classList.remove('d-none') }else{ document.querySelector('#group_university').classList.add('d-none')}">
         <label for="group_university" class="control-label">{{ 'ใช้ที่อยู่มหาวิทยาลัยในเครือข่าย' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm d-none" name="group_university" id="group_university"  required >
-        @foreach(["ไม่มี","วไลยอลงกรณ์","ม.รังสิต","ม.หัวเฉียว"] as $value)
-        <option value="{{ $value }}">{{ $value }}</option>
+        @foreach($universities as $value)
+        <option value="{{ $value->id }}">{{ $value->university }} {{ $value->faculty }}</option>
         @endforeach
         </select>
         {!! $errors->first('group_university', '<p class="help-block">:message</p>') !!}
@@ -434,5 +434,10 @@ function showZipcodeBill(){
   };
   //CALL AJAX
   ajax(url,callback);
+}
+
+function selectUniverity(){
+  // call api university
+  const univ = fetch("{{ url('/') }}/api/university");
 }
 </script>
