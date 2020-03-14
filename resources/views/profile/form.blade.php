@@ -3,7 +3,7 @@
     <!--input name="sex" type="radio" id="sex" value="นาย" checked> นาย
     <input name="sex" type="radio" id="sex" value="นาง"> นาง
     <input name="sex" type="radio" id="sex" value="นางสาว"> นางสาว-->
-    <select name="sex" class="form-control form-control-sm" id="sex" ">
+    <select name="sex" class="form-control form-control-sm" id="sex">
     @foreach (["นาย","นาง","นางสาว"] as $optionValue)
         <option value="{{ $optionValue }}" {{ (isset($profile->sex) && $profile->sex == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
     @endforeach
@@ -103,7 +103,7 @@
         {!! $errors->first('group_university2', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('school') ? 'has-error' : ''}}">
-        <label for="school" class="control-label">{{ 'สถาบัน' }}</label><span class="text-danger">{{ '*' }}</span>
+        <label for="school" class="control-label">{{ 'มหาวิทยาลัย/สถาบัน' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="school" type="text" id="school" value="{{ isset($profile->school) ? $profile->school : ''}}" required >
         {!! $errors->first('school', '<p class="help-block">:message</p>') !!}
     </div>
@@ -141,7 +141,7 @@
     </div>
     <div class="form-group {{ $errors->has('postnumber') ? 'has-error' : ''}}">
         <label for="postnumber" class="control-label">{{ 'รหัสไปรษณีย์' }}</label>
-        <input class="form-control form-control-sm" name="postnumber" id="postnumber" >
+        <input class="form-control form-control-sm" name="postnumber" id="postnumber">
         {!! $errors->first('postnumber', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('tel') ? 'has-error' : ''}}">
@@ -168,7 +168,7 @@
         {!! $errors->first('group_university', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('bill_school') ? 'has-error' : ''}}">
-        <label for="bill_school" class="control-label">{{ 'สถาบัน' }}</label><span class="text-danger">{{ '*' }}</span>
+        <label for="bill_school" class="control-label">{{ 'มหาวิทยาลัย/สถาบัน' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="bill_school" type="text" id="bill_school" value="{{ isset($profile->bill_school) ? $profile->bill_school : ''}}" required >
         {!! $errors->first('bill_school', '<p class="help-block">:message</p>') !!}
     </div>
@@ -205,7 +205,7 @@
     </div>
     <div class="form-group {{ $errors->has('bill_postnumber') ? 'has-error' : ''}}">
         <label for="bill_postnumber" class="control-label">{{ 'รหัสไปรษณีย์' }}</label>
-        <input class="form-control form-control-sm" name="bill_postnumber" id="bill_postnumber" >
+        <input class="form-control form-control-sm" name="bill_postnumber" id="bill_postnumber">
         {!! $errors->first('bill_postnumber', '<p class="help-block">:message</p>') !!}
     </div>
     <div class="form-group {{ $errors->has('bill_tel') ? 'has-error' : ''}}">
@@ -230,7 +230,7 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'สร้าง' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'บันทึกข้อมูล' : 'สร้าง' }}">
 </div>
 
 
@@ -439,5 +439,18 @@ function showZipcodeBill(){
 function selectUniverity(){
   // call api university
   const univ = fetch("{{ url('/') }}/api/university");
+  
+  const datauniv = await univ.json();
+      Array.prototype.forEach.call(datauniv, function(data) {
+        var univid = data.id;
+        var univname = data.university;
+        var univfac = data.faculty;
+        var univaddress = data.address;
+        var univdistrict = data.district;
+        var univsubdis = data.subdistrict;
+        var univprovince = data.province;
+        var univpostcode = data.postcode;
+        var univtel = data.tel;
+      });
 }
 </script>
