@@ -6,6 +6,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Profile;
+use App\University;
 use Illuminate\Http\Request;
 
 class ProfileController extends Controller
@@ -66,7 +67,8 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        return view('profile.create');
+        $universities = University::all();
+        return view('profile.create', compact('university'));
     }
 
     /**
@@ -114,8 +116,9 @@ class ProfileController extends Controller
     public function edit($id)
     {
         $profile = Profile::findOrFail($id);
+        $universities = University::all();
 
-        return view('profile.edit', compact('profile'));
+        return view('profile.edit', compact('profile','universities'));
     }
 
     /**
