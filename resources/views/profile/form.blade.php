@@ -435,7 +435,7 @@ function showZipcodeBill(){
   //CALL AJAX
   ajax(url,callback);
 }
-
+/*
 function selectUniverity(){
   // call api university
   const univ = fetch("{{ url('/') }}/api/university");
@@ -452,5 +452,5 @@ function selectUniverity(){
         var univpostcode = data.postcode;
         var univtel = data.tel;
       });
-}
+}*/
 </script>
