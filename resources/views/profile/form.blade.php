@@ -1,3 +1,5 @@
+<div class="row">
+<div class="col-4">
 <div class="form-group {{ $errors->has('sex') ? 'has-error' : ''}}">
     <label for="sex" class="control-label">{{ 'คำนำหน้า' }}</label><span class="text-danger">{{ '*' }}</span><br>
     <!--input name="sex" type="radio" id="sex" value="นาย" checked> นาย
@@ -13,6 +15,8 @@
     </script>
     {!! $errors->first('sex', '<p class="help-block">:message</p>') !!}
 </div>
+</div>
+<div class="col-6">
 <div class="form-group {{ $errors->has('title') ? 'has-error' : ''}}">
     <label for="title" class="control-label">{{ 'ตำแหน่งทางวิชาการ / อาชีพ' }}</label><span class="text-danger">{{ '*' }}</span>
     <div class="form-row">
@@ -32,15 +36,12 @@
     </div>
     {!! $errors->first('title', '<p class="help-block">:message</p>') !!}
 </div>
+</div>
+</div>
 <div class="form-group {{ $errors->has('name') ? 'has-error' : ''}}">
-    <label for="name" class="control-label">{{ 'ชื่อ' }}</label><span class="text-danger">{{ '*' }}</span>
+    <label for="name" class="control-label">{{ 'ชื่อ-นามสกุล' }}</label><span class="text-danger">{{ '*' }}</span>
     <input class="form-control form-control-sm" name="name" type="text" id="name" value="{{ isset($profile->name) ? $profile->name : ''}}" required >
     {!! $errors->first('name', '<p class="help-block">:message</p>') !!}
-</div>
-<div class="form-group {{ $errors->has('lastname') ? 'has-error' : ''}}">
-    <label for="lastname" class="control-label">{{ 'นามสกุล' }}</label><span class="text-danger">{{ '*' }}</span>
-    <input class="form-control form-control-sm" name="lastname" type="text" id="lastname" value="{{ isset($profile->lastname) ? $profile->lastname : ''}}" required >
-    {!! $errors->first('lastname', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
     <label for="email" class="control-label">{{ 'อีเมล' }}</label><span class="text-danger">{{ '*' }}</span>
@@ -95,28 +96,36 @@
     <div class="form-group {{ $errors->has('group_university2') ? 'has-error' : ''}}">
         <input type="checkbox" onchange="if(this.checked){ document.querySelector('#group_university2').classList.remove('d-none') }else{ document.querySelector('#group_university2').classList.add('d-none')}">
         <label for="group_university2" class="control-label">{{ 'ใช้ที่อยู่มหาวิทยาลัยในเครือข่าย' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm d-none" name="group_university2" id="group_university2"  required >
+        <select class="form-control form-control-sm d-none" name="group_university2" id="group_university2" onchange="selectUniversity()"  required >
         @foreach($universities as $value)
         <option value="{{ $value->id }}">{{ $value->university }} {{ $value->faculty }}</option>
         @endforeach
         </select>
         {!! $errors->first('group_university2', '<p class="help-block">:message</p>') !!}
     </div>
+  <div class="row">
+  <div class="col-6">
     <div class="form-group {{ $errors->has('school') ? 'has-error' : ''}}">
         <label for="school" class="control-label">{{ 'มหาวิทยาลัย/สถาบัน' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="school" type="text" id="school" value="{{ isset($profile->school) ? $profile->school : ''}}" required >
         {!! $errors->first('school', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  <div class="col-6">
     <div class="form-group {{ $errors->has('major') ? 'has-error' : ''}}">
         <label for="major" class="control-label">{{ 'คณะ/ภาควิชา' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="major" type="text" id="major" value="{{ isset($profile->major) ? $profile->major : ''}}" required >
         {!! $errors->first('major', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  </div>
     <div class="form-group {{ $errors->has('address') ? 'has-error' : ''}}">
         <label for="address" class="control-label">{{ 'เลขที่ ซอย ถนน' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="address" type="text" id="address" value="{{ isset($profile->address) ? $profile->address : ''}}" required >
         {!! $errors->first('address', '<p class="help-block">:message</p>') !!}
     </div>
+  <div class="row">
+  <div class="col-3">
     <div class="form-group {{ $errors->has('province') ? 'has-error' : ''}}">
         <label for="province" class="control-label">{{ 'จังหวัด' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm" name="province" id="province" onchange="showAmphoes()"  data-value="{{ isset($profile->province) ? $profile->province : ''}}" required >
@@ -124,6 +133,8 @@
         </select>
         {!! $errors->first('province', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  <div class="col-3">
     <div class="form-group {{ $errors->has('amphoe') ? 'has-error' : ''}}">
         <label for="amphoe" class="control-label">{{ 'อำเภอ' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm" name="amphoe" id="amphoe" onchange="showDistricts()" data-value="{{ isset($profile->amphoe) ? $profile->amphoe : ''}}" required >
@@ -132,6 +143,8 @@
         
         {!! $errors->first('amphoe', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  <div class="col-3">
     <div class="form-group {{ $errors->has('district') ? 'has-error' : ''}}">
         <label for="district" class="control-label">{{ 'ตำบล' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm" name="district" id="district" onchange="showZipcode()" data-value="{{ isset($profile->district) ? $profile->district : ''}}" required >
@@ -139,49 +152,65 @@
         </select>
         {!! $errors->first('district', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  <div class="col-3">
     <div class="form-group {{ $errors->has('postnumber') ? 'has-error' : ''}}">
         <label for="postnumber" class="control-label">{{ 'รหัสไปรษณีย์' }}</label>
-        <input class="form-control form-control-sm" name="postnumber" id="postnumber">
+        <input class="form-control form-control-sm" name="postnumber" type="number" id="postnumber">
         {!! $errors->first('postnumber', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  </div>
+  <div class="row">
+  <div class="col-6">
     <div class="form-group {{ $errors->has('tel') ? 'has-error' : ''}}">
         <label for="tel" class="control-label">{{ 'เบอร์โทรศัพท์' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="tel" type="text" id="tel" value="{{ isset($profile->tel) ? $profile->tel : ''}}" required >
         {!! $errors->first('tel', '<p class="help-block">:message</p>') !!}
     </div>
+    </div>
+  <div class="col-6">
     <div class="form-group {{ $errors->has('fax') ? 'has-error' : ''}}">
         <label for="fax" class="control-label">{{ 'เบอร์โทรสาร' }}</label>
         <input class="form-control form-control-sm" name="fax" type="text" id="fax" value="{{ isset($profile->fax) ? $profile->fax : ''}}" >
         {!! $errors->first('fax', '<p class="help-block">:message</p>') !!}
     </div>
-  </div>
-  <div class="col">
+    </div>
+    </div>
     <h4>ที่อยู่ตามใบเสร็จการชำระเงิน</h4>
     <div class="form-group {{ $errors->has('group_university') ? 'has-error' : ''}}">
         <input type="checkbox" onchange="if(this.checked){ document.querySelector('#group_university').classList.remove('d-none') }else{ document.querySelector('#group_university').classList.add('d-none')}">
         <label for="group_university" class="control-label">{{ 'ใช้ที่อยู่มหาวิทยาลัยในเครือข่าย' }}</label><span class="text-danger">{{ '*' }}</span>
-        <select class="form-control form-control-sm d-none" name="group_university" id="group_university"  required >
+        <select class="form-control form-control-sm d-none" name="group_university" id="group_university" onchange="selectUniversityBill()" required >
         @foreach($universities as $value)
         <option value="{{ $value->id }}">{{ $value->university }} {{ $value->faculty }}</option>
         @endforeach
         </select>
         {!! $errors->first('group_university', '<p class="help-block">:message</p>') !!}
     </div>
+  <div class="row">
+  <div class="col-6">
     <div class="form-group {{ $errors->has('bill_school') ? 'has-error' : ''}}">
         <label for="bill_school" class="control-label">{{ 'มหาวิทยาลัย/สถาบัน' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="bill_school" type="text" id="bill_school" value="{{ isset($profile->bill_school) ? $profile->bill_school : ''}}" required >
         {!! $errors->first('bill_school', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  <div class="col-6">
     <div class="form-group {{ $errors->has('bill_major') ? 'has-error' : ''}}">
         <label for="bill_major" class="control-label">{{ 'คณะ/ภาควิชา' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="bill_major" type="text" id="bill_major" value="{{ isset($profile->bill_major) ? $profile->bill_major : ''}}" required >
         {!! $errors->first('bill_major', '<p class="help-block">:message</p>') !!}
     </div>
+  </div>
+  </div>
     <div class="form-group {{ $errors->has('bill_address') ? 'has-error' : ''}}">
         <label for="bill_address" class="control-label">{{ 'เลขที่ ซอย ถนน' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="bill_address" type="text" id="bill_address" value="{{ isset($profile->bill_address) ? $profile->bill_address : ''}}" required >
         {!! $errors->first('bill_address', '<p class="help-block">:message</p>') !!}
     </div>
+    <div class="row">
+  <div class="col-3">
     <div class="form-group {{ $errors->has('bill_province') ? 'has-error' : ''}}">
         <label for="bill_province" class="control-label">{{ 'จังหวัด' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm" name="bill_province" id="bill_province" onchange="showAmphoesBill()" data-value="{{ isset($profile->bill_province) ? $profile->bill_province : ''}}" required >
@@ -189,6 +218,8 @@
         </select>
         {!! $errors->first('bill_province', '<p class="help-block">:message</p>') !!}
     </div>
+    </div>
+    <div class="col-3">
     <div class="form-group {{ $errors->has('bill_amphoe') ? 'has-error' : ''}}">
         <label for="bill_amphoe" class="control-label">{{ 'อำเภอ' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm" name="bill_amphoe" id="bill_amphoe" onchange="showDistrictsBill()" data-value="{{ isset($profile->bill_amphoe) ? $profile->bill_amphoe : ''}}" required >
@@ -196,6 +227,8 @@
         </select>
         {!! $errors->first('bill_amphoe', '<p class="help-block">:message</p>') !!}
     </div>
+    </div>
+    <div class="col-3">
     <div class="form-group {{ $errors->has('bill_district') ? 'has-error' : ''}}">
         <label for="bill_district" class="control-label">{{ 'ตำบล' }}</label><span class="text-danger">{{ '*' }}</span>
         <select class="form-control form-control-sm" name="bill_district" id="bill_district" onchange="showZipcodeBill()" data-value="{{ isset($profile->bill_district) ? $profile->bill_district : ''}}" required >
@@ -203,20 +236,30 @@
         </select>
         {!! $errors->first('bill_district', '<p class="help-block">:message</p>') !!}
     </div>
+    </div>
+    <div class="col-3">
     <div class="form-group {{ $errors->has('bill_postnumber') ? 'has-error' : ''}}">
         <label for="bill_postnumber" class="control-label">{{ 'รหัสไปรษณีย์' }}</label>
-        <input class="form-control form-control-sm" name="bill_postnumber" id="bill_postnumber">
+        <input class="form-control form-control-sm" name="bill_postnumber" type="number" id="bill_postnumber">
         {!! $errors->first('bill_postnumber', '<p class="help-block">:message</p>') !!}
     </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-6">
     <div class="form-group {{ $errors->has('bill_tel') ? 'has-error' : ''}}">
         <label for="bill_tel" class="control-label">{{ 'เบอร์โทรศัพท์' }}</label><span class="text-danger">{{ '*' }}</span>
         <input class="form-control form-control-sm" name="bill_tel" type="text" id="bill_tel" value="{{ isset($profile->bill_tel) ? $profile->bill_tel : ''}}" required >
         {!! $errors->first('bill_tel', '<p class="help-block">:message</p>') !!}
     </div>
+    </div>
+    <div class="col-6">
     <div class="form-group {{ $errors->has('bill_fax') ? 'has-error' : ''}}">
         <label for="bill_fax" class="control-label">{{ 'เบอร์โทรสาร' }}</label>
         <input class="form-control form-control-sm" name="bill_fax" type="text" id="bill_fax" value="{{ isset($profile->bill_fax) ? $profile->bill_fax : ''}}" >
         {!! $errors->first('bill_fax', '<p class="help-block">:message</p>') !!}
+    </div>
+    </div>
     </div>
   </div>
 </div>
@@ -435,22 +478,42 @@ function showZipcodeBill(){
   //CALL AJAX
   ajax(url,callback);
 }
-/*
-function selectUniverity(){
+
+function selectUniversity(){
   // call api university
-  const univ = fetch("{{ url('/') }}/api/university");
-  
-  const datauniv = univ.json();
-      Array.prototype.forEach.call(datauniv, function(data) {
-        var univid = data.id;
-        var univname = data.university;
-        var univfac = data.faculty;
-        var univaddress = data.address;
-        var univdistrict = data.district;
-        var univsubdis = data.subdistrict;
-        var univprovince = data.province;
-        var univpostcode = data.postcode;
-        var univtel = data.tel;
-      });
-}*/
+  var id = document.getElementById("group_university2").value;
+  //var school = document.getElementById("school");
+  var url = "{{ url('/') }}/api/university/"+id;
+  console.log(url);
+  var datajson = fetch(url).then(response => response.json())
+  .then(data => {
+    console.log(data);
+    console.log(data.university);
+    //console.log(school);
+    document.getElementById("school").value = data.university;
+    document.getElementById("major").value = data.faculty;
+    document.getElementById("address").value = data.address;
+    document.getElementById("postnumber").value = data.postcode;
+    document.getElementById("tel").value = data.tel;
+  });
+}
+
+function selectUniversityBill(){
+  // call api university
+  var id = document.getElementById("group_university").value;
+  //var school = document.getElementById("school");
+  var url = "{{ url('/') }}/api/university/"+id;
+  console.log(url);
+  var datajson = fetch(url).then(response => response.json())
+  .then(data => {
+    console.log(data);
+    console.log(data.university);
+    //console.log(school);
+    document.getElementById("bill_school").value = data.university;
+    document.getElementById("bill_major").value = data.faculty;
+    document.getElementById("bill_address").value = data.address;
+    document.getElementById("bill_postnumber").value = data.postcode;
+    document.getElementById("bill_tel").value = data.tel;
+  });
+}
 </script>
