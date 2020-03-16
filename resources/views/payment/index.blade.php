@@ -43,7 +43,14 @@
                             <td>{{ $loop->iteration }}</td>
                             <td>{{ $item->total }}</td>
                             <td>{{ $item->remark }}</td>
-                            <td><img src="{{ url('storage')}}/{{ $item->receipt }}" width="100" /></td>
+                            <td>                                
+                                <div>
+                                    <a href="{{ url('storage')}}/{{ $item->receipt }}" target="_blank">
+                                        <img src="{{ url('storage')}}/{{ $item->receipt }}" width="50" />  
+                                        ดาวน์โหลด                                      
+                                    </a>                                    
+                                </div>                                
+                            </td>
                             <td>{{ $item->user_id }}</td>
                             
                                 <td>

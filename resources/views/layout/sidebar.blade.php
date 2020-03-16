@@ -55,7 +55,7 @@
           <i class="fas fa-fw fa-file"></i> <span>รายชื่อผู้ส่งบทความ</span>
         </a>
       </li>
-      <li class="nav-item d-none">
+      <li class="nav-item">
         <a class="nav-link" href="{{ url('/university_payment') }}" >
           <i class="fas fa-fw fa-file"></i> <span>แจ้งชำระเงิน</span>
         </a>

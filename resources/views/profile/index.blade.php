@@ -106,10 +106,17 @@
                                             @endswitch  
                                             <div>
                                                 @php
-                                                    $payments = ($item->payments)? $item->payments : [];                                                    
+                                                    $payments = ($item->payments)? $item->payments : [];  
+                                                    //print_r($payments);                                                  
                                                 @endphp
                                                 @foreach($payments as $payment)
-                                                    <a href="{{ url('storage') }}/{{$payment->receipt }}" class="btn btn-primary btn-sm mr-4">ดาวน์โหลดใบเสร็จ</a> 
+                                                    
+                                                    <div>
+                                                        <a href="{{ url('storage')}}/{{ $payment->receipt }}" target="_blank">
+                                                            <img src="{{ url('storage')}}/{{ $payment->receipt }}" width="50" />  
+                                                            ดาวน์โหลด                                      
+                                                        </a>                                    
+                                                    </div>   
                                                 @endforeach                                                
                                             </div>
 
