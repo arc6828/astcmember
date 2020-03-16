@@ -104,6 +104,14 @@
 
                                         
                                             @endswitch  
+                                            <div>
+                                                @php
+                                                    $payments = ($item->payments)? $item->payments : [];                                                    
+                                                @endphp
+                                                @foreach($payments as $payment)
+                                                    <a href="{{ url('storage') }}/{{$payment->receipt }}" class="btn btn-primary btn-sm mr-4">ดาวน์โหลดใบเสร็จ</a> 
+                                                @endforeach                                                
+                                            </div>
 
                                         </td>
                                         <td>
