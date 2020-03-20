@@ -5,7 +5,7 @@
         <i class="fa fa-plus" aria-hidden="true"></i> Add New
     </a>
 
-    <a href="{{ url('') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm " title="ดาวน์โหลดเอกสาร">
+    <a href="{{ url('') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="ดาวน์โหลดเอกสาร">
         <i class="fa fa-arrow-down" aria-hidden="true"></i> ดาวน์โหลดเอกสาร
     </a>
     <div>
@@ -69,7 +69,7 @@
                 <td>ชื่อเรื่อง (Title)</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_name') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_name" type="number" id="evaluation_name" max="5" value="{{ isset($articleevaluation->evaluation_name) ? $articleevaluation->evaluation_name : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_name" type="number" id="evaluation_name" min="0" max="5" value="{{ isset($articleevaluation->evaluation_name) ? $articleevaluation->evaluation_name : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_name', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_name') ? 'has-error' : ''}}">
@@ -82,7 +82,7 @@
                 <td>บทคัดย่อ (Abstract)</td>
                 <td>10</td>
                 <td><div class="form-group {{ $errors->has('evaluation_abstract') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_abstract" type="number" id="evaluation_abstract" max="10" value="{{ isset($articleevaluation->evaluation_abstract) ? $articleevaluation->evaluation_abstract : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_abstract" type="number" id="evaluation_abstract" max="10" min="0" value="{{ isset($articleevaluation->evaluation_abstract) ? $articleevaluation->evaluation_abstract : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_abstract', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_abstract') ? 'has-error' : ''}}">
@@ -95,7 +95,7 @@
                 <td>บทนำ <br>(วัตถุประสงค์<br>และความสำคัญของ<br>ปัญหาวิจัย)<br>(Introduction)</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_introduction') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_introduction" type="number" id="evaluation_introduction" max="20" value="{{ isset($articleevaluation->evaluation_introduction) ? $articleevaluation->evaluation_introduction : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_introduction" type="number" id="evaluation_introduction" max="20" min="0" value="{{ isset($articleevaluation->evaluation_introduction) ? $articleevaluation->evaluation_introduction : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_introduction', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_introduction') ? 'has-error' : ''}}">
@@ -108,7 +108,7 @@
                 <td>วิธีดำเนินการวิจัย<br>(ระเบียบวิธีวิจัยและ<br>ขั้นตอนวิธีดำเนินการวิจัย)</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_methodology') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_methodology" type="number" id="evaluation_methodology" max="20" value="{{ isset($articleevaluation->evaluation_methodology) ? $articleevaluation->evaluation_methodology : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_methodology" type="number" id="evaluation_methodology" max="20" min="0" value="{{ isset($articleevaluation->evaluation_methodology) ? $articleevaluation->evaluation_methodology : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_methodology', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_methodology') ? 'has-error' : ''}}">
@@ -121,7 +121,7 @@
                 <td>ผลการวิจัย<br>และการอภิปรายผล</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_result') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_result" type="number" id="evaluation_result" max="20" value="{{ isset($articleevaluation->evaluation_result) ? $articleevaluation->evaluation_result : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_result" type="number" id="evaluation_result" max="20" min="0" value="{{ isset($articleevaluation->evaluation_result) ? $articleevaluation->evaluation_result : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_result', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_result') ? 'has-error' : ''}}">
@@ -134,7 +134,7 @@
                 <td>สรุปผลการวิจัย</td>
                 <td>20</td>
                 <td><div class="form-group {{ $errors->has('evaluation_conclusion') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_conclusion" type="number" id="evaluation_conclusion" max="20" value="{{ isset($articleevaluation->evaluation_conclusion) ? $articleevaluation->evaluation_conclusion : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_conclusion" type="number" id="evaluation_conclusion" max="20" min="0" value="{{ isset($articleevaluation->evaluation_conclusion) ? $articleevaluation->evaluation_conclusion : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_conclusion', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_conclusion') ? 'has-error' : ''}}">
@@ -147,7 +147,7 @@
                 <td>เอกสารอ้างอิง</td>
                 <td>5</td>
                 <td><div class="form-group {{ $errors->has('evaluation_reference') ? 'has-error' : ''}}">
-                        <input class="form-control sum_input" name="evaluation_reference" type="number" id="evaluation_reference" max="5" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="" onchange="sum_score()">
+                        <input class="form-control sum_input" name="evaluation_reference" type="number" id="evaluation_reference" max="5" min="0" value="{{ isset($articleevaluation->evaluation_reference) ? $articleevaluation->evaluation_reference : ''}}" required="" onchange="sum_score()">
                         {!! $errors->first('evaluation_reference', '<p class="help-block">:message</p>') !!}
                     </div></td>
                 <td><div class="form-group {{ $errors->has('comment_reference') ? 'has-error' : ''}}">

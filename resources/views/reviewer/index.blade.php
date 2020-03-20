@@ -31,25 +31,39 @@
                                 <thead>
                                     <tr>
                                         <th>#</th>
-                                        <th>เมล์</th>
-                                        <th>คำนำหน้า</th><th>ชื่อ</th><th>นามสกุล</th>
-                                        <th>กลุ่ม</th>
-                                        <th>ผู้เชี่ยวชาญ</th>
+                                        <th>ผู้ประเมิน</th>
                                         <!--th>School</th>
                                         <th>Major</th>
                                         <th>Address</th><th>District</th><th>Amphoe</th><th>Province</th><th>Postnumber</th><th>Tel</th><th>Fax</th>
                                         <th>Type</th><th>Remark</th-->
-                                        <th>สถานะ</th><th></th>
+                                        <th>อีเมล์</th>
+                                        <th>สถานะ</th> 
                                     </tr>
                                 </thead>
                                 <tbody>
                                 @foreach($reviewer as $item)
                                     <tr>
                                         <td>{{ $loop->iteration }}</td>
+                                        <td>
+                                        <div class="text-primary">
+                                             <b>{{ $item->title }} </b>
+                                                 <b>{{ $item->name }} </b>
+                                                 <b>{{ $item->lastname }} </b> 
+                                        </div>
+
+                                        <div>
+                                        <b>เบอร์โทรศัพท์มือถือ : </b> {{ $item->tel }}   
+                                        </div>
+
+                                        <div>
+                                        <b>กลุ่ม : </b>{{ $item->group }}
+                                        </div>
+
+                                        <div>
+                                        <b>ผู้เชี่ยวชาญ : </b>{{ $item->expert }}
+                                        </div>
+                                        </td>
                                         <td>{{ $item->email }}</td>
-                                        <td>{{ $item->title }}</td><td>{{ $item->name }}</td><td>{{ $item->lastname }}</td>
-                                        <td>{{ $item->group }}</td>
-                                        <td>{{ $item->expert }}</td>
                                         <!--td>{{ $item->school }}</td><td>{{ $item->major }}</td><td>{{ $item->address }}</td><td>{{ $item->district }}</td><td>{{ $item->amphoe }}</td><td>{{ $item->province }}</td><td>{{ $item->postnumber }}</td><td>{{ $item->tel }}</td><td>{{ $item->fax }}</td><td>{{ $item->type }}</td><td>{{ $item->remark }}</td-->
                                         <th>{{ $item->status }}</th>
                                         <td>
