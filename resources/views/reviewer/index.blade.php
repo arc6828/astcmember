@@ -39,7 +39,7 @@
                                         <th>Major</th>
                                         <th>Address</th><th>District</th><th>Amphoe</th><th>Province</th><th>Postnumber</th><th>Tel</th><th>Fax</th>
                                         <th>Type</th><th>Remark</th-->
-                                        <th>สถานะ</th><th>Actions</th>
+                                        <th>สถานะ</th><th></th>
                                     </tr>
                                 </thead>
                                 <tbody>

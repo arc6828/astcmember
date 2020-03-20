@@ -2,7 +2,7 @@
     <label for="prapet" class="control-label">{{ 'ประเภทการนำเสนอ' }} <span class="text-danger">*</span></label>
     <select name="prapet" class="form-control" id="prapet" >
     
-    @foreach (["Oral Presentation","Poster"] as $optionKey => $optionValue)
+    @foreach (["ประเภทบรรยาย (Oral Presentation)","ประเภทโปสเตอร์ (Poster)"] as $optionKey => $optionValue)
         <option value="{{ $optionValue }}" {{ (isset($article->prapet) && $article->prapet == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
     @endforeach
 </select>
@@ -38,26 +38,26 @@
 </div>
 <div class="form-group {{ $errors->has('name_present') ? 'has-error' : ''}}">
     <label for="name_present" class="control-label">{{ 'ชื่อผู้นำเสนอผลงาน (1 คน)' }} <span class="text-danger">*</span></label>
-    <input class="form-control" name="name_present" type="text" id="name_present" value="{{ isset($article->name_present) ? $article->name_present : ''}}" required>
+    <input class="form-control" name="name_present" type="text" id="name_present" value="{{ isset($article->name_present) ? $article->name_present : ''}}" placeholder="ไม่ต้องมีคำหน้าชื่อ เช่น นายสมคิด นึกถึง" required>
     {!! $errors->first('name_present', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('name_aj') ? 'has-error' : ''}}">
     <label for="name_aj" class="control-label">{{ 'ชื่อผู้แต่งร่วม (optional / ต้องไม่ซ้ำกับผ้นำเสนอ/แต่ละชื่อคั่นด้วย , )' }}</label>
-    <input class="form-control" name="name_aj" type="text" id="name_aj" value="{{ isset($article->name_aj) ? $article->name_aj : ''}}" >
+    <input class="form-control" name="name_aj" type="text" id="name_aj" value="{{ isset($article->name_aj) ? $article->name_aj : ''}}" placeholder="ไม่ต้องมีคำนำหน้าชื่อ เช่น จันทร์ ทองสุข , อังคาร วิเศษ หรือ ถ้าไม่มีให้ใส่ -" >
     {!! $errors->first('name_aj', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('purubpitshop') ? 'has-error' : ''}}">
     <label for="purubpitshop" class="control-label">{{ 'ผู้รับผิดชอบบทความ/ นักวิจัยหลัก (Co-responding)' }} <span class="text-danger">*</span></label>
-    <input class="form-control" name="purubpitshop" type="text" id="purubpitshop" value="{{ isset($article->purubpitshop) ? $article->purubpitshop : ''}}" required>
+    <input class="form-control" name="purubpitshop" type="text" id="purubpitshop" value="{{ isset($article->purubpitshop) ? $article->purubpitshop : ''}}" placeholder="ไม่ต้องมีคำหน้าชื่อ เช่น นายสมคิด นึกถึง" required>
     {!! $errors->first('purubpitshop', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">
     <label for="email" class="control-label">{{ 'อีเมลผู้รับผิดชอบหลัก (Co-responding)' }} <span class="text-danger">*</span></label>
-    <input class="form-control" name="email" type="text" id="email" value="{{ isset($article->email) ? $article->email : ''}}" required>
+    <input class="form-control" name="email" type="email" id="email" value="{{ isset($article->email) ? $article->email : ''}}" required>
     {!! $errors->first('email', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('tel_aj') ? 'has-error' : ''}}">
-    <label for="tel_aj" class="control-label">{{ 'เบอร์โทรศัพท์ผู้รับผิดชอบหลัก (Co-responding)' }} <span class="text-danger">*</span></label>
+    <label for="tel_aj" class="control-label">{{ 'เบอร์โทรศัพท์มือถือผู้รับผิดชอบหลัก (Co-responding)' }} <span class="text-danger">*</span></label>
     <input class="form-control" name="tel_aj" type="text" id="tel_aj" value="{{ isset($article->tel_aj) ? $article->tel_aj : ''}}" required>
     {!! $errors->first('tel_aj', '<p class="help-block">:message</p>') !!}
 </div>
