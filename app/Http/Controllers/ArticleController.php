@@ -132,8 +132,8 @@ class ArticleController extends Controller
     public function getNewCode($group , $prapet){
         
         $prapet_codes = [            
-            "Oral Presentation" => "O",
-            "Poster" => "P",
+            "ประเภทบรรยาย (Oral Presentation)" => "O",
+            "ประเภทโปสเตอร์ (Poster)" => "P",
         ];
         $number = Article::where('group', $group)->where('prapet',$prapet)->count();
         $count =  $number + 1;
@@ -228,6 +228,10 @@ class ArticleController extends Controller
     
                 case "pass" : 
                     $requestData['pass_at'] = date('Y-m-d H:i:s');
+                    break;
+
+                case "Cancel" :
+                    $requestData['cancel_at'] = date('Y-m-d H:i:s');
                     break;
             }
         }

@@ -12,7 +12,7 @@
                             <i class="fa fa-plus" aria-hidden="true"></i> สร้างบทความใหม่
                         </a>
                         
-
+                        
 
                         <form method="GET" action="{{ url('/article') }}" accept-charset="UTF-8" class="form-inline my-2 my-lg-0 float-right" role="search">
                             <div class="input-group">
@@ -107,7 +107,7 @@
                                             @switch($item->status)
                                             @case("Create")                                                     
                                                 <div><span class="badge badge-warning">รอการอัพโหลดบทความ</span></div>
-                                                <div>{{ $item->created_at}}</div>
+                                                <div>{{ $item->created_at}}</div><br>
                                                 @break
                                             @case("receive")                                                     
                                                 <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
@@ -141,19 +141,24 @@
                                                 <div><span class="badge badge-danger">ไม่ผ่าน</span></div>
                                                 <div>{{ $item->notpass_at }}</div>
                                                 @break
+                                            @case("Cancel")                                                     
+                                                <div><span class="badge badge-danger">บทความที่ถูกยกเลิก</span></div>
+                                                <div>{{ $item->cancel_at }}</div>
+                                                @break
                                             @endswitch   
                                         </td>
+                                        
                                         <td>
                                             <form method="POST" action="{{ url('/article' . '/' . $item->id) }}" accept-charset="UTF-8" style="display:inline">
                                                 {{ method_field('PATCH') }}
                                                 {{ csrf_field() }}
                                                 @switch($item->status)
 
-                                                    @case("Create")
-                                                        @if(Auth::user()->profile->role == "academic-admin")    
-                                                            <input type="hidden" name="status" value="receive">
-                                                            <button type="submit" class="btn btn-warning btn-sm d-none"> ได้รับบทความแล้ว</button>
-                                                        @endif
+                                                    @case("Create")  
+                                                        @if(Auth::user()->profile->role == "author") 
+                                                            <input type="hidden" name="status" value="Cancel">
+                                                            <button type="submit" class="btn btn-danger btn-sm float-right">ยกเลิกบทความ</button>
+                                                            @endif
                                                         @break
 
                                                     @case("receive")

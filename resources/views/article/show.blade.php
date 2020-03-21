@@ -7,7 +7,8 @@
 
             <div class="col-md-9">
                 <div class="card mb-4">
-                    <div class="card-header">บทความที่ {{ $article->id }}</div>
+                    <div class="card-header">บทความที่ {{ $article->id }} </div>
+
                     <div class="card-body">
 
                         <a href="{{ url('/article') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>

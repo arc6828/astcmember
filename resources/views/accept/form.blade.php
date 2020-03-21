@@ -11,6 +11,20 @@
     {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
 </div>
 
+<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+    <label for="user_id" class="control-label">{{ 'ผู้ส่งบทความ' }}</label>
+    <input class="form-control d-none" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : Auth::id() }}" readonly>
+    <input class="form-control" value="{{ isset($article->user_id) ? $article->user->name : Auth::user()->name }}" readonly>
+    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+</div>
+
+<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
+    <label for="user_id" class="control-label">{{ 'สังกัดของผู้ส่งบทความ' }}</label>
+    <input class="form-control d-none" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : Auth::id() }}" readonly>
+    <input class="form-control" value="{{ isset($article->user_id) ? $article->user->school : Auth::user()->school }}" readonly>
+    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+</div>
+
 <div class="form-group {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
     <label for="reviewer_id" class="control-label">{{ 'ผู้ประเมิน' }}</label>
         <select name="reviewer_id" class="form-control form-control-sm" id="reviewer_id" required >

@@ -2,7 +2,7 @@
     <label for="prapet" class="control-label">{{ 'ประเภทการนำเสนอ' }} <span class="text-danger">*</span></label>
     <select name="prapet" class="form-control" id="prapet" >
     
-    @foreach (["ประเภทบรรยาย (Oral Presentation)","ประเภทโปสเตอร์ (Poster)"] as $optionKey => $optionValue)
+    @foreach (["ประเภทบรรยาย (Oral Presentation)" ,"ประเภทโปสเตอร์ (Poster)" ] as $optionKey => $optionValue)
         <option value="{{ $optionValue }}" {{ (isset($article->prapet) && $article->prapet == $optionValue) ? 'selected' : ''}}>{{ $optionValue }}</option>
     @endforeach
 </select>
