@@ -38,7 +38,7 @@
                                         <th>ยอดที่ต้องชำระ</th>
                                         <th class="d-none">สถานภาพอื่นๆ โปรดระบุ</th>
                                         <th class="d-none">อาหารกลางวัน</th>
-                                        <th class="">Actions</th>
+                                        <th class=""></th>
                                     </tr>
                                 </thead>
                                 <tbody>

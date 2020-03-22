@@ -1,6 +1,7 @@
 @extends('layout.main')
 
 @section('content')
+
     <div class="container">
         <div class="row justify-content-center">
 
@@ -41,7 +42,7 @@
                                     <th>ชื่อบทความ</th>
                                     <th>สถานะบทความ</th>
                                     @if(Auth::user()->profile->role == "academic-admin")
-                                    <th>Next Actions</th>
+                                    <th> </th>
                                     @endif
                                     </tr>
                                 </thead>
@@ -108,6 +109,36 @@
                                             @case("Create")                                                     
                                                 <div><span class="badge badge-warning">รอการอัพโหลดบทความ</span></div>
                                                 <div>{{ $item->created_at}}</div><br>
+
+                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                                                    <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
+                                                </button>
+
+                                                <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="createDocumentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">อัพโหลดเอกสารบทความ</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      
+      <div class="modal-body">
+        
+
+      </div>
+    </div>
+  </div>
+</div>
+
+
                                                 @break
                                             @case("receive")                                                     
                                                 <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
@@ -157,14 +188,14 @@
                                                     @case("Create")  
                                                         @if(Auth::user()->profile->role == "author") 
                                                             <input type="hidden" name="status" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-sm float-right">ยกเลิกบทความ</button>
+                                                            <button type="submit" class="btn btn-danger btn-sm" title="ยกเลิกบทความ" onclick="return confirm(&quot;ยืนยันการยกเลิกบทความ ?&quot;)"> ยกเลิกบทความ</button>
                                                             @endif
                                                         @break
 
                                                     @case("receive")
                                                         @if(Auth::user()->profile->role == "academic-admin")     
                                                             <input type="hidden" name="status" value="checkformat">
-                                                            <button type="submit" class="btn btn-warning btn-sm"> กำลังตรวจสอบรูปแบบ</button>
+                                                            <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> กำลังตรวจสอบรูปแบบ</button>
                                                         @endif
                                                         @break
 
@@ -182,7 +213,7 @@
                                                             <div><input name="fix_keyword" id="fix_keyword" type="checkbox"> คำสำคัญเกิน 5 คำ</div>
                                                             <div><input name="fix_page" id="fix_page" type="checkbox"> จำนวนหน้าน้อยกว่า 8 หรือมากกว่า  10 หน้า</div>
                                                         </div>
-                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                        <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> submit</button>
                                                         @endif
                                                         @break
 
@@ -193,7 +224,7 @@
                                                           <option value="consider">รูปแบบถูกต้อง</option> 
                                                         </select>                                                        
                                                         
-                                                        <button type="submit" class="btn btn-warning btn-sm"> submit</button>
+                                                        <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> submit</button>
                                                         @endif
                                                         @break
 
@@ -207,7 +238,7 @@
                                                             <option value="notpass">ไม่ผ่าน</option>
                                                             
                                                             </select>
-                                                            <button type="submit" class="btn btn-warning btn-sm d-none"> submit</button>
+                                                            <button type="submit" class="btn btn-warning btn-sm d-none" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> submit</button>
                                                             @endif
 
                                                             @if(Auth::user()->profile->role == "academic-admin")
@@ -227,7 +258,7 @@
                                                         @case("pass_modify")
                                                             @if(Auth::user()->profile->role == "academic-admin") 
                                                             <input type="hidden" name="status" value="waitmodify">
-                                                            <button type="submit" class="btn btn-warning btn-sm"> รอการพิจารณา</button>                                                 
+                                                            <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> รอการพิจารณา</button>                                                 
                                                             
                                                             @endif
                                                             @break
@@ -240,7 +271,7 @@
                                                             <option value="notpass">ไม่ผ่าน</option>
                                                             
                                                             </select>
-                                                            <button type="submit" class="btn btn-warning btn-sm"> submit</button>   
+                                                            <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> submit</button>   
                                                             
                                                             @endif
                                                             @break

@@ -23,30 +23,108 @@
 
                         <div class="table-responsive">
                             <table class="table">
-                                <tbody>
                                     <tr>
-                                        <th>ID</th><td>{{ $reviewer->id }}</td>
+                                        <th class="d-none">ID</th>
+                                        <td class="d-none">{{ $reviewer->id }}</td>
                                     </tr>
-                                    <tr><th> Email </th><td> {{ $reviewer->email }} </td></tr><tr><th> Title </th><td> {{ $reviewer->title }} </td></tr><tr><th> Name </th><td> {{ $reviewer->name }} </td></tr><tr><th> Lastname </th><td> {{ $reviewer->lastname }} </td></tr><tr><th> Group </th><td> {{ $reviewer->group }} </td></tr><tr><th> Expert </th><td> {{ $reviewer->expert }} </td></tr><tr><th> School </th><td> {{ $reviewer->school }} </td></tr><tr><th> Major </th><td> {{ $reviewer->major }} </td></tr><tr><th> Address </th><td> {{ $reviewer->address }} </td></tr><tr><th> District </th><td> {{ $reviewer->district }} </td></tr><tr><th> Amphoe </th><td> {{ $reviewer->amphoe }} </td></tr><tr><th> Province </th><td> {{ $reviewer->province }} </td></tr><tr><th> Postnumber </th><td> {{ $reviewer->postnumber }} </td></tr><tr><th> Tel </th><td> {{ $reviewer->tel }} </td></tr><tr><th> Fax </th><td> {{ $reviewer->fax }} </td></tr><tr><th> Type </th><td> {{ $reviewer->type }} </td></tr><tr><th> Remark </th><td> {{ $reviewer->remark }} </td></tr>
-                                </tbody>
+                                    <tr>
+                                        <th> คำนำหน้า </th>
+                                        <td> {{ $reviewer->title }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ชื่อ </th>
+                                        <td> {{ $reviewer->name }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> นามสกุล </th>
+                                        <td> {{ $reviewer->lastname }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> อีเมล์ </th>
+                                        <td> {{ $reviewer->email }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> กลุ่ม </th>
+                                        <td> {{ $reviewer->group }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ความเชี่ยวชาญ </th>
+                                        <td> {{ $reviewer->expert }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> สถาบัน </th>
+                                        <td> {{ $reviewer->school }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> สาขาวิชา </th>
+                                        <td> {{ $reviewer->major }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ที่อยู่ </th>
+                                        <td> {{ $reviewer->address }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th class="d-none"> อำเภอ </th>
+                                        <td class="d-none"> {{ $reviewer->district }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> อำเภอ </th>
+                                        <td> {{ $reviewer->amphoe }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> จังหวัด </th>
+                                        <td> {{ $reviewer->province }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> รหัสไปรษณีย์ </th>
+                                        <td> {{ $reviewer->postnumber }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> เบอร์โทรศัพท์มือถือ </th>
+                                        <td> {{ $reviewer->tel }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> แฟกซ์ </th>
+                                        <td> {{ $reviewer->fax }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> ประเภท </th>
+                                        <td> {{ $reviewer->type }} </td>
+                                    </tr>
+                                    <tr>
+                                        <th> หมายเหตุ </th>
+                                        <td> {{ $reviewer->remark }} </td>
+                                    </tr>
                             </table>
-                        </div>
-                        <center>
-                        <div>
-                            <form method="POST" action="{{ url('/reviewer' . '/' . $reviewer->id . '/thank-you') }}" accept-charset="UTF-8" class="form-horizontal" >
+                            <hr>
+                            <div>
+                                <table class="table">
+                                  <thead>
+                                    <tr>
+                                        <th class="text-right" scope="col" >
+                                            <form method="POST" action="{{ url('/reviewer' . '/' . $reviewer->id . '/thank-you') }}" accept-charset="UTF-8" class="form-horizontal " >
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="status" value="Accept">
                                                 <button type="submit" class="btn btn-success btn-sm" title="Accept"> Accept</button>
-                            
-                            <form method="POST" action="{{ url('/reviewer' . '/' . $reviewer->id . '/reject') }}" accept-charset="UTF-8" class="form-horizontal" >
+                                            </form>
+                                        </th>
+
+                                        <th scope="col" >
+                                            <form method="POST" action="{{ url('/reviewer' . '/' . $reviewer->id . '/reject') }}" accept-charset="UTF-8" class="form-horizontal " >
                                                 {{ method_field('POST') }}
                                                 {{ csrf_field() }}
                                                 <input type="hidden" name="status" value="Reject">
                                                 <button type="submit" class="btn btn-danger btn-sm" title="Reject"> Reject</button>
-                            </form>
+                                            </form>
+                                        </th>
+                                    </tr>
+                                  </thead>
+                                </table>
+                                
+
+                            </div>
                         </div>
-                        </center>
                     </div>
                 </div>
             </div>

@@ -11,18 +11,17 @@
     {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
 </div>
 
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    <label for="user_id" class="control-label">{{ 'ผู้ส่งบทความ' }}</label>
-    <input class="form-control d-none" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : Auth::id() }}" readonly>
-    <input class="form-control" value="{{ isset($article->user_id) ? $article->user->name : Auth::user()->name }}" readonly>
-    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+    <label for="article_id" class="control-label">{{ 'ผู้ส่งบทความ' }}</label>
+    <input class="form-control d-none" name="name" type="text" id="name" value="{{ isset($article->profile->name) ? $article->profile->name : '' }}" readonly>
+    <input class="form-control" value="{{ isset($article->profile->name) ? $article->profile->name : '' }}" readonly>
+    {!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
 </div>
 
-<div class="form-group {{ $errors->has('user_id') ? 'has-error' : ''}}">
-    <label for="user_id" class="control-label">{{ 'สังกัดของผู้ส่งบทความ' }}</label>
-    <input class="form-control d-none" name="user_id" type="text" id="user_id" value="{{ isset($article->user_id) ? $article->user_id : Auth::id() }}" readonly>
-    <input class="form-control" value="{{ isset($article->user_id) ? $article->user->school : Auth::user()->school }}" readonly>
-    {!! $errors->first('user_id', '<p class="help-block">:message</p>') !!}
+<div class="form-group {{ $errors->has('article_id') ? 'has-error' : ''}}">
+    <label for="article_id" class="control-label">{{ 'สังกัดของผู้ส่งบทความ' }}</label>
+    <input class="form-control" name="school" type="text" id="school" value="{{ isset($article->profile->school) ? $article->profile->school : ''}}" readonly required="">
+{!! $errors->first('article_id', '<p class="help-block">:message</p>') !!}
 </div>
 
 <div class="form-group {{ $errors->has('reviewer_id') ? 'has-error' : ''}}">
@@ -134,7 +133,7 @@
 
 
 <div class="form-group">
-    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ยืนยันการเลือกผู้ประเมิน' }}">
+    <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ยืนยันการเลือกผู้ประเมิน' }}" onclick="return confirm(&quot;ยืนยันการเลือกผู้ประเมิน ?&quot;)">
 </div>
 
 <script type="text/javascript">

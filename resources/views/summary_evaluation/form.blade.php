@@ -275,7 +275,7 @@
 
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ส่งสรุปผลการประเมิน
-' }}">
+' }}" onclick="return confirm(&quot;ยืนยันการส่งสรุปผลการประเมิน ?&quot;)">
 </div>
 
 
