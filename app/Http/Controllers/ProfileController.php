@@ -139,6 +139,22 @@ class ProfileController extends Controller
         }
 
         $profile = Profile::findOrFail($id);
+        ///////////////
+        $profile->update($requestData);
+        if(!empty($requestData['role'])){
+            
+                
+            if ($requestData['role'] == "academic-admin") {
+                # code...
+                $requestData['role'] = "author" ;
+
+            }
+
+        }
+            
+        
+
+        /////////////////
         $profile->update($requestData);
 
         if( !empty($requestData['payment_status']) ){

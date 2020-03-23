@@ -7,19 +7,24 @@
 
             <div class="col-md-9">
                 <div class="card mb-4">
-                    <div class="card-header">บทความที่ {{ $article->id }} </div>
+                    <div class="card-header">บทความที่ {{ $article->id }}   </div>
 
                     <div class="card-body">
 
                         <a href="{{ url('/article') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <a href="{{ url('/article/' . $article->id . '/edit') }}" title="Edit Article"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไข</button></a>
+                        
+                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                        <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
+                        </button>
+                        <div class="text-danger">*ขอความกรุณาผู้ส่งบความอัพโหลดบทความในรูปแบบไฟล์ WORD และ PDF </div>
+                        
 
                         <form method="POST" action="{{ url('article' . '/' . $article->id) }}" accept-charset="UTF-8" style="display:inline">
                             {{ method_field('DELETE') }}
                             {{ csrf_field() }}
                             <button type="submit" class="btn btn-danger btn-sm d-none" title="Delete Article" onclick="return confirm(&quot;Confirm delete?&quot;)"><i class="fa fa-trash-o" aria-hidden="true"></i> Delete</button>
                         </form>
-                        <br/>
                         <br/>
 
                         <div class="table-responsive">
@@ -89,20 +94,17 @@
                 
 
 
-                <div class="card mb-4">
+                <div class="card mb-4" >
                     <div class="card-header">เอกสารบทความ</div>
                     <div class="card-body">
                         <a href="{{ url('/document/create') }}?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New Document">
                             <i class="fa fa-plus" aria-hidden="true"></i> Add New
                         </a>
-                        <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                    <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
                         <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
                         </button>
                         <div class="text-danger">*ขอความกรุณาผู้ส่งบความอัพโหลดบทความในรูปแบบไฟล์ WORD และ PDF </div>
-
-                       
-
-                        <br/>
+                    
                         <br/>
                         <div class="table-responsive">
                             <table class="table">
@@ -286,28 +288,27 @@
                                 @endforeach
                                 </tbody>
                             </table>
-                            
                         </div>
 
                     </div>
                 </div>
+                                           <!-- {{ url('/evaluation/create') }}?article_id={{$article->id}} -->
 
+                <form method="POST" action="{{ url('/article') .'/' . $article->id }}" accept-charset="UTF-8" style="display:inline">
+                    {{ method_field('PATCH') }}
+                    {{ csrf_field() }}
 
-                
-
-
-
-
-
-
+                    @if(Auth::user()->profile->role == "author") 
+                        <input type="hidden" name="status" value="Cancel">
+                        <button type="submit" class="btn btn-danger btn-sm " title="ยกเลิกบทความ" onclick="return confirm(&quot;ยืนยันการยกเลิกบทความ ?&quot;)"> ยกเลิกบทความ</button>
+                    @endif
+                </form>
                  
             </div>
         </div>
     </div>
 
 
-
-    
 
 <br>
 

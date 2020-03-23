@@ -109,36 +109,11 @@
                                             @case("Create")                                                     
                                                 <div><span class="badge badge-warning">รอการอัพโหลดบทความ</span></div>
                                                 <div>{{ $item->created_at}}</div><br>
-
+                                                <a href="{{ url('/article/' . $item->id) }}">
                                                 <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
                                                     <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
                                                 </button>
-
-                                                <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
-  Launch demo modal
-</button>
-
-<!-- Modal -->
-<div class="modal fade" id="createDocumentModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">อัพโหลดเอกสารบทความ</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      
-      <div class="modal-body">
-        
-
-      </div>
-    </div>
-  </div>
-</div>
-
-
+                                                </a>
                                                 @break
                                             @case("receive")                                                     
                                                 <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>
@@ -188,7 +163,7 @@
                                                     @case("Create")  
                                                         @if(Auth::user()->profile->role == "author") 
                                                             <input type="hidden" name="status" value="Cancel">
-                                                            <button type="submit" class="btn btn-danger btn-sm" title="ยกเลิกบทความ" onclick="return confirm(&quot;ยืนยันการยกเลิกบทความ ?&quot;)"> ยกเลิกบทความ</button>
+                                                            <button type="submit" class="btn btn-danger btn-sm d-none" title="ยกเลิกบทความ" onclick="return confirm(&quot;ยืนยันการยกเลิกบทความ ?&quot;)"> ยกเลิกบทความ</button>
                                                             @endif
                                                         @break
 

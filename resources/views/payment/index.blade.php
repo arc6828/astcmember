@@ -34,7 +34,7 @@
                                         <th>หมายเหตุ</th>
                                         <th>ใบเสร็จ</th>
                                         <th>รหัสสมาชิก</th>        
-                                        <th>Actions</th>
+                                        <th> </th>
                                     </tr>
                                 </thead>
                                 <tbody>
