@@ -38,7 +38,7 @@
 </div>
 <div class="form-group {{ $errors->has('name_present') ? 'has-error' : ''}}">
     <label for="name_present" class="control-label">{{ 'ชื่อผู้นำเสนอผลงาน (1 คน)' }} <span class="text-danger">*</span></label>
-    <input class="form-control" name="name_present" type="text" id="name_present" value="{{ isset($article->name_present) ? $article->name_present : ''}}" placeholder="ไม่ต้องมีคำหน้าชื่อ เช่น นายสมคิด นึกถึง" required>
+    <input class="form-control" name="name_present" type="text" id="name_present" value="{{ isset($article->name_present) ? $article->name_present : ''}}" placeholder="ไม่ต้องมีคำหน้าชื่อ เช่น สมคิด นึกถึง" required>
     {!! $errors->first('name_present', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('name_aj') ? 'has-error' : ''}}">
@@ -48,7 +48,7 @@
 </div>
 <div class="form-group {{ $errors->has('purubpitshop') ? 'has-error' : ''}}">
     <label for="purubpitshop" class="control-label">{{ 'ผู้รับผิดชอบบทความ/ นักวิจัยหลัก (Co-responding)' }} <span class="text-danger">*</span></label>
-    <input class="form-control" name="purubpitshop" type="text" id="purubpitshop" value="{{ isset($article->purubpitshop) ? $article->purubpitshop : ''}}" placeholder="ไม่ต้องมีคำหน้าชื่อ เช่น นายสมคิด นึกถึง" required>
+    <input class="form-control" name="purubpitshop" type="text" id="purubpitshop" value="{{ isset($article->purubpitshop) ? $article->purubpitshop : ''}}" placeholder="ไม่ต้องมีคำหน้าชื่อ เช่น สมคิด นึกถึง" required>
     {!! $errors->first('purubpitshop', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('email') ? 'has-error' : ''}}">

@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">แก้ไขบทความที่ {{ $article->id }}</div>
                     <div class="card-body">
-                        <a href="{{ url('/article') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
+                        <a href="{{ url('/article') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> บทความของฉัน</button></a>
                         <br />
                         <br />
 
