@@ -19,7 +19,24 @@
                                 <tr class="d-none"><th> ชื่อ-นามสกุล </th><td> {{ $user->name }} </td></tr>
                                 <tr><th> อีเมล์ </th><td> {{ $user->email }} </td></tr>
                                 <tr><th> สมัครเมื่อ </th><td> {{ $user->created_at }} </td></tr>
-                                <tr><th> สถานะ </th><td> {{ $user->profile->role }} </td></tr>
+                                <tr><th> สถานะ </th>
+                                    <td> 
+                                        @switch( Auth::user()->profile->role)
+                                            @case("guest")
+                                                <div><a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"> กรุณาแก้ไขสถานะในการเข้าร่วมงาน</a></div>
+                                            @break
+                                            @case("author")
+                                                <div>ผู้ส่งบทความ</div>
+                                            @break
+                                            @case("audience")
+                                                <div>ผู้เข้าชมงาน</div>
+                                            @break
+                                            @case("academic-admin")
+                                                <div>กรรมการวิชาการ</div>
+                                            @break
+                                        @endswitch
+                                    </td>
+                                </tr>
                                 
                             </tbody>
                         </table>

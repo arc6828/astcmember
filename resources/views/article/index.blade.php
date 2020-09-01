@@ -86,17 +86,17 @@
                                                     $document_pdf_blind = ($item->latest_pdf_blind_documents)? $item->latest_pdf_blind_documents->first() : null;
                                                 @endphp
                                                 @if($document_word)
-                                                    <a href="{{ url('storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
+                                                    <a href="{{ url('/storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
                                                 @endif
                                                 @if($document_pdf)
-                                                    <a href="{{ url('storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
+                                                    <a href="{{ url('/storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
                                                 @endif
                                                 <br><br>
                                                 @if($document_word_blind)
-                                                    <a href="{{ url('storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx blind</a> 
+                                                    <a href="{{ url('/storage') }}/{{$document_word_blind->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx blind</a> 
                                                 @endif
                                                 @if($document_pdf_blind)
-                                                    <a href="{{ url('storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF blind</a>
+                                                    <a href="{{ url('/storage') }}/{{$document_pdf_blind->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF blind</a>
                                                 @endif
                                             </div>
                                             
@@ -109,11 +109,13 @@
                                             @case("Create")                                                     
                                                 <div><span class="badge badge-warning">รอการอัพโหลดบทความ</span></div>
                                                 <div>{{ $item->created_at}}</div><br>
-                                                <a href="{{ url('/article/' . $item->id) }}">
-                                                <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
-                                                    <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
-                                                </button>
-                                                </a>
+                                                    @if(Auth::user()->profile->role == "author") 
+                                                            <a href="{{ url('/article/' . $item->id) }}">
+                                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
+                                                            </button>
+                                                            </a> 
+                                                    @endif
                                                 @break
                                             @case("receive")                                                     
                                                 <div><span class="badge badge-primary">ได้รับบทความแล้ว</span></div>

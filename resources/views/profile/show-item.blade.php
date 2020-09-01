@@ -7,7 +7,7 @@
             <tr><th> คำนำหน้า </th><td> {{ $profile->sex }} </td></tr>
             <tr><th> ตำแหน่งทางวิชาการ / อาชีพ </th><td> {{ $profile->title }} </td></tr>
             <tr><th> ชื่อ </th><td> {{ $profile->name }} </td></tr>
-            <tr><th> นามสกุล </th><td> {{ $profile->lastname }} </td></tr>
+            <tr class="d-none"><th> นามสกุล </th><td> {{ $profile->lastname }} </td></tr>
             <tr><th> อีเมล์ </th><td> {{ $profile->email }} </td></tr>
             <tr><th> วุฒิการศึกษาปัจจุบัน </th><td> {{ $profile->status }} </td></tr>
             <tr class="d-none"><th> สถานภาพอื่นๆ โปรดระบุ </th><td> {{ $profile->statusothers }} </td></tr>

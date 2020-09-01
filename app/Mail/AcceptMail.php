@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 use App\Accept;
+use App\Reviewer;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
@@ -31,6 +32,6 @@ class AcceptMail extends Mailable
     {
         $accept = $this->accept;
         return $this->subject('กรุณาประเมินผลบทความ')
-        ->view('accept.acceptmail', compact('accept' , 'reviewer') );
+        ->view('accept.acceptmail', compact('accept') );
     }
 }

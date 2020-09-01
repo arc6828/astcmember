@@ -8,7 +8,7 @@
                 <div class="card">
                     <div class="card-header">การประเมินบทความ</div>
                     <div class="card-body">
-                        <a href="{{ url('/summary_evaluation') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
+                        <a href="{{ url('/article/' . $article->id) }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
                         <br />
                         <br />
 

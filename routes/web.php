@@ -30,7 +30,6 @@ Route::post('article-evaluation', 'ArticleEvaluationController@store');
 
 Route::post('/reviewer/{id}/thank-you', 'ReviewerController@thankyou');
 Route::post('/reviewer/{id}/reject', 'ReviewerController@reject');
-
 Route::middleware(['auth'])->group(function () {
 
     Route::resource('profile', 'ProfileController');
@@ -49,6 +48,9 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('/district', function () {
     return view("district/index");
+});
+Route::get('/profile_edit', function () {
+    return view("profile/edit");
 });
 Route::resource('payment', 'PaymentController');
 
