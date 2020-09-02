@@ -51,7 +51,7 @@
                             </div>
                         </div>
 
-                        <div class="form-group row mb-0">
+                        <!-- <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('เข้าสู่ระบบ') }}
@@ -63,7 +63,25 @@
                                     </a>
                                 @endif
                             </div>
+                        </div> -->
+
+                        <div class="form-group row mb-0">
+                            <div class="col-md-8 offset-md-4 ">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('ลงชื่อเข้าใช้') }}
+                                </button> &nbsp;&nbsp;&nbsp;
+                                    <a class="text-muted" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
+                                <br><br>
+                                
+                                @if (Route::has('password.request'))
+                                    <a class="text-muted" href="{{ route('password.request') }}">
+                                        {{ __('ลืมรหัสผ่าน') }}
+                                    </a>
+                                @endif
+                            </div>
                         </div>
+
+
                     </form>
                 </div>
             </div>
@@ -72,12 +90,12 @@
 </div>
 
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
+<!-- <button type="button" class="btn btn-primary d-none" data-toggle="modal" data-target="#exampleModal">
     Launch demo modal
-</button>
+</button> -->
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-body">
@@ -98,5 +116,5 @@ $( document ).ready(function() {
     console.log( "ready!" );
     $('#exampleModal').modal('show');
 });
-</script>
+</script> -->
 @endsection

@@ -50,9 +50,11 @@
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i> {{ Auth::check() ? Auth::user()->name : '' }}
         </a>
+      @if (Route::has('login'))
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-          <a class="dropdown-item disabled" href="#">Settings</a>
-          <div class="dropdown-divider"></div>
+          @auth
+          <!-- <a class="dropdown-item disabled" href="#">Settings</a>
+          <div class="dropdown-divider"></div> -->
           <a class="dropdown-item" href="{{ url('/logout') }}"
               onclick="event.preventDefault();
                             document.getElementById('logout-form').submit();">
@@ -62,7 +64,11 @@
           <form id="logout-form" action="{{ url('/logout') }}" method="POST" style="display: none;">
               @csrf
           </form>
+        @else
+          <a class="dropdown-item" href="{{ route('register') }}">{{ __('สมัครสมาชิก') }}</a>
+          @endauth
         </div>
+      @endif
       </li>
     </ul>
 
