@@ -23,7 +23,7 @@
                                     <td> 
                                         @switch( Auth::user()->profile->role)
                                             @case("guest")
-                                                <div><a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"> กรุณาแก้ไขสถานะในการเข้าร่วมงาน</a></div>
+                                                <div><a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"> กรุณากรอกข้อมูลการเข้าร่วมงาน</a></div>
                                             @break
                                             @case("author")
                                                 <div>ผู้ส่งบทความ</div>

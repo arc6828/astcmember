@@ -13,13 +13,13 @@
 <div class="form-group {{ $errors->has('filename') ? 'has-error' : ''}}">
     <label for="filename" class="control-label">{{ 'ไฟล์ Word' }} <span class="text-danger">*</span></label>
     <input class="form-control d-none" name="title-word" type="text" value="Word{{ Auth::user()->profile->role == 'academic-admin' ? '-blind' : '' }}"  required="" readonly>
-    <input class="form-control" name="filename-word" type="file"  value="{{ isset($document->filename) ? $document->filename : ''}}"  required="">
+    <input class="form-control" name="filename-word" type="file" value="{{ isset($document->filename) ? $document->filename : ''}}"  required="">
     {!! $errors->first('filename', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('filename') ? 'has-error' : ''}}">
     <label for="filename" class="control-label">{{ 'ไฟล์ PDF' }} <span class="text-danger">*</span></label>
     <input class="form-control d-none" name="title-pdf" type="text" value="PDF{{ Auth::user()->profile->role == 'academic-admin' ? '-blind' : '' }}"  required=""  readonly>
-    <input class="form-control" name="filename-pdf" type="file" value="{{ isset($document->filename) ? $document->filename : ''}}"  required="">
+    <input class="form-control" name="filename-pdf" type="file" id="PDF" value="{{ isset($document->filename) ? $document->filename : ''}}"  required="">
     {!! $errors->first('filename', '<p class="help-block">:message</p>') !!}
 </div>
 <div class="form-group {{ $errors->has('remark') ? 'has-error' : ''}}">
@@ -43,3 +43,6 @@
 <div class="form-group">
     <input class="btn btn-primary" type="submit" value="{{ $formMode === 'edit' ? 'แก้ไข' : 'อัพโหลด' }}">
 </div>
+
+
+

@@ -9,7 +9,7 @@
                 <div class="card">
                     <div class="card-header">ผู้ประเมินบทความ</div>
                     <div class="card-body">
-                        <a href="{{ url('/reviewer/create') }}" class="btn btn-success btn-sm d-none" title="Add New Reviewer">
+                        <a href="{{ url('/reviewer/create') }}" class="btn btn-success btn-sm " title="Add New Reviewer">
                             <i class="fa fa-plus" aria-hidden="true"></i> เพิ่มผู้ประเมินบทความ
                         </a>
 

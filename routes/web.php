@@ -23,7 +23,6 @@ Route::get('/table', function () {
 
 Auth::routes();
 
-Route::get('reviewer/{id}', 'ReviewerController@show');
 
 Route::get('article-evaluation/create', 'ArticleEvaluationController@create');
 Route::post('article-evaluation', 'ArticleEvaluationController@store');
@@ -45,6 +44,9 @@ Route::middleware(['auth'])->group(function () {
 	Route::resource('summary_evaluation', 'Summary_evaluationController');
 	      
 });
+
+
+Route::get('reviewer/{id}', 'ReviewerController@show');
 
 Route::get('/district', function () {
     return view("district/index");
