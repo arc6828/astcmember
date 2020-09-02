@@ -20,24 +20,33 @@
                                 <tr><th> อีเมล์ </th><td> {{ $user->email }} </td></tr>
                                 <tr><th> สมัครเมื่อ </th><td> {{ $user->created_at }} </td></tr>
                                 <tr><th> สถานะ </th>
-                                    <td> 
-                                        @switch( Auth::user()->profile->role)
-                                            @case("guest")
-                                                <div><a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"> กรุณากรอกข้อมูลการเข้าร่วมงาน</a></div>
-                                            @break
-                                            @case("author")
-                                                <div>ผู้ส่งบทความ</div>
-                                            @break
-                                            @case("audience")
-                                                <div>ผู้เข้าชมงาน</div>
-                                            @break
-                                            @case("academic-admin")
-                                                <div>กรรมการวิชาการ</div>
-                                            @break
-                                        @endswitch
+                                    <td><div>
+                                            @switch( Auth::user()->profile->role)
+                                                @case("guest")
+                                                    <div><a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"> กรุณากรอกข้อมูลการเข้าร่วมงาน</a></div>
+                                                @break
+                                                @case("author")
+                                                    <div>ผู้ส่งบทความ <br><br>
+                                                            <button class="btn btn-success btn-sm" >
+                                                                    <a class="text-white" style="text-decoration: none" href="{{ url('/article/create') }}" >
+                                                                      <i class="fas fa-fw fa-paper-plane"></i> <span>เริ่มต้นส่งบทความของคุณ</span>
+                                                                    </a>
+                                                            </button>
+                                                    </div>
+                                                @break
+                                                @case("audience")
+                                                    <div>ผู้เข้าชมงาน</div>
+                                                @break
+                                                @case("academic-admin")
+                                                    <div>กรรมการวิชาการ</div>
+                                                @break
+                                                @case("admin")
+                                                    <div>admin</div>
+                                                @break
+                                            @endswitch
+                                        </div>
                                     </td>
                                 </tr>
-                                
                             </tbody>
                         </table>
                     </div>
