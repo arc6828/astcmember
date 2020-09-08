@@ -38,7 +38,13 @@
                                                     <div>ผู้เข้าชมงาน</div>
                                                 @break
                                                 @case("academic-admin")
-                                                    <div>กรรมการวิชาการ</div>
+                                                    <div>กรรมการวิชาการ <br><br>
+                                                            <button class="btn btn-success btn-sm" >
+                                                                    <a class="text-white" style="text-decoration: none" href="{{ url('/article') }}" >
+                                                                      <i class="fas fa-fw fa-file"></i> <span>ดูบทความทั้งหมด</span>
+                                                                    </a>
+                                                            </button>
+                                                    </div>
                                                 @break
                                                 @case("admin")
                                                     <div>admin</div>
@@ -106,7 +112,7 @@
 </button> -->
 
 <!-- Modal -->
-<<!-- div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<!-- div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-xl" role="document">
         <div class="modal-content">
             <div class="modal-body">

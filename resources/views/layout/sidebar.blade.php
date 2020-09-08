@@ -2,12 +2,41 @@
     <ul class="sidebar navbar-nav">
     
     @if(Auth::check())
-      <li class="nav-item active">
-        <a class="nav-link" href="{{ url('/home') }}">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>หน้าหลัก</span>
-        </a>
-      </li>
+        @if(Auth::user()->profile->role == "author" )
+          <li class="nav-item active" style="background-color:#64ae41 ">
+            <a class="nav-link" href="{{ url('/home') }}">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>หน้าหลัก</span>
+            </a>
+          </li>
+        @endif
+
+        @if(Auth::user()->profile->role == "academic-admin" )
+          <li class="nav-item active" style="background-color: #FFCC00">
+            <a class="nav-link" href="{{ url('/home') }}">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>หน้าหลัก</span>
+            </a>
+          </li>
+        @endif
+
+        @if(Auth::user()->profile->role == "admin" )
+          <li class="nav-item active bg-dark">
+            <a class="nav-link" href="{{ url('/home') }}">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>หน้าหลัก</span>
+            </a>
+          </li>
+        @endif
+
+        @if(Auth::user()->profile->role == "audience" )
+          <li class="nav-item active bg-primary">
+            <a class="nav-link" href="{{ url('/home') }}">
+              <i class="fas fa-fw fa-tachometer-alt"></i>
+              <span>หน้าหลัก</span>
+            </a>
+          </li>
+        @endif
 
       @if(Auth::user()->profile->role == "author" ) 
       <div class="dropdown-divider"></div>     

@@ -52,9 +52,6 @@ Route::get('reviewer/{id}', 'ReviewerController@show');
 Route::get('/district', function () {
     return view("district/index");
 });
-Route::get('/profile_edit', function () {
-    return view("profile/edit");
-});
 Route::resource('payment', 'PaymentController');
 
 Route::get('university_payment/index_payment', 'university_paymentController@index_payment');

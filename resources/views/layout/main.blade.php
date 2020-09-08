@@ -4,7 +4,7 @@
   @include('layout.head')
 </head>
 
-<body id="page-top">
+<body id="page-top" style="background-color:#edffed ">
   @include('layout.js')
   <div id="content-wrapper" class="d-flex flex-column">
     <div id="content">  

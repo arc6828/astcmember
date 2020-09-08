@@ -1,11 +1,11 @@
 <body id="page-top">
 
-  <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
+  <nav class="navbar navbar-expand navbar-dark bg-success static-top">
 
-    <a class="navbar-brand mr-1" href="{{ url('/home') }}">ASTC 2020</a>
+    <a class="navbar-brand mr-1" href="{{ url('/home') }}"><b>ASTC 2020</b></a>
 
-    <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-      <i class="fas fa-bars"></i>
+    <button class="btn btn-link btn-sm order-1 order-sm-0 text-white" id="sidebarToggle" href="#">
+      <b><i class="fas fa-bars"></i></b>
     </button>
 
     <!-- Navbar Search -->
@@ -46,8 +46,8 @@
           <a class="dropdown-item" href="#">Something else here</a>
         </div>
       </li>
-      <li class="nav-item dropdown no-arrow">
-        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li class="nav-item dropdown no-arrow ">
+        <a class="nav-link dropdown-toggle href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i> {{ Auth::check() ? Auth::user()->name : '' }}
         </a>
       @if (Route::has('login'))

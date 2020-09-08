@@ -67,8 +67,8 @@
 
                                             <div></div>
 
-                                            <div><b>ชื่อ : </b>{{ $item->purubpitshop }} <b  class="ml-4">ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}
-                                            </div>
+                                            <div><b>ชื่อผู้รับผิดชอบบทความ/ นักวิจัยหลัก : </b>{{ $item->purubpitshop }}</div>
+                                            <div><b>ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}</div>
 
                                             <div><b>อีเมล์ : </b>{{ $item->email }}</div>
                                             <div>
@@ -127,7 +127,14 @@
                                                 @break
                                             @case("waitmodifyformat")                                                    
                                                 <div ><span class="badge badge-warning">รอการแก้ไขรูปแบบ</span></div>
-                                                <div>{{ $item->waitmodifyformat_at }}</div>
+                                                <div>{{ $item->waitmodifyformat_at }}</div><br>
+                                                    @if(Auth::user()->profile->role == "author") 
+                                                            <a href="{{ url('/article/' . $item->id) }}">
+                                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
+                                                            </button>
+                                                            </a> 
+                                                    @endif
                                                 @break
                                             @case("consider")                                                     
                                                 <div><span class="badge badge-warning">รอการพิจารณา</span></div>
@@ -139,7 +146,14 @@
                                                 @break
                                             @case("waitmodify")                                                     
                                                 <div><span class="badge badge-warning">รอการแก้ไข</span></div>
-                                                <div>{{ $item->waitmodify_at }}</div>
+                                                <div>{{ $item->waitmodify_at }}</div><br>
+                                                    @if(Auth::user()->profile->role == "author") 
+                                                            <a href="{{ url('/article/' . $item->id) }}">
+                                                            <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#createDocumentModal">
+                                                                <i class="fa fa-plus" aria-hidden="true"></i> อัพโหลดไฟล์ใหม่
+                                                            </button>
+                                                            </a> 
+                                                    @endif
                                                 @break
                                             @case("pass")                                                     
                                                 <div><span class="badge badge-success">ผ่าน</span></div>
