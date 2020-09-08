@@ -3,7 +3,7 @@
     
     @if(Auth::check())
         @if(Auth::user()->profile->role == "author" )
-          <li class="nav-item active" style="background-color:#64ae41 ">
+          <li class="nav-item active" style="background-color:#FFCC00 ">
             <a class="nav-link" href="{{ url('/home') }}">
               <i class="fas fa-fw fa-tachometer-alt"></i>
               <span>หน้าหลัก</span>
@@ -12,7 +12,7 @@
         @endif
 
         @if(Auth::user()->profile->role == "academic-admin" )
-          <li class="nav-item active" style="background-color: #FFCC00">
+          <li class="nav-item active" style="background-color: #64ae41">
             <a class="nav-link" href="{{ url('/home') }}">
               <i class="fas fa-fw fa-tachometer-alt"></i>
               <span>หน้าหลัก</span>
