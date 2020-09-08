@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\ArticleEvaluation;
 use App\Article;
 use App\Reviewer;
+use App\Accept;
 use Illuminate\Http\Request;
 
 class ArticleEvaluationController extends Controller
@@ -75,8 +76,9 @@ class ArticleEvaluationController extends Controller
     {
         
         $requestData = $request->all();
-        
+        $requestData['status'] = "Yes";
         ArticleEvaluation::create($requestData);
+        // Accept::create($requestData);
 
         return view('article-evaluation.thankyou_articleevaluation')->with('flash_message', 'ArticleEvaluation added!');
     }

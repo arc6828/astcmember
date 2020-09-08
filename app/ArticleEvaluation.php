@@ -25,7 +25,7 @@ class ArticleEvaluation extends Model
      *
      * @var array
      */
-    protected $fillable = ['article_id', 'evaluation_name', 'evaluation_abstract', 'evaluation_introduction', 'evaluation_methodology', 'evaluation_result', 'evaluation_conclusion', 'evaluation_reference', 'evaluation_total_score', 'assessment', 'evaluation_summary', 'comment_name', 'comment_abstract', 'comment_introduction', 'comment_methodology', 'comment_result', 'comment_conclusion', 'comment_reference', 'user_id' , 'accept_id' , 'reviewer_id' , 'summary_evaluation_id' , 'file_comment'];
+    protected $fillable = ['article_id', 'evaluation_name', 'evaluation_abstract', 'evaluation_introduction', 'evaluation_methodology', 'evaluation_result', 'evaluation_conclusion', 'evaluation_reference', 'evaluation_total_score', 'assessment', 'evaluation_summary', 'comment_name', 'comment_abstract', 'comment_introduction', 'comment_methodology', 'comment_result', 'comment_conclusion', 'comment_reference', 'user_id' , 'accept_id' , 'reviewer_id' , 'summary_evaluation_id' , 'file_comment' , 'status'];
 
 
     public function article(){
@@ -38,6 +38,10 @@ class ArticleEvaluation extends Model
 
      public function summary_evaluation(){
         return $this->belongsTo('App\Summary_evaluation', 'summary_evaluation_id'); 
+    }
+
+    public function accept(){
+        return $this->belongsTo('App\Accept', 'accept_id'); 
     }
 
      

@@ -237,6 +237,11 @@
                                                                 @foreach($item->accepts as $accept)
                                                                     <li>
                                                                         {{ $accept->reviewer->title }}{{ $accept->reviewer->name }}  {{$accept->reviewer->lastname}} 
+                                                                        @foreach($item->article_evaluations as $article_eva)
+                                                                            @if($article_eva->status == "Yes")
+                                                                                <i class="far fa-check-circle"></i>
+                                                                            @endif
+                                                                        @endforeach
                                                                     </li>
                                                                 @endforeach
                                                                 </ol>
