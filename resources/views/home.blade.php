@@ -41,7 +41,7 @@
                                                     <div>กรรมการวิชาการ <br><br>
                                                             <button class="btn btn-success btn-sm" >
                                                                     <a class="text-white" style="text-decoration: none" href="{{ url('/article') }}" >
-                                                                      <i class="fas fa-fw fa-file"></i> <span>ดูบทความทั้งหมด</span>
+                                                                      <i class="fas fa-file-alt"></i> <span>ดูบทความทั้งหมด</span>
                                                                     </a>
                                                             </button>
                                                     </div>
@@ -68,7 +68,7 @@
                 <div class="card-body">
 
                     <a class="d-none" href="{{ url('/profile') }}" title="Back"><button class="btn btn-warning btn-sm"><i class="fa fa-arrow-left" aria-hidden="true"></i> กลับ</button></a>
-                    <a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> แก้ไข</button></a>
+                    <a href="{{ url('/profile/' . $profile->id . '/edit') }}" title="Edit Profile"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> <i class="fas fa-user-edit"></i> แก้ไข</button></a>
 
                     <form  class="d-none" method="POST" action="{{ url('profile' . '/' . $profile->id) }}" accept-charset="UTF-8" style="display:inline">
                         {{ method_field('DELETE') }}

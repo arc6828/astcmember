@@ -86,10 +86,10 @@
                                                     $document_pdf_blind = ($item->latest_pdf_blind_documents)? $item->latest_pdf_blind_documents->first() : null;
                                                 @endphp
                                                 @if($document_word)
-                                                    <a href="{{ url('/storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5">ดาวน์โหลด Docx</a> 
+                                                    <a href="{{ url('/storage') }}/{{$document_word->filename }}" class="btn btn-primary btn-sm mr-5"><i class="fas fa-file-word"></i>  ดาวน์โหลด Docx</a> 
                                                 @endif
                                                 @if($document_pdf)
-                                                    <a href="{{ url('/storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5">ดาวน์โหลด PDF</a>
+                                                    <a href="{{ url('/storage') }}/{{$document_pdf->filename }}" class="btn btn-danger btn-sm mr-5"><i class="fas fa-file-pdf"></i>  ดาวน์โหลด PDF</a>
                                                 @endif
                                                 <br><br>
                                                 @if($document_word_blind)
@@ -240,7 +240,7 @@
                                                                     </li>
                                                                 @endforeach
                                                                 </ol>
-                                                                <a href="{{ url('/accept/create?article_id=' . $item->id) }}" title=""><button type="button" class="btn btn-primary btn-sm mr-5"> เพิ่มผู้ประเมิน</button></a>
+                                                                <a href="{{ url('/accept/create?article_id=' . $item->id) }}" title=""><button type="button" class="btn btn-primary btn-sm mr-5"><i class="fas fa-user-plus"></i> เพิ่มผู้ประเมิน</button></a>
                                                                 
                                                              
                                                             @endif
