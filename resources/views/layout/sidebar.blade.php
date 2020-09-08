@@ -2,32 +2,6 @@
     <ul class="sidebar navbar-nav">
     
     @if(Auth::check())
-        @if(Auth::user()->profile->role == "author" )
-          <li class="nav-item active" style="background-color:#FFCC00 ">
-            <a class="nav-link" href="{{ url('/home') }}">
-              <i class="fas fa-fw fa-tachometer-alt"></i>
-              <span>หน้าหลัก</span>
-            </a>
-          </li>
-        @endif
-
-        @if(Auth::user()->profile->role == "academic-admin" )
-          <li class="nav-item active" style="background-color: #64ae41">
-            <a class="nav-link" href="{{ url('/home') }}">
-              <i class="fas fa-fw fa-tachometer-alt"></i>
-              <span>หน้าหลัก</span>
-            </a>
-          </li>
-        @endif
-
-        @if(Auth::user()->profile->role == "admin" )
-          <li class="nav-item active bg-dark">
-            <a class="nav-link" href="{{ url('/home') }}">
-              <i class="fas fa-fw fa-tachometer-alt"></i>
-              <span>หน้าหลัก</span>
-            </a>
-          </li>
-        @endif
 
         @if(Auth::user()->profile->role == "audience" )
           <li class="nav-item active bg-primary">
@@ -39,6 +13,13 @@
         @endif
 
       @if(Auth::user()->profile->role == "author" ) 
+      <li class="nav-item active" style="background-color:#FFCC00 ">
+        <a class="nav-link" href="{{ url('/home') }}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>หน้าหลัก</span>
+        </a>
+      </li>
+
       <div class="dropdown-divider"></div>     
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/article/create') }}" >
@@ -63,6 +44,13 @@
       @endif
 
       @if(Auth::user()->profile->role == "academic-admin" ) 
+      <li class="nav-item active" style="background-color: #64ae41">
+        <a class="nav-link" href="{{ url('/home') }}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>หน้าหลัก</span>
+        </a>
+      </li>
+
       <div class="dropdown-divider"></div>      
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/profile') }}" >
@@ -92,7 +80,14 @@
       @endif
 
 
-      @if(Auth::user()->profile->role == "admin" )     
+      @if(Auth::user()->profile->role == "admin" ) 
+      <li class="nav-item active bg-dark">
+        <a class="nav-link" href="{{ url('/home') }}">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>หน้าหลัก</span>
+        </a>
+      </li>
+
       <div class="dropdown-divider"></div>      
       <li class="nav-item">
         <a class="nav-link" href="{{ url('/profile') }}" >
