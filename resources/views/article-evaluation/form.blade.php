@@ -1,5 +1,10 @@
 
-<div class="card-header">โปรดให้ข้อคิดเห็น ข้อเสนอแนะตามที่ท่านเห็นสมควรในประเด็นแก้ไข</div>
+<div class="card-header">
+    โปรดให้ข้อคิดเห็น ข้อเสนอแนะตามที่ท่านเห็นสมควรในประเด็นแก้ไข
+    <a href="{{ url('/แบบฟอร์มการให้คะแนน.pdf') }}" class="btn btn-success btn-sm float-right" title="ดาวน์โหลดแบบฟอร์มการให้คะแนน">
+        <i class="fa fa-arrow-down" aria-hidden="true"></i> ดาวน์โหลดแบบฟอร์มการให้คะแนน
+    </a>
+</div>
 <div class="card-body">
     <a href="{{ url('/article-evaluation/create') }} ?article_id={{$article->id}}" class="btn btn-success btn-sm d-none" title="Add New ArticleEvaluation">
         <i class="fa fa-plus" aria-hidden="true"></i> Add New
