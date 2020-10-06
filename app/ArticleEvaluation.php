@@ -25,7 +25,7 @@ class ArticleEvaluation extends Model
      *
      * @var array
      */
-    protected $fillable = ['article_id', 'evaluation_name', 'evaluation_abstract', 'evaluation_introduction', 'evaluation_methodology', 'evaluation_result', 'evaluation_conclusion', 'evaluation_reference', 'evaluation_total_score', 'assessment', 'evaluation_summary', 'comment_name', 'comment_abstract', 'comment_introduction', 'comment_methodology', 'comment_result', 'comment_conclusion', 'comment_reference', 'user_id' , 'accept_id' , 'reviewer_id' , 'summary_evaluation_id' , 'file_comment' , 'status'];
+    protected $fillable = ['article_id', 'evaluation_name', 'evaluation_abstract', 'evaluation_introduction', 'evaluation_methodology', 'evaluation_result', 'evaluation_conclusion', 'evaluation_reference', 'evaluation_total_score', 'assessment', 'evaluation_summary', 'comment_name', 'comment_abstract', 'comment_introduction', 'comment_methodology', 'comment_result', 'comment_conclusion', 'comment_reference', 'user_id' , 'accept_id' , 'reviewer_id' , 'summary_evaluation_id' , 'file_comment' , 'status' , 'comment_another'];
 
 
     public function article(){

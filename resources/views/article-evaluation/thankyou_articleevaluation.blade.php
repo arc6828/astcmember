@@ -1,1 +1,1 @@
-<h1>Thank You </h1><br>
+<img style="width: 100%" src="https://www.townsend-smith.ca/wp-content/uploads/2018/06/thanks.jpg">

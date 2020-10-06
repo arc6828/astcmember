@@ -49,6 +49,25 @@
       <li class="nav-item dropdown no-arrow ">
         <a class="nav-link dropdown-toggle href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           <i class="fas fa-user-circle fa-fw"></i> {{ Auth::check() ? Auth::user()->name : '' }}
+            @if(Auth::check())
+
+              @if(Auth::user()->profile->role == "author" )
+              (ผู้ส่งบทความ)
+              @endif
+
+              @if(Auth::user()->profile->role == "academic-admin" )
+              (กรรมการวิชาการ)
+              @endif
+
+              @if(Auth::user()->profile->role == "admin" )
+              (ผู้ดูแลระบบ)
+              @endif
+
+              @if(Auth::user()->profile->role == "audience" )
+              (ผู้เข้าร่วมงาน)
+              @endif
+
+            @endif
         </a>
       @if (Route::has('login'))
         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">

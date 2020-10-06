@@ -205,6 +205,10 @@ class ArticleController extends Controller
                 case "waitmodifyformat" : 
                     $requestData['waitmodifyformat_at'] = date('Y-m-d H:i:s');
                     break;
+
+                case "modify_success" : 
+                    $requestData['modify_success_at'] = date('Y-m-d H:i:s');
+                    break;
     
                 case "consider" : 
                     $requestData['consider_at'] = date('Y-m-d H:i:s');

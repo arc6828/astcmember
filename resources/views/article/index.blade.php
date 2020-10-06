@@ -12,6 +12,7 @@
                         <a href="{{ url('/article/create') }}" class="btn btn-success btn-sm" title="Add New Article">
                             <i class="fa fa-plus" aria-hidden="true"></i> สร้างบทความใหม่
                         </a>
+                        <!-- <button onclick="export_articel()">Export Excel</button> -->
                         
                         
 
@@ -136,6 +137,10 @@
                                                             </a> 
                                                     @endif
                                                 @break
+                                            @case("modify_success")                                                     
+                                                <div><span class="badge badge-warning">กำลังตรวจสอบรูปแบบ</span></div>
+                                                <div>{{ $item->modify_success_at}}</div>
+                                                @break
                                             @case("consider")                                                     
                                                 <div><span class="badge badge-warning">รอการพิจารณา</span></div>
                                                 <div>{{ $item->consider_at }}</div>
@@ -194,27 +199,36 @@
                                                         @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
                                                        <select name="status" onchange="if(this.value == 'consider') document.querySelector('#comment').classList.add('d-none'); else  document.querySelector('#comment').classList.remove('d-none'); ">
+                                                          
                                                           <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
                                                           <option value="consider">รูปแบบถูกต้อง</option>
-                                                          
                                                           
                                                         </select>
                                                         <div id="comment">
                                                             <div><input name="fix_abstract" id="fix_abstract" type="checkbox"> บทคัดย่อเกิน 250 คำ / ภาษา</div>
                                                             <div><input name="fix_keyword" id="fix_keyword" type="checkbox"> คำสำคัญเกิน 5 คำ</div>
                                                             <div><input name="fix_page" id="fix_page" type="checkbox"> จำนวนหน้าน้อยกว่า 8 หรือมากกว่า  10 หน้า</div>
-                                                        </div>
+                                                            <div><input name="another" id="another" placeholder="อื่นๆ (ถ้ามี)" type="text"></div>
+                                                        </div><br>
                                                         <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> submit</button>
                                                         @endif
                                                         @break
 
-                                                    @case("waitmodifyformat")
+                                                    @case("modify_success")
                                                     @if(Auth::user()->profile->role == "academic-admin")                                                  
                                                         
-                                                        <select name="status" onchange="">                                                          
-                                                          <option value="consider">รูปแบบถูกต้อง</option> 
-                                                        </select>                                                        
-                                                        
+                                                        <select name="status" onchange="if(this.value == 'consider') document.querySelector('#comment').classList.add('d-none'); else  document.querySelector('#comment').classList.remove('d-none'); ">
+                                                          
+                                                          <option value="waitmodifyformat">แก้ไขรูปแบบ </option>
+                                                          <option value="consider">รูปแบบถูกต้อง</option>
+                                                          
+                                                        </select>
+                                                        <div id="comment">
+                                                            <div><input name="fix_abstract" id="fix_abstract" type="checkbox"> บทคัดย่อเกิน 250 คำ / ภาษา</div>
+                                                            <div><input name="fix_keyword" id="fix_keyword" type="checkbox"> คำสำคัญเกิน 5 คำ</div>
+                                                            <div><input name="fix_page" id="fix_page" type="checkbox"> จำนวนหน้าน้อยกว่า 8 หรือมากกว่า  10 หน้า</div>
+                                                            <div><input name="another" id="another" placeholder="อื่นๆ (ถ้ามี)" type="text"></div>
+                                                        </div><br>
                                                         <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm(&quot;ยืนยันการเปลี่ยนสถานะบทความ ?&quot;)"> submit</button>
                                                         @endif
                                                         @break
@@ -238,8 +252,8 @@
                                                                     <li>
                                                                         {{ $accept->reviewer->title }}{{ $accept->reviewer->name }}  {{$accept->reviewer->lastname}} 
                                                                         @foreach($item->article_evaluations as $article_eva)
-                                                                            @if($article_eva->status == "Yes")
-                                                                                <i class="far fa-check-circle"></i>
+                                                                            @if($article_eva->status == "Yes" && $article_eva->reviewer_id == $accept->reviewer_id)
+                                                                                <i class="far fa-check-circle" style="color: #FF0000"></i>
                                                                             @endif
                                                                         @endforeach
                                                                     </li>

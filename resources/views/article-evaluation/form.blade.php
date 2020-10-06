@@ -162,6 +162,16 @@
             </tr>
             <tr>
                 <th></th>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><div class="form-group {{ $errors->has('comment_another') ? 'has-error' : ''}}">
+                        <textarea class="form-control" name="comment_another" type="textarea" id="comment_another" placeholder="ความคิดเห็นอื่นๆ (ถ้ามี)" >{{ isset($articleevaluation->comment_another) ? $articleevaluation->comment_another : ''}}</textarea>
+                        {!! $errors->first('comment_another', '<p class="help-block">:message</p>') !!}
+                    </div></td>
+            </tr>
+            <tr>
+                <th></th>
                 <th><br>รวม</th>
                 <td><br>100</td>
                 <th><br><div class="form-group {{ $errors->has('evaluation_total_score') ? 'has-error' : ''}}"> 
@@ -171,7 +181,7 @@
                     </div></th>
                 <td>
                     <div class="form-group {{ $errors->has('file_comment') ? 'has-error' : ''}}">
-                        <label for="filename" class="control-label">{{ 'แนบไฟล์ comment' }} 
+                        <label for="filename" class="control-label">{{ 'แนบไฟล์ความคิดเห็น' }} 
                         <input class="form-control" name="file_comment" type="file"  value="{{ isset($articleevaluation->file_comment) ? $articleevaluation->file_comment : ''}}"  >
                         {!! $errors->first('filename', '<p class="help-block">:message</p>') !!}
                     </div>
@@ -218,8 +228,7 @@
                 </table>
             <hr>
 <div class="form-group">
-    <input class="btn btn-primary" type="submit"  value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ส่งผลประเมิน
-' }}">
+    <input class="btn btn-primary" type="submit"  value="{{ $formMode === 'edit' ? 'แก้ไข' : 'ส่งผลประเมิน' }}"onclick="return confirm(&quot;ยืนยันการส่งผลประเมินหรือไม่ ?&quot;)">
 </div>
 
 <script type="text/javascript">

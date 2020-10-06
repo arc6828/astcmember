@@ -94,8 +94,8 @@ class DocumentController extends Controller
                 $article->update($requestDataArticle); 
                 break;
             case "waitmodifyformat" : 
-                $requestDataArticle['consider_at'] = date('Y-m-d H:i:s');
-                $requestDataArticle['status'] = 'consider';
+                $requestDataArticle['modify_success_at'] = date('Y-m-d H:i:s');
+                $requestDataArticle['status'] = 'modify_success';
                 $article->update($requestDataArticle); 
                 break;    
             case "pass_modify" : 

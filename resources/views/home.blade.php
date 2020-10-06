@@ -47,7 +47,7 @@
                                                     </div>
                                                 @break
                                                 @case("admin")
-                                                    <div>admin</div>
+                                                    <div>ผู้ดูแลระบบ</div>
                                                 @break
                                             @endswitch
                                         </div>

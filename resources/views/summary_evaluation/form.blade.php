@@ -209,6 +209,25 @@
             </tr>
             <tr>
                 <th></th>
+                <th>ความคิดเห็นอื่นๆ</th>
+                <td>-</td>
+                <td>-</td>
+                <td>-</td>
+                <td>
+                    @foreach($article->article_evaluations as $item)
+                    {{ $item->comment_another }} <br>
+                    @endforeach
+                </td>
+                <td><div class="form-group {{ $errors->has('nwecomment_reference') ? 'has-error' : ''}}">
+                        <textarea class="form-control" rows="5" name="nwecomment_reference" type="textarea" id="nwecomment_reference" >
+@foreach($article->article_evaluations as $item)
+{{ $item->comment_reference }}
+@endforeach {{ isset($summary_evaluation->nwecomment_reference) ? $summary_evaluation->nwecomment_reference : ''}}</textarea>
+                        {!! $errors->first('nwecomment_reference', '<p class="help-block">:message</p>') !!}
+                    </div></td>
+            </tr>
+            <tr>
+                <th></th>
                 <th>รวม</th>
                 <th>100</th>
                 <td><div class="form-group {{ $errors->has('summary_average_score') ? 'has-error' : ''}}">
