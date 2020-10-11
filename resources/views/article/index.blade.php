@@ -253,7 +253,7 @@
                                                                         {{ $accept->reviewer->title }}{{ $accept->reviewer->name }}  {{$accept->reviewer->lastname}} 
                                                                         @foreach($item->article_evaluations as $article_eva)
                                                                             @if($article_eva->status == "Yes" && $article_eva->reviewer_id == $accept->reviewer_id)
-                                                                                <i class="far fa-check-circle" style="color: #FF0000"></i>
+                                                                                <i class="far fa-check-circle" style="color: #0000FF"></i>
                                                                             @endif
                                                                         @endforeach
                                                                     </li>
