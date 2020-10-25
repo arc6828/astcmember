@@ -36,7 +36,7 @@
                                         <th>Major</th>
                                         <th>Address</th><th>District</th><th>Amphoe</th><th>Province</th><th>Postnumber</th><th>Tel</th><th>Fax</th>
                                         <th>Type</th><th>Remark</th-->
-                                        <th>อีเมล์</th>
+                                        <th>อีเมล</th>
                                         <th>สถานะ</th> 
                                     </tr>
                                 </thead>

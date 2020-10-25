@@ -254,7 +254,7 @@
 <hr>
 
     <div class="form-group {{ $errors->has('evaluation_summary') ? 'has-error' : ''}}">
-    <label for="evaluation_summary" class="control-label">{{ 'สรุปผลการประเมิน' }}</label>
+    <label for="evaluation_summary" class="control-label" style="font-size: 24px;color: red">{{ '** สรุปผลการประเมิน' }}</label>
     <select name="evaluation_summary" class="form-control" id="evaluation_summary" >
      @foreach (["pass"=>"ผ่าน โดยไม่มีการแก้ไข","pass_modify"=>"ผ่าน หลังการปรับปรุงแก้ไข","notpass"=>"ไม่ผ่าน"] as $optionKey => $optionValue)
         <option value="{{ $optionKey }}" {{ (isset($summary_evaluation->evaluation_summary) && $summary_evaluation->evaluation_summary == $optionKey) ? 'selected' : ''}}>{{ $optionValue }}</option>

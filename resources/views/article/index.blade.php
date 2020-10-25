@@ -71,7 +71,7 @@
                                             <div><b>ชื่อผู้รับผิดชอบบทความ/ นักวิจัยหลัก : </b>{{ $item->purubpitshop }}</div>
                                             <div><b>ชื่อผู้นำเสนอ : </b>{{ $item->name_present }}</div>
 
-                                            <div><b>อีเมล์ : </b>{{ $item->email }}</div>
+                                            <div><b>อีเมล : </b>{{ $item->email }}</div>
                                             <div>
                                                 <b>ค่าลงทะเบียน : </b> {{ number_format ($item->price , 2 ) }}
                                             

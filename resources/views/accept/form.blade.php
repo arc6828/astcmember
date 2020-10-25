@@ -50,7 +50,7 @@
 
 <!-- Button trigger modal -->
 <button type="button" class="btn btn-info" data-toggle="modal" data-target="#exampleModal">
-  เพิ่มผู้ประเมิน
+  เลือกผู้ประเมิน
 </button>
 
 <!-- Modal -->

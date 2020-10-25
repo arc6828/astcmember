@@ -40,7 +40,7 @@
                                         <td> {{ $reviewer->lastname }} </td>
                                     </tr>
                                     <tr>
-                                        <th> อีเมล์ </th>
+                                        <th> อีเมล </th>
                                         <td> {{ $reviewer->email }} </td>
                                     </tr>
                                     <tr>

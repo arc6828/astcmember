@@ -17,7 +17,7 @@
                             <tbody>
                                 <tr class="d-none"><th>ID</th><td>{{ $user->id }}</td></tr>
                                 <tr class="d-none"><th> ชื่อ-นามสกุล </th><td> {{ $user->name }} </td></tr>
-                                <tr><th> อีเมล์ </th><td> {{ $user->email }} </td></tr>
+                                <tr><th> อีเมล </th><td> {{ $user->email }} </td></tr>
                                 <tr><th> สมัครเมื่อ </th><td> {{ $user->created_at }} </td></tr>
                                 <tr><th> สถานะ </th>
                                     <td><div>
